@@ -11,7 +11,9 @@ export function WalletConnect() {
   const [balance, setBalance] = useState<number | null>(null)
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     if (!mounted || !connected || !publicKey) return
@@ -31,15 +33,21 @@ export function WalletConnect() {
     return () => clearInterval(interval)
   }, [mounted, connected, publicKey, connection])
 
-  if (!mounted) return null
+  if (!mounted) return null // prevent server/client mismatch
 
   return (
     <div className='flex items-center gap-4 justify-end p-4'>
       <WalletMultiButton />
-      {connected && balance !== null && (
-        <div className='text-sm font-mono text-gray-300'>
-          SOL: {balance.toFixed(4)}
+      {connected && publicKey ? (
+        <div className='text-sm font-mono'>
+          <div>
+            Address: {publicKey.toBase58().slice(0, 6)}...
+            {publicKey.toBase58().slice(-4)}
+          </div>
+          <div>SOL: {balance?.toFixed(4)}</div>
         </div>
+      ) : (
+        <div className='text-sm text-gray-400'>Wallet not connected</div>
       )}
     </div>
   )
