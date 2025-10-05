@@ -1,6 +1,6 @@
 import "@solana/wallet-adapter-react-ui/styles.css"
 import "./globals.css"
-import { WalletContextProvider } from "./config/wallet"
+import { WalletContextProvider } from "./config/WalletContextProvider"
 import { WalletConnect } from "@/components/WalletConnect"
 import type { Metadata } from "next"
 
