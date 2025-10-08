@@ -1,5 +1,6 @@
 import "@solana/wallet-adapter-react-ui/styles.css"
 import "./globals.css"
+import Providers  from "./config/PrivyContextProvider"
 import { WalletContextProvider } from "./config/WalletContextProvider"
 import { WalletConnect } from "@/components/WalletConnect"
 import type { Metadata } from "next"
@@ -18,8 +19,10 @@ export default function RootLayout({
     <html lang='en'>
       <body className='antialiased bg-black text-white'>
         <WalletContextProvider>
-          <WalletConnect />
-          {children}
+          <Providers>
+            <WalletConnect />
+            {children}
+          </Providers>
         </WalletContextProvider>
       </body>
     </html>
