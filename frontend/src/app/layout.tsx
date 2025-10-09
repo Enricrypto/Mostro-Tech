@@ -1,13 +1,14 @@
 import "@solana/wallet-adapter-react-ui/styles.css"
 import "./globals.css"
-import Providers  from "./config/PrivyContextProvider"
-import { WalletContextProvider } from "./config/WalletContextProvider"
-import { WalletConnect } from "@/components/WalletConnect"
+import Providers from "./config/PrivyContextProvider"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Mostro",
-  description: "A Web3 platform for artists and fans"
+  description: "A Web3 platform for artists and fans",
+  icons: {
+    icon: "/logo.png"
+  }
 }
 
 export default function RootLayout({
@@ -18,12 +19,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='antialiased bg-black text-white'>
-        <WalletContextProvider>
-          <Providers>
-            <WalletConnect />
-            {children}
-          </Providers>
-        </WalletContextProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
