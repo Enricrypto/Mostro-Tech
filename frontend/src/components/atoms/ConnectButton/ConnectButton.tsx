@@ -1,11 +1,10 @@
 "use client"
 
 import { useLogin, usePrivy } from "@privy-io/react-auth"
-import { Button } from "@/components/ui/button"
+import { Button } from "../Button/Button"
 
-const LoginButton = () => {
+export const ConnectButton = () => {
   const { login } = useLogin()
-
   const { user, logout } = usePrivy()
 
   // Get a display name: email > Google > wallet > DID
@@ -30,8 +29,8 @@ const LoginButton = () => {
     <div className='fixed top-4 right-4 z-50 flex items-center gap-3'>
       {user && displayName ? (
         <>
-          <span className='px-3 py-1 text-white rounded font-medium text-sm'>
-            {displayName?.length > 20
+          <span className='px-3 py-1 rounded font-medium text-sm text-[var(--color-white)]'>
+            {displayName.length > 20
               ? `${displayName.slice(0, 6)}...${displayName.slice(-4)}`
               : displayName}
           </span>
@@ -47,5 +46,3 @@ const LoginButton = () => {
     </div>
   )
 }
-
-export default LoginButton
