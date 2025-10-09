@@ -1,11 +1,9 @@
-"use client"
+import { Hero } from "@/components/hero/Hero"
 
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
-
-export default function HomePage() {
+export default function LandingPage() {
   return (
-    <main className='flex flex-col items-center justify-center h-screen'>
-      <h1 className='text-3xl font-bold mb-8'>Mostro dApp</h1>
-    </main>
+    <>
+      <Hero />
+    </>
   )
 }
