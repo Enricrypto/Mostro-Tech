@@ -31,10 +31,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         loginMethods: ["google", "wallet"]
       }}
     >
-      <div>
+      <>
         <ConnectButton />
         {children}
-      </div>
+      </>
     </PrivyProvider>
   )
 }

@@ -11,11 +11,36 @@
   --color-muted: #d2d2d5;
   --color-white: #ffffff;
 
+  /* Text Colors */
+  --color-text-default: #0f172a;
+  --color-button-text: #0f172a;
+
+  /* Button Text Colors */
+  --color-button-bg-default: #ffffff; /* unselected background */
+  --color-button-bg-selected: #998ce1; /* selected background */
+  --color-button-text-default: #0f172a; /* unselected text */
+  --color-button-text-selected: #ffffff; /* selected text */
+  --color-button-hover: #998ce1; /* hover background for unselected */
+
+  /* Surface Colors */
+  --color-surface-default: var(--color-white);
+  --color-surface-selected: #f1f5f9;
+  --color-surface-hover: #f8fafc;
+
+  /* Hover / Active Colors */
+  --hover-primary: var(--color-primary-light);
+  --active-primary: var(--color-primary);
+  --hover-accent: var(--color-accent-dark);
+  --active-accent: var(--color-accent);
+  --hover-highlight: var(--color-accent-dark);
+  --active-highlight: var(--color-highlight);
+
   /* Typography */
   --font-heading: "Poppins", sans-serif;
   --font-body: "Poppins", sans-serif;
+  --font-inter: "Inter", sans-serif;
 
-  /* Font sizes */
+  /* Font Sizes */
   --text-h1: 2.5rem;
   --text-h2: 2rem;
   --text-h3: 1.75rem;
@@ -26,11 +51,72 @@
   --text-small: 0.875rem;
   --text-muted: 0.875rem;
   --text-inline-code: 0.875rem;
+  --text-button-size: 12px;
+  --text-button-line-height: 20px;
 
-  /* Font weights */
+  /* Font Weights */
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+
+  /* Border Radius */
+  --radius-pill: 30px;
+  --radius-card: 8px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+
+  /* Border & Shadow */
+  --border-width: 1px;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0px 2px 4px 0px #00000014;
+  --shadow-md: 0px 4px 6px 0px #00000017;
+  --shadow-lg: 0px 8px 12px 0px #00000020;
+
+  /* Spacing Scale */
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+
+  /* Semantic Spacing */
+  --space-xxs: 4px;
+  --space-xs: 6px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+
+  /* Component Tokens */
+  --card-width: 690px;
+  --card-height: 264px;
+
+  --menu-item-width: 672px;
+  --menu-item-height: 32px;
+  --menu-item-gap: var(--space-sm);
+  --menu-item-padding-x: var(--space-sm);
+  --menu-item-padding-y: var(--space-xs);
+  --menu-item-radius: var(--radius-card);
+
+  --menu-section-width: 672px;
+  --menu-section-height: 32px;
+
+  --input-height: 40px;
+
+  --pill-button-width: 125px;
+  --pill-button-height: 36px;
+
+  /* Opacity & Z-index */
+  --opacity-disabled: 0.6;
+  --z-tooltip: 1000;
+  --z-dropdown: 1100;
+  --z-modal: 1200;
+  --z-popover: 1300;
 }
 
 /* Utilities */
@@ -73,15 +159,34 @@
   color: var(--color-muted);
 }
 
-/* Apply fonts globally */
+@utility rounded-pill {
+  border-radius: var(--radius-pill);
+}
+
+@utility rounded-card {
+  border-radius: var(--radius-card);
+}
+
+/* Base Layer */
 @layer base {
   body {
     font-family: var(--font-body);
+    background-color: var(--color-white);
+    color: var(--color-black);
   }
+
   h1,
   h2,
   h3,
   h4 {
     font-family: var(--font-heading);
+  }
+
+  button {
+    transition: all 0.2s ease;
+  }
+
+  input {
+    font-family: var(--font-body);
   }
 }

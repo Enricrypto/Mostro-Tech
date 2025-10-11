@@ -1,91 +1,38 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import { Button as BaseButton } from "@/components/ui/button"
+import type { ComponentProps } from "react"
+import { cn } from "@/lib/utils" // utility to merge classNames
 
-import { cn } from "@/lib/utils"
-
-// Button variants using theme.css variables
-const buttonVariants = cva(
-  `
-    inline-flex items-center justify-center gap-2 whitespace-nowrap 
-    rounded-md text-[var(--text-p)] font-medium transition-all
-    disabled:pointer-events-none disabled:opacity-50
-    [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0
-    outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]
-    aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40
-    aria-invalid:border-destructive
-    font-[var(--font-body)]
-  `,
-  {
-    variants: {
-      variant: {
-        default: `
-          bg-[var(--color-primary)] 
-          text-[var(--color-white)] 
-          hover:bg-[var(--color-primary-light)]
-        `,
-        destructive: `
-          bg-[var(--color-accent)] 
-          text-[var(--color-black)] 
-          hover:bg-[var(--color-highlight)]
-        `,
-        outline: `
-          border border-[var(--color-muted)] 
-          bg-[var(--color-black)] 
-          hover:bg-[var(--color-accent)]
-        `,
-        secondary: `
-          bg-[var(--color-muted)] 
-          text-[var(--color-black)] 
-          hover:bg-[var(--color-primary-light)]
-        `,
-        ghost: `
-          bg-transparent 
-          text-[var(--color-white)] 
-          hover:bg-[var(--color-accent)]
-        `,
-        link: `
-          text-[var(--color-primary)] 
-          underline-offset-4 hover:underline
-        `
-      },
-      size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
-        "icon-sm": "size-8",
-        "icon-lg": "size-10"
-      }
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default"
-    }
-  }
-)
-
-interface ButtonProps
-  extends React.ComponentProps<"button">,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+export type ButtonProps = ComponentProps<typeof BaseButton> & {
+  themeVariant?: "connect" | "pill" // optional: custom variants for your theme.css
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-
-    return (
-      <Comp
-        ref={ref}
-        data-slot='button'
-        className={cn(buttonVariants({ variant, size, className }))}
-        {...props}
-      />
-    )
+export function Button({ themeVariant, className, ...props }: ButtonProps) {
+  // Map themeVariant to theme.css classes, including fonts, radius, hover, and active states
+  const themeClasses = {
+    connect: `
+      py-3 px-6 
+      rounded-[var(--radius-pill)]
+      font-body font-medium
+      bg-[var(--color-highlight)] text-[var(--color-black)]
+      hover:bg-[var(--color-accent-dark)]
+      active:bg-[var(--color-primary-light)]
+      transition
+    `,
+    pill: `
+      px-4 py-2 
+      rounded-[var(--radius-pill)]
+      font-body font-medium
+      bg-[var(--color-primary)] text-[var(--color-white)]
+      hover:bg-[var(--color-primary-light)]
+      active:bg-[var(--color-accent-dark)]
+      transition
+    `
   }
-)
 
-Button.displayName = "Button"
-
-export { Button, buttonVariants }
+  return (
+    <BaseButton
+      {...props}
+      className={cn(themeVariant ? themeClasses[themeVariant] : "", className)}
+    />
+  )
+}

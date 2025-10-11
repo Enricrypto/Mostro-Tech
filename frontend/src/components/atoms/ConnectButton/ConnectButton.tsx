@@ -14,68 +14,32 @@ export const ConnectButton = () => {
     user?.wallet?.address ||
     user?.id
 
-  const handleLogin = () => {
+  const handleLogin = () =>
     login({
       loginMethods: ["google", "wallet"],
-      walletChainType: "solana-only" // Adjust based on your supported chains
+      walletChainType: "solana-only"
     })
-  }
 
-  const handleLogout = () => {
-    logout()
-  }
+  const handleLogout = () => logout()
 
   return (
     <div className='fixed top-4 right-4 z-50 flex items-center gap-3'>
       {user && displayName ? (
         <>
-          <span
-            className='px-3 py-1 rounded font-body font-medium text-sm'
-            style={{
-              color: "var(--color-white)",
-              backgroundColor: "var(--color-accent-dark)"
-            }}
-          >
+          <span className='px-3 py-1 rounded font-body font-medium text-sm bg-[var(--color-accent-dark)] text-[var(--color-white)]'>
             {displayName.length > 20
               ? `${displayName.slice(0, 6)}...${displayName.slice(-4)}`
               : displayName}
           </span>
 
-          <button
-            className='py-3 px-6 rounded-full font-body font-medium transition'
-            style={{
-              backgroundColor: "var(--color-highlight)",
-              color: "var(--color-black)"
-            }}
-            onClick={handleLogout}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor =
-                "var(--color-accent-dark)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = "var(--color-highlight)")
-            }
-          >
+          <Button themeVariant='connect' onClick={handleLogout}>
             Logout
-          </button>
+          </Button>
         </>
       ) : (
-        <button
-          className='py-3 px-6 rounded-full font-body font-medium transition'
-          style={{
-            backgroundColor: "var(--color-highlight)",
-            color: "var(--color-black)"
-          }}
-          onClick={handleLogin}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.backgroundColor = "var(--color-accent-dark)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.backgroundColor = "var(--color-highlight)")
-          }
-        >
+        <Button themeVariant='connect' onClick={handleLogin}>
           Launch App
-        </button>
+        </Button>
       )}
     </div>
   )
