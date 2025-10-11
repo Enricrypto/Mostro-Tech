@@ -1,0 +1,1 @@
+export { ProposalConfirmationCard } from "./ProposalConfirmationCard"

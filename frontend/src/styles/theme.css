@@ -22,10 +22,23 @@
   --color-button-text-selected: #ffffff; /* selected text */
   --color-button-hover: #998ce1; /* hover background for unselected */
 
+  /* Carousel-specific colors */
+  --color-carousel-border: #8a38f5; /* dashed border */
+  --color-carousel-arrow-bg: #f1f5f9; /* left/right arrows */
+  --color-carousel-jump-bg: #64748b; /* jump-to-start arrow */
+
   /* Surface Colors */
   --color-surface-default: var(--color-white);
   --color-surface-selected: #f1f5f9;
   --color-surface-hover: #f8fafc;
+
+  /* Proposal-specific colors */
+  --color-proposal-button-bg: #ffffff;
+  --color-proposal-button-border: #71d6fb;
+  --color-proposal-button-text: #0f172a; /* optional, if text isn't white */
+  --radius-proposal-button: 6px;
+  --text-proposal-button: 14px;
+  --leading-proposal-button: 24px;
 
   /* Hover / Active Colors */
   --hover-primary: var(--color-primary-light);
@@ -36,9 +49,9 @@
   --active-highlight: var(--color-highlight);
 
   /* Typography */
-  --font-heading: "Poppins", sans-serif;
-  --font-body: "Poppins", sans-serif;
-  --font-inter: "Inter", sans-serif;
+  --font-heading: "Poppins", sans-serif; /* headings -> Poppins */
+  --font-body: "Poppins", sans-serif; /* body -> Poppins */
+  --font-inter: "Inter", sans-serif; /* inputs/UI -> Inter */
 
   /* Font Sizes */
   --text-h1: 2.5rem;
@@ -57,6 +70,7 @@
   /* Font Weights */
   --font-weight-normal: 400;
   --font-weight-medium: 500;
+  --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
   /* Border Radius */
@@ -110,6 +124,17 @@
 
   --pill-button-width: 125px;
   --pill-button-height: 36px;
+
+  /* Proposal Confirmation Card Colors */
+  --color-proposal-card-bg: linear-gradient(
+    103.78deg,
+    #352b6d 26.89%,
+    #4995e0 98.11%
+  );
+  --color-proposal-card-border: #2d3953;
+  --color-proposal-text: #ffffff;
+  --color-proposal-album: #ffffff;
+  --color-proposal-artist: #b3b3b3;
 
   /* Opacity & Z-index */
   --opacity-disabled: 0.6;
@@ -165,6 +190,35 @@
 
 @utility rounded-card {
   border-radius: var(--radius-card);
+}
+
+/* Proposal Card Utilities */
+@utility proposal-card {
+  background: var(--color-proposal-card-bg);
+  border: 1px solid var(--color-proposal-card-border);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Proposal card text */
+@utility proposal-text {
+  color: var(--color-proposal-text);
+  font-family: var(--font-inter);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--text-small);
+  line-height: 20px;
+}
+
+@utility proposal-album-text {
+  font-family: var(--font-inter);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-proposal-album);
+}
+
+@utility proposal-artist-text {
+  font-family: var(--font-inter);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-proposal-artist);
 }
 
 /* Base Layer */
