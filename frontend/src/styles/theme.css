@@ -22,6 +22,13 @@
   --color-button-text-selected: #ffffff; /* selected text */
   --color-button-hover: #998ce1; /* hover background for unselected */
 
+  /* Navbar Border Color */
+  --color-navbar-border: #2d3953;
+
+  /* Footer Colors */
+  --color-footer-bg: #121b2b; /* Footer background */
+  --color-footer-border: #dcfd63; /* Footer top border */
+
   /* Carousel-specific colors */
   --color-carousel-border: #8a38f5; /* dashed border */
   --color-carousel-arrow-bg: #f1f5f9; /* left/right arrows */
@@ -72,6 +79,12 @@
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+
+  /* Button typography */
+  --text-button-size: 14px;
+  --text-button-line-height: 16px;
+  --letter-spacing-button: -0.75%;
+  --border-button: 1.5px solid var(--color-black);
 
   /* Border Radius */
   --radius-pill: 30px;

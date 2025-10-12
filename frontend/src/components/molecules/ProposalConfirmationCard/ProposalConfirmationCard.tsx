@@ -1,8 +1,8 @@
 "use client"
 
-import { ProposalConfirmationHeader } from "@/components/molecules/ProposalConfirmationHeader/ProposalConfirmationHeader"
-import { ProposalActionButton } from "@/components/atoms/ProposalActionButton/ProposalActionButton"
-import { ProposalDescription } from "@/components/atoms/ProposalDescription/ProposalDescription"
+import { ProposalConfirmationHeader } from "../ProposalConfirmationHeader"
+import { ProposalActionButton } from "@/components/atoms/ProposalActionButton"
+import { ProposalDescription } from "@/components/atoms/ProposalDescription"
 
 interface ProposalConfirmationCardProps {
   albumName: string
