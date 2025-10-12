@@ -1,10 +1,11 @@
 import { Hero } from "@/components/hero/Hero"
+import { Footer } from "@/components/navigation/Footer/Footer"
 
 export default function LandingPage() {
   return (
     <>
       <Hero />
-      <div className='mt-8 flex justify-center'></div>
+      <Footer />
     </>
   )
 }

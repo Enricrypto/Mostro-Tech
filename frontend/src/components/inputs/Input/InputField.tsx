@@ -45,7 +45,7 @@ export function InputField({ themeVariant, className, ...props }: InputProps) {
       {...props}
       className={cn(
         // Neutralize shadcn base styles
-        "border-transparent bg-transparent focus-visible:ring-0 focus-visible:border-transparent",
+        "border-transparent bg-transparent focus-visible:ring-0",
         themeVariant ? themeClasses[themeVariant] : "",
         className
       )}
