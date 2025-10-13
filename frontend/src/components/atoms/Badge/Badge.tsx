@@ -28,13 +28,27 @@ const customBadgeVariants = cva(
 
 export interface BadgeProps
   extends React.ComponentProps<"span">,
-    VariantProps<typeof customBadgeVariants> {}
+    VariantProps<typeof customBadgeVariants> {
+  icon?: React.ReactNode // optional icon prop
+}
 
-export function Badge({ className, variant, ...props }: BadgeProps) {
+/**
+ * Badge component with optional icon support
+ */
+export function Badge({
+  className,
+  variant,
+  icon,
+  children,
+  ...props
+}: BadgeProps) {
   return (
     <BaseBadge
       className={cn(customBadgeVariants({ variant }), className)}
       {...props}
-    />
+    >
+      {icon && <span className='inline-flex w-3 h-3 mr-1'>{icon}</span>}
+      {children}
+    </BaseBadge>
   )
 }
