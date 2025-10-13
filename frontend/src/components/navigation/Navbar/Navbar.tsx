@@ -70,12 +70,7 @@ export function Navbar() {
           className='w-[274px] h-[40px] rounded-[6px] border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]'
         />
 
-        <Button
-          themeVariant='connect'
-          className='w-[134px] h-[40px] rounded-[6px] bg-[#71D6FB] text-black hover:bg-[#5fc8f1]'
-        >
-          Connect Wallet
-        </Button>
+        <Button themeVariant='connect'>Connect Wallet</Button>
       </div>
     </nav>
   )

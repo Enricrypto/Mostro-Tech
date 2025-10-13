@@ -76,9 +76,9 @@ export function Footer() {
         </div>
       </footer>
 
-      {/* 🟢 Bottom Section (newly added) */}
+      {/* Bottom Section (newly added) */}
       <div className='w-full flex justify-center bg-[#71BEFB]'>
-        <div className='flex justify-between items-center w-full p-[8px]'>
+        <div className='flex justify-between items-center w-full px-6 py-2'>
           {/* Left text */}
           <p className='text-black font-inter text-[16px] leading-[24px] font-normal'>
             ©Mostro 2025. All Rights Reserved
@@ -86,36 +86,15 @@ export function Footer() {
 
           {/* Right buttons */}
           <div className='flex gap-[8px] w-[448px] h-[40px] justify-end'>
-            <button
-              className={cn(
-                "w-[137px] h-[40px] rounded-[6px] px-[16px] py-[8px] bg-transparent whitespace-nowrap cursor-pointer hover:text-[#FFFFFF] transition-colors",
-                "text-black font-inter text-[16px] leading-[24px] font-normal"
-              )}
-            >
-              Privacy Policy
-            </button>
+            <Button themeVariant='link'>Privacy Policy</Button>
 
-            <button
-              className={cn(
-                "w-[160px] h-[40px] rounded-[6px] px-[16px] py-[8px] bg-transparent whitespace-nowrap cursor-pointer hover:text-[#FFFFFF] transition-colors",
-                "text-black font-inter text-[16px] leading-[24px] font-normal"
-              )}
-            >
-              Terms of Service
-            </button>
+            <Button themeVariant='link'>Terms of Service</Button>
 
-            <button
-              className={cn(
-                "w-[135px] h-[40px] rounded-[6px] px-[16px] py-[8px] bg-transparent whitespace-nowrap cursor-pointer hover:text-[#FFFFFF] transition-colors",
-                "text-black font-inter text-[16px] leading-[24px] font-normal"
-              )}
-            >
-              Cookie Policy
-            </button>
+            <Button themeVariant='link'>Cookie Policy</Button>
           </div>
         </div>
       </div>
-      {/* 🟢 End of Bottom Section */}
+      {/* End of Bottom Section */}
     </div>
   )
 }

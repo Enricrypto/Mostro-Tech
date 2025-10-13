@@ -468,22 +468,19 @@
     /* -------------------------------
      Link Buttons
      ------------------------------- */
-    .button-link-underline {
-      @apply px-4 py-2;
-      background: none;
-      text-decoration: underline;
-      text-decoration-style: solid;
-      color: #dcfd63;
-      font-weight: 500;
-      font-size: 16px;
-    }
-
     .button-link {
-      @apply px-4 py-2;
+      @apply px-4 py-2 rounded-[6px] cursor-pointer transition-colors whitespace-nowrap;
       background: none;
       color: #ffffff;
       font-weight: 400;
       font-size: 16px;
+      line-height: 24px;
+    }
+
+    .button-link:hover {
+      @apply underline;
+      text-decoration-style: solid;
+      color: #dcfd63; /* optional: change text color on hover */
     }
 
     /* -------------------------------
@@ -568,5 +565,76 @@
       font-size: 14px;
       color: #ffffff;
     }
+  }
+  /* -------------------------------
+     Highlight Buttons
+     ------------------------------- */
+  .button-highlight {
+    @apply font-heading py-3 px-6 rounded-full transition;
+    background: #dcfd63;
+    font-weight: 500;
+    font-size: 15px;
+    color: #000000;
+  }
+
+  .button-highlight:hover {
+    background: #dcfd634d;
+  }
+
+  /* -------------------------------
+     Connect Wallet Button
+     ------------------------------- */
+  .button-connect {
+    @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] font-inter font-medium text-center text-black;
+    background: #71d6fb;
+    width: 134px;
+    height: 40px;
+    line-height: 24px;
+    font-size: 14px;
+  }
+
+  /* -------------------------------
+   Connected Button (Hover)
+   ------------------------------- */
+  .button-connected-hover {
+    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] font-inter font-medium text-center transition-all duration-300 ease-out;
+    background: #71d6fb;
+    width: 188px;
+    height: 40px;
+  }
+
+  /* Only style account and icon via Tailwind utilities, do NOT @apply avatar */
+  .button-connected-hover .account {
+    @apply text-black font-inter font-medium;
+    font-size: 14px;
+    line-height: 24px;
+    width: 92px;
+    height: 24px;
+  }
+
+  .button-connected-hover .icon {
+    @apply w-[20px] h-[20px]; /* chevron down */
+  }
+
+  /* -------------------------------
+   Connected Button with Gradient
+   ------------------------------- */
+  .button-connected-hover-gradient {
+    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] font-inter font-medium text-center transition-all duration-300 ease-out;
+    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
+    width: 188px;
+    height: 40px;
+  }
+
+  .button-connected-hover-gradient .account {
+    @apply text-black font-inter font-medium;
+    font-size: 14px;
+    line-height: 24px;
+    width: 92px;
+    height: 24px;
+  }
+
+  .button-connected-hover-gradient .icon {
+    @apply w-[20px] h-[20px];
   }
 }
