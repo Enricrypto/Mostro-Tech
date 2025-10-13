@@ -1,7 +1,15 @@
 @import "tailwindcss";
 
+/* =========================================================
+   THEME CONFIGURATION
+   Global design tokens, utilities, and component variants
+   ========================================================= */
+
 @theme {
-  /* Colors */
+  /* ---------------------------------------------------------
+     COLOR SYSTEM
+     Base, brand, and semantic colors
+     --------------------------------------------------------- */
   --color-black: #000000;
   --color-primary: #6953da;
   --color-primary-light: #9c8be7;
@@ -11,43 +19,57 @@
   --color-muted: #d2d2d5;
   --color-white: #ffffff;
 
-  /* Text Colors */
+  /* ---------------------------------------------------------
+     TEXT COLORS
+     --------------------------------------------------------- */
   --color-text-default: #0f172a;
   --color-button-text: #0f172a;
 
-  /* Button Text Colors */
-  --color-button-bg-default: #ffffff; /* unselected background */
-  --color-button-bg-selected: #998ce1; /* selected background */
-  --color-button-text-default: #0f172a; /* unselected text */
+  /* ---------------------------------------------------------
+     BUTTON COLORS & STATES
+     --------------------------------------------------------- */
+  --color-button-bg-default: #ffffff; /* default background */
+  --color-button-bg-selected: #998ce1; /* active background */
+  --color-button-text-default: #0f172a; /* default text */
   --color-button-text-selected: #ffffff; /* selected text */
-  --color-button-hover: #998ce1; /* hover background for unselected */
+  --color-button-hover: #998ce1; /* hover background */
 
-  /* Navbar Border Color */
+  /* ---------------------------------------------------------
+     NAVBAR & FOOTER COLORS
+     --------------------------------------------------------- */
   --color-navbar-border: #2d3953;
+  --color-footer-bg: #121b2b;
+  --color-footer-border: #dcfd63;
 
-  /* Footer Colors */
-  --color-footer-bg: #121b2b; /* Footer background */
-  --color-footer-border: #dcfd63; /* Footer top border */
+  /* ---------------------------------------------------------
+     CAROUSEL COLORS
+     --------------------------------------------------------- */
+  --color-carousel-border: #8a38f5;
+  --color-carousel-arrow-bg: #f1f5f9;
+  --color-carousel-jump-bg: #64748b;
 
-  /* Carousel-specific colors */
-  --color-carousel-border: #8a38f5; /* dashed border */
-  --color-carousel-arrow-bg: #f1f5f9; /* left/right arrows */
-  --color-carousel-jump-bg: #64748b; /* jump-to-start arrow */
-
-  /* Surface Colors */
+  /* ---------------------------------------------------------
+     SURFACE COLORS
+     Used for UI backgrounds and hover effects
+     --------------------------------------------------------- */
   --color-surface-default: var(--color-white);
   --color-surface-selected: #f1f5f9;
   --color-surface-hover: #f8fafc;
 
-  /* Proposal-specific colors */
+  /* ---------------------------------------------------------
+     PROPOSAL-SPECIFIC COLORS
+     Used in proposal cards, buttons, etc.
+     --------------------------------------------------------- */
   --color-proposal-button-bg: #ffffff;
   --color-proposal-button-border: #71d6fb;
-  --color-proposal-button-text: #0f172a; /* optional, if text isn't white */
+  --color-proposal-button-text: #0f172a;
   --radius-proposal-button: 6px;
   --text-proposal-button: 14px;
   --leading-proposal-button: 24px;
 
-  /* Hover / Active Colors */
+  /* ---------------------------------------------------------
+     HOVER & ACTIVE STATES
+     --------------------------------------------------------- */
   --hover-primary: var(--color-primary-light);
   --active-primary: var(--color-primary);
   --hover-accent: var(--color-accent-dark);
@@ -55,12 +77,17 @@
   --hover-highlight: var(--color-accent-dark);
   --active-highlight: var(--color-highlight);
 
-  /* Typography */
-  --font-heading: "Poppins", sans-serif; /* headings -> Poppins */
-  --font-body: "Poppins", sans-serif; /* body -> Poppins */
-  --font-inter: "Inter", sans-serif; /* inputs/UI -> Inter */
+  /* ---------------------------------------------------------
+     TYPOGRAPHY
+     Fonts and font families
+     --------------------------------------------------------- */
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Poppins", sans-serif;
+  --font-inter: "Inter", sans-serif;
 
-  /* Font Sizes */
+  /* ---------------------------------------------------------
+     FONT SIZES & LINE HEIGHTS
+     --------------------------------------------------------- */
   --text-h1: 2.5rem;
   --text-h2: 2rem;
   --text-h3: 1.75rem;
@@ -74,32 +101,42 @@
   --text-button-size: 12px;
   --text-button-line-height: 20px;
 
-  /* Font Weights */
+  /* ---------------------------------------------------------
+     FONT WEIGHTS
+     --------------------------------------------------------- */
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Button typography */
+  /* ---------------------------------------------------------
+     BUTTON TYPOGRAPHY
+     --------------------------------------------------------- */
   --text-button-size: 14px;
   --text-button-line-height: 16px;
   --letter-spacing-button: -0.75%;
   --border-button: 1.5px solid var(--color-black);
 
-  /* Border Radius */
+  /* ---------------------------------------------------------
+     BORDER RADIUS TOKENS
+     --------------------------------------------------------- */
   --radius-pill: 30px;
   --radius-card: 8px;
   --radius-sm: 6px;
   --radius-md: 12px;
 
-  /* Border & Shadow */
+  /* ---------------------------------------------------------
+     BORDER & SHADOW TOKENS
+     --------------------------------------------------------- */
   --border-width: 1px;
   --border-color: #e2e8f0;
   --shadow-sm: 0px 2px 4px 0px #00000014;
   --shadow-md: 0px 4px 6px 0px #00000017;
   --shadow-lg: 0px 8px 12px 0px #00000020;
 
-  /* Spacing Scale */
+  /* ---------------------------------------------------------
+     SPACING SCALE
+     --------------------------------------------------------- */
   --spacing-0: 0px;
   --spacing-1: 4px;
   --spacing-2: 8px;
@@ -111,7 +148,9 @@
   --spacing-10: 40px;
   --spacing-12: 48px;
 
-  /* Semantic Spacing */
+  /* ---------------------------------------------------------
+     SEMANTIC SPACING
+     --------------------------------------------------------- */
   --space-xxs: 4px;
   --space-xs: 6px;
   --space-sm: 8px;
@@ -119,7 +158,10 @@
   --space-lg: 16px;
   --space-xl: 24px;
 
-  /* Component Tokens */
+  /* ---------------------------------------------------------
+     COMPONENT TOKENS
+     Sizes and layout constants
+     --------------------------------------------------------- */
   --card-width: 690px;
   --card-height: 264px;
 
@@ -138,7 +180,9 @@
   --pill-button-width: 125px;
   --pill-button-height: 36px;
 
-  /* Proposal Confirmation Card Colors */
+  /* ---------------------------------------------------------
+     PROPOSAL CONFIRMATION CARD
+     --------------------------------------------------------- */
   --color-proposal-card-bg: linear-gradient(
     103.78deg,
     #352b6d 26.89%,
@@ -149,7 +193,9 @@
   --color-proposal-album: #ffffff;
   --color-proposal-artist: #b3b3b3;
 
-  /* Opacity & Z-index */
+  /* ---------------------------------------------------------
+     OPACITY & Z-INDEX TOKENS
+     --------------------------------------------------------- */
   --opacity-disabled: 0.6;
   --z-tooltip: 1000;
   --z-dropdown: 1100;
@@ -157,7 +203,11 @@
   --z-popover: 1300;
 }
 
-/* Utilities */
+/* =========================================================
+   UTILITIES
+   Tailwind utility shortcuts for typography and layout
+   ========================================================= */
+
 @utility font-heading {
   font-family: var(--font-heading);
 }
@@ -205,7 +255,9 @@
   border-radius: var(--radius-card);
 }
 
-/* Proposal Card Utilities */
+/* ---------------------------------------------------------
+   PROPOSAL CARD UTILITIES
+   --------------------------------------------------------- */
 @utility proposal-card {
   background: var(--color-proposal-card-bg);
   border: 1px solid var(--color-proposal-card-border);
@@ -213,7 +265,6 @@
   flex-direction: column;
 }
 
-/* Proposal card text */
 @utility proposal-text {
   color: var(--color-proposal-text);
   font-family: var(--font-inter);
@@ -234,7 +285,11 @@
   color: var(--color-proposal-artist);
 }
 
-/* Base Layer */
+/* =========================================================
+   BASE STYLES
+   Applies default typography, background, and transitions
+   ========================================================= */
+
 @layer base {
   body {
     font-family: var(--font-body);
@@ -255,5 +310,50 @@
 
   input {
     font-family: var(--font-body);
+  }
+}
+
+/* =========================================================
+   COMPONENTS
+   Avatar variants (from Figma)
+   ========================================================= */
+
+@layer components {
+  /* Base Avatar Container */
+  .avatar {
+    @apply relative inline-flex justify-center items-center overflow-hidden flex-shrink-0;
+  }
+
+  /* 1) Rounded shape avatar image (small) */
+  .avatar--rounded-sm {
+    @apply w-10 h-10 rounded-[26px] opacity-100;
+  }
+
+  /* 2) Rounded shape avatar with initials */
+  .avatar--rounded-initials {
+    @apply w-10 h-10 rounded-[26px] gap-2 opacity-100;
+    background: #dcfd63;
+  }
+
+  /* 3) Profile image big square */
+  .avatar--square-lg {
+    @apply w-[288px] h-[288px] rounded-[26px] opacity-100;
+    background: linear-gradient(
+      180deg,
+      rgba(220, 253, 99, 0) 0%,
+      rgba(220, 253, 99, 0.2) 98.26%
+    );
+  }
+
+  /* 4) Profile initials big square */
+  .avatar--square-lg-initials {
+    @apply w-[288px] h-[288px] rounded-[26px] gap-2 pt-3 pb-3 opacity-100;
+    background: linear-gradient(180deg, #71d6fb 0%, #dcfd63 100%);
+  }
+
+  /* 5) Profile image square small (dashed border) */
+  .avatar--square-sm {
+    @apply w-[328px] h-[1040px] rounded-[5px] border border-dashed opacity-100;
+    border-color: #8a38f5;
   }
 }
