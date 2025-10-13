@@ -351,10 +351,14 @@
     background: linear-gradient(180deg, #71d6fb 0%, #dcfd63 100%);
   }
 
-  /* 5) Profile image square small (dashed border) */
-  .avatar--square-sm {
-    @apply w-[328px] h-[1040px] rounded-[5px] border border-dashed opacity-100;
-    border-color: #8a38f5;
+  /* 5) Variant 5 */
+  .avatar--square-sm-lg {
+    @apply w-[151px] h-[151px] rounded-[26px] opacity-100;
+    background: linear-gradient(
+      180deg,
+      rgba(220, 253, 99, 0) 0%,
+      rgba(220, 253, 99, 0.2) 98.26%
+    );
   }
 }
 
@@ -367,6 +371,11 @@
   /* Base Badge */
   .badge {
     @apply inline-flex items-center justify-center text-xs font-medium w-fit whitespace-nowrap shrink-0 px-2 py-[2px] gap-2 border border-solid transition-colors duration-200;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0;
   }
 
   /* 1) Badge/closed */
@@ -376,15 +385,17 @@
     height: 22px;
     background: #fd63634d;
     border-color: #fd6363;
+    color: #fd6363;
   }
 
-  /* 2) Component 2 */
+  /* 2) Badge/component2 */
   .badge-component2 {
     @apply rounded-[10px];
     width: 49px;
     height: 22px;
     background: #dcfd634d;
     border-color: #dcfd63;
+    color: #dcfd63;
   }
 
   /* 3) Badge/genre */
@@ -394,15 +405,17 @@
     height: 22px;
     background: #71d6fb4d;
     border-color: #71d6fb;
+    color: #71d6fb;
   }
 
-  /* 4) Profile Label */
+  /* 4) Badge/profile-label */
   .badge-profile-label {
     @apply rounded-[28px];
     width: 119px;
     height: 32px;
     background: linear-gradient(90deg, #71d6fb 0%, #dcfd63 100%);
     border: none;
+    color: #000000;
   }
 
   /* 5) Badge/neutral */
@@ -412,6 +425,7 @@
     height: 22px;
     background: #f5f5f54d;
     border-color: #f5f5f5;
+    color: #ffffff;
   }
 
   /* 6) Badge/icon */
@@ -421,6 +435,7 @@
     height: 22px;
     background: #dcfd634d;
     border-color: #dcfd63;
+    color: #dcfd63;
   }
 
   /* 7) Badge/icon-closed */
@@ -430,5 +445,128 @@
     height: 22px;
     background: #fd63634d;
     border-color: #fd6363;
+    color: #fd6363;
+  }
+
+  /* =========================================================
+   COMPONENTS
+   Button variants
+   ========================================================= */
+
+  @layer components {
+    /* -------------------------------
+     Base Button
+     ------------------------------- */
+    .button {
+      @apply inline-flex items-center justify-center rounded-[6px] transition-colors duration-200 font-inter font-medium text-center;
+      line-height: 24px;
+      font-size: 14px; /* default font size */
+      color: inherit; /* inherit text color from variant */
+      gap: 0.5rem; /* default spacing for icon+text */
+    }
+
+    /* -------------------------------
+     Link Buttons
+     ------------------------------- */
+    .button-link-underline {
+      @apply px-4 py-2;
+      background: none;
+      text-decoration: underline;
+      text-decoration-style: solid;
+      color: #dcfd63;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .button-link {
+      @apply px-4 py-2;
+      background: none;
+      color: #ffffff;
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    /* -------------------------------
+     Continue Buttons
+     ------------------------------- */
+    .button-hover-continue {
+      @apply px-4 py-2;
+      background: linear-gradient(98.69deg, #71d6fb 3.63%, #6654d3 98.18%);
+      color: #000000;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .button-continue {
+      @apply px-4 py-2;
+      background: #71d6fb;
+      color: #000000;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .button-continue:hover {
+      background: #5ab4f2;
+      transition: background 300ms ease-out;
+    }
+
+    /* -------------------------------
+     Cancel Buttons
+     ------------------------------- */
+    .button-cancel-dark {
+      @apply px-4 py-2 border border-solid border-[#71D6FB];
+      background: none;
+      color: #ffffff;
+    }
+
+    .button-cancel-blue {
+      @apply px-4 py-2 border border-solid border-[#71D6FB];
+      background: #71d6fb4d;
+      color: #ffffff;
+    }
+
+    .button-cancel-white {
+      @apply px-4 py-2;
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .button-cancel-red {
+      @apply px-4 py-2;
+      background: #fd6363;
+      color: #000000;
+    }
+
+    .button-cancel-black {
+      @apply px-4 py-2 border border-solid border-[#000000];
+      background: none;
+      color: #000000;
+    }
+
+    /* -------------------------------
+     Icon Buttons
+     ------------------------------- */
+    .button-cancel-icon-left {
+      @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-center gap-2;
+      background: none;
+      font-weight: 500;
+      font-size: 14px;
+      color: #ffffff;
+    }
+
+    .button-rounded-icon {
+      @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[36px] inline-flex items-center justify-center gap-2;
+      background: #ffffff;
+      font-weight: 500;
+      font-size: 14px;
+      color: #000000;
+    }
+
+    .button-cancel-icon-right {
+      @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-center gap-2;
+      background: none;
+      font-weight: 500;
+      font-size: 14px;
+      color: #ffffff;
+    }
   }
 }
