@@ -1,3 +1,5 @@
+"use client"
+
 import { Button as BaseButton } from "@/components/ui/button"
 import type { ComponentProps, ReactNode } from "react"
 import { cn } from "@/lib/utils"

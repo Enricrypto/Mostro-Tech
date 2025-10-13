@@ -1,5 +1,4 @@
-import Image from "next/image"
-import monsterImg from "@/public/monster.png"
+import { Button } from "../atoms/Button"
 
 export const Hero = () => (
   <section className='flex flex-col lg:flex-row items-center justify-center min-h-screen px-12'>
@@ -28,13 +27,9 @@ export const Hero = () => (
 
       {/* Buttons */}
       <div className='flex gap-4 justify-center'>
-        <button className='font-heading py-3 px-6 rounded-full transition bg-[var(--color-highlight)] text-[var(--color-black)] hover:bg-[var(--color-accent-dark)]'>
-          Find out More
-        </button>
+        <Button themeVariant='highlight'>Find out More</Button>
 
-        <button className='font-heading py-3 px-6 rounded-full transition bg-[var(--color-highlight)] text-[var(--color-black)] hover:bg-[var(--color-accent-dark)]'>
-          Join the Waitlist
-        </button>
+        <Button themeVariant='highlight'>Join the Waitlist</Button>
       </div>
     </div>
 
