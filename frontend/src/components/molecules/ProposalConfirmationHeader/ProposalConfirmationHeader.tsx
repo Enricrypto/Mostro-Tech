@@ -14,7 +14,7 @@ export const ProposalConfirmationHeader: React.FC<
 > = ({ albumName, artistName, avatarSrc }) => {
   return (
     <div className='flex items-center gap-4'>
-      <Avatar src={avatarSrc} />
+      <Avatar src={avatarSrc} className='avatar avatar--rounded-sm' />
       <div className='flex flex-col gap-1'>
         <span className='proposal-album-text'>{albumName}</span>
         <span className='proposal-artist-text'>{artistName}</span>

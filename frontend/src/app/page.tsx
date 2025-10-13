@@ -1,11 +1,15 @@
 import { Hero } from "@/components/hero/Hero"
-import { Footer } from "@/components/navigation/Footer/Footer"
+import { ProposalConfirmationCard } from "@/components/molecules/ProposalConfirmationCard"
 
 export default function LandingPage() {
   return (
     <>
       <Hero />
-      <Footer />
+      <ProposalConfirmationCard
+        albumName='Midnights'
+        artistName='Taylor Swift'
+        avatarSrc='/avatar.png'
+      />
     </>
   )
 }
