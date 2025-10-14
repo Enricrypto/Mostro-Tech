@@ -15,10 +15,10 @@ export const PillButton = ({
   selected = false,
   ...props
 }: PillButtonProps) => {
-  // Compute theme-driven classes
+  // Base styles — remove fixed width/height so it resizes with content
   const baseStyles = cn(
-    "w-[var(--pill-button-width)] h-[var(--pill-button-height)]",
-    "px-[var(--space-md)] py-[var(--space-xs)] rounded-pill font-body transition",
+    "w-auto h-[var(--pill-button-height)]", // dynamic width
+    "px-[var(--spacing-3)] py-[var(--spacing-1)] rounded-pill font-body transition",
     "border border-[var(--color-primary)]"
   )
 

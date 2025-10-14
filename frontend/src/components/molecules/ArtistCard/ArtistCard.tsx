@@ -67,9 +67,9 @@ export function ArtistCard({
             <Badge
               variant='icon'
               icon={<ClockIcon weight='fill' size={12} />}
-              className='w-[69px] h-[22px] rounded-[10px] border border-[#DCFD63] px-[8px] py-[2px] gap-[8px]'
+              className='inline-flex h-[22px] rounded-[10px] border border-[#DCFD63] px-[8px] py-[2px] gap-[8px] min-w-[69px]'
             >
-              {badgeText} {/* Badge keeps fixed size as per Figma */}
+              {badgeText}
             </Badge>
           </div>
         </div>
@@ -96,31 +96,31 @@ export function ArtistCard({
       {/* Stats Section: holders, market cap, volume */}
       <div className='flex w-[336px] h-[44px] gap-[36px]'>
         {/* 1) Holders */}
-        <div className='flex flex-col items-start gap-[8px] w-[45px] h-[44px]'>
-          <p className='text-white font-poppins font-normal text-[18px] leading-[20px] w-[41px] h-[20px]'>
+        <div className='flex flex-col items-start gap-[8px]'>
+          <p className='text-white font-poppins font-normal text-[18px] leading-[20px]'>
             {holders}
           </p>
-          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-[16px] w-[45px] h-[16px]'>
+          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-[16px]'>
             Holders
           </p>
         </div>
 
         {/* 2) Market Cap */}
-        <div className='flex flex-col items-start gap-[8px] w-[67px] h-[44px]'>
-          <p className='text-white font-poppins font-normal text-[18px] leading-[20px] w-[50px] h-[20px]'>
+        <div className='flex flex-col items-start gap-[8px]'>
+          <p className='text-white font-poppins font-normal text-[18px] leading-[20px]'>
             {marketCap}
           </p>
-          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-[16px] w-[67px] h-[16px]'>
+          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-[16px] whitespace-nowrap'>
             Market Cap
           </p>
         </div>
 
         {/* 3) Volume */}
-        <div className='flex flex-col items-start gap-[8px] w-[72px] h-[44px]'>
-          <p className='text-white font-poppins font-normal text-[18px] leading-[20px] w-[39px] h-[20px]'>
+        <div className='flex flex-col items-start gap-[8px]'>
+          <p className='text-white font-poppins font-normal text-[18px] leading-[20px]'>
             {volume}
           </p>
-          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-[16px] w-[72px] h-[16px]'>
+          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-[16px] whitespace-nowrap'>
             Volume
           </p>
         </div>

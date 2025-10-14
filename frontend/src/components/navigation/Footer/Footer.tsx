@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { Button } from "@/components/atoms/Button"
+import { PillButton } from "@/components/atoms/PillButton"
 import { cn } from "@/lib/utils"
 import { NewsletterForm } from "./NewsLetterForm"
 import {
@@ -19,12 +20,16 @@ export function Footer() {
 
   return (
     // 🟢 Main Footer Wrapper
-    <div className='w-full flex flex-col bg-[var(--color-footer-bg)] backdrop-blur-[4px] border-t-[2px] border-[var(--color-footer-border)]'>
-      {/* 🟣 Top Section (existing content) */}
+    <div
+      className={cn(
+        "w-full flex flex-col gap-[64px] pt-[40px]",
+        "bg-[#121B2B] border-t-[2px] border-[#DCFD63] backdrop-blur-[4px]"
+      )}
+    >
+      {/* 🟣 Top Section */}
       <footer
         className={cn(
-          "flex justify-between gap-[64px] pt-[40px]", // <-- unchanged
-          "w-full max-w-[1512px] h-[344px] mx-auto" // <-- unchanged
+          "flex justify-between w-full max-w-[1512px] h-[184px] px-[64px] mx-auto"
         )}
       >
         {/* Logo */}
@@ -45,23 +50,23 @@ export function Footer() {
             industry
           </p>
 
-          <div className='flex justify-between w-full h-[32px]'>
+          <div className='flex justify-between w-full h-[32px] gap-2'>
             {socialButtons.map((btn) => (
-              <Button
+              <PillButton
                 key={btn.label}
-                themeVariant='pill'
+                themeVariant='primary'
                 className={cn(
-                  "flex items-center justify-center gap-[var(--spacing-2)]",
-                  "w-[var(--pill-button-width)] h-[var(--pill-button-height)]",
-                  "bg-[var(--color-highlight)] border border-[var(--color-navbar-border)]",
-                  "rounded-[var(--radius-pill)]",
-                  "text-[var(--text-button-size)] leading-[var(--text-button-line-height)] font-body font-normal",
-                  "text-[var(--color-button-text-default)]",
-                  "cursor-pointer"
+                  "flex items-center justify-center gap-[8px] whitespace-nowrap overflow-hidden text-ellipsis",
+                  "w-[125px] h-[32px]",
+                  "rounded-[34px]",
+                  "px-[12px] py-[8px]",
+                  "border border-[#2D3953]",
+                  "bg-[#DCFD63]",
+                  "text-black font-body font-normal text-[14px] leading-[16px]"
                 )}
               >
                 {btn.icon} {btn.label}
-              </Button>
+              </PillButton>
             ))}
           </div>
         </div>
@@ -76,7 +81,7 @@ export function Footer() {
         </div>
       </footer>
 
-      {/* Bottom Section (newly added) */}
+      {/* Bottom Section */}
       <div className='w-full flex justify-center bg-[#71BEFB]'>
         <div className='flex justify-between items-center w-full px-6 py-2'>
           {/* Left text */}
@@ -94,7 +99,6 @@ export function Footer() {
           </div>
         </div>
       </div>
-      {/* End of Bottom Section */}
     </div>
   )
 }
