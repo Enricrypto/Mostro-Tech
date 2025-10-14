@@ -32,12 +32,12 @@ export const ConnectButton = () => {
               : displayName}
           </span>
 
-          <Button themeVariant='connect' onClick={handleLogout}>
+          <Button themeVariant='highlight' onClick={handleLogout}>
             Logout
           </Button>
         </>
       ) : (
-        <Button themeVariant='connect' onClick={handleLogin}>
+        <Button themeVariant='highlight' onClick={handleLogin}>
           Launch App
         </Button>
       )}

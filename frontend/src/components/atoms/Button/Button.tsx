@@ -1,38 +1,71 @@
-import { Button as BaseButton } from "@/components/ui/button"
-import type { ComponentProps } from "react"
-import { cn } from "@/lib/utils" // utility to merge classNames
+"use client"
 
-export type ButtonProps = ComponentProps<typeof BaseButton> & {
-  themeVariant?: "connect" | "pill" // optional: custom variants for your theme.css
+import { Button as BaseButton } from "@/components/ui/button"
+import type { ComponentProps, ReactNode } from "react"
+import { cn } from "@/lib/utils"
+
+export type ButtonProps = ComponentProps<"button"> & {
+  themeVariant?: string
+  icon?: ReactNode
+  iconPosition?: "left" | "right"
 }
 
-export function Button({ themeVariant, className, ...props }: ButtonProps) {
-  // Map themeVariant to theme.css classes, including fonts, radius, hover, and active states
-  const themeClasses = {
-    connect: `
-      py-3 px-6 
-      rounded-[var(--radius-pill)]
-      font-body font-medium
-      bg-[var(--color-highlight)] text-[var(--color-black)]
-      hover:bg-[var(--color-accent-dark)]
-      active:bg-[var(--color-primary-light)]
-      transition
-    `,
-    pill: `
-      px-4 py-2 
-      rounded-[var(--radius-pill)]
-      font-body font-medium
-      bg-[var(--color-primary)] text-[var(--color-white)]
-      hover:bg-[var(--color-primary-light)]
-      active:bg-[var(--color-accent-dark)]
-      transition
-    `
+/**
+ * Smart Button component
+ * - Uses ChadCN <Button> when no themeVariant
+ * - Uses raw <button> when themeVariant is provided
+ */
+export function Button({
+  themeVariant,
+  className,
+  icon,
+  iconPosition,
+  children,
+  ...props
+}: ButtonProps) {
+  const variantClass = themeVariant ? `button-${themeVariant}` : ""
+  const baseClasses = `
+    inline-flex items-center justify-center
+    transition-colors duration-200
+    focus:outline-none focus:ring-2 focus:ring-offset-2
+  `
+
+  const isIconVariant =
+    themeVariant?.includes("icon") || themeVariant === "rounded-icon"
+
+  const renderContent = () => {
+    if (!isIconVariant || !icon) return children
+
+    const position: "left" | "right" = iconPosition
+      ? iconPosition
+      : themeVariant === "cancel-icon-right" || themeVariant === "rounded-icon"
+      ? "right"
+      : "left"
+
+    return position === "left" ? (
+      <>
+        {icon} {children}
+      </>
+    ) : (
+      <>
+        {children} {icon}
+      </>
+    )
   }
 
+  // If themeVariant is used, render a plain button (not ChadCN)
+  if (themeVariant) {
+    return (
+      <button {...props} className={cn(baseClasses, variantClass, className)}>
+        {renderContent()}
+      </button>
+    )
+  }
+
+  // Otherwise, fallback to ChadCN variant system
   return (
-    <BaseButton
-      {...props}
-      className={cn(themeVariant ? themeClasses[themeVariant] : "", className)}
-    />
+    <BaseButton {...props} className={cn(baseClasses, className)}>
+      {children}
+    </BaseButton>
   )
 }
