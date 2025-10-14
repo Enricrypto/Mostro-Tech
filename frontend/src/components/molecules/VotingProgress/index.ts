@@ -1,0 +1,1 @@
+export { VotingProgress } from "./VotingProgress"
