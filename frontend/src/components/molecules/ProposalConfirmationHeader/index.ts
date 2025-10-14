@@ -1,1 +1,0 @@
-export { ProposalConfirmationHeader } from "./ProposalConfirmationHeader"
