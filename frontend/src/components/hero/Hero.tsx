@@ -32,16 +32,5 @@ export const Hero = () => (
         <Button themeVariant='highlight'>Join the Waitlist</Button>
       </div>
     </div>
-
-    {/* Right image */}
-    {/* <div className='relative mt-16 lg:mt-0'>
-      <Image
-        src={monsterImg}
-        alt='Mostro character'
-        width={400}
-        height={400}
-        className='drop-shadow-[0_0_30px_var(--color-highlight)]'
-      />
-    </div> */}
   </section>
 )

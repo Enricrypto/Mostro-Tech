@@ -187,20 +187,23 @@
 /* =========================================================
    COMPONENTS (avatars, badges, buttons, progress bars)
    ========================================================= */
-/* All @apply references to font-inter or font-heading removed */
+
 @layer components {
+  /* =========================================================
+     AVATARS
+     ========================================================= */
   .avatar {
     @apply relative inline-flex justify-center items-center overflow-hidden flex-shrink-0;
   }
   .avatar--rounded-sm {
-    @apply w-10 h-10 rounded-[26px];
+    @apply w-10 h-10 rounded-[26px] opacity-100;
   }
   .avatar--rounded-initials {
-    @apply w-10 h-10 rounded-[26px] gap-2;
+    @apply w-10 h-10 rounded-[26px] gap-2 opacity-100;
     background: #dcfd63;
   }
   .avatar--square-lg {
-    @apply w-[288px] h-[288px] rounded-[26px];
+    @apply w-[288px] h-[288px] rounded-[26px] opacity-100;
     background: linear-gradient(
       180deg,
       rgba(220, 253, 99, 0) 0%,
@@ -208,25 +211,181 @@
     );
   }
   .avatar--square-lg-initials {
-    @apply w-[288px] h-[288px] rounded-[26px] gap-2 pt-3 pb-3;
+    @apply w-[288px] h-[288px] rounded-[26px] gap-2 pt-3 pb-3 opacity-100;
     background: linear-gradient(180deg, #71d6fb 0%, #dcfd63 100%);
   }
+  .avatar--square-sm-lg {
+    @apply w-[151px] h-[151px] rounded-[26px] opacity-100;
+    background: linear-gradient(
+      180deg,
+      rgba(220, 253, 99, 0) 0%,
+      rgba(220, 253, 99, 0.2) 98.26%
+    );
+  }
 
+  /* =========================================================
+     BADGES
+     ========================================================= */
   .badge {
     @apply inline-flex items-center justify-center text-xs font-medium w-fit whitespace-nowrap shrink-0 px-2 py-[2px] gap-2 border border-solid transition-colors duration-200;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0;
   }
+  .badge-closed {
+    @apply rounded-[10px];
+    width: 38px;
+    height: 22px;
+    background: #fd63634d;
+    border-color: #fd6363;
+    color: #fd6363;
+  }
+  .badge-component2 {
+    @apply rounded-[10px];
+    width: 49px;
+    height: 22px;
+    background: #dcfd634d;
+    border-color: #dcfd63;
+    color: #dcfd63;
+  }
+  .badge-genre {
+    @apply rounded-[10px];
+    width: 84px;
+    height: 22px;
+    background: #71d6fb4d;
+    border-color: #71d6fb;
+    color: #71d6fb;
+  }
+  .badge-profile-label {
+    @apply rounded-[28px];
+    width: 119px;
+    height: 32px;
+    background: linear-gradient(90deg, #71d6fb 0%, #dcfd63 100%);
+    border: none;
+    color: #000000;
+  }
+  .badge-neutral {
+    @apply rounded-[10px];
+    width: 49px;
+    height: 22px;
+    background: #f5f5f54d;
+    border-color: #f5f5f5;
+    color: #ffffff;
+  }
+  .badge-icon {
+    @apply rounded-[10px];
+    width: 69px;
+    height: 22px;
+    background: #dcfd634d;
+    border-color: #dcfd63;
+    color: #dcfd63;
+  }
+  .badge-icon-closed {
+    @apply rounded-[10px];
+    width: 69px;
+    height: 22px;
+    background: #fd63634d;
+    border-color: #fd6363;
+    color: #fd6363;
+  }
+
+  /* =========================================================
+     BUTTONS
+     ========================================================= */
   .button {
-    @apply inline-flex items-center justify-center rounded-[6px] transition-colors duration-200 text-center;
+    @apply inline-flex items-center justify-center rounded-[6px] transition-colors duration-200 font-medium text-center;
     line-height: 24px;
     font-size: 14px;
     gap: 0.5rem;
+  }
+  .button-link {
+    @apply px-4 py-2 rounded-[6px] cursor-pointer transition-colors whitespace-nowrap;
+    background: none;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .button-link:hover {
+    @apply underline;
+    text-decoration-style: solid;
+    color: #dcfd63;
+  }
+  .button-hover-continue {
+    @apply px-4 py-2;
+    background: linear-gradient(98.69deg, #71d6fb 3.63%, #6654d3 98.18%);
+    color: #000000;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .button-continue {
+    @apply px-4 py-2;
+    background: #71d6fb;
+    color: #000000;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .button-continue:hover {
+    background: #5ab4f2;
+    transition: background 300ms ease-out;
+  }
+  .button-cancel-dark {
+    @apply px-4 py-2 border border-solid border-[#71D6FB];
+    background: none;
+    color: #ffffff;
+  }
+  .button-cancel-blue {
+    @apply px-4 py-2 border border-solid border-[#71D6FB];
+    background: #71d6fb4d;
+    color: #ffffff;
+  }
+  .button-cancel-white {
+    @apply px-4 py-2;
+    background: #f1f5f9;
+    color: #64748b;
+  }
+  .button-cancel-red {
+    @apply px-4 py-2;
+    background: #fd6363;
+    color: #000000;
+  }
+  .button-cancel-black {
+    @apply px-4 py-2 border border-solid border-[#000000];
+    background: none;
+    color: #000000;
+  }
+  .button-cancel-icon-left {
+    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-center gap-2;
+    background: none;
+    font-weight: 500;
+    font-size: 14px;
+    color: #ffffff;
+  }
+  .button-rounded-icon {
+    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[36px] inline-flex items-center justify-center gap-2;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 14px;
+    color: #000000;
+  }
+  .button-cancel-icon-right {
+    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-center gap-2;
+    background: none;
+    font-weight: 500;
+    font-size: 14px;
+    color: #ffffff;
   }
   .button-highlight {
     @apply py-3 px-6 rounded-full transition;
     background: #dcfd63;
     font-weight: 500;
     font-size: 15px;
-    color: #000;
+    color: #000000;
+  }
+  .button-highlight:hover {
+    background: #dcfd634d;
   }
   .button-connect {
     @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] text-center;
@@ -236,7 +395,42 @@
     line-height: 24px;
     font-size: 14px;
   }
+  .button-connected-hover {
+    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out;
+    background: #71d6fb;
+    width: 188px;
+    height: 40px;
+  }
+  .button-connected-hover .account {
+    @apply text-black;
+    font-size: 14px;
+    line-height: 24px;
+    width: 92px;
+    height: 24px;
+  }
+  .button-connected-hover .icon {
+    @apply w-[20px] h-[20px];
+  }
+  .button-connected-hover-gradient {
+    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out;
+    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
+    width: 188px;
+    height: 40px;
+  }
+  .button-connected-hover-gradient .account {
+    @apply text-black;
+    font-size: 14px;
+    line-height: 24px;
+    width: 92px;
+    height: 24px;
+  }
+  .button-connected-hover-gradient .icon {
+    @apply w-[20px] h-[20px];
+  }
 
+  /* =========================================================
+     PROGRESS BARS
+     ========================================================= */
   .progress-bar {
     @apply relative overflow-hidden rounded-[40px];
     height: 16px;

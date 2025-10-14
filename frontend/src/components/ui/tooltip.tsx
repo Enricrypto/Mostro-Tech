@@ -2,60 +2,57 @@
 
 import * as React from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
-
 import { cn } from "@/lib/utils"
 
-function TooltipProvider({
-  delayDuration = 0,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
-  return (
-    <TooltipPrimitive.Provider
-      data-slot="tooltip-provider"
-      delayDuration={delayDuration}
-      {...props}
-    />
-  )
+type TooltipVariant = "blue" | "white"
+
+interface MyTooltipProps {
+  children: React.ReactNode
+  content: React.ReactNode
+  side?: "top" | "right" | "bottom" | "left"
+  align?: "start" | "center" | "end"
+  variant: TooltipVariant
 }
 
-function Tooltip({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Root>) {
-  return (
-    <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
-    </TooltipProvider>
-  )
-}
-
-function TooltipTrigger({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
-}
-
-function TooltipContent({
-  className,
-  sideOffset = 0,
+export const Tooltip: React.FC<MyTooltipProps> = ({
   children,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Content>) {
+  content,
+  side = "top",
+  align = "center",
+  variant
+}) => {
+  const baseStyles = `
+    w-[113px] h-[34px] rounded-[6px] gap-[10px] px-[13px] py-[7px] 
+    flex items-center justify-center shadow-[0_2px_4px_0_rgba(30,41,59,0.25)]
+    text-center text-sm font-medium
+  `
+
+  const variantStyles: Record<TooltipVariant, string> = {
+    blue: "bg-[#71D6FB] text-black border-none",
+    white: "bg-white text-black border border-[#71D6FB]"
+  }
+
   return (
-    <TooltipPrimitive.Portal>
-      <TooltipPrimitive.Content
-        data-slot="tooltip-content"
-        sideOffset={sideOffset}
-        className={cn(
-          "bg-foreground text-background animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance",
-          className
-        )}
-        {...props}
-      >
-        {children}
-        <TooltipPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
-      </TooltipPrimitive.Content>
-    </TooltipPrimitive.Portal>
+    <TooltipPrimitive.Provider delayDuration={200}>
+      <TooltipPrimitive.Root>
+        <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
+        <TooltipPrimitive.Portal>
+          <TooltipPrimitive.Content
+            side={side}
+            align={align}
+            sideOffset={8}
+            className={cn(baseStyles, variantStyles[variant])}
+          >
+            {content}
+            <TooltipPrimitive.Arrow
+              className={cn(
+                "fill-current",
+                variant === "blue" ? "text-[#71D6FB]" : "text-white"
+              )}
+            />
+          </TooltipPrimitive.Content>
+        </TooltipPrimitive.Portal>
+      </TooltipPrimitive.Root>
+    </TooltipPrimitive.Provider>
   )
 }
-
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
