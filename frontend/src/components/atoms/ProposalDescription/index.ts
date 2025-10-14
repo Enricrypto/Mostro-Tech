@@ -1,1 +1,0 @@
-export { ProposalDescription } from "./ProposalDescription"
