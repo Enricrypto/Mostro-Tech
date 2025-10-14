@@ -2,187 +2,25 @@
 
 /* =========================================================
    THEME CONFIGURATION
-   Global design tokens, utilities, and component variants
    ========================================================= */
-
-@theme {
-  /* ---------------------------------------------------------
-     COLOR SYSTEM
-     Base, brand, and semantic colors
-     --------------------------------------------------------- */
+:root {
+  /* Colors */
   --color-black: #000000;
+  --color-white: #ffffff;
   --color-primary: #6953da;
   --color-primary-light: #9c8be7;
   --color-accent: #3fd9ff;
   --color-accent-dark: #1e97e6;
   --color-highlight: #d3fe3d;
   --color-muted: #d2d2d5;
-  --color-white: #ffffff;
 
-  /* ---------------------------------------------------------
-     TEXT COLORS
-     --------------------------------------------------------- */
-  --color-text-default: #0f172a;
-  --color-button-text: #0f172a;
+  /* Buttons & UI */
+  --color-button-bg-default: #ffffff;
+  --color-button-bg-selected: #998ce1;
+  --color-button-text-default: #0f172a;
+  --color-button-text-selected: #ffffff;
 
-  /* ---------------------------------------------------------
-     BUTTON COLORS & STATES
-     --------------------------------------------------------- */
-  --color-button-bg-default: #ffffff; /* default background */
-  --color-button-bg-selected: #998ce1; /* active background */
-  --color-button-text-default: #0f172a; /* default text */
-  --color-button-text-selected: #ffffff; /* selected text */
-  --color-button-hover: #998ce1; /* hover background */
-
-  /* ---------------------------------------------------------
-     NAVBAR & FOOTER COLORS
-     --------------------------------------------------------- */
-  --color-navbar-border: #2d3953;
-  --color-footer-bg: #121b2b;
-  --color-footer-border: #dcfd63;
-
-  /* ---------------------------------------------------------
-     CAROUSEL COLORS
-     --------------------------------------------------------- */
-  --color-carousel-border: #8a38f5;
-  --color-carousel-arrow-bg: #f1f5f9;
-  --color-carousel-jump-bg: #64748b;
-
-  /* ---------------------------------------------------------
-     SURFACE COLORS
-     Used for UI backgrounds and hover effects
-     --------------------------------------------------------- */
-  --color-surface-default: var(--color-white);
-  --color-surface-selected: #f1f5f9;
-  --color-surface-hover: #f8fafc;
-
-  /* ---------------------------------------------------------
-     PROPOSAL-SPECIFIC COLORS
-     Used in proposal cards, buttons, etc.
-     --------------------------------------------------------- */
-  --color-proposal-button-bg: #ffffff;
-  --color-proposal-button-border: #71d6fb;
-  --color-proposal-button-text: #0f172a;
-  --radius-proposal-button: 6px;
-  --text-proposal-button: 14px;
-  --leading-proposal-button: 24px;
-
-  /* ---------------------------------------------------------
-     HOVER & ACTIVE STATES
-     --------------------------------------------------------- */
-  --hover-primary: var(--color-primary-light);
-  --active-primary: var(--color-primary);
-  --hover-accent: var(--color-accent-dark);
-  --active-accent: var(--color-accent);
-  --hover-highlight: var(--color-accent-dark);
-  --active-highlight: var(--color-highlight);
-
-  /* ---------------------------------------------------------
-     TYPOGRAPHY
-     Fonts and font families
-     --------------------------------------------------------- */
-  --font-heading: "Poppins", sans-serif;
-  --font-body: "Poppins", sans-serif;
-  --font-inter: "Inter", sans-serif;
-
-  /* ---------------------------------------------------------
-     FONT SIZES & LINE HEIGHTS
-     --------------------------------------------------------- */
-  --text-h1: 2.5rem;
-  --text-h2: 2rem;
-  --text-h3: 1.75rem;
-  --text-h4: 1.5rem;
-  --text-p: 1rem;
-  --text-lead: 1.25rem;
-  --text-large: 1.125rem;
-  --text-small: 0.875rem;
-  --text-muted: 0.875rem;
-  --text-inline-code: 0.875rem;
-  --text-button-size: 12px;
-  --text-button-line-height: 20px;
-
-  /* ---------------------------------------------------------
-     FONT WEIGHTS
-     --------------------------------------------------------- */
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-
-  /* ---------------------------------------------------------
-     BUTTON TYPOGRAPHY
-     --------------------------------------------------------- */
-  --text-button-size: 14px;
-  --text-button-line-height: 16px;
-  --letter-spacing-button: -0.75%;
-  --border-button: 1.5px solid var(--color-black);
-
-  /* ---------------------------------------------------------
-     BORDER RADIUS TOKENS
-     --------------------------------------------------------- */
-  --radius-pill: 30px;
-  --radius-card: 8px;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-
-  /* ---------------------------------------------------------
-     BORDER & SHADOW TOKENS
-     --------------------------------------------------------- */
-  --border-width: 1px;
-  --border-color: #e2e8f0;
-  --shadow-sm: 0px 2px 4px 0px #00000014;
-  --shadow-md: 0px 4px 6px 0px #00000017;
-  --shadow-lg: 0px 8px 12px 0px #00000020;
-
-  /* ---------------------------------------------------------
-     SPACING SCALE
-     --------------------------------------------------------- */
-  --spacing-0: 0px;
-  --spacing-1: 4px;
-  --spacing-2: 8px;
-  --spacing-3: 12px;
-  --spacing-4: 16px;
-  --spacing-5: 20px;
-  --spacing-6: 24px;
-  --spacing-8: 32px;
-  --spacing-10: 40px;
-  --spacing-12: 48px;
-
-  /* ---------------------------------------------------------
-     SEMANTIC SPACING
-     --------------------------------------------------------- */
-  --space-xxs: 4px;
-  --space-xs: 6px;
-  --space-sm: 8px;
-  --space-md: 12px;
-  --space-lg: 16px;
-  --space-xl: 24px;
-
-  /* ---------------------------------------------------------
-     COMPONENT TOKENS
-     Sizes and layout constants
-     --------------------------------------------------------- */
-  --card-width: 690px;
-  --card-height: 264px;
-
-  --menu-item-width: 672px;
-  --menu-item-height: 32px;
-  --menu-item-gap: var(--space-sm);
-  --menu-item-padding-x: var(--space-sm);
-  --menu-item-padding-y: var(--space-xs);
-  --menu-item-radius: var(--radius-card);
-
-  --menu-section-width: 672px;
-  --menu-section-height: 32px;
-
-  --input-height: 40px;
-
-  --pill-button-width: 125px;
-  --pill-button-height: 36px;
-
-  /* ---------------------------------------------------------
-     PROPOSAL CONFIRMATION CARD
-     --------------------------------------------------------- */
+  /* Proposal card colors */
   --color-proposal-card-bg: linear-gradient(
     103.78deg,
     #352b6d 26.89%,
@@ -193,103 +31,62 @@
   --color-proposal-album: #ffffff;
   --color-proposal-artist: #b3b3b3;
 
-  /* ---------------------------------------------------------
-     OPACITY & Z-INDEX TOKENS
-     --------------------------------------------------------- */
-  --opacity-disabled: 0.6;
+  /* Progress bar colors */
+  --color-red: #fd6363;
+  --color-red-light: #fd63634d;
+  --color-green: #42ee5c;
+  --color-green-light: #42ee5c4d;
+  --color-blue: #71d6fb;
+  --color-blue-light: #71d6fb33;
+
+  /* Hover & Active */
+  --hover-primary: var(--color-primary-light);
+  --active-primary: var(--color-primary);
+
+  /* Fonts: will be set by next/font on html class */
+  --font-heading: var(--font-primary);
+  --font-body: var(--font-primary);
+  --font-inter: var(--font-inter);
+
+  /* Font sizes */
+  --text-h1: 2.5rem;
+  --text-h2: 2rem;
+  --text-h3: 1.75rem;
+  --text-h4: 1.5rem;
+  --text-p: 1rem;
+  --text-small: 0.875rem;
+
+  /* Border radius & shadows */
+  --radius-pill: 30px;
+  --radius-card: 8px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --border-width: 1px;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0px 2px 4px 0px #00000014;
+  --shadow-md: 0px 4px 6px 0px #00000017;
+  --shadow-lg: 0px 8px 12px 0px #00000020;
+
+  /* Spacing */
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+
+  /* Z-index & opacity */
   --z-tooltip: 1000;
   --z-dropdown: 1100;
   --z-modal: 1200;
   --z-popover: 1300;
-}
-
-/* =========================================================
-   UTILITIES
-   Tailwind utility shortcuts for typography and layout
-   ========================================================= */
-
-@utility font-heading {
-  font-family: var(--font-heading);
-}
-
-@utility font-body {
-  font-family: var(--font-body);
-}
-
-@utility text-h1 {
-  font-size: var(--text-h1);
-  font-weight: var(--font-weight-bold);
-  line-height: 1.2;
-}
-
-@utility text-h2 {
-  font-size: var(--text-h2);
-  font-weight: var(--font-weight-bold);
-}
-
-@utility text-h3 {
-  font-size: var(--text-h3);
-  font-weight: var(--font-weight-bold);
-}
-
-@utility text-h4 {
-  font-size: var(--text-h4);
-  font-weight: var(--font-weight-bold);
-}
-
-@utility text-p {
-  font-size: var(--text-p);
-  font-family: var(--font-body);
-}
-
-@utility text-muted {
-  font-size: var(--text-muted);
-  color: var(--color-muted);
-}
-
-@utility rounded-pill {
-  border-radius: var(--radius-pill);
-}
-
-@utility rounded-card {
-  border-radius: var(--radius-card);
-}
-
-/* ---------------------------------------------------------
-   PROPOSAL CARD UTILITIES
-   --------------------------------------------------------- */
-@utility proposal-card {
-  background: var(--color-proposal-card-bg);
-  border: 1px solid var(--color-proposal-card-border);
-  display: flex;
-  flex-direction: column;
-}
-
-@utility proposal-text {
-  color: var(--color-proposal-text);
-  font-family: var(--font-inter);
-  font-weight: var(--font-weight-normal);
-  font-size: var(--text-small);
-  line-height: 20px;
-}
-
-@utility proposal-album-text {
-  font-family: var(--font-inter);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-proposal-album);
-}
-
-@utility proposal-artist-text {
-  font-family: var(--font-inter);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-proposal-artist);
+  --opacity-disabled: 0.6;
 }
 
 /* =========================================================
    BASE STYLES
-   Applies default typography, background, and transitions
    ========================================================= */
-
 @layer base {
   body {
     font-family: var(--font-body);
@@ -309,283 +106,130 @@
   }
 
   input {
-    font-family: var(--font-body);
+    font-family: var(--font-inter);
   }
 }
 
 /* =========================================================
-   COMPONENTS
-   Avatar variants
+   UTILITIES
    ========================================================= */
+@layer utilities {
+  /* Font helpers */
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+  .font-inter {
+    font-family: var(--font-inter);
+  }
 
+  /* Text sizes */
+  .text-h1 {
+    font-size: var(--text-h1);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .text-h2 {
+    font-size: var(--text-h2);
+    font-weight: 700;
+  }
+  .text-h3 {
+    font-size: var(--text-h3);
+    font-weight: 700;
+  }
+  .text-h4 {
+    font-size: var(--text-h4);
+    font-weight: 700;
+  }
+  .text-p {
+    font-size: var(--text-p);
+    font-family: var(--font-body);
+  }
+  .text-small {
+    font-size: var(--text-small);
+  }
+
+  /* Border radius */
+  .rounded-pill {
+    border-radius: var(--radius-pill);
+  }
+  .rounded-card {
+    border-radius: var(--radius-card);
+  }
+
+  /* Proposal card */
+  .proposal-card {
+    background: var(--color-proposal-card-bg);
+    border: 1px solid var(--color-proposal-card-border);
+    display: flex;
+    flex-direction: column;
+  }
+  .proposal-text {
+    font-family: var(--font-inter);
+    color: var(--color-proposal-text);
+    font-weight: 400;
+    font-size: var(--text-small);
+  }
+  .proposal-album-text {
+    font-family: var(--font-inter);
+    font-weight: 600;
+    color: var(--color-proposal-album);
+  }
+  .proposal-artist-text {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    color: var(--color-proposal-artist);
+  }
+}
+
+/* =========================================================
+   COMPONENTS (avatars, badges, buttons, progress bars)
+   ========================================================= */
+/* All @apply references to font-inter or font-heading removed */
 @layer components {
-  /* Base Avatar Container */
   .avatar {
     @apply relative inline-flex justify-center items-center overflow-hidden flex-shrink-0;
   }
-
-  /* 1) Rounded shape avatar image (small) */
   .avatar--rounded-sm {
-    @apply w-10 h-10 rounded-[26px] opacity-100;
+    @apply w-10 h-10 rounded-[26px];
   }
-
-  /* 2) Rounded shape avatar with initials */
   .avatar--rounded-initials {
-    @apply w-10 h-10 rounded-[26px] gap-2 opacity-100;
+    @apply w-10 h-10 rounded-[26px] gap-2;
     background: #dcfd63;
   }
-
-  /* 3) Profile image big square */
   .avatar--square-lg {
-    @apply w-[288px] h-[288px] rounded-[26px] opacity-100;
+    @apply w-[288px] h-[288px] rounded-[26px];
     background: linear-gradient(
       180deg,
       rgba(220, 253, 99, 0) 0%,
       rgba(220, 253, 99, 0.2) 98.26%
     );
   }
-
-  /* 4) Profile initials big square */
   .avatar--square-lg-initials {
-    @apply w-[288px] h-[288px] rounded-[26px] gap-2 pt-3 pb-3 opacity-100;
+    @apply w-[288px] h-[288px] rounded-[26px] gap-2 pt-3 pb-3;
     background: linear-gradient(180deg, #71d6fb 0%, #dcfd63 100%);
   }
 
-  /* 5) Variant 5 */
-  .avatar--square-sm-lg {
-    @apply w-[151px] h-[151px] rounded-[26px] opacity-100;
-    background: linear-gradient(
-      180deg,
-      rgba(220, 253, 99, 0) 0%,
-      rgba(220, 253, 99, 0.2) 98.26%
-    );
-  }
-}
-
-/* =========================================================
-   COMPONENTS
-   Badge variants
-   ========================================================= */
-
-@layer components {
-  /* Base Badge */
   .badge {
     @apply inline-flex items-center justify-center text-xs font-medium w-fit whitespace-nowrap shrink-0 px-2 py-[2px] gap-2 border border-solid transition-colors duration-200;
-    font-family: Inter;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 0;
   }
-
-  /* 1) Badge/closed */
-  .badge-closed {
-    @apply rounded-[10px];
-    width: 38px;
-    height: 22px;
-    background: #fd63634d;
-    border-color: #fd6363;
-    color: #fd6363;
+  .button {
+    @apply inline-flex items-center justify-center rounded-[6px] transition-colors duration-200 text-center;
+    line-height: 24px;
+    font-size: 14px;
+    gap: 0.5rem;
   }
-
-  /* 2) Badge/component2 */
-  .badge-component2 {
-    @apply rounded-[10px];
-    width: 49px;
-    height: 22px;
-    background: #dcfd634d;
-    border-color: #dcfd63;
-    color: #dcfd63;
-  }
-
-  /* 3) Badge/genre */
-  .badge-genre {
-    @apply rounded-[10px];
-    width: 84px;
-    height: 22px;
-    background: #71d6fb4d;
-    border-color: #71d6fb;
-    color: #71d6fb;
-  }
-
-  /* 4) Badge/profile-label */
-  .badge-profile-label {
-    @apply rounded-[28px];
-    width: 119px;
-    height: 32px;
-    background: linear-gradient(90deg, #71d6fb 0%, #dcfd63 100%);
-    border: none;
-    color: #000000;
-  }
-
-  /* 5) Badge/neutral */
-  .badge-neutral {
-    @apply rounded-[10px];
-    width: 49px;
-    height: 22px;
-    background: #f5f5f54d;
-    border-color: #f5f5f5;
-    color: #ffffff;
-  }
-
-  /* 6) Badge/icon */
-  .badge-icon {
-    @apply rounded-[10px];
-    width: 69px;
-    height: 22px;
-    background: #dcfd634d;
-    border-color: #dcfd63;
-    color: #dcfd63;
-  }
-
-  /* 7) Badge/icon-closed */
-  .badge-icon-closed {
-    @apply rounded-[10px];
-    width: 69px;
-    height: 22px;
-    background: #fd63634d;
-    border-color: #fd6363;
-    color: #fd6363;
-  }
-
-  /* =========================================================
-   COMPONENTS
-   Button variants
-   ========================================================= */
-
-  @layer components {
-    /* -------------------------------
-     Base Button
-     ------------------------------- */
-    .button {
-      @apply inline-flex items-center justify-center rounded-[6px] transition-colors duration-200 font-inter font-medium text-center;
-      line-height: 24px;
-      font-size: 14px; /* default font size */
-      color: inherit; /* inherit text color from variant */
-      gap: 0.5rem; /* default spacing for icon+text */
-    }
-
-    /* -------------------------------
-     Link Buttons
-     ------------------------------- */
-    .button-link {
-      @apply px-4 py-2 rounded-[6px] cursor-pointer transition-colors whitespace-nowrap;
-      background: none;
-      color: #ffffff;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 24px;
-    }
-
-    .button-link:hover {
-      @apply underline;
-      text-decoration-style: solid;
-      color: #dcfd63; /* optional: change text color on hover */
-    }
-
-    /* -------------------------------
-     Continue Buttons
-     ------------------------------- */
-    .button-hover-continue {
-      @apply px-4 py-2;
-      background: linear-gradient(98.69deg, #71d6fb 3.63%, #6654d3 98.18%);
-      color: #000000;
-      font-weight: 500;
-      font-size: 14px;
-    }
-
-    .button-continue {
-      @apply px-4 py-2;
-      background: #71d6fb;
-      color: #000000;
-      font-weight: 500;
-      font-size: 14px;
-    }
-    .button-continue:hover {
-      background: #5ab4f2;
-      transition: background 300ms ease-out;
-    }
-
-    /* -------------------------------
-     Cancel Buttons
-     ------------------------------- */
-    .button-cancel-dark {
-      @apply px-4 py-2 border border-solid border-[#71D6FB];
-      background: none;
-      color: #ffffff;
-    }
-
-    .button-cancel-blue {
-      @apply px-4 py-2 border border-solid border-[#71D6FB];
-      background: #71d6fb4d;
-      color: #ffffff;
-    }
-
-    .button-cancel-white {
-      @apply px-4 py-2;
-      background: #f1f5f9;
-      color: #64748b;
-    }
-
-    .button-cancel-red {
-      @apply px-4 py-2;
-      background: #fd6363;
-      color: #000000;
-    }
-
-    .button-cancel-black {
-      @apply px-4 py-2 border border-solid border-[#000000];
-      background: none;
-      color: #000000;
-    }
-
-    /* -------------------------------
-     Icon Buttons
-     ------------------------------- */
-    .button-cancel-icon-left {
-      @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-center gap-2;
-      background: none;
-      font-weight: 500;
-      font-size: 14px;
-      color: #ffffff;
-    }
-
-    .button-rounded-icon {
-      @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[36px] inline-flex items-center justify-center gap-2;
-      background: #ffffff;
-      font-weight: 500;
-      font-size: 14px;
-      color: #000000;
-    }
-
-    .button-cancel-icon-right {
-      @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-center gap-2;
-      background: none;
-      font-weight: 500;
-      font-size: 14px;
-      color: #ffffff;
-    }
-  }
-  /* -------------------------------
-     Highlight Buttons
-     ------------------------------- */
   .button-highlight {
-    @apply font-heading py-3 px-6 rounded-full transition;
+    @apply py-3 px-6 rounded-full transition;
     background: #dcfd63;
     font-weight: 500;
     font-size: 15px;
-    color: #000000;
+    color: #000;
   }
-
-  .button-highlight:hover {
-    background: #dcfd634d;
-  }
-
-  /* -------------------------------
-     Connect Wallet Button
-     ------------------------------- */
   .button-connect {
-    @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] font-inter font-medium text-center text-black;
+    @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] text-center;
     background: #71d6fb;
     width: 134px;
     height: 40px;
@@ -593,48 +237,27 @@
     font-size: 14px;
   }
 
-  /* -------------------------------
-   Connected Button (Hover)
-   ------------------------------- */
-  .button-connected-hover {
-    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] font-inter font-medium text-center transition-all duration-300 ease-out;
-    background: #71d6fb;
-    width: 188px;
-    height: 40px;
+  .progress-bar {
+    @apply relative overflow-hidden rounded-[40px];
+    height: 16px;
+    width: 414px;
   }
-
-  /* Only style account and icon via Tailwind utilities, do NOT @apply avatar */
-  .button-connected-hover .account {
-    @apply text-black font-inter font-medium;
-    font-size: 14px;
-    line-height: 24px;
-    width: 92px;
-    height: 24px;
+  .progress-bar-blue {
+    @apply bg-[#71D6FB]/20;
   }
-
-  .button-connected-hover .icon {
-    @apply w-[20px] h-[20px]; /* chevron down */
+  .progress-bar-blue-indicator {
+    @apply bg-[#71D6FB] h-full transition-all;
   }
-
-  /* -------------------------------
-   Connected Button with Gradient
-   ------------------------------- */
-  .button-connected-hover-gradient {
-    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] font-inter font-medium text-center transition-all duration-300 ease-out;
-    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
-    width: 188px;
-    height: 40px;
+  .progress-bar-red {
+    @apply bg-[#FD63634D];
   }
-
-  .button-connected-hover-gradient .account {
-    @apply text-black font-inter font-medium;
-    font-size: 14px;
-    line-height: 24px;
-    width: 92px;
-    height: 24px;
+  .progress-bar-red-indicator {
+    @apply bg-[#FD6363] h-full transition-all;
   }
-
-  .button-connected-hover-gradient .icon {
-    @apply w-[20px] h-[20px];
+  .progress-bar-green {
+    @apply bg-[#42EE5C4D];
+  }
+  .progress-bar-green-indicator {
+    @apply bg-[#42EE5C] h-full transition-all;
   }
 }
