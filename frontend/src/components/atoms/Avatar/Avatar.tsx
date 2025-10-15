@@ -1,41 +1,41 @@
-// components/atoms/Avatar/Avatar.tsx
 "use client"
 
 import Image from "next/image"
-import React from "react"
 import { cn } from "@/lib/utils"
+
+type AvatarVariant = "rounded-sm" | "rounded-md" | "circle"
 
 interface AvatarProps {
   src?: string
   alt?: string
   className?: string
+  variant?: AvatarVariant
+}
+
+const VARIANT_CLASSES: Record<AvatarVariant, string> = {
+  "rounded-sm":
+    "w-[40px] h-[40px] rounded-[26px] bg-gradient-to-b from-[rgba(220,253,99,0)] to-[rgba(220,253,99,0.2)]",
+  "rounded-md": "w-[60px] h-[60px] rounded-[30px]",
+  circle: "w-[48px] h-[48px] rounded-full"
 }
 
 export const Avatar: React.FC<AvatarProps> = ({
   src,
   alt = "Avatar",
-  className
+  className,
+  variant = "rounded-sm"
 }) => {
   return (
     <div
       className={cn(
-        // ✅ Keep only layout-related classes
         "relative overflow-hidden flex-shrink-0",
-        // ✅ Apply fallback background only if no src
+        VARIANT_CLASSES[variant],
         !src &&
           "bg-gradient-to-b from-[rgba(220,253,99,0)] to-[rgba(220,253,99,0.2)]",
-        className // external variants applied here
+        className
       )}
     >
-      {src && (
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className='object-cover'
-          sizes='(max-width: 640px) 32px, 40px'
-        />
-      )}
+      {src && <Image src={src} alt={alt} fill className='object-cover' />}
     </div>
   )
 }

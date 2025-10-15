@@ -1,0 +1,1 @@
+export { ProposalConfirmationModal } from "./ProposalConfirmationModal"

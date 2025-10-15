@@ -31,6 +31,10 @@
   --color-proposal-album: #ffffff;
   --color-proposal-artist: #b3b3b3;
 
+  /* DataCard colors */
+  --color-datacard-bg: #121b2b;
+  --color-datacard-border: #2d3953;
+
   /* Progress bar colors */
   --color-red: #fd6363;
   --color-red-light: #fd63634d;
@@ -82,6 +86,14 @@
   --z-modal: 1200;
   --z-popover: 1300;
   --opacity-disabled: 0.6;
+
+  /* =========================================================
+   DataCard text
+   ========================================================= */
+  --text-datacard-value-font-size: 30px;
+  --text-datacard-value-line-height: 36px;
+  --text-datacard-value-letter-spacing: -0.75%;
+  --text-datacard-value-font-weight: 600; /* Semi Bold */
 }
 
 /* =========================================================
@@ -149,6 +161,14 @@
   }
   .text-small {
     font-size: var(--text-small);
+  }
+
+  .text-datacard-value {
+    font-family: var(--font-inter);
+    font-weight: var(--text-datacard-value-font-weight);
+    font-size: var(--text-datacard-value-font-size);
+    line-height: var(--text-datacard-value-line-height);
+    letter-spacing: var(--text-datacard-value-letter-spacing);
   }
 
   /* Border radius */
@@ -426,6 +446,27 @@
   }
   .button-connected-hover-gradient .icon {
     @apply w-[20px] h-[20px];
+  }
+
+  .button-proposal {
+    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-between gap-2;
+    /* remove fixed width */
+    height: 40px;
+    background: none;
+    color: #ffffff;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    overflow: hidden;
+  }
+
+  .button-proposal .icon {
+    flex-shrink: 0; /* icon never shrinks */
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    color: #ffffff;
   }
 
   /* =========================================================
