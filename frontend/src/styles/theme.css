@@ -244,8 +244,8 @@
   }
 
   /* =========================================================
-     BADGES
-     ========================================================= */
+   BADGES
+   ========================================================= */
   .badge {
     @apply inline-flex items-center justify-center text-xs font-medium w-fit whitespace-nowrap shrink-0 px-2 py-[2px] gap-2 border border-solid transition-colors duration-200;
     font-family: Inter;
@@ -254,56 +254,63 @@
     line-height: 20px;
     letter-spacing: 0;
   }
+
   .badge-closed {
-    @apply rounded-[10px];
+    @apply rounded-[10px] border border-solid;
     width: 38px;
     height: 22px;
     background: #fd63634d;
     border-color: #fd6363;
     color: #fd6363;
   }
+
   .badge-component2 {
-    @apply rounded-[10px];
+    @apply rounded-[10px] border border-solid;
     width: 49px;
     height: 22px;
     background: #dcfd634d;
     border-color: #dcfd63;
     color: #dcfd63;
   }
+
   .badge-genre {
-    @apply rounded-[10px];
+    @apply rounded-[10px] border border-solid;
     width: 84px;
     height: 22px;
     background: #71d6fb4d;
     border-color: #71d6fb;
     color: #71d6fb;
   }
+
   .badge-profile-label {
     @apply rounded-[28px];
     width: 119px;
     height: 32px;
     background: linear-gradient(90deg, #71d6fb 0%, #dcfd63 100%);
-    border: none;
+    border: none; /* this one intentionally has no border */
     color: #000000;
   }
+
   .badge-neutral {
-    @apply rounded-[10px];
+    @apply rounded-[10px] border border-solid;
     width: 49px;
     height: 22px;
     background: #f5f5f54d;
     border-color: #f5f5f5;
     color: #ffffff;
   }
+
   .badge-icon {
-    @apply rounded-[10px];
+    @apply rounded-[10px] border border-solid;
     width: 69px;
     height: 22px;
     background: #dcfd634d;
     border-color: #dcfd63;
     color: #dcfd63;
   }
+
   .badge-icon-closed {
-    @apply rounded-[10px];
+    @apply rounded-[10px] border border-solid;
     width: 69px;
     height: 22px;
     background: #fd63634d;
