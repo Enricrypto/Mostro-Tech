@@ -599,4 +599,26 @@
     @apply w-[462px] h-[138px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border-[2px] border-[#AEE9FF] bg-[var(--color-datacard-bg)] shadow-[0px_0px_16.9px_5px_#71D6FB80] transition-all duration-300 ease-out hover:scale-[1.01];
     opacity: 1;
   }
+
+  /* =========================================================
+   PROPOSAL CLOSED CARDS
+   ========================================================= */
+
+  /* Default variant */
+  .card-proposal-closed-default {
+    @apply w-[462px] h-[104px] p-[24px] flex flex-col gap-[14px] 
+         rounded-[10px] border-[2px] border-[var(--color-datacard-border)] 
+         bg-[var(--color-datacard-bg)] shadow-[0_4px_6px_0px_#00000017] 
+         transition-all duration-300 ease-out;
+    opacity: 1;
+  }
+
+  /* Highlighted variant */
+  .card-proposal-closed-highlighted {
+    @apply w-[462px] h-[104px] p-[24px] flex flex-col gap-[14px] 
+         rounded-[10px] border-[1px] border-[#AEE9FF] 
+         bg-[var(--color-datacard-bg)] shadow-[0_0_16.9px_5px_#71D6FB80] 
+         transition-all duration-300 ease-out;
+    opacity: 1;
+  }
 }
