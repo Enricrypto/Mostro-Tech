@@ -1,6 +1,6 @@
 "use client"
 
-import { Badge } from "@/components/atoms/Badge"
+import { Badge } from "@/components/utils/Badge"
 import { cn } from "@/lib/utils"
 
 interface ProposalStatusCardProps {

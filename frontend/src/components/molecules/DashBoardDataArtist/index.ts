@@ -1,0 +1,1 @@
+export { DashBoardDataArtist } from "./DashBoardDataArtist"
