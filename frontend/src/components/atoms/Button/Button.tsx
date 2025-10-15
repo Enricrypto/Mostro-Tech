@@ -28,42 +28,35 @@ export function Button({
 
   // Base classes for all buttons
   const baseClasses = `
-    inline-flex items-center justify-center
+    inline-flex items-center gap-2
     transition-colors duration-200
     focus:outline-none focus:ring-2 focus:ring-offset-2
+    whitespace-nowrap
   `
 
-  // Content renderer: wraps text + icon
+  // Render content with optional icon
   const renderContent = () => (
-    <span className='flex items-center w-full'>
+    <span className='inline-flex items-center gap-[10px]'>
       {icon && iconPosition === "left" && (
-        <span className='icon flex-shrink-0 mr-2 flex items-center justify-center'>
+        <span className='icon flex-shrink-0 flex items-center justify-center'>
           {icon}
         </span>
       )}
 
-      <span className='flex-1 truncate'>{children}</span>
+      <span>{children}</span>
 
       {icon && iconPosition === "right" && (
-        <span className='icon flex-shrink-0 ml-2 flex items-center justify-center'>
+        <span className='icon flex-shrink-0 flex items-center justify-center'>
           {icon}
         </span>
       )}
     </span>
   )
 
-  // Render plain button for themeVariant
+  // Render themed button
   if (themeVariant) {
     return (
-      <button
-        {...props}
-        className={cn(
-          baseClasses,
-          "inline-flex items-center justify-between gap-2",
-          variantClass,
-          className
-        )}
-      >
+      <button {...props} className={cn(baseClasses, variantClass, className)}>
         {renderContent()}
       </button>
     )
