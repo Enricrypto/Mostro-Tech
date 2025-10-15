@@ -1,0 +1,1 @@
+export { ProposalExecutedCard } from "./ProposalExecutedCard"
