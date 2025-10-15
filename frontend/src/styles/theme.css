@@ -48,6 +48,9 @@
   --color-blue: #71d6fb;
   --color-blue-light: #71d6fb33;
 
+  /* Perks colors */
+  --color-perks-border: #998ce1;
+
   /* Hover & Active */
   --hover-primary: var(--color-primary-light);
   --active-primary: var(--color-primary);
@@ -461,23 +464,25 @@
   }
 
   .button-proposal {
-    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-between gap-2;
-    /* remove fixed width */
+    @apply inline-flex items-center justify-center gap-[10px];
+    width: 158px;
     height: 40px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #71d6fb;
     background: none;
     color: #ffffff;
     font-family: Inter;
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
-    overflow: hidden;
+    white-space: nowrap;
   }
 
   .button-proposal .icon {
-    flex-shrink: 0; /* icon never shrinks */
+    flex-shrink: 0;
     width: 20px;
     height: 20px;
-    margin-left: 8px;
     color: #ffffff;
   }
 
@@ -486,25 +491,39 @@
      ========================================================= */
   .progress-bar {
     @apply relative overflow-hidden rounded-[40px];
-    height: 16px;
-    width: 414px;
+    width: 334px; /* exact width */
+    height: 16px; /* exact height */
+    opacity: 1; /* full opacity */
+    transform: rotate(0deg); /* angle: 0 deg */
   }
+
+  /* BLUE VARIANT */
   .progress-bar-blue {
-    @apply bg-[#71D6FB]/20;
+    background: #71d6fb4d; /* area color */
   }
+
   .progress-bar-blue-indicator {
-    @apply bg-[#71D6FB] h-full transition-all;
+    background: #71d6fb; /* filled progress color */
+    @apply h-full transition-all;
   }
+
+  /* RED VARIANT */
   .progress-bar-red {
-    @apply bg-[#FD63634D];
+    background: #fd63634d;
   }
+
   .progress-bar-red-indicator {
-    @apply bg-[#FD6363] h-full transition-all;
+    background: #fd6363;
+    @apply h-full transition-all;
   }
+
+  /* GREEN VARIANT */
   .progress-bar-green {
-    @apply bg-[#42EE5C4D];
+    background: #42ee5c4d;
   }
+
   .progress-bar-green-indicator {
-    @apply bg-[#42EE5C] h-full transition-all;
+    background: #42ee5c;
+    @apply h-full transition-all;
   }
 }
