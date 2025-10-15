@@ -1,6 +1,6 @@
 "use client"
 
-import { DashBoardStatsCard } from "@/components/molecules/DashBoardStatsCard"
+import { DashBoardStatsCard } from "@/components/templates/DashBoardStatsCard"
 import {
   UsersIcon,
   RocketLaunchIcon,
@@ -10,7 +10,7 @@ import {
   CodesandboxLogoIcon
 } from "@phosphor-icons/react"
 
-export const StatsOverview: React.FC = () => {
+export const DashBoardStatsOverview: React.FC = () => {
   // Placeholder stats data
   const statsData = {
     totalArtists: { value: 247, change: "+12 this week" },
