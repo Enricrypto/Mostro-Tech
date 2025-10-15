@@ -13,6 +13,11 @@
   --color-accent-dark: #1e97e6;
   --color-highlight: #d3fe3d;
   --color-muted: #d2d2d5;
+  --color-night: #0a111f;
+  --color-skyblue-opacity: #71d6fb4d;
+  --color-skyblue: #71d6fb;
+  --color-booger-buster: #dcfd63;
+  --color-charcoal: #2d3953;
 
   /* Buttons & UI */
   --color-button-bg-default: #ffffff;
@@ -520,65 +525,5 @@
   .progress-bar-green-indicator {
     background: #42ee5c;
     @apply h-full transition-all;
-  }
-
-  /* =========================================================
-   TOKEN HOLDINGS USER CARD
-   ========================================================= */
-  .token-holdings-card {
-    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_4px_6px_0_#00000017];
-    background-color: var(--color-datacard-bg);
-    border: 2px solid var(--color-datacard-border);
-  }
-
-  .token-holdings-card--blue {
-    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_0_16.9px_5px_#71D6FB80];
-    background-color: var(--color-datacard-bg);
-    border: 2px solid #aee9ff; /* blue border variant */
-  }
-
-  /* =========================================================
-   PERKS CARD VARIANTS
-   ========================================================= */
-
-  /* Default PerksCard */
-  .perks-card-default {
-    @apply w-[462px] h-[134px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border flex-shrink-0;
-    background-color: var(--color-datacard-bg);
-    border-width: 1px;
-    border-color: var(--color-perks-border);
-    opacity: 1;
-  }
-
-  /* Highlighted / Variant PerksCard */
-  .perks-card-highlighted {
-    @apply w-[462px] h-[134px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border flex-shrink-0;
-    background-color: var(--color-datacard-bg);
-    border-width: 2px;
-    border-color: #6654d3; /* you can define a CSS variable if used often */
-    box-shadow: 0px 0px 16.9px 5px #6654d380;
-    opacity: 1;
-  }
-
-  /* =========================================================
-   PROPOSAL CARDS
-   ========================================================= */
-  .card {
-    @apply rounded-[10px] flex flex-col gap-[14px] p-6;
-  }
-
-  /* Default proposal card */
-  .card-proposal-default {
-    @apply w-[382px] h-[188px];
-    background: #121b2b;
-    border: 2px solid #1e2a3e;
-  }
-
-  /* Highlighted variant */
-  .card-proposal-highlight {
-    @apply w-[382px] h-[188px];
-    background: #121b2b;
-    border: 2px solid #aee9ff;
-    box-shadow: 0px 0px 16.9px 5px #71d6fb80;
   }
 }
