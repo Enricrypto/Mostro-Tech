@@ -502,4 +502,19 @@
   .progress-bar-green-indicator {
     @apply bg-[#42EE5C] h-full transition-all;
   }
+
+  /* =========================================================
+   TOKEN HOLDINGS USER CARD
+   ========================================================= */
+  .token-holdings-card {
+    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_4px_6px_0_#00000017];
+    background-color: var(--color-datacard-bg);
+    border: 2px solid var(--color-datacard-border);
+  }
+
+  .token-holdings-card--blue {
+    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_0_16.9px_5px_#71D6FB80];
+    background-color: var(--color-datacard-bg);
+    border: 2px solid #aee9ff; /* blue border variant */
+  }
 }
