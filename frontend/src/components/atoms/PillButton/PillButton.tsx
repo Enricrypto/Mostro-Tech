@@ -7,10 +7,15 @@ import {
   FacebookLogoIcon,
   SpotifyLogoIcon,
   XLogoIcon,
-  TiktokLogoIcon,
+  TiktokLogoIcon
 } from "@phosphor-icons/react"
 
-export type SocialType = "instagram" | "facebook" | "spotify" | "twitter" | "tiktok"
+export type SocialType =
+  | "instagram"
+  | "facebook"
+  | "spotify"
+  | "twitter"
+  | "tiktok"
 
 export type PillButtonProps = ComponentProps<"button"> & {
   themeVariant?: "primary" | "secondary" | "black" | "blue" | "yellow"
@@ -18,12 +23,12 @@ export type PillButtonProps = ComponentProps<"button"> & {
   social?: SocialType
 }
 
-const SOCIAL_MAP: Record<SocialType, { icon: JSX.Element }> = {
-  instagram: { icon: <InstagramLogoIcon size={24} /> },
-  facebook: { icon: <FacebookLogoIcon size={24} /> },
-  spotify: { icon: <SpotifyLogoIcon size={24} weight="fill" /> },
-  twitter: { icon: <XLogoIcon size={24} /> },
-  tiktok: { icon: <TiktokLogoIcon size={24} /> },
+const SOCIAL_MAP: Record<SocialType, React.ElementType> = {
+  instagram: InstagramLogoIcon,
+  facebook: FacebookLogoIcon,
+  spotify: SpotifyLogoIcon,
+  twitter: XLogoIcon,
+  tiktok: TiktokLogoIcon
 }
 
 export const PillButton = ({
@@ -61,16 +66,16 @@ export const PillButton = ({
     ),
     yellow: cn(
       "bg-[var(--color-booger-buster)] text-[var(--color-black)] border-[var(--color-charcoal)]"
-    ),
+    )
   }
-  const socialIcon = social ? SOCIAL_MAP[social].icon : null
+  const SocialIcon = social ? SOCIAL_MAP[social] : null
 
   return (
     <button
       {...props}
       className={cn(baseStyles, variantStyles[themeVariant], className)}
     >
-      {socialIcon}
+      {SocialIcon && <SocialIcon size={24} />}
       {children}
     </button>
   )
