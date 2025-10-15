@@ -1,7 +1,7 @@
 "use client"
 
 import { Avatar } from "@/components/atoms/Avatar/Avatar"
-import { Badge } from "@/components/atoms/Badge/Badge"
+import { Badge } from "@/components/utils/Badge/Badge"
 import { Button } from "@/components/atoms/Button/Button"
 import { ClockIcon } from "@phosphor-icons/react"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
