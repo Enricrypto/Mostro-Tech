@@ -72,6 +72,8 @@
   --text-h4: 1.5rem;
   --text-p: 1rem;
   --text-small: 0.875rem;
+  --text-large: 30px;
+  --leading-large: 36px;
 
   /* Border radius & shadows */
   --radius-pill: 30px;
@@ -85,6 +87,7 @@
   --shadow-lg: 0px 8px 12px 0px #00000020;
 
   /* Spacing */
+  --spacing-025: 1px;
   --spacing-0: 0px;
   --spacing-1: 4px;
   --spacing-2: 8px;
@@ -332,16 +335,17 @@
   }
 
   /* =========================================================
-     BUTTONS
-     ========================================================= */
+   BUTTONS
+   ========================================================= */
   .button {
-    @apply inline-flex items-center justify-center rounded-[6px] transition-colors duration-200 font-medium text-center;
+    @apply inline-flex items-center justify-center rounded-[6px] transition-colors duration-200 font-medium text-center whitespace-nowrap gap-2;
     line-height: 24px;
     font-size: 14px;
-    gap: 0.5rem;
   }
+
+  /* === LINK === */
   .button-link {
-    @apply px-4 py-2 rounded-[6px] cursor-pointer transition-colors whitespace-nowrap;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] cursor-pointer transition-colors whitespace-nowrap;
     background: none;
     color: #ffffff;
     font-weight: 400;
@@ -353,15 +357,18 @@
     text-decoration-style: solid;
     color: #dcfd63;
   }
+
+  /* === CONTINUE VARIANTS === */
   .button-hover-continue {
-    @apply px-4 py-2;
+    @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap;
     background: linear-gradient(98.69deg, #71d6fb 3.63%, #6654d3 98.18%);
     color: #000000;
     font-weight: 500;
     font-size: 14px;
   }
+
   .button-continue {
-    @apply px-4 py-2;
+    @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap;
     background: #71d6fb;
     color: #000000;
     font-weight: 500;
@@ -371,54 +378,69 @@
     background: #5ab4f2;
     transition: background 300ms ease-out;
   }
+
+  /* === CANCEL VARIANTS === */
   .button-cancel-dark {
-    @apply px-4 py-2 border border-solid border-[#71D6FB];
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] whitespace-nowrap;
     background: none;
     color: #ffffff;
   }
+
   .button-cancel-blue {
-    @apply px-4 py-2 border border-solid border-[#71D6FB];
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] whitespace-nowrap;
     background: #71d6fb4d;
     color: #ffffff;
   }
+
   .button-cancel-white {
-    @apply px-4 py-2;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] whitespace-nowrap;
     background: #f1f5f9;
     color: #64748b;
   }
+
   .button-cancel-red {
-    @apply px-4 py-2;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] whitespace-nowrap;
     background: #fd6363;
     color: #000000;
   }
+
   .button-cancel-black {
-    @apply px-4 py-2 border border-solid border-[#000000];
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#000000] rounded-[6px] whitespace-nowrap;
     background: none;
     color: #000000;
   }
-  .button-cancel-icon-left {
-    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-center gap-2;
+
+  /* === ICON VARIANTS === */
+  .button-cancel-icon-left,
+  .button-cancel-icon-right {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] gap-2 whitespace-nowrap;
     background: none;
     font-weight: 500;
     font-size: 14px;
     color: #ffffff;
   }
+
   .button-rounded-icon {
-    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[36px] inline-flex items-center justify-center gap-2;
+    @apply inline-flex items-center justify-center gap-[10px] px-4 py-2 rounded-[36px] border border-solid border-[#71D6FB] whitespace-nowrap;
+    width: 40px;
+    height: 40px;
     background: #ffffff;
     font-weight: 500;
     font-size: 14px;
     color: #000000;
   }
-  .button-cancel-icon-right {
-    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-center gap-2;
-    background: none;
-    font-weight: 500;
-    font-size: 14px;
-    color: #ffffff;
+
+  .button-rounded-icon .icon {
+    @apply inline-flex items-center justify-center;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    color: #000000;
   }
+
+  /* === HIGHLIGHT === */
   .button-highlight {
-    @apply py-3 px-6 rounded-full transition;
+    @apply inline-flex items-center justify-center py-3 px-6 rounded-full whitespace-nowrap transition;
     background: #dcfd63;
     font-weight: 500;
     font-size: 15px;
@@ -427,66 +449,70 @@
   .button-highlight:hover {
     background: #dcfd634d;
   }
+
+  /* === CONNECT VARIANTS === */
   .button-connect {
-    @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] text-center;
+    @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] text-center whitespace-nowrap;
     background: #71d6fb;
-    width: 134px;
-    height: 40px;
-    line-height: 24px;
-    font-size: 14px;
-  }
-  .button-connected-hover {
-    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out;
-    background: #71d6fb;
-    width: 188px;
-    height: 40px;
-  }
-  .button-connected-hover .account {
-    @apply text-black;
     font-size: 14px;
     line-height: 24px;
-    width: 92px;
-    height: 24px;
   }
-  .button-connected-hover .icon {
-    @apply w-[20px] h-[20px];
-  }
+
+  .button-connected-hover,
   .button-connected-hover-gradient {
-    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out;
-    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
-    width: 188px;
-    height: 40px;
+    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out whitespace-nowrap;
+    color: #000000;
   }
+
+  .button-connected-hover {
+    background: #71d6fb;
+  }
+
+  .button-connected-hover-gradient {
+    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
+  }
+
+  .button-connected-hover .account,
   .button-connected-hover-gradient .account {
     @apply text-black;
     font-size: 14px;
     line-height: 24px;
-    width: 92px;
-    height: 24px;
   }
+
+  .button-connected-hover .icon,
   .button-connected-hover-gradient .icon {
     @apply w-[20px] h-[20px];
   }
 
+  /* === PROPOSAL === */
   .button-proposal {
-    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-between gap-2;
-    /* remove fixed width */
-    height: 40px;
+    @apply inline-flex items-center justify-center gap-[10px] px-4 py-2 rounded-[6px] border border-[#71d6fb] whitespace-nowrap;
     background: none;
     color: #ffffff;
     font-family: Inter;
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
-    overflow: hidden;
   }
 
-  .button-proposal .icon {
-    flex-shrink: 0; /* icon never shrinks */
-    width: 20px;
-    height: 20px;
-    margin-left: 8px;
-    color: #ffffff;
+  /* =========================================================
+   BUTTON ICON FIX (global for all buttons)
+   ========================================================= */
+  .button,
+  [class*="button-"] {
+    @apply inline-flex items-center justify-center gap-[8px]; /* 2px between text and icon */
+  }
+
+  .button .icon,
+  [class*="button-"] .icon {
+    @apply inline-flex items-center justify-center;
+    line-height: 0;
+    flex-shrink: 0;
+  }
+
+  .button .icon svg,
+  [class*="button-"] .icon svg {
+    display: block;
   }
 
   .button-alert-primary {
@@ -560,25 +586,182 @@
      ========================================================= */
   .progress-bar {
     @apply relative overflow-hidden rounded-[40px];
-    height: 16px;
-    width: 414px;
+    width: 334px; /* exact width */
+    height: 16px; /* exact height */
+    opacity: 1; /* full opacity */
+    transform: rotate(0deg); /* angle: 0 deg */
   }
+
+  /* BLUE VARIANT */
   .progress-bar-blue {
-    @apply bg-[#71D6FB]/20;
+    background: #71d6fb4d; /* area color */
   }
+
   .progress-bar-blue-indicator {
-    @apply bg-[#71D6FB] h-full transition-all;
+    background: #71d6fb; /* filled progress color */
+    @apply h-full transition-all;
   }
+
+  /* RED VARIANT */
   .progress-bar-red {
-    @apply bg-[#FD63634D];
+    background: #fd63634d;
   }
+
   .progress-bar-red-indicator {
-    @apply bg-[#FD6363] h-full transition-all;
+    background: #fd6363;
+    @apply h-full transition-all;
   }
+
+  /* GREEN VARIANT */
   .progress-bar-green {
-    @apply bg-[#42EE5C4D];
+    background: #42ee5c4d;
   }
+
   .progress-bar-green-indicator {
-    @apply bg-[#42EE5C] h-full transition-all;
+    background: #42ee5c;
+    @apply h-full transition-all;
+  }
+
+  /* =========================================================
+   TOKEN HOLDINGS USER CARD
+   ========================================================= */
+  .token-holdings-card {
+    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_4px_6px_0_#00000017];
+    background-color: var(--color-datacard-bg);
+    border: 2px solid var(--color-datacard-border);
+  }
+
+  .token-holdings-card--blue {
+    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_0_16.9px_5px_#71D6FB80];
+    background-color: var(--color-datacard-bg);
+    border: 2px solid #aee9ff; /* blue border variant */
+  }
+
+  /* =========================================================
+   PERKS CARD VARIANTS
+   ========================================================= */
+
+  /* Default PerksCard */
+  .perks-card-default {
+    @apply w-[462px] h-[134px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border flex-shrink-0;
+    background-color: var(--color-datacard-bg);
+    border-width: 1px;
+    border-color: var(--color-perks-border);
+    opacity: 1;
+  }
+
+  /* Highlighted / Variant PerksCard */
+  .perks-card-highlighted {
+    @apply w-[462px] h-[134px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border flex-shrink-0;
+    background-color: var(--color-datacard-bg);
+    border-width: 2px;
+    border-color: #6654d3; /* you can define a CSS variable if used often */
+    box-shadow: 0px 0px 16.9px 5px #6654d380;
+    opacity: 1;
+  }
+
+  /* =========================================================
+   PROPOSAL CARDS
+   ========================================================= */
+  .card {
+    @apply rounded-[10px] flex flex-col gap-[14px] p-6;
+  }
+
+  /* Default proposal card */
+  .card-proposal-default {
+    @apply w-[382px] h-[188px];
+    background: #121b2b;
+    border: 2px solid #1e2a3e;
+  }
+
+  /* Highlighted variant */
+  .card-proposal-highlight {
+    @apply w-[382px] h-[188px];
+    background: #121b2b;
+    border: 2px solid #aee9ff;
+    box-shadow: 0px 0px 16.9px 5px #71d6fb80;
+  }
+
+  /* =========================================================
+   PROPOSAL EXECUTED CARDS
+   ========================================================= */
+  .proposal-executed-card-default {
+    @apply w-[462px] h-[138px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border-[2px] border-[var(--color-charcoal)] bg-[var(--color-datacard-bg)] shadow-[0px_4px_6px_0px_#00000017] transition-all duration-300 ease-out hover:scale-[1.01];
+    opacity: 1;
+  }
+
+  .proposal-executed-card-highlighted {
+    @apply w-[462px] h-[138px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border-[2px] border-[#AEE9FF] bg-[var(--color-datacard-bg)] shadow-[0px_0px_16.9px_5px_#71D6FB80] transition-all duration-300 ease-out hover:scale-[1.01];
+    opacity: 1;
+  }
+
+  /* =========================================================
+   PROPOSAL CLOSED CARDS
+   ========================================================= */
+
+  /* Default variant */
+  .card-proposal-closed-default {
+    @apply w-[462px] h-[104px] p-[24px] flex flex-col gap-[14px] 
+         rounded-[10px] border-[2px] border-[var(--color-datacard-border)] 
+         bg-[var(--color-datacard-bg)] shadow-[0_4px_6px_0px_#00000017] 
+         transition-all duration-300 ease-out;
+    opacity: 1;
+  }
+
+  /* Highlighted variant */
+  .card-proposal-closed-highlighted {
+    @apply w-[462px] h-[104px] p-[24px] flex flex-col gap-[14px] 
+         rounded-[10px] border-[1px] border-[#AEE9FF] 
+         bg-[var(--color-datacard-bg)] shadow-[0_0_16.9px_5px_#71D6FB80] 
+         transition-all duration-300 ease-out;
+    opacity: 1;
+  }
+
+  /* =========================================================
+   Smaller card numeric text
+   ========================================================= */
+  .text-card-value-small {
+    font-family: var(--font-inter);
+    font-weight: 400; /* lighter than datacard-value */
+    font-size: 18px; /* smaller */
+    line-height: 20px;
+    letter-spacing: -0.75%;
+    color: var(--color-white);
+  }
+
+  /* =========================================================
+   NEW LAUNCH CARD VARIANTS
+   ========================================================= */
+
+  /* Default variant */
+  .new-launch-card-default {
+    @apply relative flex flex-col rounded-[10px] p-6 gap-[14px];
+    width: 384px;
+    height: 232px;
+    border: 2px solid #2d3953;
+    background: #121b2b;
+    box-shadow: 0 4px 6px 0 #00000017;
+  }
+
+  /* Highlighted / second variant */
+  .new-launch-card-highlighted {
+    @apply relative flex flex-col rounded-[10px] p-6 gap-[14px];
+    width: 384px;
+    height: 232px;
+    border: 2px solid #aee9ff;
+    background: #121b2b;
+    box-shadow: 0 0 16.9px 5px #71d6fb80;
+  }
+
+  /* Launch Label color for highlighted variant */
+  .new-launch-card-highlighted .launch-label {
+    @apply absolute flex items-center gap-2;
+    top: 6px;
+    right: 6px;
+  }
+
+  .new-launch-card-highlighted .launch-label svg,
+  .new-launch-card-highlighted .launch-label span {
+    color: var(--color-white);
   }
 }
