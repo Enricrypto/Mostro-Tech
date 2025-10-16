@@ -1,13 +1,12 @@
 "use client"
 
-import * as React from "react"
 import * as ProgressPrimitive from "@radix-ui/react-progress"
 import { cn } from "@/lib/utils"
 
 interface ProgressBarProps
   extends React.ComponentProps<typeof ProgressPrimitive.Root> {
   value: number
-  variant?: "blue" | "red" | "green"
+  variant?: "blue" | "red" | "green" | "purple"
 }
 
 export function ProgressBar({
@@ -21,13 +20,15 @@ export function ProgressBar({
     variant === "blue" && "progress-bar-blue",
     variant === "red" && "progress-bar-red",
     variant === "green" && "progress-bar-green",
+    variant === "purple" && "progress-bar-purple",
     className
   )
 
   const indicatorClass = cn(
     variant === "blue" && "progress-bar-blue-indicator",
     variant === "red" && "progress-bar-red-indicator",
-    variant === "green" && "progress-bar-green-indicator"
+    variant === "green" && "progress-bar-green-indicator",
+    variant === "purple" && "progress-bar-purple-indicator"
   )
 
   return (
