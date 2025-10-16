@@ -55,11 +55,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 
       {/* Section 1: Avatar + Name + Badge */}
       <div className='flex items-center gap-4 w-[336px] h-[58px]'>
-        <Avatar
-          src={avatarUrl}
-          variant='rounded-sm'
-          className='avatar--rounded-sm'
-        />
+        <Avatar src={avatarUrl} variant='rounded-sm' />
         <div className='flex flex-col gap-2 h-[58px]'>
           <span className='proposal-text font-semibold text-h3'>{name}</span>
           <Badge

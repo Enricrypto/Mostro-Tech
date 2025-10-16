@@ -3,7 +3,11 @@
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
-type AvatarVariant = "rounded-sm" | "rounded-md" | "circle"
+export type AvatarVariant =
+  | "rounded-sm"
+  | "rounded-md"
+  | "circle"
+  | "square-sm-lg" // ✅ new variant
 
 interface AvatarProps {
   src?: string
@@ -16,7 +20,9 @@ const VARIANT_CLASSES: Record<AvatarVariant, string> = {
   "rounded-sm":
     "w-[40px] h-[40px] rounded-[26px] bg-gradient-to-b from-[rgba(220,253,99,0)] to-[rgba(220,253,99,0.2)]",
   "rounded-md": "w-[60px] h-[60px] rounded-[30px]",
-  circle: "w-[48px] h-[48px] rounded-full"
+  circle: "w-[48px] h-[48px] rounded-full",
+  "square-sm-lg":
+    "w-[151px] h-[151px] rounded-[26px] bg-gradient-to-b from-[rgba(220,253,99,0)] to-[rgba(220,253,99,0.2)]"
 }
 
 export const Avatar: React.FC<AvatarProps> = ({

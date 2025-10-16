@@ -67,6 +67,8 @@
   --text-h4: 1.5rem;
   --text-p: 1rem;
   --text-small: 0.875rem;
+  --text-large: 30px;
+  --leading-large: 36px;
 
   /* Border radius & shadows */
   --radius-pill: 30px;
