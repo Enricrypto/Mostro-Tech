@@ -1,1 +1,1 @@
-export { FullArtistCardProfile } from "./FullArtistCardProfile"
+export { FullArtistCard } from "./FullArtistCard"

@@ -464,6 +464,43 @@
     @apply w-[20px] h-[20px];
   }
 
+  /* === YES BUTTON === */
+  .button-yes {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
+    width: 83px;
+    height: 40px;
+    background: #42ee5c;
+    color: #000000;
+  }
+
+  .button-yes .icon {
+    @apply w-4 h-4; /* 16px */
+    color: #000000;
+  }
+
+  /* === NO BUTTON === */
+  .button-no {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
+    width: 83px;
+    height: 40px;
+    background: #fd6363;
+    color: #000000;
+  }
+
+  .button-no .icon {
+    @apply w-4 h-4; /* 16px */
+    color: #000000;
+  }
+
+  /* === VOTED BUTTON === */
+  .button-voted {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
+    width: 83px;
+    height: 40px;
+    background: #f1f5f9;
+    color: #64748b;
+  }
+
   .button-follow-share {
     @apply inline-flex items-center justify-center rounded px-[16px] py-[8px] border border-[#71D6FB] bg-[#121B2B] whitespace-nowrap gap-2;
     font-weight: 500;

@@ -21,7 +21,7 @@ type SocialType =
   | "tiktok"
   | "youtube"
 
-interface FullArtistCardProfileProps {
+interface FullArtistCardProps {
   badgeText: string
   artistName: string
   artistHandle: string
@@ -33,7 +33,7 @@ interface FullArtistCardProfileProps {
   socials?: SocialType[]
 }
 
-export const FullArtistCardProfile: React.FC<FullArtistCardProfileProps> = ({
+export const FullArtistCard: React.FC<FullArtistCardProps> = ({
   badgeText,
   artistName,
   artistHandle,
