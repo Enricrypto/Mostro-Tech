@@ -525,6 +525,26 @@
     @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#71D6FB] rounded-md text-white font-medium text-sm whitespace-nowrap;
   }
 
+  /* =========================================================
+   SONG CARD BUTTON VARIANTS
+   ========================================================= */
+  .button-song-play {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
+    width: 91px;
+    height: 40px;
+    background: #71d6fb;
+    color: #000000;
+  }
+
+  .button-song-unlock {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2 border;
+    width: 172px;
+    height: 40px;
+    border: 1px solid #71d6fb;
+    background: transparent;
+    color: #ffffff;
+  }
+
   /* PROGRESS BARS */
   .progress-bar {
     @apply relative overflow-hidden rounded-[40px];
@@ -652,6 +672,46 @@
   .new-launch-card-highlighted .launch-label svg,
   .new-launch-card-highlighted .launch-label span {
     color: var(--color-white);
+  }
+
+  /* =========================================================
+   SONG CARD
+   ========================================================= */
+  .song-card {
+    @apply w-[580px] h-[104px] rounded-[10px] border flex items-center justify-between
+           bg-[var(--color-datacard-bg)] border-[var(--color-datacard-border)]
+           p-[var(--spacing-6)] gap-[var(--spacing-3)] shadow-[0_4px_6px_0_#00000017];
+  }
+
+  .song-card__icon {
+    @apply flex items-center justify-center rounded-[26px];
+    width: 40px;
+    height: 40px;
+    background: var(--color-highlight);
+    flex-shrink: 0; /* prevent shrinking */
+  }
+
+  .song-card__text {
+    @apply flex flex-col justify-between;
+    width: 373px;
+    height: 56px;
+    gap: var(--spacing-2);
+  }
+
+  .song-card__title {
+    font-family: var(--font-inter);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-white);
+  }
+
+  .song-card__subtitle {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: var(--color-proposal-artist);
   }
 
   /* =========================================================
