@@ -80,6 +80,7 @@
   --shadow-lg: 0px 8px 12px 0px #00000020;
 
   /* Spacing */
+  --spacing-025: 1px;
   --spacing-0: 0px;
   --spacing-1: 4px;
   --spacing-2: 8px;
@@ -327,16 +328,17 @@
   }
 
   /* =========================================================
-     BUTTONS
-     ========================================================= */
+   BUTTONS
+   ========================================================= */
   .button {
-    @apply inline-flex items-center justify-center rounded-[6px] transition-colors duration-200 font-medium text-center;
+    @apply inline-flex items-center justify-center rounded-[6px] transition-colors duration-200 font-medium text-center whitespace-nowrap gap-2;
     line-height: 24px;
     font-size: 14px;
-    gap: 0.5rem;
   }
+
+  /* === LINK === */
   .button-link {
-    @apply px-4 py-2 rounded-[6px] cursor-pointer transition-colors whitespace-nowrap;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] cursor-pointer transition-colors whitespace-nowrap;
     background: none;
     color: #ffffff;
     font-weight: 400;
@@ -348,15 +350,18 @@
     text-decoration-style: solid;
     color: #dcfd63;
   }
+
+  /* === CONTINUE VARIANTS === */
   .button-hover-continue {
-    @apply px-4 py-2;
+    @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap;
     background: linear-gradient(98.69deg, #71d6fb 3.63%, #6654d3 98.18%);
     color: #000000;
     font-weight: 500;
     font-size: 14px;
   }
+
   .button-continue {
-    @apply px-4 py-2;
+    @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap;
     background: #71d6fb;
     color: #000000;
     font-weight: 500;
@@ -366,54 +371,69 @@
     background: #5ab4f2;
     transition: background 300ms ease-out;
   }
+
+  /* === CANCEL VARIANTS === */
   .button-cancel-dark {
-    @apply px-4 py-2 border border-solid border-[#71D6FB];
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] whitespace-nowrap;
     background: none;
     color: #ffffff;
   }
+
   .button-cancel-blue {
-    @apply px-4 py-2 border border-solid border-[#71D6FB];
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] whitespace-nowrap;
     background: #71d6fb4d;
     color: #ffffff;
   }
+
   .button-cancel-white {
-    @apply px-4 py-2;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] whitespace-nowrap;
     background: #f1f5f9;
     color: #64748b;
   }
+
   .button-cancel-red {
-    @apply px-4 py-2;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] whitespace-nowrap;
     background: #fd6363;
     color: #000000;
   }
+
   .button-cancel-black {
-    @apply px-4 py-2 border border-solid border-[#000000];
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#000000] rounded-[6px] whitespace-nowrap;
     background: none;
     color: #000000;
   }
-  .button-cancel-icon-left {
-    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-center gap-2;
+
+  /* === ICON VARIANTS === */
+  .button-cancel-icon-left,
+  .button-cancel-icon-right {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] gap-2 whitespace-nowrap;
     background: none;
     font-weight: 500;
     font-size: 14px;
     color: #ffffff;
   }
+
   .button-rounded-icon {
-    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[36px] inline-flex items-center justify-center gap-2;
+    @apply inline-flex items-center justify-center gap-[10px] px-4 py-2 rounded-[36px] border border-solid border-[#71D6FB] whitespace-nowrap;
+    width: 40px;
+    height: 40px;
     background: #ffffff;
     font-weight: 500;
     font-size: 14px;
     color: #000000;
   }
-  .button-cancel-icon-right {
-    @apply px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] inline-flex items-center justify-center gap-2;
-    background: none;
-    font-weight: 500;
-    font-size: 14px;
-    color: #ffffff;
+
+  .button-rounded-icon .icon {
+    @apply inline-flex items-center justify-center;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    color: #000000;
   }
+
+  /* === HIGHLIGHT === */
   .button-highlight {
-    @apply py-3 px-6 rounded-full transition;
+    @apply inline-flex items-center justify-center py-3 px-6 rounded-full whitespace-nowrap transition;
     background: #dcfd63;
     font-weight: 500;
     font-size: 15px;
@@ -422,68 +442,70 @@
   .button-highlight:hover {
     background: #dcfd634d;
   }
+
+  /* === CONNECT VARIANTS === */
   .button-connect {
-    @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] text-center;
+    @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] text-center whitespace-nowrap;
     background: #71d6fb;
-    width: 134px;
-    height: 40px;
-    line-height: 24px;
-    font-size: 14px;
-  }
-  .button-connected-hover {
-    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out;
-    background: #71d6fb;
-    width: 188px;
-    height: 40px;
-  }
-  .button-connected-hover .account {
-    @apply text-black;
     font-size: 14px;
     line-height: 24px;
-    width: 92px;
-    height: 24px;
   }
-  .button-connected-hover .icon {
-    @apply w-[20px] h-[20px];
-  }
+
+  .button-connected-hover,
   .button-connected-hover-gradient {
-    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out;
-    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
-    width: 188px;
-    height: 40px;
+    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out whitespace-nowrap;
+    color: #000000;
   }
+
+  .button-connected-hover {
+    background: #71d6fb;
+  }
+
+  .button-connected-hover-gradient {
+    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
+  }
+
+  .button-connected-hover .account,
   .button-connected-hover-gradient .account {
     @apply text-black;
     font-size: 14px;
     line-height: 24px;
-    width: 92px;
-    height: 24px;
   }
+
+  .button-connected-hover .icon,
   .button-connected-hover-gradient .icon {
     @apply w-[20px] h-[20px];
   }
 
+  /* === PROPOSAL === */
   .button-proposal {
-    @apply inline-flex items-center justify-center gap-[10px];
-    width: 158px;
-    height: 40px;
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: 1px solid #71d6fb;
+    @apply inline-flex items-center justify-center gap-[10px] px-4 py-2 rounded-[6px] border border-[#71d6fb] whitespace-nowrap;
     background: none;
     color: #ffffff;
     font-family: Inter;
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
-    white-space: nowrap;
   }
 
-  .button-proposal .icon {
+  /* =========================================================
+   BUTTON ICON FIX (global for all buttons)
+   ========================================================= */
+  .button,
+  [class*="button-"] {
+    @apply inline-flex items-center justify-center gap-[8px]; /* 2px between text and icon */
+  }
+
+  .button .icon,
+  [class*="button-"] .icon {
+    @apply inline-flex items-center justify-center;
+    line-height: 0;
     flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    color: #ffffff;
+  }
+
+  .button .icon svg,
+  [class*="button-"] .icon svg {
+    display: block;
   }
 
   /* =========================================================
@@ -620,5 +642,53 @@
          bg-[var(--color-datacard-bg)] shadow-[0_0_16.9px_5px_#71D6FB80] 
          transition-all duration-300 ease-out;
     opacity: 1;
+  }
+
+  /* =========================================================
+   Smaller card numeric text
+   ========================================================= */
+  .text-card-value-small {
+    font-family: var(--font-inter);
+    font-weight: 400; /* lighter than datacard-value */
+    font-size: 18px; /* smaller */
+    line-height: 20px;
+    letter-spacing: -0.75%;
+    color: var(--color-white);
+  }
+
+  /* =========================================================
+   NEW LAUNCH CARD VARIANTS
+   ========================================================= */
+
+  /* Default variant */
+  .new-launch-card-default {
+    @apply relative flex flex-col rounded-[10px] p-6 gap-[14px];
+    width: 384px;
+    height: 232px;
+    border: 2px solid #2d3953;
+    background: #121b2b;
+    box-shadow: 0 4px 6px 0 #00000017;
+  }
+
+  /* Highlighted / second variant */
+  .new-launch-card-highlighted {
+    @apply relative flex flex-col rounded-[10px] p-6 gap-[14px];
+    width: 384px;
+    height: 232px;
+    border: 2px solid #aee9ff;
+    background: #121b2b;
+    box-shadow: 0 0 16.9px 5px #71d6fb80;
+  }
+
+  /* Launch Label color for highlighted variant */
+  .new-launch-card-highlighted .launch-label {
+    @apply absolute flex items-center gap-2;
+    top: 6px;
+    right: 6px;
+  }
+
+  .new-launch-card-highlighted .launch-label svg,
+  .new-launch-card-highlighted .launch-label span {
+    color: var(--color-white);
   }
 }
