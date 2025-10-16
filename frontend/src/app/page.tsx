@@ -18,7 +18,7 @@ export default function LandingPage() {
   const featuredArtist = getRandomArtist()
   
   return (
-    <div className='flex flex-col items-center gap-[var(--spacing-6)] p-[var(--spacing-6)] bg-night min-h-screen text-white'>
+    <div>
       <Hero />
       
       {/* ArtistFullCard Component with data from file */}
