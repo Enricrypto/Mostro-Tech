@@ -40,6 +40,14 @@
   --color-datacard-bg: #121b2b;
   --color-datacard-border: #2d3953;
 
+  /* Alert dialog colors */
+  --color-alert-red:    #fd6363;
+  --color-alert-green:  #42ee5c;
+  --color-alert-blue:   #71d6fb;
+  --color-alert-black:  #000000;
+  --color-alert-night:  #121b2b;
+  --color-alert-grey:   #64748b;
+
   /* Progress bar colors */
   --color-red: #fd6363;
   --color-red-light: #fd63634d;
@@ -47,9 +55,6 @@
   --color-green-light: #42ee5c4d;
   --color-blue: #71d6fb;
   --color-blue-light: #71d6fb33;
-
-  /* Perks colors */
-  --color-perks-border: #998ce1;
 
   /* Hover & Active */
   --hover-primary: var(--color-primary-light);
@@ -508,6 +513,72 @@
   .button .icon svg,
   [class*="button-"] .icon svg {
     display: block;
+  }
+
+  .button-alert-primary {
+    @apply 
+      bg-[var(--color-alert-blue)]
+      text-sm
+      text-[var(--color-alert-black)]
+      font-medium
+      leading-6
+      tracking-normal;
+  }
+
+  .button-alert-secondary {
+    @apply 
+      bg-transparent
+      text-sm
+      text-[var(--color-white)]
+      border
+      border-[var(--color-alert-blue)]
+      font-medium
+      leading-6
+      tracking-normal;
+  }
+
+  .button-alert-green-primary {
+    @apply 
+      bg-[var(--color-alert-green)]
+      text-sm
+      text-[var(--color-alert-black)]
+      font-medium
+      leading-6
+      tracking-normal;
+  }
+
+  .button-alert-green-secondary {
+    @apply 
+      bg-transparent
+      text-sm
+      text-[var(--color-white)]
+      border
+      border-[var(--color-alert-green)]
+      font-medium
+      leading-6
+      tracking-normal;
+  }
+
+  .button-alert-red-primary {
+    @apply 
+      bg-[var(--color-alert-red)]
+      text-sm
+      text-[var(--color-alert-black)]
+      font-medium
+      leading-6
+      tracking-normal;
+  }
+
+  .button-alert-red-secondary {
+    @apply 
+      bg-transparent
+      text-sm
+      text-[var(--color-white)]
+      border
+      border-[var(--color-alert-red)]
+      font-medium
+      leading-6
+      tracking-normal;
   }
 
   /* =========================================================
