@@ -32,7 +32,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       }}
     >
       <>
-        <ConnectButton />
+        {/* <ConnectButton /> */}
         {children}
       </>
     </PrivyProvider>

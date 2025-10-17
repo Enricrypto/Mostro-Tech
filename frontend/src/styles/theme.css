@@ -325,6 +325,24 @@
     color: var(--color-red);
   }
 
+  /* Selected badge (purple, 93x32) */
+  .badge-selected {
+    @apply inline-flex items-center justify-center font-medium text-[14px] leading-[20px] rounded-[26px] px-3 py-1.5;
+    width: 93px;
+    height: 32px;
+    background: #6654d3;
+    color: #ffffff;
+  }
+
+  /* Non-selected badge (50x32) */
+  .badge-unselected {
+    @apply inline-flex items-center justify-center font-medium text-[14px] leading-[20px] rounded-[21px] px-3 py-1.5;
+    width: 50px;
+    height: 32px;
+    background: #272659;
+    color: #b3b3b3;
+  }
+
   /* =========================================================
    BUTTONS
    ========================================================= */
