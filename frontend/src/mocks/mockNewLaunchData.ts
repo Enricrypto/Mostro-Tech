@@ -1,6 +1,6 @@
 export const mockNewLaunchData = [
   {
-    avatarUrl: "/avatar.png",
+    avatarUrl: "/avatar1.png",
     name: "Luma",
     badgeText: "Pop",
     launchInDays: 3,
@@ -8,7 +8,7 @@ export const mockNewLaunchData = [
     dynamicRightTopText: "1B"
   },
   {
-    avatarUrl: "/avatar.png",
+    avatarUrl: "/avatar2.png",
     name: "Ryder",
     badgeText: "Rock",
     launchInDays: 5,
@@ -16,7 +16,7 @@ export const mockNewLaunchData = [
     dynamicRightTopText: "500M"
   },
   {
-    avatarUrl: "/avatar.png",
+    avatarUrl: "/avatar3.png",
     name: "Jazzon",
     badgeText: "Jazz",
     launchInDays: 7,
@@ -24,7 +24,7 @@ export const mockNewLaunchData = [
     dynamicRightTopText: "750M"
   },
   {
-    avatarUrl: "/avatar.png",
+    avatarUrl: "/avatar4.png",
     name: "K-Hip",
     badgeText: "Hip-Hop",
     launchInDays: 2,
@@ -32,7 +32,7 @@ export const mockNewLaunchData = [
     dynamicRightTopText: "850M"
   },
   {
-    avatarUrl: "/avatar.png",
+    avatarUrl: "/avatar5.png",
     name: "Indiea",
     badgeText: "Indie",
     launchInDays: 10,
@@ -40,7 +40,7 @@ export const mockNewLaunchData = [
     dynamicRightTopText: "600M"
   },
   {
-    avatarUrl: "/avatar.png",
+    avatarUrl: "/avatar6.png",
     name: "ElecTron",
     badgeText: "Electronic",
     launchInDays: 1,
@@ -48,7 +48,7 @@ export const mockNewLaunchData = [
     dynamicRightTopText: "950M"
   },
   {
-    avatarUrl: "/avatar.png",
+    avatarUrl: "/avatar1.png",
     name: "R&Bee",
     badgeText: "R&B",
     launchInDays: 4,
@@ -56,7 +56,7 @@ export const mockNewLaunchData = [
     dynamicRightTopText: "1.1B"
   },
   {
-    avatarUrl: "/avatar.png",
+    avatarUrl: "/avatar2.png",
     name: "Clasina",
     badgeText: "Classical",
     launchInDays: 6,
@@ -64,7 +64,7 @@ export const mockNewLaunchData = [
     dynamicRightTopText: "720M"
   },
   {
-    avatarUrl: "/avatar.png",
+    avatarUrl: "/avatar3.png",
     name: "Xperio",
     badgeText: "Experimental",
     launchInDays: 8,

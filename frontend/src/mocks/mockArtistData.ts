@@ -4,7 +4,7 @@ export const mockArtistData = [
   {
     artistName: "Ava Solaris",
     tokenName: "$MAV",
-    avatarSrc: "/avatar.png",
+    avatarSrc: "/avatar1.png",
     badgeText: "LIVE",
     description:
       "Blending ethereal vocals with experimental synthwave textures.",
@@ -16,7 +16,7 @@ export const mockArtistData = [
   {
     artistName: "Noir Bloom",
     tokenName: "$MOI",
-    avatarSrc: "/avatar.png",
+    avatarSrc: "/avatar2.png",
     badgeText: "HOT",
     description:
       "Dark pop artist pushing emotional boundaries and sonic contrast.",
@@ -28,7 +28,7 @@ export const mockArtistData = [
   {
     artistName: "Echo Drift",
     tokenName: "$MEC",
-    avatarSrc: "/avatar.png",
+    avatarSrc: "/avatar3.png",
     badgeText: "NEW",
     description:
       "Post-ambient project creating immersive soundscapes for the metaverse.",

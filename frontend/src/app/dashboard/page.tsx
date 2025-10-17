@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BadgesRow } from "@/components/dashboard/BadgesRow"
 import { ArtistProfileBanner } from "@/components/molecules/ArtistProfileBanner"
 import { DashBoardStatsCard } from "@/components/templates/DashBoardStatsCard"
@@ -24,6 +24,14 @@ export default function DashboardPage() {
 
   const currentBanner = bannerPropsData[currentIndex] // pick the banner data for the current dot
   const currentVariant = VARIANTS[currentIndex] // pick the corresponding variant
+
+  // Auto-rotate effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % bannerPropsData.length)
+    }, 5000) // change every 5 seconds
+    return () => clearInterval(interval) // cleanup on unmount
+  }, [])
 
   return (
     <div className='bg-[#0A111F] min-h-screen w-full flex flex-col items-center'>
@@ -122,7 +130,7 @@ export default function DashboardPage() {
         </h2>
 
         <div
-          className='flex justify-between mt-10'
+          className='flex justify-between mt-5'
           style={{ width: "1200px", gap: "39px" }}
         >
           <div className='flex flex-col gap-[39px]'>
@@ -151,7 +159,7 @@ export default function DashboardPage() {
         </h2>
 
         <div
-          className='flex justify-start gap-[24px] mt-10'
+          className='flex justify-start gap-[24px] mt-5'
           style={{ width: "1200px" }}
         >
           {mockNewLaunchData.slice(0, 3).map((launch, idx) => (
@@ -178,7 +186,7 @@ export default function DashboardPage() {
           Trending Tokens
         </h2>
 
-        <div className='w-[1200px] h-[148px] flex gap-[24px]'>
+        <div className='w-[1200px] h-[148px] flex gap-[24px] mt-5'>
           {trendingTokens.slice(0, 3).map((token) => (
             <TrendingTokenCard
               key={token.id}

@@ -6,7 +6,7 @@ export const bannerPropsData = [
     tokenHolders: "12.3K",
     marketCap: "$1.2M",
     followers: "8.7K",
-    avatarSrc: "/avatar.png",
+    avatarSrc: "/avatar1.png",
     genreBadge: "Experimental",
     verifiedBadge: "Jazz"
   },
@@ -16,7 +16,7 @@ export const bannerPropsData = [
     tokenHolders: "8.9K",
     marketCap: "$950K",
     followers: "5.4K",
-    avatarSrc: "/avatar.png",
+    avatarSrc: "/avatar2.png",
     genreBadge: "Electronic",
     verifiedBadge: "Rock"
   },
@@ -26,7 +26,7 @@ export const bannerPropsData = [
     tokenHolders: "15.1K",
     marketCap: "$2.3M",
     followers: "10.2K",
-    avatarSrc: "/avatar.png",
+    avatarSrc: "/avatar3.png",
     genreBadge: "Hip-Hop",
     verifiedBadge: "Pop"
   }

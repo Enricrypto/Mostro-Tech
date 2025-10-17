@@ -2,71 +2,71 @@
 export const mockLeaderboardData = [
   {
     rank: 1,
-    avatarSrc: "/avatar.png",
-    username: "Alice",
+    avatarSrc: "/avatar6.png",
+    username: "mostrofan.eth",
     score: 1020,
     tokenSymbol: "MST"
   },
   {
     rank: 2,
-    avatarSrc: "/avatar.png",
-    username: "Bob",
+    avatarSrc: "/avatar6.png",
+    username: "cryptomuse.eth",
     score: 980,
     tokenSymbol: "MST"
   },
   {
     rank: 3,
-    avatarSrc: "/avatar.png",
-    username: "Charlie",
+    avatarSrc: "/avatar6.png",
+    username: "blockbeatz.eth",
     score: 920,
     tokenSymbol: "MST"
   },
   {
     rank: 4,
-    avatarSrc: "/avatar.png",
-    username: "Diana",
+    avatarSrc: "/avatar6.png",
+    username: "nftvibes.eth",
     score: 870,
     tokenSymbol: "MST"
   },
   {
     rank: 5,
-    avatarSrc: "/avatar.png",
-    username: "Ethan",
+    avatarSrc: "/avatar6.png",
+    username: "ethmelody.eth",
     score: 830,
     tokenSymbol: "MST"
   },
   {
     rank: 6,
-    avatarSrc: "/avatar.png",
-    username: "Fiona",
+    avatarSrc: "/avatar6.png",
+    username: "tokenharmonics.eth",
     score: 790,
     tokenSymbol: "MST"
   },
   {
     rank: 7,
-    avatarSrc: "/avatar.png",
-    username: "George",
+    avatarSrc: "/avatar6.png",
+    username: "chainbeats.eth",
     score: 750,
     tokenSymbol: "MST"
   },
   {
     rank: 8,
-    avatarSrc: "/avatar.png",
-    username: "Hannah",
+    avatarSrc: "/avatar6.png",
+    username: "cryptochorus.eth",
     score: 720,
     tokenSymbol: "MST"
   },
   {
     rank: 9,
-    avatarSrc: "/avatar.png",
-    username: "Ian",
+    avatarSrc: "/avatar6.png",
+    username: "onchainrhythm.eth",
     score: 680,
     tokenSymbol: "MST"
   },
   {
     rank: 10,
-    avatarSrc: "/avatar.png",
-    username: "Jane",
+    avatarSrc: "/avatar6.png",
+    username: "defigroove.eth",
     score: 640,
     tokenSymbol: "MST"
   }

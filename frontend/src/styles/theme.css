@@ -38,6 +38,9 @@
   --color-button-text-default: #0f172a;
   --color-button-text-selected: #ffffff;
 
+  /* Navbar */
+  --color-navbar-border: #2d3953;
+
   /* Proposal card */
   --color-proposal-card-bg: linear-gradient(
     103.78deg,
@@ -136,6 +139,10 @@
   }
   input {
     font-family: var(--font-inter);
+  }
+  /* Text Highlight */
+  .text-highlight {
+    color: var(--color-highlight);
   }
 }
 
@@ -300,14 +307,16 @@
     border: none;
     color: var(--color-black);
   }
+
   .badge-neutral {
     @apply rounded-[10px];
     width: 49px;
     height: 22px;
-    background: var(--color-muted) 4d;
-    border-color: var(--color-muted);
-    color: var(--color-white);
+    background-color: rgba(210, 210, 213, 0.3); /* semi-transparent muted */
+    border: 1px solid #d2d2d5;
+    color: #ffffff;
   }
+
   .badge-icon {
     @apply rounded-[10px];
     width: 69px;
@@ -652,12 +661,7 @@
    ========================================================= */
   .token-holdings-card {
     @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_4px_6px_0_#00000017]
-         bg-[var(--color-datacard-bg)] border-2 border-[var(--color-datacard-border)];
-  }
-
-  .token-holdings-card--blue {
-    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_0_16.9px_5px_#71D6FB80]
-         bg-[var(--color-datacard-bg)] border-2 border-[#aee9ff];
+       bg-[var(--color-datacard-bg)] border-2 border-[var(--color-datacard-border)];
   }
 
   /* =========================================================
@@ -725,10 +729,6 @@
     letter-spacing: -0.75%;
     color: var(--color-white);
   }
-
-  /* =========================================================
-   NEW LAUNCH CARD
-   ========================================================= */
 
   /* =========================================================
    SONG CARD

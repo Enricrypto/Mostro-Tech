@@ -26,7 +26,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 }) => {
   return (
     <div
-      className='relative flex flex-col rounded-[10px] w-[384px] border-2 gap-[14px]
+      className='group relative flex flex-col rounded-[10px] w-[384px] border-2 gap-[14px]
              p-6 border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
              transition-colors duration-200 hover:border-[#71D6FB]'
     >
@@ -35,12 +35,9 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
         <CalendarBlankIcon
           size={16}
           weight='bold'
-          style={{ color: "var(--color-highlight)" }}
+          className='text-highlight group-hover:text-white transition-colors duration-200'
         />
-        <span
-          className='font-inter font-medium text-[12px] leading-[20px]'
-          style={{ color: "var(--color-highlight)" }}
-        >
+        <span className='font-inter font-medium text-[12px] leading-[20px] text-highlight group-hover:text-white transition-colors duration-200'>
           Launch in {launchInDays} days
         </span>
       </div>

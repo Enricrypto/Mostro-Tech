@@ -4,16 +4,12 @@ import { cn } from "@/lib/utils"
 
 export type ImageProps = {
   className?: string
-  src?: "avatar.png" | "logo.png" | "miracle.png" | string
+  src?: "avatar1.png" | "logo.png" | "miracle.png" | string
   alt?: string
 }
 
 // Available PNG images in public folder
-const AVAILABLE_PNG_IMAGES = [
-  "avatar.png",
-  "logo.png", 
-  "miracle.png"
-] as const
+const AVAILABLE_PNG_IMAGES = ["avatar1.png", "logo.png", "miracle.png"] as const
 
 // Constants for fixed styling
 const IMAGE_STYLES = {
@@ -30,13 +26,12 @@ const IMAGE_STYLES = {
  */
 export function Image({
   className,
-  src = "avatar.png",
+  src = "avatar1.png",
   alt = "Image"
 }: ImageProps) {
-  
   // Ensure the src includes the leading slash for public folder
-  const imageSrc = src.startsWith('/') ? src : `/${src}`
-  
+  const imageSrc = src.startsWith("/") ? src : `/${src}`
+
   const imageStyle = {
     width: `${IMAGE_STYLES.width}px`,
     height: `${IMAGE_STYLES.height}px`,

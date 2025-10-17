@@ -12,7 +12,6 @@ interface TokenHoldingsUserCardProps {
   badgeText: string
   leftTopValue: number // dynamic $ value
   rightTopPerks: number // dynamic number of perks
-  variant?: "default" | "blue" // new prop for variant
 }
 
 export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
@@ -21,15 +20,10 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
   tokenCount,
   badgeText,
   leftTopValue,
-  rightTopPerks,
-  variant = "default"
+  rightTopPerks
 }) => {
   return (
-    <div
-      className={`${
-        variant === "blue" ? "token-holdings-card--blue" : "token-holdings-card"
-      }`}
-    >
+    <div className='token-holdings-card hover:shadow-[0_0_16.9px_5px_#71D6FB80] transition-shadow duration-200'>
       {/* Top Section */}
       <div className='flex justify-between items-center'>
         {/* Left Side */}
@@ -57,21 +51,27 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
       {/* Bottom Section */}
       <div className='flex justify-between items-center'>
         {/* Left Part */}
-        <div className='flex items-center gap-2'>
+        <div className='flex flex-col items-center gap-1'>
+          {/* Top: value */}
           <span className='text-[16px] font-bold text-white'>
             ${leftTopValue}
           </span>
+          {/* Bottom: label */}
           <span className='text-[12px] font-medium text-[#B3B3B3]'>
             Current Value
           </span>
         </div>
 
         {/* Right Part */}
-        <div className='flex items-center gap-2'>
-          <SketchLogoIcon className='w-[20px] h-[20px] text-[#4995E0]' />
-          <span className='text-[16px] font-bold text-white'>
-            {rightTopPerks}
-          </span>
+        <div className='flex flex-col items-center gap-1'>
+          {/* Top: icon + number */}
+          <div className='flex items-center gap-2'>
+            <SketchLogoIcon className='w-[20px] h-[20px] text-[#4995E0]' />
+            <span className='text-[16px] font-bold text-white'>
+              {rightTopPerks}
+            </span>
+          </div>
+          {/* Bottom: label */}
           <span className='text-[12px] font-medium text-[#B3B3B3]'>
             Perks Unlocked
           </span>
