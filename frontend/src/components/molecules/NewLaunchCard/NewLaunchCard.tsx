@@ -90,7 +90,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 
       {/* Section 4: Bottom Button */}
       <Button
-        themeVariant='join-fun-club'
+        themeVariant='song-unlock'
         icon={<ArrowUpRightIcon />}
         iconPosition='right'
       >

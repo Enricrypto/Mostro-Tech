@@ -5,7 +5,7 @@ import { NewLaunchCard } from "@/components/molecules/NewLaunchCard"
 
 export default function LandingPage() {
   return (
-    <div className='space-y-8 p-8 bg-[#0F1420] min-h-screen'>
+    <div className='bg-[#0A111F] min-h-screen w-full flex flex-col items-center'>
       <Hero />
 
       {/* New Launch Section */}
