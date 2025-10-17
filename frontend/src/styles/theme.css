@@ -729,26 +729,8 @@
   }
 
   /* =========================================================
-   NEW LAUNCH CARD VARIANTS
+   NEW LAUNCH CARD
    ========================================================= */
-  .new-launch-card-default {
-    @apply relative flex flex-col rounded-[10px] p-6 gap-[14px] w-[384px] h-[232px] border-2 border-[#2d3953]
-         bg-[#121b2b] shadow-[0_4px_6px_0_#00000017];
-  }
-
-  .new-launch-card-highlighted {
-    @apply relative flex flex-col rounded-[10px] p-6 gap-[14px] w-[384px] h-[232px] border-2 border-[#aee9ff]
-         bg-[#121b2b] shadow-[0_0_16.9px_5px_#71d6fb80];
-  }
-
-  .new-launch-card-highlighted .launch-label {
-    @apply absolute flex items-center gap-2 top-1.5 right-1.5;
-  }
-
-  .new-launch-card-highlighted .launch-label svg,
-  .new-launch-card-highlighted .launch-label span {
-    color: var(--color-white);
-  }
 
   /* =========================================================
    SONG CARD
@@ -885,16 +867,17 @@
   }
 }
 
-    /* =========================================================
+/* =========================================================
    LEADERBOARD 
    ========================================================= */
-  .leaderboard {
-    @apply w-[580px] h-[88px] gap-[14px] p-6 
-           rounded-[10px] border border-[var(--color-button-bg-selected)]
-           bg-[var(--color-datacard-bg)] opacity-100;
-    @apply absolute top-4 left-4;
-  }
+.leaderboard {
+  @apply w-[580px] h-[88px] gap-[14px] p-6 
+         rounded-[10px] border border-[var(--color-button-bg-selected)]
+         bg-[var(--color-datacard-bg)] opacity-100;
+  @apply transition-shadow duration-300 ease-out; /* smooth shadow transition */
+}
 
-  .leaderboard-shadow {
+/* highlighted variant on hover */
+.leaderboard:hover {
   @apply shadow-[0px_0px_16.9px_5px_#71D6FB80];
-  }
+}

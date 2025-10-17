@@ -1,53 +1,67 @@
-'use client'
+"use client"
 
 import { Avatar } from "@/components/atoms/Avatar"
-import  React  from "react"
 import { cn } from "@/lib/utils"
 
-type  variant = "default" | "shadow"
-
-export interface LeaderBoardProps extends React.HTMLAttributes<HTMLDivElement> {
-	rank: number,
-	avatar: React.ReactNode,
-	name: string;
-	volume: number,
-	token: string,
-	variant?: variant,
-	children?: React.ReactNode
-
+interface LeaderBoardProps {
+  rank: number
+  avatarSrc: string
+  username: string
+  score: string | number
+  tokenSymbol: string
+  className?: string
 }
 
-export function Leaderboard ({
-	rank,
-	avatar,
-	name,
-	volume,
-	token,
-	className,
-	variant="default",
-	children,
-	...props
-} : LeaderBoardProps): React.JSX.Element {
+export function LeaderBoard({
+  rank,
+  avatarSrc,
+  username,
+  score,
+  tokenSymbol,
+  className
+}: LeaderBoardProps) {
+  return (
+    <div
+      className={cn(
+        "leaderboard flex items-center justify-between transition-shadow duration-300 ease-out",
+        className
+      )}
+      style={{
+        width: "580px",
+        height: "88px",
+        borderRadius: "10px",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "var(--color-muted)",
+        gap: "14px",
+        padding: "24px",
+        background: "var(--color-card-bg)" // you can adjust to #121B2B if needed
+      }}
+    >
+      {/* LEFT SIDE: Rank + Avatar + Username */}
+      <div className='flex items-center gap-[14px]'>
+        <span className='w-[21px] text-[18px] font-semibold leading-[28px] text-[var(--color-muted)]'>
+          #{rank}
+        </span>
+        <Avatar
+          variant='rounded-sm'
+          src={avatarSrc}
+          className='w-[40px] h-[40px] rounded-[26px]'
+        />
+        <span className='text-[18px] font-semibold leading-[28px] text-[var(--color-white)]'>
+          {username}
+        </span>
+      </div>
 
-	const VARIANT_MAP = {
-		default: "leaderboard",
-		shadow: "leaderboard leaderboard-shadow",
-	}
-
-	const ref = React.useRef<HTMLDivElement>(null);
-	const [isTruncated, setIsTruncated] = React.useState(false);
-
-	const formatted = volume.toLocaleString('en-US')
-
-	return (
-		<div className={cn(VARIANT_MAP[variant], "inline-flex items-center")}>
-			<div className="font-sans font-semibold text-[18px] leading-[28px] tracking-normal w-[21px] h-[28px] text-[var(--color-proposal-artist)] opacity-100"> #{ rank } </div>
-			{ avatar } 
-			<div className="flex-1 min-w-20 truncate opacity-100 font-inter font-semibold text-[18px] leading-[28px] tracking-normal"> { name }</div>
-			<div className="ml-auto inline-flex">
-			  <div className="flex-1 max-w-70 truncate mr-2 opacity-100 font-inter font-semibold text-[18px] leading-[28px] tracking-normal text-[var(--color-skyblue)]">{formatted}</div>
-			  <div className="font-inter font-medium text-[12px] leading-[20px] tracking-normal w-[33px] h-[20px] opacity-100 text-[var(--color-proposal-artist)]">${token}</div>
-			</div>
-		</div>
-	)
+      {/* RIGHT SIDE: Score + Token Symbol */}
+      <div className='flex items-center gap-[8px]'>
+        <span className='w-[63px] text-right text-[18px] font-semibold leading-[28px] text-[var(--color-skyblue)]'>
+          {score}
+        </span>
+        <span className='w-[33px] text-[12px] font-medium leading-[20px] text-[var(--color-muted)]'>
+          {tokenSymbol}
+        </span>
+      </div>
+    </div>
+  )
 }

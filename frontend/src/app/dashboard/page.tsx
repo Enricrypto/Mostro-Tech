@@ -7,9 +7,15 @@ import { ArtistProfileBanner } from "@/components/molecules/ArtistProfileBanner"
 import { DashBoardStatsCard } from "@/components/templates/DashBoardStatsCard"
 import { ArtistCard } from "@/components/molecules/ArtistCard"
 import { Button } from "@/components/atoms/Button"
+import { LeaderBoard } from "@/components/molecules/Leaderboard"
+import { NewLaunchCard } from "@/components/molecules/NewLaunchCard"
+import { TrendingTokenCard } from "@/components/molecules/TrendingTokenCard"
 import { bannerPropsData } from "@/mocks/mockBannerProps"
 import { statsCardVariants } from "@/mocks/mockStatsData"
 import { mockArtistData } from "@/mocks/mockArtistData"
+import { mockLeaderboardData } from "@/mocks/mockLeaderboardData"
+import { mockNewLaunchData } from "@/mocks/mockNewLaunchData"
+import { trendingTokens } from "@/mocks/mockTrendingTokens"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 
 const VARIANTS: ("default" | "purple" | "red")[] = ["default", "purple", "red"]
@@ -110,9 +116,118 @@ export default function DashboardPage() {
           </Button>
         </div>
         {/* ARTIST CARDS */}
-        <div className='flex gap-6 w-[1200px] justify-start'>
+        <div className='flex gap-6 w-[1200px] justify-start '>
           {mockArtistData.map((artist, idx) => (
             <ArtistCard key={idx} {...artist} />
+          ))}
+        </div>
+      </section>
+
+      {/* === TOP HOLDERS SECTION === */}
+      <section
+        className='flex flex-col gap-[24px] mt-20 items-center'
+        style={{ width: "1200px" }}
+      >
+        {/* HEADER */}
+        <h2
+          className='font-inter font-semibold text-[30px] leading-[36px] text-white w-full'
+          style={{ letterSpacing: "-0.75%" }}
+        >
+          Top Holders
+        </h2>
+
+        {/* LEADERBOARD CARDS GRID */}
+        <div
+          className='flex justify-between mt-10'
+          style={{ width: "1200px", gap: "39px" }}
+        >
+          {/* LEFT COLUMN */}
+          <div className='flex flex-col gap-[39px]'>
+            {mockLeaderboardData.slice(0, 5).map((holder, idx) => (
+              <LeaderBoard key={idx} {...holder} />
+            ))}
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div className='flex flex-col gap-[39px]'>
+            {mockLeaderboardData.slice(5, 10).map((holder, idx) => (
+              <LeaderBoard key={idx + 5} {...holder} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === NEW LAUNCHES SECTION === */}
+      <section
+        className='flex flex-col gap-[24px] mt-20 items-center'
+        style={{ width: "1200px" }}
+      >
+        {/* HEADER */}
+        <h2
+          className='font-inter font-semibold text-[30px] leading-[36px] text-white w-full'
+          style={{ letterSpacing: "-0.75%" }}
+        >
+          New Launches
+        </h2>
+
+        {/* CARDS CONTAINER */}
+        <div
+          className='flex justify-start gap-[24px] mt-10'
+          style={{ width: "1200px" }}
+        >
+          {mockNewLaunchData.slice(0, 3).map((launch, idx) => (
+            <NewLaunchCard
+              key={idx}
+              avatarUrl={launch.avatarUrl}
+              name={launch.name}
+              badgeText={launch.badgeText}
+              launchInDays={launch.launchInDays}
+              price={launch.price}
+              dynamicRightTopText={launch.dynamicRightTopText}
+              onButtonClick={() => console.log(`View ${launch.name}`)}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* === TRENDING TOKENS SECTION === */}
+      {/* === TRENDING TOKENS SECTION === */}
+      <section
+        className='flex flex-col gap-[24px] mt-20 mb-20 items-center'
+        style={{ width: "1200px" }}
+      >
+        {/* Top: Title */}
+        <div className='w-[1200px] h-[36px]'>
+          <h2 className='text-white font-inter font-semibold text-[30px] leading-[36px] tracking-[-0.75%]'>
+            Trending Tokens
+          </h2>
+        </div>
+
+        {/* Middle part (cards row 1) */}
+        <div className='w-[1200px] h-[148px] flex gap-[24px]'>
+          {trendingTokens.slice(0, 3).map((token) => (
+            <TrendingTokenCard
+              key={token.id}
+              avatarSrc={token.iconUrl}
+              name={token.name}
+              subtitle={token.value}
+              value={token.price}
+              badgeText={token.change}
+            />
+          ))}
+        </div>
+
+        {/* Bottom part (cards row 2) */}
+        <div className='w-[1200px] h-[148px] flex gap-[24px]'>
+          {trendingTokens.slice(3, 6).map((token) => (
+            <TrendingTokenCard
+              key={token.id}
+              avatarSrc={token.iconUrl}
+              name={token.name}
+              subtitle={token.value}
+              value={token.price}
+              badgeText={token.change}
+            />
           ))}
         </div>
       </section>
