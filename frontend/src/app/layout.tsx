@@ -1,23 +1,24 @@
 import { Inter, Poppins } from "next/font/google"
 import "@solana/wallet-adapter-react-ui/styles.css"
 import "./globals.css"
+import { Navbar } from "@/components/navigation/Navbar"
 import Providers from "./config/PrivyContextProvider"
 import type { Metadata } from "next"
 
-// Poppins (headings/body)
+// === Fonts ===
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-primary"
 })
 
-// Inter (inputs/other UI elements)
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-inter"
 })
 
+// === Metadata ===
 export const metadata: Metadata = {
   title: "Mostro",
   description: "A Web3 platform for artists and fans",
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
   }
 }
 
+// === Root Layout ===
 export default function RootLayout({
   children
 }: {
@@ -33,8 +35,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={`${poppins.variable} ${inter.variable}`}>
-      <body className='antialiased bg-black text-white'>
-        <Providers>{children}</Providers>
+      <body className='antialiased bg-[#0A111F] min-h-screen flex flex-col items-center max-w-[1512px] w-full mx-auto pt-6'>
+        <Providers>
+          {/* ===== GLOBAL NAVBAR ===== */}
+          <Navbar />
+
+          {/* ===== PAGE CONTENT ===== */}
+          <main className='w-full flex flex-col items-center'>{children}</main>
+        </Providers>
       </body>
     </html>
   )

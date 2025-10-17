@@ -67,7 +67,7 @@ export function Navbar() {
       <div className='flex items-center gap-[10px] w-[418px] h-[40px]'>
         <SearchBar
           placeholder='Search...'
-          className='w-[274px] h-[40px] rounded-[6px] border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]'
+          className='rounded-[6px] border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]'
         />
 
         <Button themeVariant='connect'>Connect Wallet</Button>

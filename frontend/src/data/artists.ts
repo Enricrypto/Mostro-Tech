@@ -23,7 +23,7 @@ export const artistsData: Artist[] = [
   {
     id: "2",
     name: "Dua Lipa",
-    image: "/avatar.png",
+    image: "/avatar1.png",
     latestSingle: {
       title: "Levitating",
       duration: "3:23",

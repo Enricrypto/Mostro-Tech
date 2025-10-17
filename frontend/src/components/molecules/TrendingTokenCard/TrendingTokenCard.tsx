@@ -35,7 +35,7 @@ export const TrendingTokenCard: React.FC<TrendingTokenCardProps> = ({
             className='text-[#B3B3B3] font-medium text-[12px] leading-[20px] whitespace-nowrap overflow-hidden text-ellipsis'
             title={subtitle}
           >
-            {subtitle}
+            Requesting: {subtitle} tokens
           </span>
         </div>
       </div>
@@ -46,7 +46,7 @@ export const TrendingTokenCard: React.FC<TrendingTokenCardProps> = ({
       {/* Bottom Section */}
       <div className='flex justify-between items-center'>
         <span
-          className='font-bold text-[16px] leading-[24px] whitespace-nowrap overflow-hidden text-ellipsis'
+          className='font-bold text-[16px] leading-[24px] whitespace-nowrap overflow-hidden text-ellipsis text-white'
           title={value}
         >
           {value}

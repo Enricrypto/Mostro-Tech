@@ -11,21 +11,37 @@
   --color-primary-light: #9c8be7;
   --color-accent: #3fd9ff;
   --color-accent-dark: #1e97e6;
-  --color-highlight: #d3fe3d;
+  --color-highlight: #dcfd63; /* updated to match button highlight */
+  --color-highlight-opacity: #dcfd634d;
   --color-muted: #d2d2d5;
   --color-night: #0a111f;
   --color-skyblue-opacity: #71d6fb4d;
   --color-skyblue: #71d6fb;
-  --color-booger-buster: #dcfd63;
-  --color-charcoal: #2d3953;
+  --color-booger-buster: #fff70033;
+  --color-red-opacity: #fd63634d;
+  --color-red: #fd6363;
+  --color-green-opacity: #42ee5c4d;
+  --color-green: #42ee5c;
+  --color-purple-opacity: #6654d34d;
+  --color-purple: #6654d3;
 
-  /* Buttons & UI */
+  /* New button colors */
+  --color-light-blue-hover: #5ab4f2;
+  --color-light-gray: #f1f5f9;
+  --color-gray-text: #64748b;
+  --color-dark-bg: #121b2b;
+  --color-dark-bg-hover: #1a2438;
+
+  /* Buttons */
   --color-button-bg-default: #ffffff;
   --color-button-bg-selected: #998ce1;
   --color-button-text-default: #0f172a;
   --color-button-text-selected: #ffffff;
 
-  /* Proposal card colors */
+  /* Navbar */
+  --color-navbar-border: #2d3953;
+
+  /* Proposal card */
   --color-proposal-card-bg: linear-gradient(
     103.78deg,
     #352b6d 26.89%,
@@ -36,31 +52,22 @@
   --color-proposal-album: #ffffff;
   --color-proposal-artist: #b3b3b3;
 
-  /* DataCard colors */
+  /* DataCard */
   --color-datacard-bg: #121b2b;
   --color-datacard-border: #2d3953;
 
-  /* Alert dialog colors */
-  --color-alert-red:    #fd6363;
-  --color-alert-green:  #42ee5c;
-  --color-alert-blue:   #71d6fb;
-  --color-alert-black:  #000000;
-  --color-alert-night:  #121b2b;
-  --color-alert-grey:   #64748b;
-
-  /* Progress bar colors */
-  --color-red: #fd6363;
-  --color-red-light: #fd63634d;
-  --color-green: #42ee5c;
-  --color-green-light: #42ee5c4d;
-  --color-blue: #71d6fb;
-  --color-blue-light: #71d6fb33;
+  /* Alert dialog */
+  --color-alert-red: #fd6363;
+  --color-alert-green: #42ee5c;
+  --color-alert-blue: #71d6fb;
+  --color-alert-black: #000000;
+  --color-alert-grey: #64748b;
 
   /* Hover & Active */
   --hover-primary: var(--color-primary-light);
   --active-primary: var(--color-primary);
 
-  /* Fonts: will be set by next/font on html class */
+  /* Fonts */
   --font-heading: var(--font-primary);
   --font-body: var(--font-primary);
   --font-inter: var(--font-inter);
@@ -103,13 +110,11 @@
   --z-popover: 1300;
   --opacity-disabled: 0.6;
 
-  /* =========================================================
-   DataCard text
-   ========================================================= */
+  /* DataCard text */
   --text-datacard-value-font-size: 30px;
   --text-datacard-value-line-height: 36px;
   --text-datacard-value-letter-spacing: -0.75%;
-  --text-datacard-value-font-weight: 600; /* Semi Bold */
+  --text-datacard-value-font-weight: 600;
 }
 
 /* =========================================================
@@ -132,9 +137,12 @@
   button {
     transition: all 0.2s ease;
   }
-
   input {
     font-family: var(--font-inter);
+  }
+  /* Text Highlight */
+  .text-highlight {
+    color: var(--color-highlight);
   }
 }
 
@@ -142,7 +150,7 @@
    UTILITIES
    ========================================================= */
 @layer utilities {
-  /* Font helpers */
+  /* Font utilities */
   .font-heading {
     font-family: var(--font-heading);
   }
@@ -153,7 +161,7 @@
     font-family: var(--font-inter);
   }
 
-  /* Text sizes */
+  /* Text utilities */
   .text-h1 {
     font-size: var(--text-h1);
     font-weight: 700;
@@ -173,12 +181,10 @@
   }
   .text-p {
     font-size: var(--text-p);
-    font-family: var(--font-body);
   }
   .text-small {
     font-size: var(--text-small);
   }
-
   .text-datacard-value {
     font-family: var(--font-inter);
     font-weight: var(--text-datacard-value-font-weight);
@@ -221,117 +227,129 @@
 }
 
 /* =========================================================
-   COMPONENTS (avatars, badges, buttons, progress bars)
+   COMPONENTS
    ========================================================= */
-
 @layer components {
-  /* =========================================================
-     AVATARS
-     ========================================================= */
+  /* AVATARS */
   .avatar {
     @apply relative inline-flex justify-center items-center overflow-hidden flex-shrink-0;
   }
   .avatar--rounded-sm {
-    @apply w-10 h-10 rounded-[26px] opacity-100;
+    @apply w-10 h-10 rounded-[26px];
   }
   .avatar--rounded-initials {
-    @apply w-10 h-10 rounded-[26px] gap-2 opacity-100;
-    background: #dcfd63;
+    @apply w-10 h-10 rounded-[26px] gap-2;
+    background: var(--color-highlight);
   }
   .avatar--square-lg {
-    @apply w-[288px] h-[288px] rounded-[26px] opacity-100;
+    @apply w-[288px] h-[288px] rounded-[26px];
     background: linear-gradient(
       180deg,
-      rgba(220, 253, 99, 0) 0%,
-      rgba(220, 253, 99, 0.2) 98.26%
+      var(--color-highlight-opacity) 0%,
+      var(--color-highlight-opacity) 98.26%
     );
   }
   .avatar--square-lg-initials {
-    @apply w-[288px] h-[288px] rounded-[26px] gap-2 pt-3 pb-3 opacity-100;
-    background: linear-gradient(180deg, #71d6fb 0%, #dcfd63 100%);
-  }
-  .avatar--square-sm-lg {
-    @apply w-[151px] h-[151px] rounded-[26px] opacity-100;
+    @apply w-[288px] h-[288px] rounded-[26px] gap-2 pt-3 pb-3;
     background: linear-gradient(
       180deg,
-      rgba(220, 253, 99, 0) 0%,
-      rgba(220, 253, 99, 0.2) 98.26%
+      var(--color-skyblue) 0%,
+      var(--color-highlight) 100%
+    );
+  }
+  .avatar--square-sm-lg {
+    @apply w-[151px] h-[151px] rounded-[26px];
+    background: linear-gradient(
+      180deg,
+      var(--color-highlight-opacity) 0%,
+      var(--color-highlight-opacity) 98.26%
     );
   }
 
-  /* =========================================================
-   BADGES
-   ========================================================= */
+  /* BADGES */
   .badge {
-    @apply inline-flex items-center justify-center text-xs font-medium w-fit whitespace-nowrap shrink-0 px-2 py-[2px] gap-2 border border-solid transition-colors duration-200;
-    font-family: Inter;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 0;
+    @apply inline-flex items-center justify-center text-xs font-medium w-fit whitespace-nowrap px-2 py-[2px] gap-2 border border-solid;
+    font-family: var(--font-inter);
   }
-
   .badge-closed {
-    @apply rounded-[10px] border border-solid;
+    @apply rounded-[10px];
     width: 38px;
     height: 22px;
-    background: #fd63634d;
-    border-color: #fd6363;
-    color: #fd6363;
+    background: var(--color-red-opacity);
+    border-color: var(--color-red);
+    color: var(--color-red);
   }
-
   .badge-component2 {
-    @apply rounded-[10px] border border-solid;
+    @apply rounded-[10px];
     width: 49px;
     height: 22px;
-    background: #dcfd634d;
-    border-color: #dcfd63;
-    color: #dcfd63;
+    background: var(--color-highlight-opacity);
+    border-color: var(--color-highlight);
+    color: var(--color-highlight);
   }
-
   .badge-genre {
-    @apply rounded-[10px] border border-solid;
+    @apply rounded-[10px];
     width: 84px;
     height: 22px;
-    background: #71d6fb4d;
-    border-color: #71d6fb;
-    color: #71d6fb;
+    background: var(--color-skyblue-opacity);
+    border-color: var(--color-skyblue);
+    color: var(--color-skyblue);
   }
-
   .badge-profile-label {
     @apply rounded-[28px];
     width: 119px;
     height: 32px;
-    background: linear-gradient(90deg, #71d6fb 0%, #dcfd63 100%);
-    border: none; /* this one intentionally has no border */
-    color: #000000;
+    background: linear-gradient(
+      90deg,
+      var(--color-skyblue) 0%,
+      var(--color-highlight) 100%
+    );
+    border: none;
+    color: var(--color-black);
   }
 
   .badge-neutral {
-    @apply rounded-[10px] border border-solid;
+    @apply rounded-[10px];
     width: 49px;
     height: 22px;
-    background: #f5f5f54d;
-    border-color: #f5f5f5;
+    background-color: rgba(210, 210, 213, 0.3); /* semi-transparent muted */
+    border: 1px solid #d2d2d5;
     color: #ffffff;
   }
 
   .badge-icon {
-    @apply rounded-[10px] border border-solid;
+    @apply rounded-[10px];
     width: 69px;
     height: 22px;
-    background: #dcfd634d;
-    border-color: #dcfd63;
-    color: #dcfd63;
+    background: var(--color-highlight-opacity);
+    border-color: var(--color-highlight);
+    color: var(--color-highlight);
+  }
+  .badge-icon-closed {
+    @apply rounded-[10px];
+    width: 69px;
+    height: 22px;
+    background: var(--color-red-opacity);
+    border-color: var(--color-red);
+    color: var(--color-red);
   }
 
-  .badge-icon-closed {
-    @apply rounded-[10px] border border-solid;
-    width: 69px;
-    height: 22px;
-    background: #fd63634d;
-    border-color: #fd6363;
-    color: #fd6363;
+  /* Selected badge (purple, 93x32) */
+  .badge-selected {
+    @apply inline-flex items-center justify-center font-medium text-[14px] leading-[20px] rounded-[26px] px-3 py-1.5;
+    width: 93px;
+    height: 32px;
+    background: #6654d3;
+    color: #ffffff;
+  }
+
+  /* Non-selected badge (50x32) */
+  .badge-unselected {
+    @apply inline-flex items-center justify-center font-medium text-[14px] leading-[20px] rounded-[21px] px-3 py-1.5;
+    width: 50px;
+    height: 32px;
+    background: #272659;
+    color: #b3b3b3;
   }
 
   /* =========================================================
@@ -347,7 +365,7 @@
   .button-link {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] cursor-pointer transition-colors whitespace-nowrap;
     background: none;
-    color: #ffffff;
+    color: var(--color-white);
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -355,105 +373,113 @@
   .button-link:hover {
     @apply underline;
     text-decoration-style: solid;
-    color: #dcfd63;
+    color: var(--color-highlight);
   }
 
   /* === CONTINUE VARIANTS === */
   .button-hover-continue {
     @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap;
-    background: linear-gradient(98.69deg, #71d6fb 3.63%, #6654d3 98.18%);
-    color: #000000;
+    background: linear-gradient(
+      98.69deg,
+      var(--color-skyblue) 3.63%,
+      var(--color-purple) 98.18%
+    );
+    color: var(--color-black);
     font-weight: 500;
     font-size: 14px;
   }
 
   .button-continue {
     @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap;
-    background: #71d6fb;
-    color: #000000;
+    background: var(--color-skyblue);
+    color: var(--color-black);
     font-weight: 500;
     font-size: 14px;
   }
   .button-continue:hover {
-    background: #5ab4f2;
+    background: var(--color-light-blue-hover);
     transition: background 300ms ease-out;
   }
 
   /* === CANCEL VARIANTS === */
   .button-cancel-dark {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] whitespace-nowrap;
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] whitespace-nowrap;
+    border-color: var(--color-skyblue);
     background: none;
-    color: #ffffff;
+    color: var(--color-white);
   }
 
   .button-cancel-blue {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] whitespace-nowrap;
-    background: #71d6fb4d;
-    color: #ffffff;
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] whitespace-nowrap;
+    border-color: var(--color-skyblue);
+    background: var(--color-skyblue-opacity);
+    color: var(--color-white);
   }
 
   .button-cancel-white {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] whitespace-nowrap;
-    background: #f1f5f9;
-    color: #64748b;
+    background: var(--color-light-gray);
+    color: var(--color-gray-text);
   }
 
   .button-cancel-red {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] whitespace-nowrap;
-    background: #fd6363;
-    color: #000000;
+    background: var(--color-red);
+    color: var(--color-black);
   }
 
   .button-cancel-black {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#000000] rounded-[6px] whitespace-nowrap;
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] whitespace-nowrap;
+    border-color: var(--color-black);
     background: none;
-    color: #000000;
+    color: var(--color-black);
   }
 
   /* === ICON VARIANTS === */
   .button-cancel-icon-left,
   .button-cancel-icon-right {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] gap-2 whitespace-nowrap;
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] gap-2 whitespace-nowrap;
+    border-color: var(--color-skyblue);
     background: none;
     font-weight: 500;
     font-size: 14px;
-    color: #ffffff;
+    color: var(--color-white);
   }
 
   .button-rounded-icon {
-    @apply inline-flex items-center justify-center gap-[10px] px-4 py-2 rounded-[36px] border border-solid border-[#71D6FB] whitespace-nowrap;
+    @apply inline-flex items-center justify-center gap-[10px] px-4 py-2 rounded-[36px] border whitespace-nowrap;
     width: 40px;
     height: 40px;
-    background: #ffffff;
+    border-color: var(--color-skyblue);
+    background: var(--color-white);
     font-weight: 500;
     font-size: 14px;
-    color: #000000;
+    color: var(--color-black);
   }
-
   .button-rounded-icon .icon {
     @apply inline-flex items-center justify-center;
     width: 20px;
     height: 20px;
-    border: 2px solid #ffffff;
-    color: #000000;
+    border: 2px solid var(--color-white);
+    color: var(--color-black);
   }
 
   /* === HIGHLIGHT === */
   .button-highlight {
     @apply inline-flex items-center justify-center py-3 px-6 rounded-full whitespace-nowrap transition;
-    background: #dcfd63;
+    background: var(--color-highlight);
     font-weight: 500;
     font-size: 15px;
-    color: #000000;
+    color: var(--color-black);
   }
   .button-highlight:hover {
-    background: #dcfd634d;
+    background: var(--color-highlight-opacity);
   }
 
   /* === CONNECT VARIANTS === */
   .button-connect {
     @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] text-center whitespace-nowrap;
-    background: #71d6fb;
+    background: var(--color-skyblue);
     font-size: 14px;
     line-height: 24px;
   }
@@ -461,15 +487,19 @@
   .button-connected-hover,
   .button-connected-hover-gradient {
     @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out whitespace-nowrap;
-    color: #000000;
+    color: var(--color-black);
   }
 
   .button-connected-hover {
-    background: #71d6fb;
+    background: var(--color-skyblue);
   }
 
   .button-connected-hover-gradient {
-    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
+    background: linear-gradient(
+      92.59deg,
+      var(--color-skyblue) 0%,
+      var(--color-purple) 100%
+    );
   }
 
   .button-connected-hover .account,
@@ -484,180 +514,167 @@
     @apply w-[20px] h-[20px];
   }
 
-  /* === PROPOSAL === */
-  .button-proposal {
-    @apply inline-flex items-center justify-center gap-[10px] px-4 py-2 rounded-[6px] border border-[#71d6fb] whitespace-nowrap;
-    background: none;
-    color: #ffffff;
-    font-family: Inter;
+  /* === YES BUTTON === */
+  .button-yes {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
+    width: 83px;
+    height: 40px;
+    background: var(--color-green);
+    color: var(--color-black);
+  }
+  .button-yes .icon {
+    @apply w-4 h-4;
+    color: var(--color-black);
+  }
+
+  /* === NO BUTTON === */
+  .button-no {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
+    width: 83px;
+    height: 40px;
+    background: var(--color-red);
+    color: var(--color-black);
+  }
+  .button-no .icon {
+    @apply w-4 h-4;
+    color: var(--color-black);
+  }
+
+  /* === VOTED BUTTON === */
+  .button-voted {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
+    width: 83px;
+    height: 40px;
+    background: var(--color-light-gray);
+    color: var(--color-gray-text);
+  }
+
+  /* === FOLLOW/SHARE === */
+  .button-follow-share {
+    @apply inline-flex items-center justify-center rounded px-[16px] py-[8px] border whitespace-nowrap gap-2;
+    border-color: var(--color-skyblue);
+    background: var(--color-dark-bg);
     font-weight: 500;
     font-size: 14px;
-    line-height: 24px;
+    color: var(--color-white);
+  }
+  .button-follow-share:hover {
+    background: var(--color-dark-bg-hover);
+  }
+  .button-follow-share .icon {
+    @apply w-[20px] h-[20px] flex-shrink-0;
+    color: var(--color-white);
+  }
+
+  /* === SONG CARD BUTTONS === */
+  .button-song-play {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
+    width: 91px;
+    height: 40px;
+    background: var(--color-skyblue);
+    color: var(--color-black);
+  }
+
+  .button-song-unlock {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2 border;
+    width: 172px;
+    height: 40px;
+    border: 1px solid var(--color-skyblue);
+    background: transparent;
+    color: var(--color-white);
+  }
+
+  /* === BUY/JOIN TOKENS === */
+  .button-buy-token,
+  .button-join-fun-club {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white font-medium text-sm whitespace-nowrap;
+    background: var(--color-skyblue);
   }
 
   /* =========================================================
-   BUTTON ICON FIX (global for all buttons)
+   SONG CARD BUTTON VARIANTS
    ========================================================= */
-  .button,
-  [class*="button-"] {
-    @apply inline-flex items-center justify-center gap-[8px]; /* 2px between text and icon */
+  .button-song-play {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
+    width: 91px;
+    height: 40px;
+    background: var(--color-skyblue);
+    color: var(--color-black);
   }
 
-  .button .icon,
-  [class*="button-"] .icon {
-    @apply inline-flex items-center justify-center;
-    line-height: 0;
-    flex-shrink: 0;
+  .button-song-unlock {
+    @apply w-full inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
+    border: 1px solid var(--color-skyblue);
+    background: transparent;
+    color: var(--color-white);
   }
 
-  .button .icon svg,
-  [class*="button-"] .icon svg {
-    display: block;
-  }
-
-  .button-alert-primary {
-    @apply 
-      bg-[var(--color-alert-blue)]
-      text-sm
-      text-[var(--color-alert-black)]
-      font-medium
-      leading-6
-      tracking-normal;
-  }
-
-  .button-alert-secondary {
-    @apply 
-      bg-transparent
-      text-sm
-      text-[var(--color-white)]
-      border
-      border-[var(--color-alert-blue)]
-      font-medium
-      leading-6
-      tracking-normal;
-  }
-
-  .button-alert-green-primary {
-    @apply 
-      bg-[var(--color-alert-green)]
-      text-sm
-      text-[var(--color-alert-black)]
-      font-medium
-      leading-6
-      tracking-normal;
-  }
-
-  .button-alert-green-secondary {
-    @apply 
-      bg-transparent
-      text-sm
-      text-[var(--color-white)]
-      border
-      border-[var(--color-alert-green)]
-      font-medium
-      leading-6
-      tracking-normal;
-  }
-
-  .button-alert-red-primary {
-    @apply 
-      bg-[var(--color-alert-red)]
-      text-sm
-      text-[var(--color-alert-black)]
-      font-medium
-      leading-6
-      tracking-normal;
-  }
-
-  .button-alert-red-secondary {
-    @apply 
-      bg-transparent
-      text-sm
-      text-[var(--color-white)]
-      border
-      border-[var(--color-alert-red)]
-      font-medium
-      leading-6
-      tracking-normal;
-  }
-
-  /* =========================================================
-     PROGRESS BARS
-     ========================================================= */
+  /* PROGRESS BARS */
   .progress-bar {
     @apply relative overflow-hidden rounded-[40px];
-    width: 334px; /* exact width */
-    height: 16px; /* exact height */
-    opacity: 1; /* full opacity */
-    transform: rotate(0deg); /* angle: 0 deg */
+    width: 334px;
+    height: 16px;
   }
 
-  /* BLUE VARIANT */
   .progress-bar-blue {
-    background: #71d6fb4d; /* area color */
+    background: var(--color-skyblue-opacity);
   }
 
   .progress-bar-blue-indicator {
-    background: #71d6fb; /* filled progress color */
     @apply h-full transition-all;
+    background: var(--color-skyblue);
+    border-radius: 40px;
   }
 
-  /* RED VARIANT */
   .progress-bar-red {
-    background: #fd63634d;
+    background: var(--color-red-opacity);
   }
 
   .progress-bar-red-indicator {
-    background: #fd6363;
     @apply h-full transition-all;
+    background: var(--color-red);
+    border-radius: 40px;
   }
 
-  /* GREEN VARIANT */
   .progress-bar-green {
-    background: #42ee5c4d;
+    background: var(--color-green-opacity);
   }
 
   .progress-bar-green-indicator {
-    background: #42ee5c;
     @apply h-full transition-all;
+    background: var(--color-green);
+    border-radius: 40px;
+  }
+
+  .progress-bar-purple {
+    background: var(--color-purple-opacity);
+  }
+
+  .progress-bar-purple-indicator {
+    @apply h-full transition-all;
+    background: var(--color-purple);
+    border-radius: 40px;
   }
 
   /* =========================================================
    TOKEN HOLDINGS USER CARD
    ========================================================= */
   .token-holdings-card {
-    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_4px_6px_0_#00000017];
-    background-color: var(--color-datacard-bg);
-    border: 2px solid var(--color-datacard-border);
-  }
-
-  .token-holdings-card--blue {
-    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_0_16.9px_5px_#71D6FB80];
-    background-color: var(--color-datacard-bg);
-    border: 2px solid #aee9ff; /* blue border variant */
+    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_4px_6px_0_#00000017]
+       bg-[var(--color-datacard-bg)] border-2 border-[var(--color-datacard-border)];
   }
 
   /* =========================================================
    PERKS CARD VARIANTS
    ========================================================= */
-
-  /* Default PerksCard */
   .perks-card-default {
-    @apply w-[462px] h-[134px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border flex-shrink-0;
-    background-color: var(--color-datacard-bg);
-    border-width: 1px;
-    border-color: var(--color-perks-border);
-    opacity: 1;
+    @apply w-[462px] h-[134px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border flex-shrink-0
+         bg-[var(--color-datacard-bg)] border-[var(--color-perks-border)] opacity-100;
   }
 
-  /* Highlighted / Variant PerksCard */
   .perks-card-highlighted {
-    @apply w-[462px] h-[134px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border flex-shrink-0;
-    background-color: var(--color-datacard-bg);
-    border-width: 2px;
-    border-color: #6654d3; /* you can define a CSS variable if used often */
-    box-shadow: 0px 0px 16.9px 5px #6654d380;
-    opacity: 1;
+    @apply w-[462px] h-[134px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border flex-shrink-0
+         bg-[var(--color-datacard-bg)] border-[#6654d3] shadow-[0_0_16.9px_5px_#6654d380] opacity-100;
   }
 
   /* =========================================================
@@ -667,54 +684,38 @@
     @apply rounded-[10px] flex flex-col gap-[14px] p-6;
   }
 
-  /* Default proposal card */
   .card-proposal-default {
-    @apply w-[382px] h-[188px];
-    background: #121b2b;
-    border: 2px solid #1e2a3e;
+    @apply w-[382px] h-[188px] bg-[#121b2b] border-2 border-[#1e2a3e];
   }
 
-  /* Highlighted variant */
   .card-proposal-highlight {
-    @apply w-[382px] h-[188px];
-    background: #121b2b;
-    border: 2px solid #aee9ff;
-    box-shadow: 0px 0px 16.9px 5px #71d6fb80;
+    @apply w-[382px] h-[188px] bg-[#121b2b] border-2 border-[#aee9ff] shadow-[0_0_16.9px_5px_#71d6fb80];
   }
 
   /* =========================================================
    PROPOSAL EXECUTED CARDS
    ========================================================= */
   .proposal-executed-card-default {
-    @apply w-[462px] h-[138px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border-[2px] border-[var(--color-charcoal)] bg-[var(--color-datacard-bg)] shadow-[0px_4px_6px_0px_#00000017] transition-all duration-300 ease-out hover:scale-[1.01];
-    opacity: 1;
+    @apply w-[462px] h-[138px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border-2 border-[var(--color-charcoal)]
+         bg-[var(--color-datacard-bg)] shadow-[0_4px_6px_0px_#00000017] transition-all duration-300 ease-out hover:scale-[1.01] opacity-100;
   }
 
   .proposal-executed-card-highlighted {
-    @apply w-[462px] h-[138px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border-[2px] border-[#AEE9FF] bg-[var(--color-datacard-bg)] shadow-[0px_0px_16.9px_5px_#71D6FB80] transition-all duration-300 ease-out hover:scale-[1.01];
-    opacity: 1;
+    @apply w-[462px] h-[138px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border-2 border-[#aee9ff]
+         bg-[var(--color-datacard-bg)] shadow-[0_0_16.9px_5px_#71d6fb80] transition-all duration-300 ease-out hover:scale-[1.01] opacity-100;
   }
 
   /* =========================================================
    PROPOSAL CLOSED CARDS
    ========================================================= */
-
-  /* Default variant */
   .card-proposal-closed-default {
-    @apply w-[462px] h-[104px] p-[24px] flex flex-col gap-[14px] 
-         rounded-[10px] border-[2px] border-[var(--color-datacard-border)] 
-         bg-[var(--color-datacard-bg)] shadow-[0_4px_6px_0px_#00000017] 
-         transition-all duration-300 ease-out;
-    opacity: 1;
+    @apply w-[462px] h-[104px] p-[24px] flex flex-col gap-[14px] rounded-[10px] border-2 border-[var(--color-datacard-border)]
+         bg-[var(--color-datacard-bg)] shadow-[0_4px_6px_0px_#00000017] transition-all duration-300 ease-out opacity-100;
   }
 
-  /* Highlighted variant */
   .card-proposal-closed-highlighted {
-    @apply w-[462px] h-[104px] p-[24px] flex flex-col gap-[14px] 
-         rounded-[10px] border-[1px] border-[#AEE9FF] 
-         bg-[var(--color-datacard-bg)] shadow-[0_0_16.9px_5px_#71D6FB80] 
-         transition-all duration-300 ease-out;
-    opacity: 1;
+    @apply w-[462px] h-[104px] p-[24px] flex flex-col gap-[14px] rounded-[10px] border border-[#aee9ff]
+         bg-[var(--color-datacard-bg)] shadow-[0_0_16.9px_5px_#71d6fb80] transition-all duration-300 ease-out opacity-100;
   }
 
   /* =========================================================
@@ -722,46 +723,159 @@
    ========================================================= */
   .text-card-value-small {
     font-family: var(--font-inter);
-    font-weight: 400; /* lighter than datacard-value */
-    font-size: 18px; /* smaller */
+    font-weight: 400;
+    font-size: 18px;
     line-height: 20px;
     letter-spacing: -0.75%;
     color: var(--color-white);
   }
 
   /* =========================================================
-   NEW LAUNCH CARD VARIANTS
+   SONG CARD
    ========================================================= */
-
-  /* Default variant */
-  .new-launch-card-default {
-    @apply relative flex flex-col rounded-[10px] p-6 gap-[14px];
-    width: 384px;
-    height: 232px;
-    border: 2px solid #2d3953;
-    background: #121b2b;
-    box-shadow: 0 4px 6px 0 #00000017;
+  .song-card {
+    @apply w-[580px] h-[104px] rounded-[10px] border flex items-center justify-between
+           bg-[var(--color-datacard-bg)] border-[var(--color-datacard-border)]
+           p-[var(--spacing-6)] gap-[var(--spacing-3)] shadow-[0_4px_6px_0_#00000017];
   }
 
-  /* Highlighted / second variant */
-  .new-launch-card-highlighted {
-    @apply relative flex flex-col rounded-[10px] p-6 gap-[14px];
-    width: 384px;
-    height: 232px;
-    border: 2px solid #aee9ff;
-    background: #121b2b;
-    box-shadow: 0 0 16.9px 5px #71d6fb80;
+  .song-card__icon {
+    @apply flex items-center justify-center rounded-[26px];
+    width: 40px;
+    height: 40px;
+    background: var(--color-highlight);
+    flex-shrink: 0; /* prevent shrinking */
   }
 
-  /* Launch Label color for highlighted variant */
-  .new-launch-card-highlighted .launch-label {
-    @apply absolute flex items-center gap-2;
-    top: 6px;
-    right: 6px;
+  .song-card__text {
+    @apply flex flex-col justify-between;
+    width: 373px;
+    height: 56px;
+    gap: var(--spacing-2);
   }
 
-  .new-launch-card-highlighted .launch-label svg,
-  .new-launch-card-highlighted .launch-label span {
+  .song-card__title {
+    font-family: var(--font-inter);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
     color: var(--color-white);
   }
+
+  .song-card__subtitle {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: var(--color-proposal-artist);
+  }
+
+  /* =========================================================
+   PILL BUTTONS
+   ========================================================= */
+  .pill-button {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full transition-all duration-200 ease-out;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .pill-button--primary {
+    @apply border border-[var(--color-primary)] bg-white text-black;
+  }
+
+  .pill-button--secondary {
+    @apply border border-[var(--color-accent)] bg-[var(--color-accent)] text-black;
+  }
+
+  .pill-button--black {
+    @apply border border-[var(--color-charcoal)] bg-[var(--color-night)] text-white;
+  }
+
+  .pill-button--blue {
+    @apply border border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)];
+  }
+
+  .pill-button--yellow {
+    @apply border border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black;
+  }
+
+  /* Selected variants */
+  .pill-button--primary-selected,
+  .pill-button--secondary-selected,
+  .pill-button--black-selected,
+  .pill-button--blue-selected,
+  .pill-button--yellow-selected {
+    @apply font-semibold;
+    opacity: 0.9;
+  }
+
+  /* =========================================================
+   SOCIAL BUTTONS
+   ========================================================= */
+  .social-button {
+    @apply inline-flex items-center justify-center transition-all duration-200 ease-out;
+    border-radius: var(--radius-pill);
+    width: 44px;
+    height: 32px;
+    border-width: 1px;
+    border-style: solid;
+    color: inherit;
+  }
+
+  .social-button--black {
+    @apply border-[var(--color-charcoal)] bg-[var(--color-night)] text-white;
+  }
+
+  .social-button--blue {
+    @apply border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)];
+  }
+
+  .social-button--yellow {
+    @apply border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black;
+  }
+
+  .social-button--compact {
+    @apply w-9 h-7;
+  }
+
+  /* ArtistProfileBanner card variants */
+  .artist-profile-banner-default {
+    @apply relative w-full max-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center;
+    background: #dcfd63; /* original yellow */
+    box-shadow: 0px 4px 6px 0px #00000017;
+    border-radius: 10px;
+    transition: all 300ms ease-out;
+  }
+
+  .artist-profile-banner-purple {
+    @apply relative w-full max-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center;
+    background: #998ce1;
+    box-shadow: 0px 4px 6px 0px #00000017;
+    border-radius: 10px;
+    transition: all 300ms ease-out;
+  }
+
+  .artist-profile-banner-red {
+    @apply relative w-full max-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center;
+    background: #fd6363;
+    box-shadow: 0px 4px 6px 0px #00000017;
+    border-radius: 10px;
+    transition: all 300ms ease-out;
+  }
+}
+
+/* =========================================================
+   LEADERBOARD 
+   ========================================================= */
+.leaderboard {
+  @apply w-[580px] h-[88px] gap-[14px] p-6 
+         rounded-[10px] border border-[var(--color-button-bg-selected)]
+         bg-[var(--color-datacard-bg)] opacity-100;
+  @apply transition-shadow duration-300 ease-out; /* smooth shadow transition */
+}
+
+/* highlighted variant on hover */
+.leaderboard:hover {
+  @apply shadow-[0px_0px_16.9px_5px_#71D6FB80];
 }

@@ -1,6 +1,5 @@
 "use client"
 
-import React from "react"
 import { Hero } from "@/components/hero/Hero"
 import { Alert } from "@/components/atoms/AlertDialog"
 import { ArtistFullCard } from "@/components/display/ArtistFullCard"
@@ -19,7 +18,7 @@ export default function LandingPage() {
   const featuredArtist = getRandomArtist()
   
   return (
-    <div className='flex flex-col items-center gap-[var(--spacing-6)] p-[var(--spacing-6)] bg-night min-h-screen text-white'>
+    <div className='flex flex-col gap-10 items-center bg-[#0A111F] min-h-screen p-10'>
       <Hero />
       
       {/* ArtistFullCard Component with data from file */}
