@@ -64,7 +64,7 @@ export const artistsData: Artist[] = [
 
 // Fonction utilitaire pour obtenir un artiste par son ID
 export const getArtistById = (id: string): Artist | undefined => {
-  return artistsData.find((artist) => artist.id === id)
+  return artistsData.find(artist => artist.id === id)
 }
 
 // Fonction utilitaire pour obtenir un artiste aléatoire
