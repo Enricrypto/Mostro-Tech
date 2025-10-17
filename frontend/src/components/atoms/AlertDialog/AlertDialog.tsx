@@ -121,7 +121,7 @@ export function Alert({
     <AlertDialog open={open} onOpenChange={setOpen} { ...props } >
       {useTrigger && trigger && <AlertDialogTrigger>{trigger}</AlertDialogTrigger>}
 
-      <AlertDialogContent className={cn(VARIANT_MAP[variant].background)}>
+      <AlertDialogContent className={cn(VARIANT_MAP[variant].background)}  onPointerDownOutside={() => setOpen(false)} onInteractOutside={() => setOpen(false)}>
         <AlertDialogHeader >
           <div className="p-2 h-full flex gap-2">
             { icon && <div className="w-1/10 flex justify-center"> { icon } </div> }
