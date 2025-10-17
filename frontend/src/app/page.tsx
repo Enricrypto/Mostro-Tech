@@ -4,6 +4,7 @@ import React from "react"
 import { Hero } from "@/components/hero/Hero"
 import { Alert } from "@/components/atoms/AlertDialog"
 import { ArtistFullCard } from "@/components/display/ArtistFullCard"
+import { UpcomingEvent } from "@/components/display/UpcomingEvent"
 import { BookOpenTextIcon  } from "@phosphor-icons/react"
 import { artistsData, getRandomArtist } from "@/data/artists"
 
@@ -36,6 +37,11 @@ export default function LandingPage() {
             artist={artist}
           />
         ))}
+      </div>
+      
+      {/* UpcomingEvent Component */}
+      <div className="mt-8 w-full flex justify-center">
+        <UpcomingEvent />
       </div>
       
       <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black p-6 rounded shadow-lg">
