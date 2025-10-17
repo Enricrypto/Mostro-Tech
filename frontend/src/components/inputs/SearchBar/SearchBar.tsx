@@ -20,22 +20,24 @@ export function SearchBar({
   return (
     <div
       className={cn(
-        "relative flex items-center w-[274px] h-[var(--input-height)] rounded-[var(--radius-sm)] shadow-[var(--shadow-md)]",
+        "flex items-center w-full max-w-[274px] h-[var(--input-height)] rounded-[var(--radius-sm)] shadow-[var(--shadow-md)] border-[var(--border-color)] bg-[var(--color-surface-default)]",
         className
       )}
-      style={{
-        border: "1px solid var(--border-color)",
-        background: "var(--color-surface-default)"
-      }}
     >
-      <Search className='absolute left-[var(--space-sm)] text-[var(--color-muted)] w-4 h-4' />
-      <InputField
-        type='text'
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => onChange?.(e.target.value)}
-        className='pl-9 w-full h-full font-body text-[var(--color-black)] placeholder:text-[var(--color-muted)] bg-transparent'
-      />
+      {/* Input wrapper with flex to keep icon inside */}
+      <div className='flex items-center w-full h-full px-2'>
+        {/* Search icon inside flex */}
+        <Search className='text-[var(--color-muted)] w-4 h-4 flex-shrink-0' />
+
+        {/* Input fills remaining space */}
+        <InputField
+          type='text'
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange?.(e.target.value)}
+          className='ml-2 w-full h-full font-body text-[var(--color-black)] placeholder:text-[var(--color-muted)] bg-transparent outline-none border-none'
+        />
+      </div>
     </div>
   )
 }

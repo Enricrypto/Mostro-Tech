@@ -11,14 +11,26 @@
   --color-primary-light: #9c8be7;
   --color-accent: #3fd9ff;
   --color-accent-dark: #1e97e6;
-  --color-highlight: #d3fe3d;
+  --color-highlight: #dcfd63; /* updated to match button highlight */
+  --color-highlight-opacity: #dcfd634d;
   --color-muted: #d2d2d5;
   --color-night: #0a111f;
   --color-skyblue-opacity: #71d6fb4d;
   --color-skyblue: #71d6fb;
-  --color-charcoal: #2d3953;
-  --color-yellow: #f5e100; /* used for text/icon */
-  --color-booger-buster: #fff70033; /* used for yellow background opacity */
+  --color-booger-buster: #fff70033;
+  --color-red-opacity: #fd63634d;
+  --color-red: #fd6363;
+  --color-green-opacity: #42ee5c4d;
+  --color-green: #42ee5c;
+  --color-purple-opacity: #6654d34d;
+  --color-purple: #6654d3;
+
+  /* New button colors */
+  --color-light-blue-hover: #5ab4f2;
+  --color-light-gray: #f1f5f9;
+  --color-gray-text: #64748b;
+  --color-dark-bg: #121b2b;
+  --color-dark-bg-hover: #1a2438;
 
   /* Buttons */
   --color-button-bg-default: #ffffff;
@@ -47,11 +59,6 @@
   --color-alert-blue: #71d6fb;
   --color-alert-black: #000000;
   --color-alert-grey: #64748b;
-
-  /* Progress bars */
-  --color-red-light: #fd63634d;
-  --color-green-light: #42ee5c4d;
-  --color-blue-light: #71d6fb33;
 
   /* Hover & Active */
   --hover-primary: var(--color-primary-light);
@@ -231,15 +238,15 @@
     @apply w-[288px] h-[288px] rounded-[26px];
     background: linear-gradient(
       180deg,
-      rgba(220, 253, 99, 0) 0%,
-      rgba(220, 253, 99, 0.2) 98.26%
+      var(--color-highlight-opacity) 0%,
+      var(--color-highlight-opacity) 98.26%
     );
   }
   .avatar--square-lg-initials {
     @apply w-[288px] h-[288px] rounded-[26px] gap-2 pt-3 pb-3;
     background: linear-gradient(
       180deg,
-      #71d6fb 0%,
+      var(--color-skyblue) 0%,
       var(--color-highlight) 100%
     );
   }
@@ -247,8 +254,8 @@
     @apply w-[151px] h-[151px] rounded-[26px];
     background: linear-gradient(
       180deg,
-      rgba(220, 253, 99, 0) 0%,
-      rgba(220, 253, 99, 0.2) 98.26%
+      var(--color-highlight-opacity) 0%,
+      var(--color-highlight-opacity) 98.26%
     );
   }
 
@@ -261,15 +268,15 @@
     @apply rounded-[10px];
     width: 38px;
     height: 22px;
-    background: #fd63634d;
-    border-color: #fd6363;
-    color: #fd6363;
+    background: var(--color-red-opacity);
+    border-color: var(--color-red);
+    color: var(--color-red);
   }
   .badge-component2 {
     @apply rounded-[10px];
     width: 49px;
     height: 22px;
-    background: #dcfd634d;
+    background: var(--color-highlight-opacity);
     border-color: var(--color-highlight);
     color: var(--color-highlight);
   }
@@ -277,15 +284,19 @@
     @apply rounded-[10px];
     width: 84px;
     height: 22px;
-    background: #71d6fb4d;
-    border-color: #71d6fb;
-    color: #71d6fb;
+    background: var(--color-skyblue-opacity);
+    border-color: var(--color-skyblue);
+    color: var(--color-skyblue);
   }
   .badge-profile-label {
     @apply rounded-[28px];
     width: 119px;
     height: 32px;
-    background: linear-gradient(90deg, #71d6fb 0%, var(--color-highlight) 100%);
+    background: linear-gradient(
+      90deg,
+      var(--color-skyblue) 0%,
+      var(--color-highlight) 100%
+    );
     border: none;
     color: var(--color-black);
   }
@@ -293,15 +304,15 @@
     @apply rounded-[10px];
     width: 49px;
     height: 22px;
-    background: #f5f5f54d;
-    border-color: #f5f5f5;
+    background: var(--color-muted) 4d;
+    border-color: var(--color-muted);
     color: var(--color-white);
   }
   .badge-icon {
     @apply rounded-[10px];
     width: 69px;
     height: 22px;
-    background: #dcfd634d;
+    background: var(--color-highlight-opacity);
     border-color: var(--color-highlight);
     color: var(--color-highlight);
   }
@@ -309,9 +320,27 @@
     @apply rounded-[10px];
     width: 69px;
     height: 22px;
-    background: #fd63634d;
-    border-color: #fd6363;
-    color: #fd6363;
+    background: var(--color-red-opacity);
+    border-color: var(--color-red);
+    color: var(--color-red);
+  }
+
+  /* Selected badge (purple, 93x32) */
+  .badge-selected {
+    @apply inline-flex items-center justify-center font-medium text-[14px] leading-[20px] rounded-[26px] px-3 py-1.5;
+    width: 93px;
+    height: 32px;
+    background: #6654d3;
+    color: #ffffff;
+  }
+
+  /* Non-selected badge (50x32) */
+  .badge-unselected {
+    @apply inline-flex items-center justify-center font-medium text-[14px] leading-[20px] rounded-[21px] px-3 py-1.5;
+    width: 50px;
+    height: 32px;
+    background: #272659;
+    color: #b3b3b3;
   }
 
   /* =========================================================
@@ -327,7 +356,7 @@
   .button-link {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] cursor-pointer transition-colors whitespace-nowrap;
     background: none;
-    color: #ffffff;
+    color: var(--color-white);
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
@@ -335,105 +364,113 @@
   .button-link:hover {
     @apply underline;
     text-decoration-style: solid;
-    color: #dcfd63;
+    color: var(--color-highlight);
   }
 
   /* === CONTINUE VARIANTS === */
   .button-hover-continue {
     @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap;
-    background: linear-gradient(98.69deg, #71d6fb 3.63%, #6654d3 98.18%);
-    color: #000000;
+    background: linear-gradient(
+      98.69deg,
+      var(--color-skyblue) 3.63%,
+      var(--color-purple) 98.18%
+    );
+    color: var(--color-black);
     font-weight: 500;
     font-size: 14px;
   }
 
   .button-continue {
     @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap;
-    background: #71d6fb;
-    color: #000000;
+    background: var(--color-skyblue);
+    color: var(--color-black);
     font-weight: 500;
     font-size: 14px;
   }
   .button-continue:hover {
-    background: #5ab4f2;
+    background: var(--color-light-blue-hover);
     transition: background 300ms ease-out;
   }
 
   /* === CANCEL VARIANTS === */
   .button-cancel-dark {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] whitespace-nowrap;
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] whitespace-nowrap;
+    border-color: var(--color-skyblue);
     background: none;
-    color: #ffffff;
+    color: var(--color-white);
   }
 
   .button-cancel-blue {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] whitespace-nowrap;
-    background: #71d6fb4d;
-    color: #ffffff;
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] whitespace-nowrap;
+    border-color: var(--color-skyblue);
+    background: var(--color-skyblue-opacity);
+    color: var(--color-white);
   }
 
   .button-cancel-white {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] whitespace-nowrap;
-    background: #f1f5f9;
-    color: #64748b;
+    background: var(--color-light-gray);
+    color: var(--color-gray-text);
   }
 
   .button-cancel-red {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] whitespace-nowrap;
-    background: #fd6363;
-    color: #000000;
+    background: var(--color-red);
+    color: var(--color-black);
   }
 
   .button-cancel-black {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#000000] rounded-[6px] whitespace-nowrap;
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] whitespace-nowrap;
+    border-color: var(--color-black);
     background: none;
-    color: #000000;
+    color: var(--color-black);
   }
 
   /* === ICON VARIANTS === */
   .button-cancel-icon-left,
   .button-cancel-icon-right {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-solid border-[#71D6FB] rounded-[6px] gap-2 whitespace-nowrap;
+    @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] gap-2 whitespace-nowrap;
+    border-color: var(--color-skyblue);
     background: none;
     font-weight: 500;
     font-size: 14px;
-    color: #ffffff;
+    color: var(--color-white);
   }
 
   .button-rounded-icon {
-    @apply inline-flex items-center justify-center gap-[10px] px-4 py-2 rounded-[36px] border border-solid border-[#71D6FB] whitespace-nowrap;
+    @apply inline-flex items-center justify-center gap-[10px] px-4 py-2 rounded-[36px] border whitespace-nowrap;
     width: 40px;
     height: 40px;
-    background: #ffffff;
+    border-color: var(--color-skyblue);
+    background: var(--color-white);
     font-weight: 500;
     font-size: 14px;
-    color: #000000;
+    color: var(--color-black);
   }
-
   .button-rounded-icon .icon {
     @apply inline-flex items-center justify-center;
     width: 20px;
     height: 20px;
-    border: 2px solid #ffffff;
-    color: #000000;
+    border: 2px solid var(--color-white);
+    color: var(--color-black);
   }
 
   /* === HIGHLIGHT === */
   .button-highlight {
     @apply inline-flex items-center justify-center py-3 px-6 rounded-full whitespace-nowrap transition;
-    background: #dcfd63;
+    background: var(--color-highlight);
     font-weight: 500;
     font-size: 15px;
-    color: #000000;
+    color: var(--color-black);
   }
   .button-highlight:hover {
-    background: #dcfd634d;
+    background: var(--color-highlight-opacity);
   }
 
   /* === CONNECT VARIANTS === */
   .button-connect {
     @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] text-center whitespace-nowrap;
-    background: #71d6fb;
+    background: var(--color-skyblue);
     font-size: 14px;
     line-height: 24px;
   }
@@ -441,15 +478,19 @@
   .button-connected-hover,
   .button-connected-hover-gradient {
     @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out whitespace-nowrap;
-    color: #000000;
+    color: var(--color-black);
   }
 
   .button-connected-hover {
-    background: #71d6fb;
+    background: var(--color-skyblue);
   }
 
   .button-connected-hover-gradient {
-    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
+    background: linear-gradient(
+      92.59deg,
+      var(--color-skyblue) 0%,
+      var(--color-purple) 100%
+    );
   }
 
   .button-connected-hover .account,
@@ -464,28 +505,101 @@
     @apply w-[20px] h-[20px];
   }
 
+  /* === YES BUTTON === */
+  .button-yes {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
+    width: 83px;
+    height: 40px;
+    background: var(--color-green);
+    color: var(--color-black);
+  }
+  .button-yes .icon {
+    @apply w-4 h-4;
+    color: var(--color-black);
+  }
+
+  /* === NO BUTTON === */
+  .button-no {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
+    width: 83px;
+    height: 40px;
+    background: var(--color-red);
+    color: var(--color-black);
+  }
+  .button-no .icon {
+    @apply w-4 h-4;
+    color: var(--color-black);
+  }
+
+  /* === VOTED BUTTON === */
+  .button-voted {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
+    width: 83px;
+    height: 40px;
+    background: var(--color-light-gray);
+    color: var(--color-gray-text);
+  }
+
+  /* === FOLLOW/SHARE === */
   .button-follow-share {
-    @apply inline-flex items-center justify-center rounded px-[16px] py-[8px] border border-[#71D6FB] bg-[#121B2B] whitespace-nowrap gap-2;
+    @apply inline-flex items-center justify-center rounded px-[16px] py-[8px] border whitespace-nowrap gap-2;
+    border-color: var(--color-skyblue);
+    background: var(--color-dark-bg);
     font-weight: 500;
     font-size: 14px;
-    color: #ffffff;
+    color: var(--color-white);
   }
-
   .button-follow-share:hover {
-    @apply bg-[#1a2438]; /* slightly lighter hover background */
+    background: var(--color-dark-bg-hover);
   }
-
   .button-follow-share .icon {
-    @apply w-[20px] h-[20px] flex-shrink-0; /* ensures icon does not shrink */
-    color: #ffffff;
+    @apply w-[20px] h-[20px] flex-shrink-0;
+    color: var(--color-white);
   }
 
-  .button-buy-token {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#71D6FB] rounded-md text-white font-medium text-sm whitespace-nowrap;
+  /* === SONG CARD BUTTONS === */
+  .button-song-play {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
+    width: 91px;
+    height: 40px;
+    background: var(--color-skyblue);
+    color: var(--color-black);
   }
 
+  .button-song-unlock {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2 border;
+    width: 172px;
+    height: 40px;
+    border: 1px solid var(--color-skyblue);
+    background: transparent;
+    color: var(--color-white);
+  }
+
+  /* === BUY/JOIN TOKENS === */
+  .button-buy-token,
   .button-join-fun-club {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2 bg-[#71D6FB] rounded-md text-white font-medium text-sm whitespace-nowrap;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white font-medium text-sm whitespace-nowrap;
+    background: var(--color-skyblue);
+  }
+
+  /* =========================================================
+   SONG CARD BUTTON VARIANTS
+   ========================================================= */
+  .button-song-play {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
+    width: 91px;
+    height: 40px;
+    background: var(--color-skyblue);
+    color: var(--color-black);
+  }
+
+  .button-song-unlock {
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2 border;
+    width: 172px;
+    height: 40px;
+    border: 1px solid var(--color-skyblue);
+    background: transparent;
+    color: var(--color-white);
   }
 
   /* PROGRESS BARS */
@@ -494,26 +608,45 @@
     width: 334px;
     height: 16px;
   }
+
   .progress-bar-blue {
-    background: #71d6fb4d;
+    background: var(--color-skyblue-opacity);
   }
+
   .progress-bar-blue-indicator {
     @apply h-full transition-all;
-    background: #71d6fb;
+    background: var(--color-skyblue);
+    border-radius: 40px;
   }
+
   .progress-bar-red {
-    background: #fd63634d;
+    background: var(--color-red-opacity);
   }
+
   .progress-bar-red-indicator {
     @apply h-full transition-all;
-    background: #fd6363;
+    background: var(--color-red);
+    border-radius: 40px;
   }
+
   .progress-bar-green {
-    background: #42ee5c4d;
+    background: var(--color-green-opacity);
   }
+
   .progress-bar-green-indicator {
     @apply h-full transition-all;
-    background: #42ee5c;
+    background: var(--color-green);
+    border-radius: 40px;
+  }
+
+  .progress-bar-purple {
+    background: var(--color-purple-opacity);
+  }
+
+  .progress-bar-purple-indicator {
+    @apply h-full transition-all;
+    background: var(--color-purple);
+    border-radius: 40px;
   }
 
   /* =========================================================
@@ -618,6 +751,46 @@
   }
 
   /* =========================================================
+   SONG CARD
+   ========================================================= */
+  .song-card {
+    @apply w-[580px] h-[104px] rounded-[10px] border flex items-center justify-between
+           bg-[var(--color-datacard-bg)] border-[var(--color-datacard-border)]
+           p-[var(--spacing-6)] gap-[var(--spacing-3)] shadow-[0_4px_6px_0_#00000017];
+  }
+
+  .song-card__icon {
+    @apply flex items-center justify-center rounded-[26px];
+    width: 40px;
+    height: 40px;
+    background: var(--color-highlight);
+    flex-shrink: 0; /* prevent shrinking */
+  }
+
+  .song-card__text {
+    @apply flex flex-col justify-between;
+    width: 373px;
+    height: 56px;
+    gap: var(--spacing-2);
+  }
+
+  .song-card__title {
+    font-family: var(--font-inter);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-white);
+  }
+
+  .song-card__subtitle {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: var(--color-proposal-artist);
+  }
+
+  /* =========================================================
    PILL BUTTONS
    ========================================================= */
   .pill-button {
@@ -684,6 +857,31 @@
 
   .social-button--compact {
     @apply w-9 h-7;
+  }
+
+  /* ArtistProfileBanner card variants */
+  .artist-profile-banner-default {
+    @apply relative w-full max-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center;
+    background: #dcfd63; /* original yellow */
+    box-shadow: 0px 4px 6px 0px #00000017;
+    border-radius: 10px;
+    transition: all 300ms ease-out;
+  }
+
+  .artist-profile-banner-purple {
+    @apply relative w-full max-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center;
+    background: #998ce1;
+    box-shadow: 0px 4px 6px 0px #00000017;
+    border-radius: 10px;
+    transition: all 300ms ease-out;
+  }
+
+  .artist-profile-banner-red {
+    @apply relative w-full max-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center;
+    background: #fd6363;
+    box-shadow: 0px 4px 6px 0px #00000017;
+    border-radius: 10px;
+    transition: all 300ms ease-out;
   }
 }
 

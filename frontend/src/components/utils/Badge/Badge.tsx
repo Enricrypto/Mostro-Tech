@@ -23,7 +23,9 @@ const customBadgeVariants = cva(
         profileLabel: "badge-profile-label",
         neutral: "badge-neutral",
         icon: "badge-icon",
-        iconClosed: "badge-icon-closed"
+        iconClosed: "badge-icon-closed",
+        selected: "badge-selected",
+        unselected: "badge-unselected"
       }
     },
     defaultVariants: {

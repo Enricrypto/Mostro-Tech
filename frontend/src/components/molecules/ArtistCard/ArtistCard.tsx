@@ -11,12 +11,13 @@ import React from "react"
 interface ArtistFullCardProps {
   artistName: string
   tokenName: string
-  avatarSrc?: string
-  badgeText?: string
-  description?: string
-  holders?: string | number
-  marketCap?: string | number
-  volume?: string | number
+  avatarSrc: string
+  badgeText: string
+  description: string
+  holders: string | number
+  marketCap: string | number
+  volume: string | number
+  genre: string
 }
 
 export function ArtistCard({
@@ -27,7 +28,8 @@ export function ArtistCard({
   description,
   holders,
   marketCap,
-  volume
+  volume,
+  genre
 }: ArtistFullCardProps) {
   return (
     <div
@@ -84,7 +86,7 @@ export function ArtistCard({
             variant='genre'
             className='min-w-[84px] h-[22px] rounded-[10px] border border-[#71D6FB] px-[8px] py-[2px] gap-[8px]'
           >
-            Experimental {/* Text can also be dynamic */}
+            {genre}
           </Badge>
         </div>
         {/* Description text */}
