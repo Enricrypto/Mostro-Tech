@@ -35,7 +35,7 @@ export const TrendingTokenCard: React.FC<TrendingTokenCardProps> = ({
             className='text-[#B3B3B3] font-medium text-[12px] leading-[20px] whitespace-nowrap overflow-hidden text-ellipsis'
             title={subtitle}
           >
-            {subtitle}
+            Requesting: {subtitle} tokens
           </span>
         </div>
       </div>
