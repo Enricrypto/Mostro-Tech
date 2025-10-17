@@ -1,6 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   InstagramLogoIcon,
   FacebookLogoIcon,
@@ -53,7 +54,7 @@ export const Socials: React.FC<SocialsProps> = ({
       {socials.map((social) => {
         const Icon = SOCIAL_MAP[social]
         return (
-          <button
+          <Button
             key={social}
             onClick={() => onClick?.(social)}
             className={cn(
@@ -63,7 +64,7 @@ export const Socials: React.FC<SocialsProps> = ({
             )}
           >
             <Icon size={20} color='currentColor' />
-          </button>
+          </Button>
         )
       })}
     </div>

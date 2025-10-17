@@ -131,7 +131,7 @@ export function ArtistCard({
       {/* Button Section */}
       <div className='w-[336px] h-[40px]'>
         <Button
-          themeVariant='cancel-icon-right'
+          themeVariant='follow-share'
           icon={<ArrowUpRightIcon weight='fill' size={16} />}
           className='w-full h-full px-[16px] py-[8px] gap-[10px]'
         >

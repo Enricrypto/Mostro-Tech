@@ -100,7 +100,7 @@ export default function DashboardPage() {
             Top Artists
           </h2>
           <Button
-            themeVariant='cancel-dark'
+            themeVariant='follow-share'
             className='w-[116px] h-[40px]'
             icon={<ArrowUpRightIcon size={20} weight='bold' />}
             iconPosition='right'
