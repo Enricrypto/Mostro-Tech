@@ -91,7 +91,7 @@ export function ArtistProfileBanner({
 
           <Button
             themeVariant='button-continue'
-            className='w-[288px] h-[40px] px-4 py-2 gap-2 rounded-[6px] bg-[#71D6FB] border border-[#71D6FB] flex items-center justify-center'
+            className='w-[288px] h-[40px] px-4 py-2 gap-2 rounded-[6px] flex items-center justify-center'
             icon={<ArrowUpRightIcon size={20} weight='bold' />}
             iconPosition='right'
           >

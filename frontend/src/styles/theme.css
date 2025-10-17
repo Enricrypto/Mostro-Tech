@@ -164,20 +164,26 @@
   /* Text utilities */
   .text-h1 {
     font-size: var(--text-h1);
-    font-weight: 700;
+    font-weight: 700; /* bold */
     line-height: 1.2;
   }
+
   .text-h2 {
     font-size: var(--text-h2);
-    font-weight: 700;
+    font-weight: 600; /* semi-bold */
+    line-height: 1.3;
   }
+
   .text-h3 {
     font-size: var(--text-h3);
-    font-weight: 700;
+    font-weight: 500; /* medium */
+    line-height: 1.4;
   }
+
   .text-h4 {
     font-size: var(--text-h4);
-    font-weight: 700;
+    font-weight: 500; /* medium */
+    line-height: 1.5;
   }
   .text-p {
     font-size: var(--text-p);
@@ -307,7 +313,6 @@
     border: none;
     color: var(--color-black);
   }
-
   .badge-neutral {
     @apply rounded-[10px];
     width: 49px;
@@ -356,9 +361,20 @@
    BUTTONS
    ========================================================= */
   .button {
-    @apply inline-flex items-center justify-center rounded-[6px] transition-colors duration-200 font-medium text-center whitespace-nowrap gap-2;
-    line-height: 24px;
-    font-size: 14px;
+    display: inline-flex; /* keeps text and icons inline */
+    align-items: center; /* vertically centers content */
+    justify-content: center; /* horizontally centers content */
+    height: 40px; /* fixed height */
+    padding: 0 16px; /* horizontal padding; you can remove vertical since height is fixed */
+    font-size: 14px; /* adjust as needed */
+    line-height: 1; /* ensures text is vertically centered */
+    white-space: nowrap; /* prevents text from wrapping */
+    text-align: center; /* centers text inside */
+    cursor: pointer;
+    border: none; /* or your base border style */
+    background: var(--color-primary); /* default background */
+    color: var(--color-white);
+    border-radius: 8px; /* optional */
   }
 
   /* === LINK === */
@@ -377,43 +393,26 @@
   }
 
   /* === CONTINUE VARIANTS === */
-  .button-hover-continue {
-    @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap;
-    background: linear-gradient(
-      98.69deg,
-      var(--color-skyblue) 3.63%,
-      var(--color-purple) 98.18%
-    );
-    color: var(--color-black);
-    font-weight: 500;
-    font-size: 14px;
-  }
 
   .button-continue {
-    @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap;
+    @apply inline-flex items-center justify-center px-4 py-2 whitespace-nowrap rounded-[6px];
     background: var(--color-skyblue);
     color: var(--color-black);
-    font-weight: 500;
-    font-size: 14px;
   }
   .button-continue:hover {
-    background: var(--color-light-blue-hover);
+    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
     transition: background 300ms ease-out;
   }
 
   /* === CANCEL VARIANTS === */
-  .button-cancel-dark {
+  .button-cancel {
     @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] whitespace-nowrap;
     border-color: var(--color-skyblue);
     background: none;
     color: var(--color-white);
   }
-
-  .button-cancel-blue {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] whitespace-nowrap;
-    border-color: var(--color-skyblue);
+  .button-cancel:hover {
     background: var(--color-skyblue-opacity);
-    color: var(--color-white);
   }
 
   .button-cancel-white {
@@ -421,11 +420,18 @@
     background: var(--color-light-gray);
     color: var(--color-gray-text);
   }
+  .button-cancel-white:hover {
+    background: var(--color-gray-hover); /* slightly darker gray */
+    color: var(--color-black);
+  }
 
   .button-cancel-red {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-[6px] whitespace-nowrap;
     background: var(--color-red);
     color: var(--color-black);
+  }
+  .button-cancel-red:hover {
+    background: var(--color-red-dark); /* deeper red shade */
   }
 
   .button-cancel-black {
@@ -434,15 +440,8 @@
     background: none;
     color: var(--color-black);
   }
-
-  /* === ICON VARIANTS === */
-  .button-cancel-icon-left,
-  .button-cancel-icon-right {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-solid rounded-[6px] gap-2 whitespace-nowrap;
-    border-color: var(--color-skyblue);
-    background: none;
-    font-weight: 500;
-    font-size: 14px;
+  .button-cancel-black:hover {
+    background: var(--color-black);
     color: var(--color-white);
   }
 
@@ -452,15 +451,11 @@
     height: 40px;
     border-color: var(--color-skyblue);
     background: var(--color-white);
-    font-weight: 500;
-    font-size: 14px;
     color: var(--color-black);
   }
-  .button-rounded-icon .icon {
-    @apply inline-flex items-center justify-center;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--color-white);
+  .button-rounded-icon:hover {
+    background: var(--color-skyblue-opacity);
+    border-color: var(--color-purple);
     color: var(--color-black);
   }
 
@@ -468,8 +463,6 @@
   .button-highlight {
     @apply inline-flex items-center justify-center py-3 px-6 rounded-full whitespace-nowrap transition;
     background: var(--color-highlight);
-    font-weight: 500;
-    font-size: 15px;
     color: var(--color-black);
   }
   .button-highlight:hover {
@@ -477,81 +470,49 @@
   }
 
   /* === CONNECT VARIANTS === */
-  .button-connect {
+  .button-connect-wallet {
     @apply inline-flex items-center justify-center rounded-[6px] px-4 py-2 gap-[10px] text-center whitespace-nowrap;
     background: var(--color-skyblue);
-    font-size: 14px;
-    line-height: 24px;
+    color: var(--color-black); /* optional, if you want text visible */
+    transition: background 300ms ease-out; /* smooth hover */
   }
-
-  .button-connected-hover,
-  .button-connected-hover-gradient {
-    @apply inline-flex items-center justify-between rounded-[6px] px-4 py-2 gap-[10px] transition-all duration-300 ease-out whitespace-nowrap;
-    color: var(--color-black);
-  }
-
-  .button-connected-hover {
-    background: var(--color-skyblue);
-  }
-
-  .button-connected-hover-gradient {
-    background: linear-gradient(
-      92.59deg,
-      var(--color-skyblue) 0%,
-      var(--color-purple) 100%
-    );
-  }
-
-  .button-connected-hover .account,
-  .button-connected-hover-gradient .account {
-    @apply text-black;
-    font-size: 14px;
-    line-height: 24px;
-  }
-
-  .button-connected-hover .icon,
-  .button-connected-hover-gradient .icon {
-    @apply w-[20px] h-[20px];
+  .button-connect-wallet:hover {
+    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
   }
 
   /* === YES BUTTON === */
   .button-yes {
-    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
-    width: 83px;
-    height: 40px;
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px];
     background: var(--color-green);
     color: var(--color-black);
   }
-  .button-yes .icon {
-    @apply w-4 h-4;
-    color: var(--color-black);
+  .button-yes:hover {
+    background: var(--color-green-hover);
   }
 
   /* === NO BUTTON === */
   .button-no {
-    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
-    width: 83px;
-    height: 40px;
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px];
     background: var(--color-red);
     color: var(--color-black);
   }
-  .button-no .icon {
-    @apply w-4 h-4;
-    color: var(--color-black);
+  .button-no:hover {
+    background: var(--color-red-hover);
   }
 
   /* === VOTED BUTTON === */
   .button-voted {
-    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px] text-sm font-medium;
-    width: 83px;
-    height: 40px;
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-[16px] py-[8px];
     background: var(--color-light-gray);
     color: var(--color-gray-text);
+  }
+  .button-voted:hover {
+    background: var(--color-light-gray-hover);
   }
 
   /* === FOLLOW/SHARE === */
   .button-follow-share {
-    @apply inline-flex items-center justify-center rounded px-[16px] py-[8px] border whitespace-nowrap gap-2;
+    @apply inline-flex items-center justify-center rounded-[6px] px-[16px] py-[8px] border whitespace-nowrap gap-2;
     border-color: var(--color-skyblue);
     background: var(--color-dark-bg);
     font-weight: 500;
@@ -561,52 +522,38 @@
   .button-follow-share:hover {
     background: var(--color-dark-bg-hover);
   }
-  .button-follow-share .icon {
-    @apply w-[20px] h-[20px] flex-shrink-0;
-    color: var(--color-white);
-  }
 
   /* === SONG CARD BUTTONS === */
   .button-song-play {
     @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
-    width: 91px;
-    height: 40px;
     background: var(--color-skyblue);
     color: var(--color-black);
   }
+  .button-song-play:hover {
+    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
+    color: var(--color-white);
+  }
 
   .button-song-unlock {
-    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2 border;
-    width: 172px;
-    height: 40px;
+    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
     border: 1px solid var(--color-skyblue);
     background: transparent;
     color: var(--color-white);
+  }
+  .button-song-unlock:hover {
+    background: var(--color-skyblue-opacity);
+    color: var(--color-black);
   }
 
   /* === BUY/JOIN TOKENS === */
   .button-buy-token,
   .button-join-fun-club {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md text-white font-medium text-sm whitespace-nowrap;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-[6px] text-white font-medium text-sm whitespace-nowrap;
     background: var(--color-skyblue);
   }
-
-  /* =========================================================
-   SONG CARD BUTTON VARIANTS
-   ========================================================= */
-  .button-song-play {
-    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
-    width: 91px;
-    height: 40px;
-    background: var(--color-skyblue);
-    color: var(--color-black);
-  }
-
-  .button-song-unlock {
-    @apply w-full inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
-    border: 1px solid var(--color-skyblue);
-    background: transparent;
-    color: var(--color-white);
+  .button-buy-token:hover,
+  .button-join-fun-club:hover {
+    background: linear-gradient(92.59deg, #71d6fb 0%, #6654d3 100%);
   }
 
   /* PROGRESS BARS */
