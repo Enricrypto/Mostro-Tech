@@ -686,3 +686,17 @@
     @apply w-9 h-7;
   }
 }
+
+    /* =========================================================
+   LEADERBOARD 
+   ========================================================= */
+  .leaderboard {
+    @apply w-[580px] h-[88px] gap-[14px] p-6 
+           rounded-[10px] border border-[var(--color-button-bg-selected)]
+           bg-[var(--color-datacard-bg)] opacity-100;
+    @apply absolute top-4 left-4;
+  }
+
+  .leaderboard-shadow {
+  @apply shadow-[0px_0px_16.9px_5px_#71D6FB80];
+  }
