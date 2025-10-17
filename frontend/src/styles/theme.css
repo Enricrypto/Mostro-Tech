@@ -594,9 +594,7 @@
   }
 
   .button-song-unlock {
-    @apply inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2 border;
-    width: 172px;
-    height: 40px;
+    @apply w-full inline-flex items-center justify-center gap-[10px] rounded-[6px] px-4 py-2;
     border: 1px solid var(--color-skyblue);
     background: transparent;
     color: var(--color-white);
