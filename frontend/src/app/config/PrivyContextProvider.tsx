@@ -2,7 +2,6 @@
 
 import { PrivyProvider } from "@privy-io/react-auth"
 import { toSolanaWalletConnectors } from "@privy-io/react-auth/solana"
-import { ConnectButton } from "@/components/atoms/ConnectButton"
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID!
@@ -31,10 +30,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         loginMethods: ["google", "wallet"]
       }}
     >
-      <>
-        {/* <ConnectButton /> */}
-        {children}
-      </>
+      <>{children}</>
     </PrivyProvider>
   )
 }
