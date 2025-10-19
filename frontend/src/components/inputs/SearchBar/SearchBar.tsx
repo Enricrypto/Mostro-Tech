@@ -25,9 +25,9 @@ export function SearchBar({
       )}
     >
       {/* Input wrapper with flex to keep icon inside */}
-      <div className='flex items-center w-full h-full px-2'>
+      <div className='flex items-center w-full h-full px-6'>
         {/* Search icon inside flex */}
-        <Search className='text-[var(--color-muted)] w-4 h-4 flex-shrink-0' />
+        <Search className='text-[var(--color-muted)] h-4 flex-shrink-0' />
 
         {/* Input fills remaining space */}
         <InputField
