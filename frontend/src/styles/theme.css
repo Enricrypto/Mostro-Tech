@@ -25,6 +25,7 @@
   --color-purple-opacity: #6654d34d;
   --color-purple: #6654d3;
   --color-dark-blue: #272659;
+  --color-grey: #b3b3b3;
 
   /* Buttons */
   --color-button-bg-default: #ffffff;
@@ -324,19 +325,6 @@
   }
 
   /* =========================================================
-   PERKS CARD VARIANTS
-   ========================================================= */
-  .perks-card-default {
-    @apply w-[462px] h-[134px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border flex-shrink-0
-         bg-[var(--color-datacard-bg)] border-[var(--color-perks-border)] opacity-100;
-  }
-
-  .perks-card-highlighted {
-    @apply w-[462px] h-[134px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border flex-shrink-0
-         bg-[var(--color-datacard-bg)] border-[#6654d3] shadow-[0_0_16.9px_5px_#6654d380] opacity-100;
-  }
-
-  /* =========================================================
    PROPOSAL CARDS
    ========================================================= */
   .card {
@@ -349,32 +337,6 @@
 
   .card-proposal-highlight {
     @apply w-[382px] h-[188px] bg-[#121b2b] border-2 border-[#aee9ff] shadow-[0_0_16.9px_5px_#71d6fb80];
-  }
-
-  /* =========================================================
-   PROPOSAL EXECUTED CARDS
-   ========================================================= */
-  .proposal-executed-card-default {
-    @apply w-[462px] h-[138px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border-2 border-[var(--color-charcoal)]
-         bg-[var(--color-datacard-bg)] shadow-[0_4px_6px_0px_#00000017] transition-all duration-300 ease-out hover:scale-[1.01] opacity-100;
-  }
-
-  .proposal-executed-card-highlighted {
-    @apply w-[462px] h-[138px] p-[24px] gap-[14px] flex flex-col rounded-[10px] border-2 border-[#aee9ff]
-         bg-[var(--color-datacard-bg)] shadow-[0_0_16.9px_5px_#71d6fb80] transition-all duration-300 ease-out hover:scale-[1.01] opacity-100;
-  }
-
-  /* =========================================================
-   PROPOSAL CLOSED CARDS
-   ========================================================= */
-  .card-proposal-closed-default {
-    @apply w-[462px] h-[104px] p-[24px] flex flex-col gap-[14px] rounded-[10px] border-2 border-[var(--color-datacard-border)]
-         bg-[var(--color-datacard-bg)] shadow-[0_4px_6px_0px_#00000017] transition-all duration-300 ease-out opacity-100;
-  }
-
-  .card-proposal-closed-highlighted {
-    @apply w-[462px] h-[104px] p-[24px] flex flex-col gap-[14px] rounded-[10px] border border-[#aee9ff]
-         bg-[var(--color-datacard-bg)] shadow-[0_0_16.9px_5px_#71d6fb80] transition-all duration-300 ease-out opacity-100;
   }
 
   /* =========================================================

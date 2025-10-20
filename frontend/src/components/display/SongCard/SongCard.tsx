@@ -7,17 +7,19 @@ import { Button } from "@/components/atoms/Button"
 interface SongCardProps {
   songName: string
   subtitle: string // e.g., "Latest Single - 3:45"
-  variant?: "play" | "unlock"
+  variant?: "song-play" | "song-unlock"
   unlockAmount?: number
   unlockToken?: string
+  onPlay?: () => void
 }
 
 export function SongCard({
   songName,
   subtitle,
-  variant = "play",
+  variant,
   unlockAmount,
-  unlockToken
+  unlockToken,
+  onPlay
 }: SongCardProps) {
   return (
     <div
@@ -33,25 +35,31 @@ export function SongCard({
       {/* Middle Section */}
       <div className='song-card__text'>
         <h3 className='song-card__title'>{songName}</h3>
-        <p className='song-card__subtitle'>{subtitle}</p>
+        <p
+          className='song-card__subtitle'
+          style={{ color: "var(--color-grey)" }}
+        >
+          {subtitle}
+        </p>
       </div>
 
       {/* Right Section (Button) */}
-      {variant === "play" ? (
+      {variant === "song-play" ? (
         <Button
-          className={cn("button-song-play")}
+          variant='song-play'
           icon={<PlayIcon size={20} color='var(--color-black)' weight='fill' />}
           iconPosition='left'
+          onClick={onPlay}
         >
           Play
         </Button>
       ) : (
         <Button
-          className={cn("button-song-unlock")}
+          variant='song-unlock'
           icon={<LockIcon size={20} color='var(--color-white)' weight='fill' />}
           iconPosition='left'
         >
-          Unlock {unlockAmount} ${unlockToken}
+          Unlock {unlockAmount} {unlockToken}
         </Button>
       )}
     </div>

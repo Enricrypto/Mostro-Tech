@@ -2,38 +2,55 @@
 
 import { LockIcon } from "@phosphor-icons/react"
 import { Badge } from "@/components/utils/Badge"
+import { cn } from "@/lib/utils"
+import { cva, type VariantProps } from "class-variance-authority"
 
-interface PerksCardProps {
+const perksCardCVA = cva(
+  "flex flex-col justify-between w-[374px] h-[134px] p-[18px] gap-[14px] rounded-[10px] border flex-shrink-0 bg-[#121B2B] transition-shadow duration-200",
+  {
+    variants: {
+      variant: {
+        default: "border-[#998CE1]",
+        highlighted: "border-[#6654d3] shadow-[0_0_16.9px_5px_#6654D380]"
+      }
+    },
+    defaultVariants: {
+      variant: "default"
+    }
+  }
+)
+
+export interface PerksCardProps extends VariantProps<typeof perksCardCVA> {
   title: string
   description: string
-  tokenAmount: number | string
+  tokenAmount: string | number
+  className?: string
 }
 
-export const PerksCard: React.FC<PerksCardProps> = ({
+export function PerksCard({
   title,
   description,
-  tokenAmount
-}) => {
+  tokenAmount,
+  variant,
+  className
+}: PerksCardProps) {
   return (
-    <div
-      className='perks-card-default flex flex-col justify-between p-4 gap-4 transition-shadow duration-200 hover:shadow-[0_0_16.9px_5px_#6654D380]'
-      style={{ border: "1px solid #998CE1" }}
-    >
+    <div className={cn(perksCardCVA({ variant }), className)}>
       {/* Top Section */}
       <div className='flex justify-between items-center text-white'>
-        <span className='flex-1 h-[28px] flex items-center justify-start font-inter font-semibold text-[18px] leading-[28px]'>
+        <span className='flex items-center justify-start font-inter font-semibold text-[18px] leading-[28px]'>
           {title}
         </span>
         <LockIcon size={20} />
       </div>
 
       {/* Middle Section */}
-      <div className='flex-1 h-[20px] font-inter font-medium text-[12px] leading-[20px] text-[#B3B3B3]'>
+      <div className='font-inter font-medium text-[12px] leading-[20px] text-[#B3B3B3]'>
         {description}
       </div>
 
       {/* Bottom Section - Badge */}
-      <Badge variant='neutral' className='w-[84px] h-[22px]'>
+      <Badge variant='neutral' className='self-start inline-flex'>
         {tokenAmount} tokens
       </Badge>
     </div>

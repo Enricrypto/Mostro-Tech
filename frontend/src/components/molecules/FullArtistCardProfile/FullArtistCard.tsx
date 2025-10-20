@@ -46,7 +46,22 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
   socials = ["instagram", "youtube", "spotify"]
 }) => {
   return (
-    <div className='flex flex-col gap-6 p-6 rounded-[var(--radius-card)] border-2 border-[var(--color-datacard-border)] shadow-[var(--shadow-md)] bg-[linear-gradient(106.97deg,#121B2B_74.58%,#DCFD63_83.9%,#4995E0_91.25%)]'>
+    <div
+      className='flex flex-col gap-8 p-6 rounded-[10px] border-2'
+      style={{
+        width: "1348px",
+        height: "506px",
+        gap: "32px",
+        padding: "24px",
+        borderColor: "#2D3953",
+        borderRadius: "10px",
+        background:
+          "linear-gradient(106.97deg, #121B2B 74.58%, #DCFD63 83.9%, #4995E0 91.25%)",
+        boxShadow: "0px 4px 6px 0px #00000017",
+        opacity: 1,
+        transform: "rotate(0deg)"
+      }}
+    >
       {/* Top Section */}
       <div className='flex justify-between items-center'>
         {/* Badge */}
@@ -86,9 +101,16 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
         />
 
         {/* Right: Info */}
-        <div className='flex flex-col gap-6 flex-1'>
+        <div
+          className='flex flex-col gap-6 flex-1'
+          style={{
+            gap: "42px",
+            opacity: 1,
+            transform: "rotate(0deg)"
+          }}
+        >
           {/* Name + Handle + Badge */}
-          <div className='flex flex-col gap-4'>
+          <div className='flex flex-col gap-6'>
             <div>
               <h1 className='text-4xl font-normal text-white'>{artistName}</h1>
               <p className='text-xl text-[var(--color-muted)]'>
@@ -125,7 +147,7 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
                     "linear-gradient(270deg, #4995E0 3.6%, #DCFD63 96%)"
                 }}
               >
-                {tokenPrice}
+                ${tokenPrice}
               </span>
               <span className='text-sm text-white'>Price</span>
             </div>
