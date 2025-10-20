@@ -1,4 +1,3 @@
-// app/(public)/landing/page.tsx  (or wherever your LandingPage lives)
 "use client"
 
 import { Hero } from "@/components/hero/Hero"

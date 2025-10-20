@@ -91,11 +91,11 @@ export function Footer() {
 
           {/* Right buttons */}
           <div className='flex gap-[8px] w-[448px] h-[40px] justify-end'>
-            <Button themeVariant='link'>Privacy Policy</Button>
+            <Button variant='link'>Privacy Policy</Button>
 
-            <Button themeVariant='link'>Terms of Service</Button>
+            <Button variant='link'>Terms of Service</Button>
 
-            <Button themeVariant='link'>Cookie Policy</Button>
+            <Button variant='link'>Cookie Policy</Button>
           </div>
         </div>
       </div>

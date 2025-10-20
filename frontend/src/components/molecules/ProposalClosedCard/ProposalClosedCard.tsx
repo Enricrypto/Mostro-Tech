@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 interface ProposalClosedCardProps {
   title: string
   requestingTokens: number | string
-  variant?: "default" | "highlighted" // new variant prop
+  variant?: "default" | "highlighted"
 }
 
 export const ProposalClosedCard: React.FC<ProposalClosedCardProps> = ({

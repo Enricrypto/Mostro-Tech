@@ -1,65 +1,59 @@
 "use client"
 
-import * as React from "react"
 import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 
-// Custom badge variants defined in theme.css
-const customBadgeVariants = cva(
-  "inline-flex items-center justify-center text-xs font-medium w-fit whitespace-nowrap shrink-0 px-[8px] py-[2px] gap-1 transition-colors duration-200",
+const badgeVariants = cva(
+  "inline-flex items-center justify-center gap-2 font-body text-sm leading-6 transition-all duration-200 ease-out",
   {
     variants: {
       variant: {
-        primary: "badge-primary",
-        secondary: "badge-secondary",
-        success: "badge-success",
-        warning: "badge-warning",
-        info: "badge-info",
-        destructive: "badge-destructive",
-        outline: "badge-outline",
-        closed: "badge-closed",
-        component2: "badge-component2",
-        genre: "badge-genre",
-        profileLabel: "badge-profile-label",
-        neutral: "badge-neutral",
-        icon: "badge-icon",
-        iconClosed: "badge-icon-closed",
-        selected: "badge-selected",
-        unselected: "badge-unselected"
+        // SMALL PILLS
+        closed:
+          "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default",
+        increase:
+          "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] cursor-default",
+        decrease:
+          "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default",
+        neutral:
+          "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white cursor-default",
+        icon: "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] cursor-default",
+        iconClosed:
+          "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default",
+        genre:
+          "inline-flex items-center justify-center h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-skyblue-opacity)] border-[var(--color-skyblue)] text-[var(--color-skyblue)] cursor-pointer hover:bg-[var(--color-skyblue)] hover:text-[var(--color-dark-bg)] active:scale-95",
+
+        // LARGE PILLS
+        profileLabel:
+          "w-[119px] h-[32px] min-w-[119px] min-h-[32px] px-2 py-[2px] gap-2 rounded-[28px] bg-gradient-to-r from-[var(--color-skyblue)] to-[var(--color-highlight)] border-0 text-[var(--color-black)] flex-none",
+        selected:
+          "min-w-[52px] h-[32px] px-4 py-2 rounded-[26px] bg-[var(--color-purple)] text-white",
+        unselected:
+          "min-w-[52px] h-[32px] py-2 px-4 rounded-[26px] bg-[var(--color-dark-blue)] text-white"
       }
     },
     defaultVariants: {
-      variant: "primary"
+      variant: "closed"
     }
   }
 )
 
 export interface BadgeProps
   extends React.ComponentProps<"span">,
-    VariantProps<typeof customBadgeVariants> {
-  icon?: React.ReactNode // optional icon prop
+    VariantProps<typeof badgeVariants> {
+  icon?: React.ReactNode
 }
 
-/**
- * Badge component with optional icon support
- * - variant: selects badge container style (from theme.css)
- * - icon: optional React node inside badge
- */
 export function Badge({
   className,
-  variant = "primary",
+  variant,
   icon,
   children,
   ...props
 }: BadgeProps) {
   return (
-    <span
-      className={cn(customBadgeVariants({ variant }), className)}
-      {...props}
-    >
-      {icon && (
-        <span className='inline-flex w-3 h-3 mr-1 text-inherit'>{icon}</span>
-      )}
+    <span className={cn(badgeVariants({ variant }), className)} {...props}>
+      {icon && <span className='inline-flex w-4 h-4'>{icon}</span>}
       {children}
     </span>
   )

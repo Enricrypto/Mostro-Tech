@@ -19,6 +19,10 @@ export const TrendingTokenCard: React.FC<TrendingTokenCardProps> = ({
   value,
   badgeText
 }) => {
+  // Convert badgeText to number to determine variant
+  const numberValue = parseFloat(badgeText.replace(/[^0-9.-]+/g, "")) // removes any symbols like %
+  const badgeVariant = numberValue >= 0 ? "increase" : "decrease"
+
   return (
     <div className='w-[384px] h-[148px] rounded-[10px] border border-[#2D3953] p-[24px] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017] flex flex-col justify-between'>
       {/* Top Section */}
@@ -51,7 +55,7 @@ export const TrendingTokenCard: React.FC<TrendingTokenCardProps> = ({
         >
           {value}
         </span>
-        <Badge className='badge-component2'>{badgeText}</Badge>
+        <Badge variant={badgeVariant}>{badgeText}</Badge>
       </div>
     </div>
   )

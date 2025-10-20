@@ -1,1 +1,0 @@
-export { ProposalProgressCard } from "./ProposalProgressCard"

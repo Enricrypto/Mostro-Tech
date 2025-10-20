@@ -1,3 +1,6 @@
+// Replaces on the app by connect button inside navbar, but will keept it for
+// connecting other website to the App
+
 "use client"
 
 import { useLogin, usePrivy } from "@privy-io/react-auth"
@@ -32,12 +35,12 @@ export const ConnectButton = () => {
               : displayName}
           </span>
 
-          <Button themeVariant='highlight' onClick={handleLogout}>
+          <Button variant='highlight' onClick={handleLogout}>
             Logout
           </Button>
         </>
       ) : (
-        <Button themeVariant='highlight' onClick={handleLogin}>
+        <Button variant='highlight' onClick={handleLogin}>
           Launch App
         </Button>
       )}

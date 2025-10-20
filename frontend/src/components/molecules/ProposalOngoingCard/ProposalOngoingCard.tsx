@@ -1,8 +1,9 @@
+// need to fix the styles
 "use client"
 
 import { Badge } from "@/components/utils/Badge"
 import { ProgressBar } from "@/components/atoms/ProgressBar"
-import { ArrowRightIcon } from "@phosphor-icons/react" // renamed correctly
+import { ArrowRightIcon, ClockClockwiseIcon } from "@phosphor-icons/react"
 import { Button } from "@/components/atoms/Button"
 
 interface ProposalProgressCardProps {
@@ -11,28 +12,27 @@ interface ProposalProgressCardProps {
   yesPercentage: number
   noPercentage: number
   badgeText: string
-  cardVariant?: "default" | "highlight" // new prop
 }
 
-export const ProposalProgressCard: React.FC<ProposalProgressCardProps> = ({
+export const ProposalOngoingCard: React.FC<ProposalProgressCardProps> = ({
   title,
   requestedValue,
   yesPercentage,
   noPercentage,
-  badgeText,
-  cardVariant = "default"
+  badgeText
 }) => {
-  const cardClass = `card card-proposal-${cardVariant}`
-
   return (
-    <div className={cardClass}>
+    <div>
       {/* ===================== TOP SECTION ===================== */}
       <div className='flex flex-col gap-2'>
         <div className='flex justify-between items-center gap-2 flex-wrap'>
           <p className='text-white font-inter font-semibold text-[18px] leading-[28px] truncate'>
             {title}
           </p>
-          <Badge className='badge badge-component2 whitespace-nowrap'>
+          <Badge
+            className='badge badge-increase whitespace-nowrap'
+            icon={<ClockClockwiseIcon size={14} />}
+          >
             {badgeText}
           </Badge>
         </div>
@@ -60,7 +60,7 @@ export const ProposalProgressCard: React.FC<ProposalProgressCardProps> = ({
 
         <Button
           className='w-[158px] whitespace-nowrap'
-          themeVariant='proposal'
+          variant='continue'
           icon={<ArrowRightIcon weight='bold' />}
           iconPosition='right'
         >

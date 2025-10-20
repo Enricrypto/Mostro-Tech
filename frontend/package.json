@@ -33,6 +33,7 @@
     "@solana/web3.js": "^1.98.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "jdenticon": "^3.3.0",
     "lucide-react": "^0.545.0",
     "next": "15.5.4",
     "react": "19.1.0",

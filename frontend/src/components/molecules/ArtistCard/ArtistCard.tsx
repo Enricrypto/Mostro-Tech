@@ -41,11 +41,7 @@ export function ArtistCard({
       <div className='flex w-[336px] h-[151px] gap-[24px]'>
         {/* Avatar on the left */}
         <div className='w-[151px] h-[151px]'>
-          <Avatar
-            className='avatar--square-sm-lg'
-            src={avatarSrc}
-            alt={artistName}
-          />
+          <Avatar variant='square-sm-lg' src={avatarSrc} alt={artistName} />
         </div>
 
         {/* Artist info + token + badge on the right */}
@@ -82,12 +78,7 @@ export function ArtistCard({
         {" "}
         {/* Section container */}
         <div className='flex justify-start'>
-          <Badge
-            variant='genre'
-            className='min-w-[84px] h-[22px] rounded-[10px] border border-[#71D6FB] px-[8px] py-[2px] gap-[8px]'
-          >
-            {genre}
-          </Badge>
+          <Badge variant='genre'>{genre}</Badge>
         </div>
         {/* Description text */}
         <p className='text-[#B3B3B3] font-medium text-[12px] leading-[20px] w-full h-[40px]'>
@@ -131,7 +122,7 @@ export function ArtistCard({
       {/* Button Section */}
       <div className='w-[336px] h-[40px]'>
         <Button
-          themeVariant='follow-share'
+          variant='follow-share'
           icon={<ArrowUpRightIcon weight='fill' size={16} />}
           className='w-full h-full px-[16px] py-[8px] gap-[10px]'
         >

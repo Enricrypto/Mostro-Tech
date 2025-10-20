@@ -5,6 +5,7 @@ import { Badge } from "@/components/utils/Badge"
 import { Button } from "@/components/atoms/Button"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Socials } from "@/components/atoms/Socials"
+import { mockFullArtistData } from "@/mocks/mockFullArtistData"
 import {
   StarIcon,
   MusicNoteIcon,
@@ -13,7 +14,7 @@ import {
   CurrencyDollarIcon
 } from "@phosphor-icons/react"
 
-type SocialType =
+export type SocialType =
   | "instagram"
   | "facebook"
   | "spotify"
@@ -21,7 +22,7 @@ type SocialType =
   | "tiktok"
   | "youtube"
 
-interface FullArtistCardProps {
+export interface FullArtistCardProps {
   badgeText: string
   artistName: string
   artistHandle: string
@@ -49,24 +50,24 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
       {/* Top Section */}
       <div className='flex justify-between items-center'>
         {/* Badge */}
-        <div className='flex items-center gap-2 bg-[linear-gradient(90deg,#71D6FB_0%,#DCFD63_100%)] rounded-full px-2 py-1'>
+        <Badge variant='profileLabel' className='flex items-center gap-2'>
           <StarIcon size={20} className='text-[#EEFF00]' />
           <span className='text-xs font-medium text-black'>{badgeText}</span>
-        </div>
+        </Badge>
 
         {/* Socials + Follow/Share Buttons */}
         <div className='flex items-center gap-2'>
           <Socials socials={socials} variant='default' themeVariant='black' />
 
           <Button
-            themeVariant='follow-share'
+            variant='follow-share'
             icon={<UserPlusIcon />}
             iconPosition='left'
           >
             Follow
           </Button>
           <Button
-            themeVariant='follow-share'
+            variant='follow-share'
             icon={<LinkSimpleIcon />}
             iconPosition='left'
           >
@@ -91,26 +92,53 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
             <div>
               <h1 className='text-4xl font-normal text-white'>{artistName}</h1>
               <p className='text-xl text-[var(--color-muted)]'>
-                @{artistHandle}
+                {artistHandle}
               </p>
             </div>
 
-            <Badge className='badge-genre'>Verified</Badge>
+            <div className='flex justify-start'>
+              <Badge variant='genre'>{badgeText}</Badge>
+            </div>
+
             <p className='text-lg text-white leading-7'>{artistDescription}</p>
           </div>
 
           {/* Stats */}
           <div className='flex items-center gap-10 flex-wrap'>
             <div className='flex flex-col gap-1'>
-              <span className='text-datacard-value'>${tokenName}</span>
+              <span
+                className='text-datacard-value bg-clip-text text-transparent'
+                style={{
+                  backgroundImage:
+                    "linear-gradient(270deg, #4995E0 3.6%, #DCFD63 96%)"
+                }}
+              >
+                ${tokenName}
+              </span>
               <span className='text-sm text-white'>Token</span>
             </div>
             <div className='flex flex-col gap-1'>
-              <span className='text-datacard-value'>{tokenPrice}</span>
+              <span
+                className='text-datacard-value bg-clip-text text-transparent'
+                style={{
+                  backgroundImage:
+                    "linear-gradient(270deg, #4995E0 3.6%, #DCFD63 96%)"
+                }}
+              >
+                {tokenPrice}
+              </span>
               <span className='text-sm text-white'>Price</span>
             </div>
             <div className='flex flex-col gap-1'>
-              <span className='text-datacard-value'>{tokenHolders}</span>
+              <span
+                className='text-datacard-value bg-clip-text text-transparent'
+                style={{
+                  backgroundImage:
+                    "linear-gradient(270deg, #4995E0 3.6%, #DCFD63 96%)"
+                }}
+              >
+                {tokenHolders}
+              </span>
               <span className='text-sm text-white'>Holders</span>
             </div>
           </div>
@@ -118,14 +146,14 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
           {/* Action Buttons */}
           <div className='flex gap-4 flex-wrap'>
             <Button
-              themeVariant='buy-token'
+              variant='buy-token'
               icon={<CurrencyDollarIcon />}
               iconPosition='left'
             >
               Buy Token
             </Button>
             <Button
-              themeVariant='join-fun-club'
+              variant='join-fun-club'
               icon={<MusicNoteIcon />}
               iconPosition='left'
             >

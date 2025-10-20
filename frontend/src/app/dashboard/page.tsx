@@ -36,18 +36,8 @@ export default function DashboardPage() {
   return (
     <div className='bg-[#0A111F] min-h-screen w-full flex flex-col items-center'>
       {/* ===== BADGES SECTION ===== */}
-      <section
-        className='sticky top-[149px] z-10 w-full'
-        style={{
-          borderTop: "2px solid #121B2B",
-          borderBottom: "2px solid #121B2B",
-          background: "#0A111FE5",
-          backdropFilter: "blur(4px)"
-        }}
-      >
-        <div className='max-w-[1512px] mx-auto px-[101px] py-[20px]'>
-          <BadgesRow />
-        </div>
+      <section className='sticky top-[149px] z-10 w-full border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm py-5 px-[101px] flex justify-between items-center'>
+        <BadgesRow />
       </section>
 
       {/* ===== ARTIST PROFILE BANNER SECTION ===== */}
@@ -69,10 +59,7 @@ export default function DashboardPage() {
       </section>
 
       {/* ===== STATS CARDS SECTION ===== */}
-      <section
-        className='flex flex-wrap justify-start mt-14'
-        style={{ width: "1200px", height: "248px", gap: "24px" }}
-      >
+      <section className='flex flex-wrap justify-center mt-14 w-full gap-6'>
         {statsCardVariants.map((card, idx) => (
           <DashBoardStatsCard
             key={idx}
@@ -85,23 +72,16 @@ export default function DashboardPage() {
       </section>
 
       {/* ===== TOP ARTISTS SECTION ===== */}
-      <section
-        className='flex flex-col gap-[39px] items-center mt-20'
-        style={{ width: "1512px", height: "474px" }}
-      >
-        <div
-          className='flex justify-between items-center'
-          style={{ width: "1200px", height: "40px" }}
-        >
+      <section className='flex flex-col gap-10 mt-20 w-full items-center'>
+        <div className='flex justify-between items-center w-full px-4 max-w-[1200px] mx-auto'>
           <h2
-            className='font-inter font-semibold text-[30px] leading-[36px]  text-white '
+            className='font-inter font-semibold text-[30px] leading-[36px] text-white'
             style={{ letterSpacing: "-0.75%" }}
           >
             Top Artists
           </h2>
           <Button
-            themeVariant='follow-share'
-            className='w-[116px] h-[40px]'
+            variant='continue'
             icon={<ArrowUpRightIcon size={20} weight='bold' />}
             iconPosition='right'
             onClick={() => console.log("Navigate to New Launches")}
