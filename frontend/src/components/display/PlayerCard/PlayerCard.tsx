@@ -1,18 +1,24 @@
 "use client"
 
 import { FC } from "react"
-import { PauseIcon, SkipBackIcon, SkipForwardIcon } from "@phosphor-icons/react"
+import {
+  PauseIcon,
+  SkipBackIcon,
+  SkipForwardIcon,
+  PlayIcon
+} from "@phosphor-icons/react"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Button } from "@/components/atoms/Button"
 import { ProgressBar } from "@/components/atoms/ProgressBar"
 
 export interface PlayerCardProps {
   songName: string
-  songDetails: string // e.g., "Latest Single - 3:45"
-  currentTime: string // e.g., "2:10"
-  totalTime: string // e.g., "3:34"
-  progress: number // 0 to 1
+  songDetails: string
+  currentTime: string
+  totalTime: string
+  progress: number
   avatarUrl?: string
+  isPlaying?: boolean
   onPlayPause?: () => void
   onNext?: () => void
   onPrev?: () => void
@@ -25,6 +31,7 @@ export const PlayerCard: FC<PlayerCardProps> = ({
   totalTime,
   progress,
   avatarUrl,
+  isPlaying,
   onPlayPause,
   onNext,
   onPrev
@@ -86,7 +93,11 @@ export const PlayerCard: FC<PlayerCardProps> = ({
           className='w-[40px] h-[40px] rounded-[26px] flex items-center justify-center bg-[#6654D3] text-white p-0'
           onClick={onPlayPause}
         >
-          <PauseIcon size={24} weight='bold' />
+          {isPlaying ? (
+            <PauseIcon size={24} weight='bold' />
+          ) : (
+            <PlayIcon size={24} weight='bold' />
+          )}
         </Button>
 
         <Button

@@ -34,14 +34,14 @@ export const baseButtonVariants = cva(
           "bg-[var(--color-skyblue)] text-black hover:bg-gradient-to-r hover:from-[#71d6fb] hover:to-[#6654d3]",
         "song-play":
           "bg-[var(--color-skyblue)] text-black hover:bg-gradient-to-r hover:from-[#71d6fb] hover:to-[#6654d3] hover:text-white",
-        songPlayIcon:
+        "song-play-icon":
           "w-10 h-10 rounded-full bg-[var(--color-skyblue)] hover:bg-blue-500/10",
         "song-unlock":
           "border border-[var(--color-skyblue)] bg-transparent text-white hover:bg-[var(--color-skyblue-opacity)] hover:text-black",
         "buy-token":
-          "bg-[var(--color-skyblue)] text-white hover:bg-gradient-to-r hover:from-[#71d6fb] hover:to-[#6654d3]",
+          "bg-[var(--color-skyblue)] text-black hover:bg-gradient-to-r hover:from-[#71d6fb] hover:to-[#6654d3]",
         "join-fun-club":
-          "bg-[var(--color-skyblue)] text-white hover:bg-gradient-to-r hover:from-[#71d6fb] hover:to-[#6654d3]",
+          "bg-[var(--color-skyblue)] text-black hover:bg-gradient-to-r hover:from-[#71d6fb] hover:to-[#6654d3]",
         "session-active": "bg-[#6654D3] text-white",
         session: "bg-transparent text-[#B3B3B3] ",
         yes: "bg-[var(--color-green)] text-black hover:bg-[var(--color-green-hover)]",

@@ -27,9 +27,9 @@ export const Hero = () => (
 
       {/* Buttons */}
       <div className='flex gap-4 justify-center'>
-        <Button themeVariant='highlight'>Find out More</Button>
+        <Button variant='highlight'>Find out More</Button>
 
-        <Button themeVariant='highlight'>Join the Waitlist</Button>
+        <Button variant='highlight'>Join the Waitlist</Button>
       </div>
     </div>
   </section>

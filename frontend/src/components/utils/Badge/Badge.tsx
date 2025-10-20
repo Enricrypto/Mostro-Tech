@@ -21,11 +21,11 @@ const badgeVariants = cva(
         iconClosed:
           "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default",
         genre:
-          "inline-flex items-center justify-center h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-skyblue-opacity)] border-[var(--color-skyblue)] text-[var(--color-skyblue)] cursor-pointer hover:bg-[var(--color-skyblue)] hover:text-[var(--color-dark-bg)] active:scale-95",
+          "min-w-[84px] h-[22px] inline-flex items-center justify-center h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-skyblue-opacity)] border-[var(--color-skyblue)] text-[var(--color-skyblue)] cursor-pointer hover:bg-[var(--color-skyblue)] hover:text-[var(--color-dark-bg)] active:scale-95",
 
         // LARGE PILLS
         profileLabel:
-          "w-[119px] h-[32px] min-w-[119px] min-h-[32px] px-2 py-[2px] gap-2 rounded-[28px] bg-gradient-to-r from-[var(--color-skyblue)] to-[var(--color-highlight)] border-0 text-[var(--color-black)] flex-none",
+          "min-w-[119px] h-[32px] min-w-[119px] min-h-[32px] px-2 py-[2px] gap-2 rounded-[28px] bg-gradient-to-r from-[var(--color-skyblue)] to-[var(--color-highlight)] border-0 text-[var(--color-black)] flex-none",
         selected:
           "min-w-[52px] h-[32px] px-4 py-2 rounded-[26px] bg-[var(--color-purple)] text-white",
         unselected:
