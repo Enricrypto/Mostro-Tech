@@ -2,6 +2,8 @@
 
 import { useState, useRef } from "react"
 import Image from "next/image"
+import { Button } from "@/components/atoms/Button"
+import { PlayIcon, PauseIcon } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
 import type { Artist } from "@/data/artists"
 
@@ -67,22 +69,17 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
         </div>
 
         {/* Play Button */}
-        <button
+        <Button
+          variant='songPlayIcon'
           onClick={handlePlayClick}
-          className='w-10 h-10 rounded-full border border-[#71D6FB] flex items-center justify-center hover:bg-[#71D6FB]/10 transition-colors'
+          className='p-0' // optional: removes extra padding
         >
           {isPlaying ? (
-            <div className='flex gap-1'>
-              <span className='w-[3px] h-4 bg-white rounded-sm' />
-              <span className='w-[3px] h-4 bg-white rounded-sm' />
-            </div>
+            <PauseIcon size={20} weight='bold' className='text-white' />
           ) : (
-            <div
-              className='w-[12px] h-[15px] bg-white'
-              style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}
-            />
+            <PlayIcon size={20} weight='bold' className='text-white' />
           )}
-        </button>
+        </Button>
       </div>
     </div>
   )

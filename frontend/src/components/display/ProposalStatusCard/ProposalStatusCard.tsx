@@ -9,7 +9,7 @@ interface ProposalStatusCardProps {
   proposalTimeline: string
   badges?: {
     label: string
-    variant: string // e.g. "genre", "component2", "closed", etc.
+    variant: string // e.g. "genre", "increase", "closed", etc.
     icon?: React.ReactNode
     className?: string
   }[]

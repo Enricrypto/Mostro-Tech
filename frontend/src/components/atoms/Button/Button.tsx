@@ -1,66 +1,37 @@
 "use client"
 
-import { Button as BaseButton } from "@/components/ui/button"
-import type { ComponentProps, ReactNode } from "react"
-import { cn } from "@/lib/utils"
+import * as React from "react"
+import { BaseButton, BaseButtonProps } from "@/components/ui/button"
 
-export type ButtonProps = ComponentProps<"button"> & {
-  themeVariant?: string
-  icon?: ReactNode
+export type ButtonProps = Omit<BaseButtonProps, "asChild"> & {
+  icon?: React.ReactNode
   iconPosition?: "left" | "right"
 }
 
-export function Button({
-  themeVariant,
-  className,
-  icon,
-  iconPosition = "right",
-  children,
-  ...props
-}: ButtonProps) {
-  // Accept either "button-cancel-dark" or "cancel-dark" (keeps you flexible)
-  const variantClass = themeVariant?.startsWith("button-")
-    ? themeVariant
-    : themeVariant
-    ? `button-${themeVariant}`
-    : ""
-
-  // keep layout concerns in CSS, not here
-  const baseClasses = cn(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap", // single flex parent only
-    "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-    className ?? ""
-  )
-
-  const renderContent = () => (
-    <>
-      {icon && iconPosition === "left" && (
-        <span className='icon' aria-hidden>
-          {icon}
-        </span>
-      )}
-
-      <span className='button-label'>{children}</span>
-
-      {icon && iconPosition === "right" && (
-        <span className='icon' aria-hidden>
-          {icon}
-        </span>
-      )}
-    </>
-  )
-
-  if (themeVariant) {
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      variant = "default",
+      size = "default",
+      icon,
+      iconPosition = "right",
+      children,
+      ...props
+    },
+    ref
+  ) => {
     return (
-      <button {...props} className={cn(baseClasses, variantClass)}>
-        {renderContent()}
-      </button>
+      <BaseButton ref={ref} variant={variant} size={size} {...props}>
+        {icon && iconPosition === "left" && (
+          <span className='icon'>{icon}</span>
+        )}
+        <span className='button-label'>{children}</span>
+        {icon && iconPosition === "right" && (
+          <span className='icon'>{icon}</span>
+        )}
+      </BaseButton>
     )
   }
+)
 
-  return (
-    <BaseButton {...props} className={cn(baseClasses)}>
-      {renderContent()}
-    </BaseButton>
-  )
-}
+Button.displayName = "Button"

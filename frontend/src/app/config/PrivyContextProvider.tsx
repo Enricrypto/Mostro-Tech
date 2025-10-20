@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { PrivyProvider } from "@privy-io/react-auth"
 import { toSolanaWalletConnectors } from "@privy-io/react-auth/solana"
 
@@ -30,7 +31,8 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         loginMethods: ["google", "wallet"]
       }}
     >
-      <>{children}</>
+      {/* Wrap children in a fragment to avoid key warnings */}
+      <React.Fragment>{children}</React.Fragment>
     </PrivyProvider>
   )
 }

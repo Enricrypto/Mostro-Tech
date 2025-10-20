@@ -1,8 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { SearchBar } from "@/components/inputs/SearchBar"
+import { Button } from "@/components/atoms/Button/Button"
 import { DropDownMenu } from "@/components/navigation/DropDownMenu"
 import { cn } from "@/lib/utils"
 
@@ -13,6 +14,8 @@ const navLinks = [
 ]
 
 export function Navbar() {
+  const router = useRouter()
+
   return (
     <nav
       className={cn(
@@ -34,24 +37,21 @@ export function Navbar() {
             unoptimized
           />
         </div>
+
         {/* Navigation links */}
         <div className='flex items-center gap-4 w-[280px] h-[40px]'>
           {navLinks.map((link) => (
-            <Link
+            <Button
               key={link.href}
-              href={link.href}
-              className={cn(
-                "text-white font-body font-medium px-4 py-2",
-                "hover:text-[#998CE1] transition-colors duration-200"
-              )}
+              variant='link'
+              onClick={() => router.push(link.href)}
             >
               {link.label}
-            </Link>
+            </Button>
           ))}
-        </div>{" "}
-        {/* <-- closing div for nav links */}
-      </div>{" "}
-      {/* <-- closing div for left section */}
+        </div>
+      </div>
+
       {/* Right section: SearchBar + Profile / Dropdown */}
       <div className='flex items-center gap-[12px]'>
         <SearchBar
@@ -59,7 +59,6 @@ export function Navbar() {
           className='rounded-[6px] border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]'
         />
 
-        {/* Replace Connect Wallet button with DropdownMenu */}
         <div className='relative'>
           <DropDownMenu />
         </div>

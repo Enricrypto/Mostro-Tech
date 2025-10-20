@@ -28,7 +28,7 @@ export const ProposalExecutedCard: React.FC<ProposalExecutedCardProps> = ({
           <span className='text-[var(--color-proposal-text)] font-inter font-semibold text-[18px] leading-[28px]'>
             {proposalTitle}
           </span>
-          <Badge className='badge-component2'>Executed</Badge>
+          <Badge className='badge-increase'>Executed</Badge>
         </div>
         {/* Bottom text in top section */}
         <div className='text-[var(--color-proposal-artist)] font-inter font-medium text-[12px] leading-[20px]'>

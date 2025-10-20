@@ -1,1 +1,1 @@
-export { FullArtistCard } from "./FullArtistCard"
+export * from "./FullArtistCard"
