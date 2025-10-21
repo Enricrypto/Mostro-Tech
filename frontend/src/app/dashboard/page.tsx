@@ -17,13 +17,10 @@ import { mockNewLaunchData } from "@/mocks/mockNewLaunchData"
 import { trendingTokens } from "@/mocks/mockTrendingTokens"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 
-const VARIANTS: ("default" | "purple" | "red")[] = ["default", "purple", "red"]
-
 export default function DashboardPage() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const currentBanner = bannerPropsData[currentIndex] // pick the banner data for the current dot
-  const currentVariant = VARIANTS[currentIndex] // pick the corresponding variant
 
   // Auto-rotate effect
   useEffect(() => {
@@ -42,11 +39,15 @@ export default function DashboardPage() {
 
       {/* ===== ARTIST PROFILE BANNER SECTION ===== */}
       <section className='relative w-full flex justify-center mt-20'>
-        <ArtistProfileBanner {...currentBanner} variant={currentVariant} />
+        {/* Pass variant directly from the data */}
+        <ArtistProfileBanner
+          {...currentBanner}
+          variant={currentBanner.variant}
+        />
 
         {/* Dots variant switcher */}
         <div className='absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4'>
-          {VARIANTS.map((_, idx) => (
+          {bannerPropsData.map((_, idx) => (
             <div
               key={idx}
               onClick={() => setCurrentIndex(idx)}
@@ -81,7 +82,7 @@ export default function DashboardPage() {
             Top Artists
           </h2>
           <Button
-            variant='continue'
+            variant='follow-share'
             icon={<ArrowUpRightIcon size={20} weight='bold' />}
             iconPosition='right'
             onClick={() => console.log("Navigate to New Launches")}

@@ -1,13 +1,28 @@
 "use client"
 
 import { MusicNoteIcon, PlayIcon, LockIcon } from "@phosphor-icons/react"
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/atoms/Button"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
 
-interface SongCardProps {
+const songCardCVA = cva(
+  "w-[580px] h-[104px] flex items-center justify-between gap-[14px] rounded-[10px] border bg-[#121B2B] p-6 transition-shadow duration-200 hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380]",
+  {
+    variants: {
+      variant: {
+        "song-play": "border-[#998CE1]",
+        "song-unlock": "border-[#998CE1]"
+      }
+    },
+    defaultVariants: {
+      variant: "song-play"
+    }
+  }
+)
+
+interface SongCardProps extends VariantProps<typeof songCardCVA> {
   songName: string
   subtitle: string // e.g., "Latest Single - 3:45"
-  variant?: "song-play" | "song-unlock"
   unlockAmount?: number
   unlockToken?: string
   onPlay?: () => void
@@ -22,23 +37,18 @@ export function SongCard({
   onPlay
 }: SongCardProps) {
   return (
-    <div
-      className={cn(
-        "song-card flex items-center justify-between gap-[var(--spacing-3)]"
-      )}
-    >
+    <div className={songCardCVA({ variant })}>
       {/* Left Section (Icon) */}
-      <div className='song-card__icon'>
+      <div className='w-12 h-12 rounded-full bg-[var(--color-highlight)] flex items-center justify-center'>
         <MusicNoteIcon size={24} color='var(--color-black)' weight='fill' />
       </div>
 
       {/* Middle Section */}
-      <div className='song-card__text'>
-        <h3 className='song-card__title'>{songName}</h3>
-        <p
-          className='song-card__subtitle'
-          style={{ color: "var(--color-grey)" }}
-        >
+      <div className='flex flex-1 flex-col items-start justify-center gap-1'>
+        <h3 className='text-white font-semibold text-[16px] leading-[20px]'>
+          {songName}
+        </h3>
+        <p className='text-[var(--color-grey)] text-[10px] leading-[18px]'>
           {subtitle}
         </p>
       </div>

@@ -22,7 +22,7 @@ interface Proposal {
 export function ProposalsSection() {
   const [filter, setFilter] = useState<ProposalStatus>("all")
 
-  const filteredProposals =
+  const filteredProposals: Proposal[] =
     filter === "all"
       ? mockProposals
       : mockProposals.filter((p) => p.status === filter)

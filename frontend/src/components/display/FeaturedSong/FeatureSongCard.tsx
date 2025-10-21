@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/atoms/Button"
 import { PlayIcon, PauseIcon } from "@phosphor-icons/react"
@@ -10,33 +10,24 @@ import type { Artist } from "@/data/artists"
 export type FeatureSongCardProps = {
   className?: string
   artist: Artist
+  currentSongName?: string
+  isPlaying?: boolean
+  onPlay?: () => void
 }
 
 export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
   className,
-  artist
+  artist,
+  currentSongName,
+  isPlaying = false,
+  onPlay
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const [localPlaying, setLocalPlaying] = useState(false)
 
-  const handlePlayClick = () => {
-    if (!artist.latestSingle.audioUrl) return
-
-    if (!audioRef.current) {
-      audioRef.current = new Audio(artist.latestSingle.audioUrl)
-      audioRef.current.addEventListener("ended", () => setIsPlaying(false))
-    }
-
-    if (isPlaying) {
-      audioRef.current.pause()
-      setIsPlaying(false)
-    } else {
-      audioRef.current
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(console.error)
-    }
-  }
+  // Sync localPlaying with global player state
+  useEffect(() => {
+    setLocalPlaying(currentSongName === artist.latestSingle.title && isPlaying)
+  }, [currentSongName, isPlaying, artist.latestSingle.title])
 
   return (
     <div
@@ -68,13 +59,9 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
           </span>
         </div>
 
-        {/* Play Button */}
-        <Button
-          variant='songPlayIcon'
-          onClick={handlePlayClick}
-          className='p-0' // optional: removes extra padding
-        >
-          {isPlaying ? (
+        {/* Play/Pause Button */}
+        <Button variant='song-play-icon' onClick={onPlay} className='p-0'>
+          {localPlaying ? (
             <PauseIcon size={20} weight='bold' className='text-white' />
           ) : (
             <PlayIcon size={20} weight='bold' className='text-white' />

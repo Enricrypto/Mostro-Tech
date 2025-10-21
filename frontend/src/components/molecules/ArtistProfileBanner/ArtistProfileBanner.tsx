@@ -1,11 +1,29 @@
 "use client"
 
+import { cn } from "@/lib/utils"
+import { cva, type VariantProps } from "class-variance-authority"
 import { Badge } from "@/components/utils/Badge"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Button } from "@/components/atoms/Button"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 
-interface ArtistProfileBannerProps {
+const artistProfileBannerCVA = cva(
+  "relative w-full min-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center rounded-[10px] shadow-md transition-all duration-300 ease-out",
+  {
+    variants: {
+      variant: {
+        default: "bg-[#dcfd63]",
+        purple: "bg-[#998ce1]",
+        red: "bg-[#fd6363]"
+      }
+    },
+    defaultVariants: {
+      variant: "default"
+    }
+  }
+)
+
+export interface ArtistProfileBannerProps {
   artistName: string
   description: string
   tokenHolders: string
@@ -26,13 +44,11 @@ export function ArtistProfileBanner({
   avatarSrc,
   genreBadge,
   verifiedBadge,
-  variant = "default"
+  variant
 }: ArtistProfileBannerProps) {
   return (
-    <div className={`artist-profile-banner-${variant} w-full`}>
+    <div className={cn(artistProfileBannerCVA({ variant }))}>
       <div className='flex gap-16 w-full px-8'>
-        {" "}
-        {/* full width with padding */}
         {/* Left side: Avatar + Badges */}
         <div className='relative flex-1 flex items-start justify-center'>
           <Avatar src={avatarSrc} alt={artistName} variant='square-lg' />
@@ -46,11 +62,12 @@ export function ArtistProfileBanner({
 
           <Badge
             variant='genre'
-            className='absolute top-[85px] left-[520] w-[131px] h-[39px] gap-2 rotate-[28.17deg] border border-[#71D6FB] rounded-[28px] bg-white text-black'
+            className='absolute top-[85px] left-[520px] w-[131px] h-[39px] gap-2 rotate-[28.17deg] border border-[#71D6FB] rounded-[28px] bg-white text-black'
           >
             {verifiedBadge}
           </Badge>
         </div>
+
         {/* Right side: Text + Stats + Button */}
         <div className='flex flex-col flex-1 justify-between gap-6'>
           <div className='flex flex-col gap-4'>
@@ -63,30 +80,20 @@ export function ArtistProfileBanner({
           </div>
 
           <div className='flex gap-6'>
-            <div className='flex flex-col gap-1'>
-              <span className='font-inter font-bold text-[40px] leading-[48px] text-black'>
-                {tokenHolders}
-              </span>
-              <span className='font-inter text-[16px] leading-[28px] text-black'>
-                Token Holders
-              </span>
-            </div>
-            <div className='flex flex-col gap-1'>
-              <span className='font-inter font-bold text-[40px] leading-[48px] text-black'>
-                {marketCap}
-              </span>
-              <span className='font-inter text-[16px] leading-[28px] text-black'>
-                Market Cap
-              </span>
-            </div>
-            <div className='flex flex-col gap-1'>
-              <span className='font-inter font-bold text-[40px] leading-[48px] text-black'>
-                {followers}
-              </span>
-              <span className='font-inter text-[16px] leading-[28px] text-black'>
-                Followers
-              </span>
-            </div>
+            {[
+              { label: "Token Holders", value: tokenHolders },
+              { label: "Market Cap", value: marketCap },
+              { label: "Followers", value: followers }
+            ].map((stat) => (
+              <div key={stat.label} className='flex flex-col gap-1'>
+                <span className='font-inter font-bold text-[40px] leading-[48px] text-black'>
+                  {stat.value}
+                </span>
+                <span className='font-inter text-[16px] leading-[28px] text-black'>
+                  {stat.label}
+                </span>
+              </div>
+            ))}
           </div>
 
           <Button

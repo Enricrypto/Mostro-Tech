@@ -43,13 +43,6 @@
   /* Navbar */
   --color-navbar-border: #2d3953;
 
-  /* Proposal card */
-  --color-proposal-card-bg: linear-gradient(
-    103.78deg,
-    var(--color-purple) 26.89%,
-    var(--color-accent-dark) 98.11%
-  );
-
   /* DataCard */
   --color-datacard-bg: var(--color-dark-bg);
   --color-datacard-border: var(--color-navbar-border);
@@ -68,9 +61,8 @@
   --active-primary: var(--color-primary);
 
   /* Fonts */
-  --font-heading: var(--font-primary);
-  --font-body: var(--font-primary);
-  --font-inter: var(--font-inter);
+  --font-heading: var(--font-primary); /* Poppins for headings */
+  --font-body: var(--font-primary); /* Inter for body text */
 
   /* Font sizes */
   --text-h1: 2.5rem;
@@ -81,6 +73,12 @@
   --text-small: 0.875rem;
   --text-large: 30px;
   --leading-large: 36px;
+
+  /* Special text (DataCard) */
+  --text-datacard-value-font-size: 30px;
+  --text-datacard-value-line-height: 36px;
+  --text-datacard-value-letter-spacing: -0.75%;
+  --text-datacard-value-font-weight: 600;
 
   /* Border radius & shadows */
   --radius-pill: 30px;
@@ -109,121 +107,43 @@
   --z-modal: 1200;
   --z-popover: 1300;
   --opacity-disabled: 0.6;
-
-  /* DataCard text */
-  --text-datacard-value-font-size: 30px;
-  --text-datacard-value-line-height: 36px;
-  --text-datacard-value-letter-spacing: -0.75%;
-  --text-datacard-value-font-weight: 600;
 }
 
-@layer utilities {
-  .text-h1 {
-    font-size: var(--text-h1);
-    font-family: var(--font-heading);
-  }
-  .text-h2 {
-    font-size: var(--text-h2);
-    font-family: var(--font-heading);
-  }
-  .text-h3 {
-    font-size: var(--text-h3);
-    font-family: var(--font-heading);
-  }
-  .text-h4 {
-    font-size: var(--text-h4);
-    font-family: var(--font-heading);
-  }
-  .text-p {
-    font-size: var(--text-p);
-    font-family: var(--font-body);
-  }
-  .text-small {
-    font-size: var(--text-small);
-    font-family: var(--font-body);
-  }
-  .text-large {
-    font-size: var(--text-large);
-    line-height: var(--leading-large);
-    font-family: var(--font-body);
-  }
-}
-
-/* =========================================================
-   BASE STYLES
-  ========================================================= */
-
+/* ==============================
+   BASE LAYER — global defaults
+   ============================== */
 @layer base {
   body {
-    font-family: var(--font-body);
-    background-color: var(--color-white);
+    font-family: var(--font-body); /* Inter */
     color: var(--color-black);
+    background-color: var(--color-white);
   }
 
   h1,
   h2,
   h3,
   h4 {
-    font-family: var(--font-heading);
+    font-family: var(--font-heading); /* Poppins */
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit; /* inherit Inter from body */
   }
 
   button {
     transition: all 0.2s ease;
   }
-  input {
-    font-family: var(--font-inter);
-  }
-  /* Text Highlight */
+
+  /* Text highlight */
   .text-highlight {
     color: var(--color-highlight);
   }
 }
 
-/* =========================================================
-   UTILITIES
-   ========================================================= */
 @layer utilities {
-  /* Font utilities */
-  .font-heading {
-    font-family: var(--font-heading);
-  }
-  .font-body {
-    font-family: var(--font-body);
-  }
-  .font-inter {
-    font-family: var(--font-inter);
-  }
-
-  /* Text utilities */
-  .text-h1 {
-    font-size: var(--text-h1);
-    font-weight: 700; /* bold */
-    line-height: 1.2;
-  }
-
-  .text-h2 {
-    font-size: var(--text-h2);
-    font-weight: 600; /* semi-bold */
-    line-height: 1.3;
-  }
-
-  .text-h3 {
-    font-size: var(--text-h3);
-    font-weight: 500; /* medium */
-    line-height: 1.4;
-  }
-
-  .text-h4 {
-    font-size: var(--text-h4);
-    font-weight: 500; /* medium */
-    line-height: 1.5;
-  }
-  .text-p {
-    font-size: var(--text-p);
-  }
-  .text-small {
-    font-size: var(--text-small);
-  }
+  /* Special typography cases */
   .text-datacard-value {
     font-family: var(--font-inter);
     font-weight: var(--text-datacard-value-font-weight);
@@ -231,260 +151,12 @@
     line-height: var(--text-datacard-value-line-height);
     letter-spacing: var(--text-datacard-value-letter-spacing);
   }
-
-  /* Border radius */
-  .rounded-pill {
-    border-radius: var(--radius-pill);
-  }
-  .rounded-card {
-    border-radius: var(--radius-card);
-  }
-
-  /* Proposal card */
-  .proposal-card {
-    background: var(--color-proposal-card-bg);
-    border: 1px solid var(--color-proposal-card-border);
-    display: flex;
-    flex-direction: column;
-  }
-  .proposal-text {
-    font-family: var(--font-inter);
-    color: var(--color-proposal-text);
-    font-weight: 400;
-    font-size: var(--text-small);
-  }
-  .proposal-album-text {
-    font-family: var(--font-inter);
-    font-weight: 600;
-    color: var(--color-proposal-album);
-  }
-  .proposal-artist-text {
-    font-family: var(--font-inter);
-    font-weight: 500;
-    color: var(--color-proposal-artist);
-  }
 }
 
 /* =========================================================
    COMPONENTS
    ========================================================= */
 @layer components {
-  /* PROGRESS BARS */
-  .progress-bar {
-    @apply relative overflow-hidden rounded-[40px];
-    width: 334px;
-    height: 16px;
-  }
-
-  .progress-bar-blue {
-    background: var(--color-skyblue-opacity);
-  }
-
-  .progress-bar-blue-indicator {
-    @apply h-full transition-all;
-    background: var(--color-skyblue);
-    border-radius: 40px;
-  }
-
-  .progress-bar-red {
-    background: var(--color-red-opacity);
-  }
-
-  .progress-bar-red-indicator {
-    @apply h-full transition-all;
-    background: var(--color-red);
-    border-radius: 40px;
-  }
-
-  .progress-bar-green {
-    background: var(--color-green-opacity);
-  }
-
-  .progress-bar-green-indicator {
-    @apply h-full transition-all;
-    background: var(--color-green);
-    border-radius: 40px;
-  }
-
-  .progress-bar-purple {
-    background: var(--color-purple-opacity);
-  }
-
-  .progress-bar-purple-indicator {
-    @apply h-full transition-all;
-    background: var(--color-purple);
-    border-radius: 40px;
-  }
-
-  /* =========================================================
-   TOKEN HOLDINGS USER CARD
-   ========================================================= */
-  .token-holdings-card {
-    @apply w-[384px] h-[172px] p-6 gap-[14px] flex flex-col rounded-[10px] shadow-[0_4px_6px_0_#00000017]
-       bg-[var(--color-datacard-bg)] border-2 border-[var(--color-datacard-border)];
-  }
-
-  /* =========================================================
-   PROPOSAL CARDS
-   ========================================================= */
-  .card {
-    @apply rounded-[10px] flex flex-col gap-[14px] p-6;
-  }
-
-  .card-proposal-default {
-    @apply w-[382px] h-[188px] bg-[#121b2b] border-2 border-[#1e2a3e];
-  }
-
-  .card-proposal-highlight {
-    @apply w-[382px] h-[188px] bg-[#121b2b] border-2 border-[#aee9ff] shadow-[0_0_16.9px_5px_#71d6fb80];
-  }
-
-  /* =========================================================
-   Smaller card numeric text
-   ========================================================= */
-  .text-card-value-small {
-    font-family: var(--font-inter);
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 20px;
-    letter-spacing: -0.75%;
-    color: var(--color-white);
-  }
-
-  /* =========================================================
-   SONG CARD
-   ========================================================= */
-  .song-card {
-    @apply w-[580px] h-[104px] rounded-[10px] border flex items-center justify-between
-           bg-[var(--color-datacard-bg)] border-[var(--color-datacard-border)]
-           p-[var(--spacing-6)] gap-[var(--spacing-3)] shadow-[0_4px_6px_0_#00000017];
-  }
-
-  .song-card__icon {
-    @apply flex items-center justify-center rounded-[26px];
-    width: 40px;
-    height: 40px;
-    background: var(--color-highlight);
-    flex-shrink: 0; /* prevent shrinking */
-  }
-
-  .song-card__text {
-    @apply flex flex-col justify-between;
-    width: 373px;
-    height: 56px;
-    gap: var(--spacing-2);
-  }
-
-  .song-card__title {
-    font-family: var(--font-inter);
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 28px;
-    color: var(--color-white);
-  }
-
-  .song-card__subtitle {
-    font-family: var(--font-inter);
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 20px;
-    color: var(--color-proposal-artist);
-  }
-
-  /* =========================================================
-   PILL BUTTONS
-   ========================================================= */
-  .pill-button {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full transition-all duration-200 ease-out;
-    font-family: var(--font-body);
-    font-size: 14px;
-    line-height: 24px;
-  }
-
-  .pill-button--primary {
-    @apply border border-[var(--color-primary)] bg-white text-black;
-  }
-
-  .pill-button--secondary {
-    @apply border border-[var(--color-accent)] bg-[var(--color-accent)] text-black;
-  }
-
-  .pill-button--black {
-    @apply border border-[var(--color-charcoal)] bg-[var(--color-night)] text-white;
-  }
-
-  .pill-button--blue {
-    @apply border border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)];
-  }
-
-  .pill-button--yellow {
-    @apply border border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black;
-  }
-
-  /* Selected variants */
-  .pill-button--primary-selected,
-  .pill-button--secondary-selected,
-  .pill-button--black-selected,
-  .pill-button--blue-selected,
-  .pill-button--yellow-selected {
-    @apply font-semibold;
-    opacity: 0.9;
-  }
-
-  /* =========================================================
-   SOCIAL BUTTONS
-   ========================================================= */
-  .social-button {
-    @apply inline-flex items-center justify-center transition-all duration-200 ease-out;
-    border-radius: var(--radius-pill);
-    width: 44px;
-    height: 32px;
-    border-width: 1px;
-    border-style: solid;
-    color: inherit;
-  }
-
-  .social-button--black {
-    @apply border-[var(--color-charcoal)] bg-[var(--color-night)] text-white;
-  }
-
-  .social-button--blue {
-    @apply border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)];
-  }
-
-  .social-button--yellow {
-    @apply border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black;
-  }
-
-  .social-button--compact {
-    @apply w-9 h-7;
-  }
-
-  /* ArtistProfileBanner card variants */
-  .artist-profile-banner-default {
-    @apply relative w-full max-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center;
-    background: #dcfd63; /* original yellow */
-    box-shadow: 0px 4px 6px 0px #00000017;
-    border-radius: 10px;
-    transition: all 300ms ease-out;
-  }
-
-  .artist-profile-banner-purple {
-    @apply relative w-full max-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center;
-    background: #998ce1;
-    box-shadow: 0px 4px 6px 0px #00000017;
-    border-radius: 10px;
-    transition: all 300ms ease-out;
-  }
-
-  .artist-profile-banner-red {
-    @apply relative w-full max-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center;
-    background: #fd6363;
-    box-shadow: 0px 4px 6px 0px #00000017;
-    border-radius: 10px;
-    transition: all 300ms ease-out;
-  }
-
   /* =========================================================
    LEADERBOARD 
    ========================================================= */

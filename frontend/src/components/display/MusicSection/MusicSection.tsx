@@ -5,6 +5,7 @@ import { FeatureSongCard } from "@/components/display/FeaturedSong"
 import { SongCard } from "@/components/display/SongCard"
 import { PerksCard } from "@/components/molecules/PerksCard"
 import { UpcomingEvent } from "@/components/display/UpcomingEvent"
+import { BadgesRow } from "@/components/dashboard"
 import { PlayerCard } from "../PlayerCard"
 import { mockArtists } from "@/mocks/mockArtists"
 import { mockPerks } from "@/mocks/mockPerks"
@@ -86,28 +87,42 @@ export const MusicSection = () => {
   return (
     <div className='flex flex-col items-center gap-20'>
       {/* Music Drops */}
-      <section className='relative w-full mt-20 flex flex-col'>
-        <div className='flex px-4 gap-4'>
+      <section className='relative w-full flex flex-col'>
+        <div className='flex'>
           <MusicNoteIcon size={36} weight='fill' className='text-[#DCFD63]' />
           <h2 className='font-inter font-semibold text-[30px] leading-[36px] text-[#DCFD63]'>
             Music Drops
           </h2>
         </div>
-        <div className='px-4 grid grid-cols-1 sm:grid-cols-3 gap-[39px] mt-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-[39px] gap-y-[21px] mt-10'>
           {mockArtists.map((artist) => (
-            <FeatureSongCard key={artist.id} artist={artist} />
+            <FeatureSongCard
+              key={artist.id}
+              artist={artist}
+              onPlay={() =>
+                handlePlaySong({
+                  songName: artist.latestSingle.title,
+                  subtitle: artist.latestSingle.duration,
+                  variant: "song-play",
+                  avatarUrl: artist.image
+                })
+              }
+              isPlaying={
+                currentSong?.songName === artist.latestSingle.title && isPlaying
+              }
+            />
           ))}
         </div>
       </section>
 
       {/* Fan Perks */}
       <section className='relative w-full mt-20 flex flex-col'>
-        <div className='flex px-4'>
+        <div className='flex'>
           <h2 className='font-inter font-semibold text-[30px] leading-[36px] text-white'>
             Fan Perks
           </h2>
         </div>
-        <div className='px-4 grid grid-cols-1 sm:grid-cols-3 gap-[39px] mt-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-[39px] gap-y-[29px] mt-10'>
           {mockPerks.map((perk, i) => (
             <PerksCard
               key={i}
@@ -121,13 +136,13 @@ export const MusicSection = () => {
 
       {/* Featured Tracks + Upcoming Events */}
       <section className='relative w-full mt-20 mb-20'>
-        <div className='flex gap-10'>
+        <div className='flex gap-5'>
           {/* Featured Tracks */}
-          <div className='flex flex-col gap-6 px-4'>
+          <div className='flex flex-col gap-6'>
             <h2 className='font-inter font-semibold text-[30px] leading-[36px] text-white'>
               Featured Tracks
             </h2>
-            <div className='flex flex-col gap-4 mt-4'>
+            <div className='flex flex-col gap-6 mt-4'>
               {mockSongData.map((song, index) => (
                 <SongCard
                   key={index}
@@ -147,7 +162,7 @@ export const MusicSection = () => {
             <h2 className='font-inter font-semibold text-[30px] leading-[36px] text-white'>
               Upcoming Events
             </h2>
-            <div className='flex flex-col gap-4 mt-4'>
+            <div className='flex flex-col gap-6 mt-4'>
               {upcomingEvents.map((event, index) => (
                 <UpcomingEvent key={index} event={event} />
               ))}

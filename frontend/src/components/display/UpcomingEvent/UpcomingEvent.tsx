@@ -9,6 +9,7 @@ import {
   MapPinIcon,
   TicketIcon
 } from "@phosphor-icons/react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 type EventStatus = "on-sale" | "sold-out" | "coming-soon"
 
@@ -19,6 +20,21 @@ interface Event {
   location: string
   status: EventStatus
 }
+
+const upcomingEventCVA = cva(
+  "h-[158px] p-6 bg-[#121B2B] border-2 rounded-lg flex flex-col justify-between transition-shadow duration-200",
+  {
+    variants: {
+      variant: {
+        default: "border-[#2D3953]",
+        highlighted: "border-[#6654d3] shadow-[0_0_16.9px_5px_#6654D380]"
+      }
+    },
+    defaultVariants: {
+      variant: "default"
+    }
+  }
+)
 
 export const UpcomingEvent = ({
   event,
@@ -37,7 +53,8 @@ export const UpcomingEvent = ({
   return (
     <div
       className={cn(
-        "h-[158px] p-6 bg-[#121B2B] border-2 border-[#2D3953] rounded-lg shadow-md flex flex-col justify-between",
+        upcomingEventCVA({ variant: "default" }) +
+          " hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380]",
         className
       )}
     >

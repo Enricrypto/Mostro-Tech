@@ -1,5 +1,6 @@
-// /src/mocks/mockBannerProps.ts
-export const bannerPropsData = [
+import type { ArtistProfileBannerProps } from "../components/molecules/ArtistProfileBanner"
+
+export const bannerPropsData: ArtistProfileBannerProps[] = [
   {
     artistName: "Jane Doe",
     description: "Music innovator and blockchain enthusiast.",
@@ -8,7 +9,8 @@ export const bannerPropsData = [
     followers: "8.7K",
     avatarSrc: "/avatar1.png",
     genreBadge: "Experimental",
-    verifiedBadge: "Jazz"
+    verifiedBadge: "Jazz",
+    variant: "default"
   },
   {
     artistName: "John Smith",
@@ -18,7 +20,8 @@ export const bannerPropsData = [
     followers: "5.4K",
     avatarSrc: "/avatar2.png",
     genreBadge: "Electronic",
-    verifiedBadge: "Rock"
+    verifiedBadge: "Rock",
+    variant: "purple"
   },
   {
     artistName: "Alice Johnson",
@@ -28,6 +31,7 @@ export const bannerPropsData = [
     followers: "10.2K",
     avatarSrc: "/avatar3.png",
     genreBadge: "Hip-Hop",
-    verifiedBadge: "Pop"
+    verifiedBadge: "Pop",
+    variant: "red"
   }
 ]

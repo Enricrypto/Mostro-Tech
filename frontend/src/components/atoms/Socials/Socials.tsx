@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { Button } from "../Button"
+import { cva, type VariantProps } from "class-variance-authority"
 import {
   InstagramLogoIcon,
   FacebookLogoIcon,
@@ -10,35 +10,67 @@ import {
   TiktokLogoIcon,
   YoutubeLogoIcon
 } from "@phosphor-icons/react"
+import type { ComponentProps } from "react"
 
+// CVA for social button
+const socialButtonCVA = cva(
+  "inline-flex items-center justify-center transition-all duration-200 ease-out rounded-full border text-inherit",
+  {
+    variants: {
+      themeVariant: {
+        black:
+          "border-[var(--color-charcoal)] bg-[var(--color-night)] text-white",
+        blue: "border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)]",
+        yellow:
+          "border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black"
+      },
+      size: {
+        default: "w-[44px] h-[32px]",
+        compact: "w-9 h-7"
+      }
+    },
+    defaultVariants: {
+      themeVariant: "black",
+      size: "default"
+    }
+  }
+)
+
+// Social types
 export type SocialType =
   | "instagram"
   | "facebook"
   | "spotify"
   | "twitter"
   | "tiktok"
-  | "youtube" // added YouTube
+  | "youtube"
 
-export interface SocialsProps {
-  socials: SocialType[]
-  variant?: "default" | "compact"
-  themeVariant?: "black" | "blue" | "yellow"
-  onClick?: (social: SocialType) => void
-  className?: string
-}
+// CVA + ComponentProps typing
+export type SocialButtonProps = ComponentProps<"button"> &
+  VariantProps<typeof socialButtonCVA>
 
+// Mapping social names to icons
 const SOCIAL_MAP: Record<SocialType, React.ElementType> = {
   instagram: InstagramLogoIcon,
   facebook: FacebookLogoIcon,
   spotify: SpotifyLogoIcon,
   twitter: XLogoIcon,
   tiktok: TiktokLogoIcon,
-  youtube: YoutubeLogoIcon // added YouTube
+  youtube: YoutubeLogoIcon
+}
+
+// Socials component
+export interface SocialsProps {
+  socials: SocialType[]
+  size?: "default" | "compact"
+  themeVariant?: "black" | "blue" | "yellow"
+  onClick?: (social: SocialType) => void
+  className?: string
 }
 
 export const Socials: React.FC<SocialsProps> = ({
   socials,
-  variant = "default",
+  size = "default",
   themeVariant = "black",
   onClick,
   className
@@ -47,24 +79,20 @@ export const Socials: React.FC<SocialsProps> = ({
     <div
       className={cn(
         "flex items-center justify-center gap-[8px]",
-        variant === "compact" && "gap-[4px]",
+        size === "compact" && "gap-[4px]",
         className
       )}
     >
       {socials.map((social) => {
         const Icon = SOCIAL_MAP[social]
         return (
-          <Button
+          <button
             key={social}
             onClick={() => onClick?.(social)}
-            className={cn(
-              "social-button",
-              `social-button--${themeVariant}`,
-              variant === "compact" && "social-button--compact"
-            )}
+            className={cn(socialButtonCVA({ themeVariant, size }))}
           >
             <Icon size={20} color='currentColor' />
-          </Button>
+          </button>
         )
       })}
     </div>

@@ -4,23 +4,15 @@ import { useState } from "react"
 import { BadgesRow } from "@/components/dashboard/BadgesRow"
 import { FullArtistCard } from "@/components/molecules/FullArtistCardProfile"
 import { SectionSelector } from "@/components/navigation/SectionSelector"
-import { FeatureSongCard } from "@/components/display/FeaturedSong"
-import { SongCard } from "@/components/display/SongCard"
-import { PerksCard } from "@/components/molecules/PerksCard"
-import { UpcomingEvent } from "@/components/display/UpcomingEvent"
 import { LeaderBoard } from "@/components/molecules/Leaderboard"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Button } from "@/components/atoms/Button"
 import { MusicSection } from "@/components/display/MusicSection"
 import { ProposalsSection } from "@/components/molecules/ProposalsSection"
 import { mockFullArtistData } from "@/mocks/mockFullArtistData"
-import { mockArtists } from "@/mocks/mockArtists"
-import { mockPerks } from "@/mocks/mockPerks"
-import { mockSongData } from "@/mocks/mockSongData"
-import { upcomingEvents } from "@/mocks/mockUpcomingEvents"
 import { mockLeaderboardData } from "@/mocks/mockLeaderboardData"
 import { mockFanbase } from "@/mocks/mockFanBase"
-import { MusicNoteIcon, ArrowUpRightIcon } from "@phosphor-icons/react"
+import { ArrowUpRightIcon } from "@phosphor-icons/react"
 
 type SectionId = "music" | "community" | "proposals" | "token"
 
@@ -110,29 +102,26 @@ export default function ArtistPage() {
         </div>
       </div>
     ),
-    proposals: (
-      <div className='mt-4'>
-        <ProposalsSection />
-      </div>
-    ),
+    proposals: <ProposalsSection />,
     token: <div className='text-white mt-4'>Token Section Placeholder</div>
   }
 
   return (
     <div className='bg-[#0A111F] min-h-screen w-full flex flex-col items-center pb-[100px]'>
-      {/* Badges */}
-      <section
-        className='sticky top-[149px] z-10 w-full bg-[#0A111FE5]'
-        style={{
-          borderTop: "2px solid #121B2B",
-          borderBottom: "2px solid #121B2B",
-          backdropFilter: "blur(4px)"
-        }}
-      >
-        <div className='max-w-[1512px] mx-auto px-[101px] py-[20px]'>
-          <BadgesRow />
-        </div>
-      </section>
+      {selectedSection === "music" && (
+        <section
+          className='sticky top-[149px] z-10 w-full bg-[#0A111FE5]'
+          style={{
+            borderTop: "2px solid #121B2B",
+            borderBottom: "2px solid #121B2B",
+            backdropFilter: "blur(4px)"
+          }}
+        >
+          <div className='max-w-[1512px] mx-auto px-[101px] py-[20px]'>
+            <BadgesRow />
+          </div>
+        </section>
+      )}
 
       {/* Full Artist Card */}
       <section className='relative w-full flex justify-center mt-20'>

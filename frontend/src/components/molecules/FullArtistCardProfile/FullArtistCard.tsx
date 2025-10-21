@@ -72,7 +72,7 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
 
         {/* Socials + Follow/Share Buttons */}
         <div className='flex items-center gap-2'>
-          <Socials socials={socials} variant='default' themeVariant='black' />
+          <Socials socials={socials} size='default' themeVariant='black' />
 
           <Button
             variant='follow-share'
