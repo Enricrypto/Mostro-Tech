@@ -1,0 +1,1 @@
+export { ProfilSetupModal } from "./ProfilSetupModal"

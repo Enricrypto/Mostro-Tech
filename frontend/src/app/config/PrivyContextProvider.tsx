@@ -28,7 +28,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             "detected_solana_wallets"
           ]
         },
-        loginMethods: ["google", "wallet"]
+        loginMethods: ["email", "google", "wallet"]
       }}
     >
       {/* Wrap children in a fragment to avoid key warnings */}
