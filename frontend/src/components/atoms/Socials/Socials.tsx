@@ -19,7 +19,7 @@ const socialButtonCVA = cva(
     variants: {
       themeVariant: {
         black:
-          "border-[var(--color-charcoal)] bg-[var(--color-night)] text-white",
+          "border-[var(--color-navbar-border)] bg-[var(--color-night)] text-white",
         blue: "border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)]",
         yellow:
           "border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black"
