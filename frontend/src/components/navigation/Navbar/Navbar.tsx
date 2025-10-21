@@ -20,7 +20,7 @@ export function Navbar() {
     <nav
       className={cn(
         "flex items-center justify-between",
-        "w-[982px] h-[73px]",
+        "w-full max-w-[982px] h-[73px]",
         "px-6 py-4 rounded-[16px] border-2",
         "border-[var(--color-navbar-border)] bg-[#121B2B] backdrop-blur-sm"
       )}
@@ -28,7 +28,7 @@ export function Navbar() {
       {/* Left section: Logo + Links */}
       <div className='flex items-center gap-6'>
         {/* Logo */}
-        <div className='p-2'>
+        <div className='flex-shrink-0'>
           <Image
             src='/logo.png'
             alt='Mostro Logo'
@@ -39,7 +39,7 @@ export function Navbar() {
         </div>
 
         {/* Navigation links */}
-        <div className='flex items-center gap-4 w-[280px] h-[40px]'>
+        <div className='flex items-center gap-4'>
           {navLinks.map((link) => (
             <Button
               key={link.href}
@@ -53,10 +53,10 @@ export function Navbar() {
       </div>
 
       {/* Right section: SearchBar + Profile / Dropdown */}
-      <div className='flex items-center gap-[12px]'>
+      <div className='flex items-center gap-3'>
         <SearchBar
-          placeholder='Search...'
           className='rounded-[6px] border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]'
+          placeholder='Search...'
         />
 
         <div className='relative'>

@@ -1,29 +1,11 @@
 "use client"
 
-import { cn } from "@/lib/utils"
-import { cva, type VariantProps } from "class-variance-authority"
 import { Badge } from "@/components/utils/Badge"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Button } from "@/components/atoms/Button"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 
-const artistProfileBannerCVA = cva(
-  "relative w-full min-w-[1512px] min-h-[510px] py-16 px-2 flex justify-center rounded-[10px] shadow-md transition-all duration-300 ease-out",
-  {
-    variants: {
-      variant: {
-        default: "bg-[#dcfd63]",
-        purple: "bg-[#998ce1]",
-        red: "bg-[#fd6363]"
-      }
-    },
-    defaultVariants: {
-      variant: "default"
-    }
-  }
-)
-
-export interface ArtistProfileBannerProps {
+interface ArtistProfileBannerProps {
   artistName: string
   description: string
   tokenHolders: string
@@ -44,32 +26,43 @@ export function ArtistProfileBanner({
   avatarSrc,
   genreBadge,
   verifiedBadge,
-  variant
+  variant = "default"
 }: ArtistProfileBannerProps) {
+  // background color based on variant
+  const bgColor =
+    variant === "purple" ? "#998ce1" : variant === "red" ? "#fd6363" : "#dcfd63"
+
   return (
-    <div className={cn(artistProfileBannerCVA({ variant }))}>
-      <div className='flex gap-16 w-full px-8'>
-        {/* Left side: Avatar + Badges */}
-        <div className='relative flex-1 flex items-start justify-center'>
+    <div
+      style={{ backgroundColor: bgColor }}
+      className='w-full min-h-[510px] shadow-md py-16'
+    >
+      {/* Inner container: left = avatar + badges, right = stats */}
+      <div className='flex justify-between w-full '>
+        {/* Left: Avatar + badges */}
+        <div className='relative flex-1 flex justify-center items-start min-w-[250px]'>
+          {/* Avatar */}
           <Avatar src={avatarSrc} alt={artistName} variant='square-lg' />
 
+          {/* Badges */}
           <Badge
             variant='genre'
-            className='absolute top-[189px] left-8 w-[131px] h-[39px] gap-2 rotate-[-22.21deg] border border-[#71D6FB] rounded-[28px] bg-white text-black'
+            className='absolute top-[70%] left-30 w-[131px] h-[39px] gap-2 rotate-[-22deg] border border-[#71D6FB] rounded-[28px] bg-white text-black'
           >
             {genreBadge}
           </Badge>
 
           <Badge
             variant='genre'
-            className='absolute top-[85px] left-[520px] w-[131px] h-[39px] gap-2 rotate-[28.17deg] border border-[#71D6FB] rounded-[28px] bg-white text-black'
+            className='absolute top-[20%] left-[580px] w-[131px] h-[39px] gap-2 rotate-[28deg] border border-[#71D6FB] rounded-[28px] bg-white text-black'
           >
             {verifiedBadge}
           </Badge>
         </div>
 
-        {/* Right side: Text + Stats + Button */}
-        <div className='flex flex-col flex-1 justify-between gap-6'>
+        {/* Right: Text + Stats + Button */}
+        <div className='flex flex-col flex-1 gap-6 min-w-[300px]'>
+          {/* Artist name + description */}
           <div className='flex flex-col gap-4'>
             <h2 className='font-poppins text-[48px] font-normal leading-[48px] text-black'>
               {artistName}
@@ -79,7 +72,8 @@ export function ArtistProfileBanner({
             </p>
           </div>
 
-          <div className='flex gap-6'>
+          {/* Stats */}
+          <div className='flex gap-6 flex-wrap'>
             {[
               { label: "Token Holders", value: tokenHolders },
               { label: "Market Cap", value: marketCap },
@@ -96,6 +90,7 @@ export function ArtistProfileBanner({
             ))}
           </div>
 
+          {/* Button */}
           <Button
             variant='continue'
             className='w-[288px] h-[40px] px-4 py-2 gap-2 rounded-[6px] flex items-center justify-center'

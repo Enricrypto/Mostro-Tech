@@ -35,7 +35,7 @@ export function SearchBar({
           placeholder={placeholder}
           value={value}
           onChange={(e) => onChange?.(e.target.value)}
-          className='ml-2 w-full h-full font-body text-[var(--color-black)] placeholder:text-[var(--color-muted)] bg-transparent outline-none border-none'
+          className='w-full h-full font-body text-[var(--color-white)] placeholder:text-[var(--color-muted)] bg-transparent outline-none border-none'
         />
       </div>
     </div>

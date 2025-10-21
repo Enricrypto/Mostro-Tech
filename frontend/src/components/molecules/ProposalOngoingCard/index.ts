@@ -1,1 +1,0 @@
-export { ProposalOngoingCard } from "./ProposalOngoingCard"

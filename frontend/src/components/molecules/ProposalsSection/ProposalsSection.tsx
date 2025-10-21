@@ -1,10 +1,6 @@
-"use client"
-
 import { useState } from "react"
 import { Button } from "@/components/atoms/Button"
-import { ProposalOngoingCard } from "../ProposalOngoingCard"
-import { ProposalExecutedCard } from "../ProposalExecutedCard"
-import { ProposalClosedCard } from "../ProposalClosedCard"
+import { ProposalCard } from "../ProposalCard"
 import { mockProposals } from "@/mocks/mockProposals"
 
 type ProposalStatus = "all" | "ongoing" | "executed" | "closed"
@@ -28,10 +24,7 @@ export function ProposalsSection() {
       : mockProposals.filter((p) => p.status === filter)
 
   return (
-    <div
-      className='flex flex-col w-[1200px] h-[868px] gap-[39px]'
-      style={{ opacity: 1 }}
-    >
+    <div className='flex flex-col w-[1200px] h-[868px] gap-[39px]'>
       {/* Top bar */}
       <div className='flex justify-between items-center w-full h-[42px]'>
         <h2 className='text-white font-inter font-semibold text-[30px] leading-[36px]'>
@@ -53,42 +46,22 @@ export function ProposalsSection() {
       </div>
 
       {/* Cards Grid */}
-      <div
-        className='grid grid-cols-2 gap-[39px]'
-        style={{ width: 1200, height: 868 }}
-      >
+      <div className='grid grid-cols-2 gap-x-[19px] gap-y-[19px]'>
         {filteredProposals.map((proposal) => {
-          switch (proposal.status) {
-            case "ongoing":
-              return (
-                <ProposalOngoingCard
-                  key={proposal.id}
-                  title={proposal.title}
-                  requestedValue={proposal.requestedTokens}
-                  yesPercentage={proposal.yesPercentage!}
-                  noPercentage={proposal.noPercentage!}
-                  badgeText={proposal.badgeText!}
-                />
-              )
-            case "executed":
-              return (
-                <ProposalExecutedCard
-                  key={proposal.id}
-                  proposalTitle={proposal.title}
-                  requestedTokens={proposal.requestedTokens}
-                />
-              )
-            case "closed":
-              return (
-                <ProposalClosedCard
-                  key={proposal.id}
-                  title={proposal.title}
-                  requestingTokens={proposal.requestedTokens}
-                />
-              )
-            default:
-              return null
-          }
+          // Skip anything that isn't a valid card variant
+          if (proposal.status === "all") return null
+
+          return (
+            <ProposalCard
+              key={proposal.id}
+              status={proposal.status} // now safe
+              title={proposal.title}
+              requestedTokens={proposal.requestedTokens}
+              yesPercentage={proposal.yesPercentage}
+              noPercentage={proposal.noPercentage}
+              badgeText={proposal.badgeText}
+            />
+          )
         })}
       </div>
     </div>
