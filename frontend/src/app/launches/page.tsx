@@ -1,27 +1,11 @@
 "use client"
 
-import { BadgesRow } from "@/components/dashboard/BadgesRow"
 import { NewLaunchCard } from "@/components/molecules/NewLaunchCard"
 import { mockNewLaunchData } from "@/mocks/mockNewLaunchData"
 
 export default function NewLaunchesPage() {
   return (
     <div className='bg-[#0A111F] min-h-screen w-full flex flex-col items-center'>
-      {/* ===== BADGES SECTION ===== */}
-      <section
-        className='sticky top-[149px] z-10 w-full'
-        style={{
-          borderTop: "2px solid #121B2B",
-          borderBottom: "2px solid #121B2B",
-          background: "#0A111FE5",
-          backdropFilter: "blur(4px)"
-        }}
-      >
-        <div className='max-w-[1512px] mx-auto px-[101px] py-[20px]'>
-          <BadgesRow />
-        </div>
-      </section>
-
       {/* ===== NEW LAUNCHES SECTION ===== */}
       <section
         className='flex flex-col gap-[39px] items-center mt-20 mb-20'

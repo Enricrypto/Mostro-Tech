@@ -16,7 +16,7 @@ interface ArtistFullCardProps {
   description: string
   holders: string | number
   marketCap: string | number
-  volume: string | number
+  totalSupply: string | number
   genre: string
 }
 
@@ -28,9 +28,13 @@ export function ArtistCard({
   description,
   holders,
   marketCap,
-  volume,
+  totalSupply,
   genre
 }: ArtistFullCardProps) {
+  // Convert badgeText to number to determine variant
+  const numberValue = parseFloat(badgeText.replace(/[^0-9.-]+/g, "")) // removes any symbols like %
+  const badgeVariant = numberValue >= 0 ? "increase" : "decrease"
+
   return (
     <div
       className={cn(
@@ -63,9 +67,8 @@ export function ArtistCard({
             </p>
             {/* Badge Icon */}
             <Badge
-              variant='icon'
-              icon={<ClockIcon weight='fill' size={12} />}
-              className='inline-flex h-[22px] rounded-[10px] border border-[#DCFD63] px-[8px] py-[2px] gap-[8px] min-w-[69px]'
+              variant={badgeVariant}
+              icon={<ClockIcon weight='fill' size={14} />}
             >
               {badgeText}
             </Badge>
@@ -108,13 +111,13 @@ export function ArtistCard({
           </p>
         </div>
 
-        {/* 3) Volume */}
+        {/* 3) Total Supply */}
         <div className='flex flex-col items-start gap-[8px]'>
           <p className='text-white font-poppins font-normal text-[18px] leading-[20px]'>
-            {volume}
+            {totalSupply}
           </p>
           <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-[16px] whitespace-nowrap'>
-            Volume
+            Total Supply
           </p>
         </div>
       </div>

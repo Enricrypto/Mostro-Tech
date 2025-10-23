@@ -12,13 +12,13 @@ import { cn } from "@/lib/utils"
 export function DropDownMenu() {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
-  const { user, logout } = usePrivy()
+  const { user, logout, ready, authenticated } = usePrivy()
   const { login } = useLogin()
   const router = useRouter()
 
   // Redirect after login
   useEffect(() => {
-    if (user) router.push("/dashboard")
+    if (user) router.push("/")
   }, [user, router])
 
   // Close dropdown when clicking outside
@@ -40,7 +40,7 @@ export function DropDownMenu() {
 
   const handleLogin = async () => {
     await login({
-      loginMethods: ["google", "wallet"],
+      loginMethods: ["google", "wallet", "email"],
       walletChainType: "solana-only"
     })
   }
@@ -84,10 +84,12 @@ export function DropDownMenu() {
     return null
   }
 
+  const disableLogin = !ready
   return (
     <div className='relative' ref={ref}>
       {/* MAIN BUTTON */}
       <Button
+        disabled={disableLogin}
         variant='connect-wallet'
         className={cn(buttonSizeClasses, "flex justify-center items-center")}
         onClick={() => {

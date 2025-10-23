@@ -1,1 +1,0 @@
-export { ProposalExecutedCard } from "./ProposalExecutedCard"
