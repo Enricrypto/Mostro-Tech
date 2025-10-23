@@ -16,29 +16,28 @@ export function DropDownMenu() {
   const { login } = useLogin()
   const router = useRouter()
 
-  
   // Redirect after login
   useEffect(() => {
-    if (user) router.push("/dashboard")
-    }, [user, router])
+    if (user) router.push("/")
+  }, [user, router])
 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
     }
-  document.addEventListener("mousedown", handleClickOutside)
-  return () => document.removeEventListener("mousedown", handleClickOutside)
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
-  
+
   const displayName =
-  user?.email?.address ||
-  user?.google?.email ||
-  user?.wallet?.address ||
-  user?.id
-  
+    user?.email?.address ||
+    user?.google?.email ||
+    user?.wallet?.address ||
+    user?.id
+
   const isLoggedIn = Boolean(user && displayName)
-  
+
   const handleLogin = async () => {
     await login({
       loginMethods: ["google", "wallet", "email"],
@@ -58,34 +57,34 @@ export function DropDownMenu() {
     const svg = jdenticon.toSvg(value, size)
     return `data:image/svg+xml;base64,${btoa(svg)}`
   }
-  
+
   // Decide which avatar/icon to show
   const getUserIcon = () => {
     if (user?.wallet?.address) {
       return (
         <Avatar
-        src={getIdenticon(user.wallet.address)}
-        alt='wallet avatar'
+          src={getIdenticon(user.wallet.address)}
+          alt='wallet avatar'
           variant='rounded-sm'
         />
       )
     }
-    
+
     if (user?.email?.address || user?.google?.email) {
       const key = displayName || "U"
       return (
         <Avatar
-        src={getIdenticon(key)}
-        alt='user avatar'
-        variant='rounded-initials'
+          src={getIdenticon(key)}
+          alt='user avatar'
+          variant='rounded-initials'
         />
       )
     }
-    
+
     return null
   }
 
-  const disableLogin = !ready ;
+  const disableLogin = !ready
   return (
     <div className='relative' ref={ref}>
       {/* MAIN BUTTON */}
@@ -100,7 +99,7 @@ export function DropDownMenu() {
       >
         <div className='flex items-center gap-2 whitespace-nowrap'>
           {getUserIcon()}
-          <span>  
+          <span>
             {isLoggedIn
               ? displayName && displayName.length > 20
                 ? `${displayName.slice(0, 6)}...${displayName.slice(-4)}`
@@ -119,7 +118,7 @@ export function DropDownMenu() {
             icon={<SignOutIcon className='w-[16px] h-[16px] text-black' />}
             iconPosition='left'
             className={cn(buttonSizeClasses, "rounded-t-none rounded-b-[6px]")}
-            onClick={handleLogout} 
+            onClick={handleLogout}
           >
             Logout
           </Button>

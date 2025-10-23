@@ -43,6 +43,10 @@ export const baseButtonVariants = cva(
         "join-fun-club":
           "bg-[var(--color-skyblue)] text-black hover:bg-gradient-to-r hover:from-[#71d6fb] hover:to-[#6654d3]",
         "session-active": "bg-[#6654D3] text-white",
+        "button-cancel-red-border":
+          "border border-[var(--color-red)] bg-transparent text-[var(--color-red)] hover:bg-[var(--color-red-opacity)]",
+        "text-white-transparent":
+          "bg-transparent border-none text-white font-medium text-[14px] leading-[24px] rounded-[6px] px-4 py-2 hover:opacity-80",
         session: "bg-transparent text-[#B3B3B3] ",
         yes: "bg-[var(--color-green)] text-black hover:bg-[var(--color-green-hover)]",
         no: "bg-[var(--color-red)] text-black hover:bg-[var(--color-red-hover)]",

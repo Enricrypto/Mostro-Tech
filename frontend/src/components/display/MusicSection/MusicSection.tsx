@@ -23,7 +23,11 @@ interface SongCardProps {
   onPlay?: () => void
 }
 
-export const MusicSection = () => {
+export const MusicSection = ({
+  onClaimAccess
+}: {
+  onClaimAccess: (title: string, date: string, venue: string) => void
+}) => {
   const [currentSong, setCurrentSong] = useState<SongCardProps | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
@@ -88,7 +92,7 @@ export const MusicSection = () => {
     <div className='flex flex-col items-center gap-20'>
       {/* Music Drops */}
       <section className='relative w-full flex flex-col'>
-        <div className='flex'>
+        <div className='flex gap-4'>
           <MusicNoteIcon size={36} weight='fill' className='text-[#DCFD63]' />
           <h2 className='font-inter font-semibold text-[30px] leading-[36px] text-[#DCFD63]'>
             Music Drops
@@ -164,7 +168,17 @@ export const MusicSection = () => {
             </h2>
             <div className='flex flex-col gap-6 mt-4'>
               {upcomingEvents.map((event, index) => (
-                <UpcomingEvent key={index} event={event} />
+                <UpcomingEvent
+                  key={index}
+                  event={event}
+                  onClaim={() =>
+                    onClaimAccess(
+                      event.title,
+                      event.date + " at " + event.time,
+                      event.location
+                    )
+                  }
+                />
               ))}
             </div>
           </div>

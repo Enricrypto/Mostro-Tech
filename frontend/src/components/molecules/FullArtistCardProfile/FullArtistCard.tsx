@@ -32,6 +32,7 @@ export interface FullArtistCardProps {
   tokenHolders: string
   artistImage?: string
   socials?: SocialType[]
+  onBuyToken?: () => void
 }
 
 export const FullArtistCard: React.FC<FullArtistCardProps> = ({
@@ -43,11 +44,12 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
   tokenPrice,
   tokenHolders,
   artistImage,
-  socials = ["instagram", "youtube", "spotify"]
+  socials = ["instagram", "youtube", "spotify"],
+  onBuyToken
 }) => {
   return (
     <div
-      className='flex flex-col gap-8 p-6 rounded-[10px] border-2'
+      className='flex flex-col gap-8 rounded-[10px] border-2'
       style={{
         width: "1348px",
         height: "506px",
@@ -65,7 +67,7 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
       {/* Top Section */}
       <div className='flex justify-between items-center'>
         {/* Badge */}
-        <Badge variant='profileLabel' className='flex items-center gap-2'>
+        <Badge variant='profileLabel' className='flex items-center gap-2 '>
           <StarIcon size={20} className='text-[#EEFF00]' />
           <span className='text-xs font-medium text-black'>{badgeText}</span>
         </Badge>
@@ -92,7 +94,7 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
       </div>
 
       {/* Bottom Section */}
-      <div className='flex gap-4'>
+      <div className='flex gap-12'>
         {/* Left: Avatar */}
         <Avatar
           variant='square-lg'
@@ -171,6 +173,7 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
               variant='buy-token'
               icon={<CurrencyDollarIcon />}
               iconPosition='left'
+              onClick={onBuyToken}
             >
               Buy Token
             </Button>

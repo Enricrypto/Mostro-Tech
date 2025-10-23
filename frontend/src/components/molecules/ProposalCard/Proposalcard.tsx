@@ -6,7 +6,6 @@ import { ProgressBar } from "@/components/atoms/ProgressBar"
 import { Button } from "@/components/atoms/Button"
 import { ArrowRightIcon, ClockClockwiseIcon } from "@phosphor-icons/react"
 import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
 
 const proposalCardCVA = cva(
   "min-w-[462px] max-h-[188px] p-[24px] flex flex-col gap-[14px] rounded-[10px] bg-[var(--color-datacard-bg)] transition-all duration-300 ease-out",
@@ -35,6 +34,7 @@ export interface ProposalCardProps
   yesPercentage?: number
   noPercentage?: number
   badgeText?: string
+  onViewProposal?: () => void
 }
 
 export const ProposalCard: React.FC<ProposalCardProps> = ({
@@ -44,7 +44,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
   yesPercentage,
   noPercentage,
   badgeText,
-  variant
+  onViewProposal
 }) => {
   return (
     <div className={proposalCardCVA({ variant: status })}>
@@ -85,6 +85,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
               variant='follow-share'
               icon={<ArrowRightIcon weight='bold' />}
               iconPosition='right'
+              onClick={onViewProposal}
             >
               View Proposal
             </Button>

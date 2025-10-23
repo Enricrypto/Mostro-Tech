@@ -5,7 +5,7 @@ import { mockProposals } from "@/mocks/mockProposals"
 
 type ProposalStatus = "all" | "ongoing" | "executed" | "closed"
 
-interface Proposal {
+interface ProposalData {
   id: number
   status: ProposalStatus
   title: string
@@ -15,10 +15,14 @@ interface Proposal {
   badgeText?: string
 }
 
-export function ProposalsSection() {
+interface ProposalsSectionProps {
+  onViewProposal: (proposalId: number) => void
+}
+
+export function ProposalsSection({ onViewProposal }: ProposalsSectionProps) {
   const [filter, setFilter] = useState<ProposalStatus>("all")
 
-  const filteredProposals: Proposal[] =
+  const filteredProposals: ProposalData[] =
     filter === "all"
       ? mockProposals
       : mockProposals.filter((p) => p.status === filter)
@@ -60,6 +64,7 @@ export function ProposalsSection() {
               yesPercentage={proposal.yesPercentage}
               noPercentage={proposal.noPercentage}
               badgeText={proposal.badgeText}
+              onViewProposal={() => onViewProposal(proposal.id)}
             />
           )
         })}

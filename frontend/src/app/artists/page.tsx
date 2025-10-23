@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { BadgesRow } from "@/components/dashboard/BadgesRow"
 import { FullArtistCard } from "@/components/molecules/FullArtistCardProfile"
 import { SectionSelector } from "@/components/navigation/SectionSelector"
@@ -9,6 +10,7 @@ import { Avatar } from "@/components/atoms/Avatar"
 import { Button } from "@/components/atoms/Button"
 import { MusicSection } from "@/components/display/MusicSection"
 import { ProposalsSection } from "@/components/molecules/ProposalsSection"
+import { EventModal } from "@/components/utils/Modal/EventModal"
 import { mockFullArtistData } from "@/mocks/mockFullArtistData"
 import { mockLeaderboardData } from "@/mocks/mockLeaderboardData"
 import { mockFanbase } from "@/mocks/mockFanBase"
@@ -17,13 +19,48 @@ import { ArrowUpRightIcon } from "@phosphor-icons/react"
 type SectionId = "music" | "community" | "proposals" | "token"
 
 export default function ArtistPage() {
+  const userHoldsTokens = false
+  const artist = mockFullArtistData[0]
+
   const [selectedSection, setSelectedSection] = useState<SectionId>("music")
 
-  const artist = mockFullArtistData[0]
+  const router = useRouter()
+
+  // Modal State
+  const [eventModalData, setEventModalData] = useState<{
+    title: string
+    date: string
+    venue: string
+  } | null>(null)
+
+  const handleBuyToken = () => {
+    router.push("/token") // redirect to token page
+  }
+
+  // Open Modal from Event
+  const handleOpenEventModal = (title: string, date: string, venue: string) => {
+    setEventModalData({ title, date, venue })
+  }
+
+  // Close Modal
+  const handleCloseEventModal = () => {
+    setEventModalData(null)
+  }
+
+  // Function to claim access to event
+  const handleClaimAccess = () => {
+    console.log("User confirmed claim access to livestream")
+    // TODO: Add claim logic here
+    handleCloseEventModal() // close modal after claiming
+  }
+
+  // Function to view proposal
+  const handleViewProposal = () => {
+    router.push("./vote") // navigate to Vote page for that proposal
+  }
 
   // Map selected section to JSX content
   const sectionContentMap = {
-    music: <MusicSection />,
     community: (
       <div
         className='flex w-full max-w-[1200px] gap-[39px]'
@@ -102,22 +139,15 @@ export default function ArtistPage() {
         </div>
       </div>
     ),
-    proposals: <ProposalsSection />,
+    proposals: <ProposalsSection onViewProposal={handleViewProposal} />,
     token: <div className='text-white mt-4'>Token Section Placeholder</div>
   }
 
   return (
     <div className='bg-[#0A111F] min-h-screen w-full flex flex-col items-center pb-[100px]'>
       {selectedSection === "music" && (
-        <section
-          className='sticky top-[149px] z-10 w-full bg-[#0A111FE5]'
-          style={{
-            borderTop: "2px solid #121B2B",
-            borderBottom: "2px solid #121B2B",
-            backdropFilter: "blur(4px)"
-          }}
-        >
-          <div className='max-w-[1512px] mx-auto px-[101px] py-[20px]'>
+        <section className='sticky top-[149px] z-10 w-screen left-[00%] right-[50%] -ml-[50vw] -mr-[50vw] border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm py-5 px-4'>
+          <div className='max-w-[1200px] mx-auto'>
             <BadgesRow />
           </div>
         </section>
@@ -135,6 +165,7 @@ export default function ArtistPage() {
           tokenHolders={artist.tokenHolders}
           artistImage={artist.artistImage}
           socials={artist.socials}
+          onBuyToken={handleBuyToken}
         />
       </section>
 
@@ -149,9 +180,36 @@ export default function ArtistPage() {
       {/* Render Section Content */}
       <section className='relative w-full flex justify-center mt-20'>
         <div className='flex flex-col w-full max-w-[1200px] px-4 mx-auto'>
-          {sectionContentMap[selectedSection]}
+          {selectedSection === "music" ? (
+            <MusicSection onClaimAccess={handleOpenEventModal} />
+          ) : (
+            sectionContentMap[selectedSection]
+          )}
         </div>
       </section>
+
+      {eventModalData && (
+        <div
+          className='fixed inset-0 z-50 bg-black/50 flex items-center justify-center'
+          onClick={handleCloseEventModal} // clicking the overlay closes modal
+        >
+          <div
+            onClick={(e) => e.stopPropagation()} // prevent clicks inside modal from closing
+            className='relative'
+          >
+            <EventModal
+              title={eventModalData.title}
+              date={eventModalData.date}
+              venue={eventModalData.venue}
+              onCancel={handleCloseEventModal}
+              onBuyOrConfirm={
+                userHoldsTokens ? handleClaimAccess : handleBuyToken
+              }
+              variant={userHoldsTokens ? "claimAccess" : "noTokens"}
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
