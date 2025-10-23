@@ -18,7 +18,7 @@ export function DropDownMenu() {
 
   // Redirect after login
   useEffect(() => {
-    if (user) router.push("/dashboard")
+    // if (user) router.push("/dashboard")
   }, [user, router])
 
   // Close dropdown when clicking outside
