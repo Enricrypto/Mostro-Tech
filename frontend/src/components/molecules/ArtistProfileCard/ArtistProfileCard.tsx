@@ -73,9 +73,9 @@ export const ArtistProfileCard: React.FC<ProfileCardProps> = ({
 
       {/* Right Section - Disconnect Button */}
       <div className='ml-auto self-start'>
-        <Button className='button-connect text-black' onClick={onDisconnect}>
+        <BaseButton className='button-connect text-black' onClick={onDisconnect}>
           Disconnect Wallet
-        </Button>
+        </BaseButton>
       </div>
     </div>
   )
