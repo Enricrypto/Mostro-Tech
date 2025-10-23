@@ -3,7 +3,7 @@
 import React from "react"
 import { WalletIcon, ArrowSquareOutIcon } from "@phosphor-icons/react"
 import { Avatar } from "@/components/atoms/Avatar"
-import { BaseButton } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 
 interface ProfileCardProps {
   name: string
@@ -73,9 +73,9 @@ export const ArtistProfileCard: React.FC<ProfileCardProps> = ({
 
       {/* Right Section - Disconnect Button */}
       <div className='ml-auto self-start'>
-        <BaseButton className='button-connect text-black' onClick={onDisconnect}>
+        <Button className='button-connect text-black' onClick={onDisconnect}>
           Disconnect Wallet
-        </BaseButton>
+        </Button>
       </div>
     </div>
   )
