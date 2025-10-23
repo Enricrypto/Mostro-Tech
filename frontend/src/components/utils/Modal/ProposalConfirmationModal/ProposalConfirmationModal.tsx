@@ -32,7 +32,7 @@ export const ProposalConfirmationModal: React.FC<
       {/* Top Part */}
       <div className='flex items-center gap-4 w-[256px] h-[48px]'>
         <Avatar src={avatarSrc} alt={voterName} variant='rounded-sm' />
-        <div className='flex flex-col gap-2 w-[200px] h-[48px]'>
+        <div className='flex flex-col w-[200px] h-[48px]'>
           <span className='text-white font-inter font-semibold text-[18px] leading-[28px]'>
             {voterName}
           </span>
@@ -45,16 +45,16 @@ export const ProposalConfirmationModal: React.FC<
       </div>
 
       {/* Middle Part */}
-      <div className='w-[377px] h-[40px] font-inter font-normal text-[14px] leading-[20px]'>
+      <div className='font-inter font-normal text-[14px] leading-[20px] text-white'>
         You just voted{" "}
         <span className={cn("font-semibold", variants[vote])}>“{vote}”</span> to
         this proposal. Check out other proposals from this artist.
       </div>
 
       {/* Bottom Section */}
-      <div className='flex w-[377px] h-[40px] gap-2'>
+      <div className='flexgap-2'>
         <Button
-          themeVariant='proposal'
+          variant='follow-share'
           icon={<ArrowRightIcon />}
           iconPosition='right'
           onClick={onViewOtherProposals}

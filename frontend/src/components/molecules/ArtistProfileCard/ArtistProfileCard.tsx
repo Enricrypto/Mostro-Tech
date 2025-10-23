@@ -3,7 +3,7 @@
 import React from "react"
 import { WalletIcon, ArrowSquareOutIcon } from "@phosphor-icons/react"
 import { Avatar } from "@/components/atoms/Avatar"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/atoms/Button"
 
 interface ProfileCardProps {
   name: string

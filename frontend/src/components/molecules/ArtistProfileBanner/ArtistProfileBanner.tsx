@@ -28,7 +28,6 @@ export function ArtistProfileBanner({
   verifiedBadge,
   variant = "default"
 }: ArtistProfileBannerProps) {
-  // background color based on variant
   const bgColor =
     variant === "purple" ? "#998ce1" : variant === "red" ? "#fd6363" : "#dcfd63"
 
@@ -37,31 +36,40 @@ export function ArtistProfileBanner({
       style={{ backgroundColor: bgColor }}
       className='w-full min-h-[510px] shadow-md py-16'
     >
-      {/* Inner container: left = avatar + badges, right = stats */}
-      <div className='flex justify-between w-full '>
-        {/* Left: Avatar + badges */}
+      {/* Inner container */}
+      <div className='flex justify-between w-full'>
+        {/* LEFT: Avatar + Badges */}
         <div className='relative flex-1 flex justify-center items-start min-w-[250px]'>
-          {/* Avatar */}
-          <Avatar src={avatarSrc} alt={artistName} variant='square-lg' />
+          {/* Fixed-size avatar wrapper (important!) */}
+          <div className='relative inline-block'>
+            {/* Avatar */}
+            <Avatar src={avatarSrc} alt={artistName} variant='square-lg' />
 
-          {/* Badges */}
-          <Badge
-            variant='genre'
-            className='absolute top-[70%] left-30 w-[131px] h-[39px] gap-2 rotate-[-22deg] border border-[#71D6FB] rounded-[28px] bg-white text-black'
-          >
-            {genreBadge}
-          </Badge>
+            {/* Lower-left badge */}
+            <Badge
+              variant='genre'
+              className='absolute top-50 -left-40 rotate-[-12deg]
+                 w-[131px] h-[39px] gap-2 border border-[#71D6FB]
+                 rounded-[28px] bg-white text-black'
+            >
+              {genreBadge}
+            </Badge>
 
-          <Badge
-            variant='genre'
-            className='absolute top-[20%] left-[580px] w-[131px] h-[39px] gap-2 rotate-[28deg] border border-[#71D6FB] rounded-[28px] bg-white text-black'
-          >
-            {verifiedBadge}
-          </Badge>
+            {/* Upper-right badge */}
+            <Badge
+              variant='genre'
+              className='absolute top-10 left-80 
+             rotate-[12deg]
+             w-[131px] h-[39px] gap-2 border border-[#71D6FB]
+             rounded-[28px] bg-white text-black'
+            >
+              {verifiedBadge}
+            </Badge>
+          </div>
         </div>
 
-        {/* Right: Text + Stats + Button */}
-        <div className='flex flex-col flex-1 gap-6 min-w-[300px]'>
+        {/* RIGHT: Text + Stats + Button */}
+        <div className='flex flex-col flex-1 gap-6 min-w-[300px] pr-8'>
           {/* Artist name + description */}
           <div className='flex flex-col gap-4'>
             <h2 className='font-poppins text-[48px] font-normal leading-[48px] text-black'>
@@ -90,10 +98,11 @@ export function ArtistProfileBanner({
             ))}
           </div>
 
-          {/* Button */}
+          {/* View Artist Button */}
           <Button
             variant='continue'
-            className='w-[288px] h-[40px] px-4 py-2 gap-2 rounded-[6px] flex items-center justify-center'
+            className='w-[288px] h-[40px] px-4 py-2 gap-2 rounded-[6px]
+            flex items-center justify-center'
             icon={<ArrowUpRightIcon size={20} weight='bold' />}
             iconPosition='right'
           >

@@ -38,9 +38,11 @@ const upcomingEventCVA = cva(
 
 export const UpcomingEvent = ({
   event,
+  onClaim,
   className
 }: {
   event: Event
+  onClaim?: () => void
   className?: string
 }) => {
   // Map event statuses to existing badge variants
@@ -61,9 +63,7 @@ export const UpcomingEvent = ({
       {/* Top Section */}
       <div className='flex flex-col gap-2'>
         <div className='flex justify-between items-center'>
-          <h3 className='text-white font-semibold text-lg truncate'>
-            {event.title}
-          </h3>
+          <h3 className='text-white font-semibold text-lg'>{event.title}</h3>
 
           <Badge variant={variantMap[event.status]}>
             {event.status
@@ -72,13 +72,13 @@ export const UpcomingEvent = ({
           </Badge>
         </div>
 
-        <div className='flex gap-4 items-center text-white text-xs font-medium'>
-          <div className='flex items-center gap-2 truncate'>
+        <div className='flex gap-4 items-center text-white text-xs font-medium whitespace-nowrap'>
+          <div className='flex items-center gap-2'>
             <CalendarBlankIcon className='w-4 h-4' weight='bold' />
             {event.date} at {event.time}
           </div>
 
-          <div className='flex items-center gap-2 truncate'>
+          <div className='flex items-center gap-2'>
             <MapPinIcon className='w-4 h-4' weight='bold' />
             {event.location}
           </div>
@@ -87,7 +87,12 @@ export const UpcomingEvent = ({
 
       {/* Bottom Buttons */}
       <div className='flex items-center gap-3'>
-        <Button variant='continue' icon={<TicketIcon />} iconPosition='left'>
+        <Button
+          variant='continue'
+          icon={<TicketIcon />}
+          iconPosition='left'
+          onClick={onClaim}
+        >
           Claim Access
         </Button>
 

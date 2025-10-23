@@ -29,8 +29,8 @@ export const FundAllocationCard: React.FC<FundAllocationCardProps> = ({
 
       {/* Bottom Section */}
       <div className='w-[414px] h-[28px] flex items-center'>
-        <div className='w-[84px] h-[20px] text-[var(--color-proposal-artist)] font-inter font-medium text-[12px] leading-[20px] text-left'>
-          {bottomLeftValue} tokens
+        <div className='w-[84px] h-[20px] text-[var(--color-grey)] font-inter font-medium text-[12px] leading-[20px] text-left'>
+          {Number(bottomLeftValue).toLocaleString()} tokens
         </div>
       </div>
     </div>

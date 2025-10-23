@@ -48,7 +48,7 @@ export function ArtistFullCard({
       <p className='text-sm text-gray-300'>{artist.latestSingle.title}</p>
 
       <Button
-        variant='songPlayIcon'
+        variant='song-play-icon'
         onClick={handlePlayClick}
         className='mt-4 p-0'
       >
