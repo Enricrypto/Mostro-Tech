@@ -5,15 +5,17 @@ import * as React from "react"
 interface MiniDataArtistCardProps {
   topText: string
   bottomText: string
+  className?: string
 }
 
 export function MiniDataArtistCard({
   topText,
-  bottomText
+  bottomText,
+  className,
 }: MiniDataArtistCardProps) {
   return (
     <div
-      className='flex flex-col gap-[var(--spacing-6)]'
+      className= {`flex flex-col justify-center items-start gap-[var(--spacing-6)] ${className ?? ""}`}
       style={{
         width: "223px",
         height: "96px",
@@ -25,11 +27,11 @@ export function MiniDataArtistCard({
       {/* Top Text */}
       <div
         className='flex items-center gap-[8px]'
-        style={{ width: "124px", height: "64px" }}
+        style={{ width: "124px" }}
       >
         <span
           className='font-inter font-medium'
-          style={{ fontSize: "12px", lineHeight: "20px", color: "#000000BB" }}
+          style={{ fontSize: "12px", color: "#000000BB" }}
         >
           {topText}
         </span>
@@ -37,14 +39,14 @@ export function MiniDataArtistCard({
 
       {/* Bottom Text */}
       <div
-        className='flex items-center gap-[8px]'
-        style={{ width: "124px", height: "36px" }}
+        className='flex items-center gap-[4px]'
+        style={{ width: "124px" }}
       >
         <span
           className='font-inter font-semibold'
           style={{
             fontSize: "30px",
-            lineHeight: "36px",
+            lineHeight: "10px",
             letterSpacing: "-0.75%",
             color: "#000000"
           }}
