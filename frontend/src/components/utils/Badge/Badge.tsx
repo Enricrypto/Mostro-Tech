@@ -8,6 +8,12 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
+        // EXTRA SMALL PILLS
+        No:
+          "w-[57px] h-[22px] flex items-center gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default",
+        Yes: 
+          "w-[57px] h-[22px] flex items-center gap-2 rounded-[10px] border border-[var(--color-highlight)] bg-[var(--color-highlight-opacity)] text-[var(--color-highlight)] px-2 py-[2px] opacity-100",
+
         // SMALL PILLS
         closed:
           "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default",
@@ -53,7 +59,7 @@ export function Badge({
 }: BadgeProps) {
   return (
     <span className={cn(badgeVariants({ variant }), className)} {...props}>
-      {icon && <span className='inline-flex w-4 h-4'>{icon}</span>}
+      {icon && <span className='w-4 h-4 flex-shrink-0"'>{icon}</span>}
       {children}
     </span>
   )
