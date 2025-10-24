@@ -48,17 +48,28 @@ export function ArtistProfileBanner({
             {/* Avatar */}
             <Avatar src={avatarSrc} alt={artistName} variant='square-lg' />
 
-            {/* Hover overlay with play button */}
-            <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
-              <Button variant='song-play-icon' onClick={onPlay}>
-                <PlayIcon size={24} weight='bold' />
-              </Button>
+            {/* Hover overlay with gradient + play button (bottom-left) */}
+            <div
+              className='absolute inset-0 rounded-[26px] opacity-0 group-hover:opacity-100 
+             transition-opacity duration-300 flex items-end justify-start p-[29px]'
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(43, 43, 43, 0.25) 0%, rgba(0, 0, 0, 0.5) 100%)"
+              }}
+            >
+              <button
+                onClick={onPlay}
+                className='w-[52px] h-[52px] rounded-[36px] border border-[#737373] 
+               flex items-center justify-center bg-[#565656] p-[8px_16px]'
+              >
+                <PlayIcon size={24} weight='bold' color='white' />
+              </button>
             </div>
 
             {/* Lower-left badge */}
             <Badge
               variant='genre'
-              className='absolute top-50 -left-40 rotate-[-12deg]
+              className='absolute top-50 -left-40 -rotate-12
                  w-[131px] h-[39px] gap-2 border border-[#71D6FB]
                  rounded-[28px] bg-white text-black'
             >
@@ -81,10 +92,10 @@ export function ArtistProfileBanner({
         <div className='flex flex-col flex-1 gap-6 min-w-[300px] pr-8'>
           {/* Artist Name & Description */}
           <div className='flex flex-col gap-4'>
-            <h2 className='font-poppins text-[48px] font-normal leading-[48px] text-black'>
+            <h2 className='font-poppins text-[48px] font-normal leading-12 text-black'>
               {artistName}
             </h2>
-            <p className='font-inter text-[20px] font-normal leading-[28px] text-black'>
+            <p className='font-inter text-[20px] font-normal leading-7 text-black'>
               {description}
             </p>
           </div>
@@ -97,10 +108,10 @@ export function ArtistProfileBanner({
               { label: "Followers", value: followers }
             ].map((stat) => (
               <div key={stat.label} className='flex flex-col gap-1'>
-                <span className='font-inter font-bold text-[40px] leading-[48px] text-black'>
+                <span className='font-inter font-bold text-[40px] leading-12 text-black'>
                   {stat.value}
                 </span>
-                <span className='font-inter text-[16px] leading-[28px] text-black'>
+                <span className='font-inter text-[16px] leading-7 text-black'>
                   {stat.label}
                 </span>
               </div>
@@ -110,12 +121,12 @@ export function ArtistProfileBanner({
           {/* View Artist Button */}
           <Button
             variant='continue'
-            className='w-[288px] h-[40px] px-4 py-2 gap-2 rounded-[6px] flex items-center justify-center'
+            className='w-[288px] h-10 px-4 py-2 gap-2 rounded-md flex items-center justify-center'
             icon={<ArrowUpRightIcon size={20} weight='bold' />}
             iconPosition='right'
             onClick={() => router.push("/profile")}
           >
-            <span className='font-inter font-medium text-[14px] leading-[24px]'>
+            <span className='font-inter font-medium text-[14px] leading-6'>
               View Artist
             </span>
           </Button>

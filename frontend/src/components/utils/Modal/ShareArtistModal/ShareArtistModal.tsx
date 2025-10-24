@@ -47,7 +47,6 @@ export const ShareArtistModal = () => {
       <p
         style={{
           width: 377,
-          height: 60,
           fontFamily: "Inter",
           fontWeight: 400,
           fontSize: 16,
@@ -70,7 +69,8 @@ export const ShareArtistModal = () => {
           borderRadius: 6,
           border: "1px solid #CBD5E1",
           padding: "8px 12px",
-          cursor: "pointer"
+          cursor: "pointer",
+          position: "relative" // <-- needed for absolute tooltip
         }}
         onClick={handleCopy}
       >
@@ -91,20 +91,31 @@ export const ShareArtistModal = () => {
           {artistUrl}
         </span>
         <CopySimpleIcon size={16} color='#FFFFFF' weight='bold' />
-      </div>
 
-      {copied && (
-        <span
-          style={{
-            marginTop: 8,
-            color: "#FFFFFF",
-            fontSize: 14,
-            fontFamily: "Inter"
-          }}
-        >
-          Copied!
-        </span>
-      )}
+        {/* Copied tooltip */}
+        {copied && (
+          <span
+            style={{
+              position: "absolute",
+              top: "-28px",
+              right: 0,
+              background: "#1E293B",
+              color: "#FFFFFF",
+              fontSize: 14,
+              fontWeight: 500,
+              fontFamily: "Inter",
+              padding: "4px 8px",
+              borderRadius: 4,
+              opacity: 0.9,
+              whiteSpace: "nowrap",
+              pointerEvents: "none",
+              transition: "opacity 0.2s ease-in-out"
+            }}
+          >
+            Copied!
+          </span>
+        )}
+      </div>
     </div>
   )
 }

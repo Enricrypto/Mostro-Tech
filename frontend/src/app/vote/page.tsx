@@ -11,40 +11,34 @@ import { mockVotingSection } from "@/mocks/mockVotingSection"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 
 export default function VotePage() {
-  const [showModal, setShowModal] = useState(false)
+  const router = useRouter()
   const [voteType, setVoteType] = useState<"YES" | "NO" | null>(null)
 
-  const handleVote = (vote: "YES" | "NO") => {
-    setVoteType(vote)
-    setShowModal(true)
-  }
-
+  const handleVote = (vote: "YES" | "NO") => setVoteType(vote)
+  const handleCloseModal = () => setVoteType(null)
   const handleViewOtherProposals = () => {
-    setShowModal(false)
-    setVoteType(null)
-    // optionally navigate to other proposals
+    handleCloseModal()
+    router.push("/artists?section=proposals")
   }
-
-  const router = useRouter()
-
-  const handleNavigate = () => {
-    router.push("/artists")
-  }
+  const handleNavigateBack = () => router.push("/artists")
 
   return (
-    <div className='bg-[#0A111F] flex flex-col w-full items-center'>
-      <div className='flex justify-start w-full mt-10'>
+    <div className='bg-[#0A111F] flex flex-col w-full items-center px-4'>
+      {/* Back Button */}
+      <div className='flex justify-start w-full mt-10 max-w-[1200px]'>
         <Button
           variant='text-white-transparent'
-          className='flex items-center justify-center gap-2'
+          className='flex items-center gap-2'
           icon={<ArrowUpRightIcon size={20} />}
           iconPosition='left'
-          onClick={handleNavigate}
+          onClick={handleNavigateBack}
         >
           Back to Artist
         </Button>
       </div>
-      <div className='flex w-[1200px] h-[776px] gap-[24px] mt-10 mb-20'>
+
+      {/* Main Content */}
+      <div className='flex flex-col lg:flex-row w-full max-w-[1200px] gap-6 mt-10 mb-20'>
         <FundingOverviewSection {...mockFundingOverview} />
         <VotingSection
           {...mockVotingSection}
@@ -53,18 +47,16 @@ export default function VotePage() {
         />
       </div>
 
-      {showModal && voteType && (
+      {/* Confirmation Modal */}
+      {voteType && (
         <div
           className='fixed inset-0 z-50 bg-black/50 flex items-center justify-center'
-          onClick={() => setShowModal(false)} // click outside closes modal
+          onClick={handleCloseModal}
         >
-          <div
-            onClick={(e) => e.stopPropagation()} // prevents closing when clicking inside modal
-            className='relative'
-          >
+          <div onClick={(e) => e.stopPropagation()} className='relative'>
             <ProposalConfirmationModal
               vote={voteType}
-              voterName='Your Name'
+              voterName='Username'
               voterSubtext='Fan Club Member'
               onViewOtherProposals={handleViewOtherProposals}
               avatarSrc='/avatar1.png'

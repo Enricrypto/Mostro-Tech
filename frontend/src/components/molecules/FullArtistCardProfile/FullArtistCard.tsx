@@ -123,15 +123,18 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
 
         {/* Right: Info */}
         <div
-          className='flex flex-col gap-6 flex-1'
+          className='flex flex-col flex-1'
           style={{
-            gap: "42px",
+            gap: "36px",
             opacity: 1,
             transform: "rotate(0deg)"
           }}
         >
           {/* Name + Handle + Badge */}
-          <div className='flex flex-col gap-6'>
+          <div className='flex flex-col gap-6 w-[680px] h-[214px] opacity-100'>
+            <h1 className='font-poppins font-normal text-[48px] leading-12 tracking-[-0.012em] text-white'>
+              {artistName}
+            </h1>
             <div className='flex justify-start'>
               <Badge variant='genre'>{genreBadge}</Badge>
             </div>

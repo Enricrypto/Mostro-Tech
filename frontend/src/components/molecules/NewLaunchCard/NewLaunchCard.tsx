@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Badge } from "@/components/utils/Badge"
 import { Button } from "@/components/atoms/Button"
@@ -12,7 +13,6 @@ interface NewLaunchCardProps {
   launchInDays: number
   price: number
   dynamicRightTopText: string
-  onButtonClick?: () => void
 }
 
 export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
@@ -21,12 +21,17 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
   badgeText,
   launchInDays,
   price,
-  dynamicRightTopText,
-  onButtonClick
+  dynamicRightTopText
 }) => {
+  const router = useRouter()
+
+  const handleButtonClick = () => {
+    router.push("/artists") // redirect to /artists
+  }
+
   return (
     <div
-      className='group relative flex flex-col rounded-[10px] w-[384px] border-2 gap-[14px]
+      className='group relative flex flex-col rounded-[10px] w-[384px] border-2 gap-3.5
              p-6 border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
              transition-colors duration-200 hover:border-[#71D6FB]'
     >
@@ -37,7 +42,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
           weight='bold'
           className='text-highlight group-hover:text-white transition-colors duration-200'
         />
-        <span className='font-inter font-medium text-[12px] leading-[20px] text-highlight group-hover:text-white transition-colors duration-200'>
+        <span className='font-inter font-medium text-[12px] leading-5 text-highlight group-hover:text-white transition-colors duration-200'>
           Launch in {launchInDays} days
         </span>
       </div>
@@ -50,12 +55,12 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
           className='w-10 h-10 rounded-[26px]'
         />
         <div className='flex flex-col gap-2 h-[58px]'>
-          <span className='font-inter font-semibold text-[20px] leading-[28px] text-white'>
+          <span className='font-inter font-semibold text-[20px] leading-7 text-white'>
             {name}
           </span>
           <Badge
             variant='genre'
-            className='inline-flex px-2 py-[2px] gap-2 rounded-[10px] border border-[#71D6FB] bg-[#71D6FB4D] text-[#71D6FB] text-[12px] font-medium'
+            className='inline-flex px-2 py-0.5 gap-2 rounded-[10px] border border-[#71D6FB] bg-[#71D6FB4D] text-[#71D6FB] text-[12px] font-medium'
           >
             {badgeText}
           </Badge>
@@ -66,20 +71,20 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
       <div className='w-[336px] border-t border-[#D2D3D5] my-4' />
 
       {/* Section 3: Price & Total Supply */}
-      <div className='flex justify-between items-center w-[336px] h-[44px]'>
+      <div className='flex justify-between items-center w-[336px] h-11'>
         <div className='flex flex-col'>
-          <span className='text-white text-[18px] font-poppins font-normal leading-[20px]'>
+          <span className='text-white text-[18px] font-poppins font-normal leading-5'>
             ${price}
           </span>
-          <span className='text-[#B3B3B3] text-[12px] font-medium leading-[16px] whitespace-nowrap'>
+          <span className='text-[#B3B3B3] text-[12px] font-medium leading-4 whitespace-nowrap'>
             Initial Price
           </span>
         </div>
         <div className='flex flex-col'>
-          <span className='text-white text-[18px] font-poppins font-normal leading-[20px]'>
+          <span className='text-white text-[18px] font-poppins font-normal leading-5'>
             {dynamicRightTopText}
           </span>
-          <span className='text-[#B3B3B3] text-[12px] font-medium leading-[16px] whitespace-nowrap'>
+          <span className='text-[#B3B3B3] text-[12px] font-medium leading-4 whitespace-nowrap'>
             Total Supply
           </span>
         </div>
@@ -90,6 +95,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
         variant='song-unlock'
         icon={<ArrowUpRightIcon />}
         iconPosition='right'
+        onClick={handleButtonClick}
       >
         View Artist
       </Button>

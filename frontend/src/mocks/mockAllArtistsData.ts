@@ -1,5 +1,6 @@
 export const mockAllArtistsData = [
   {
+    id: 1,
     artistName: "Ava Solaris",
     tokenName: "$MAV",
     avatarSrc: "/avatar1.png",
@@ -12,6 +13,7 @@ export const mockAllArtistsData = [
     genre: "Pop"
   },
   {
+    id: 2,
     artistName: "Noir Bloom",
     tokenName: "$MOI",
     avatarSrc: "/avatar2.png",
@@ -24,6 +26,7 @@ export const mockAllArtistsData = [
     genre: "Rock"
   },
   {
+    id: 3,
     artistName: "Echo Drift",
     tokenName: "$MEC",
     avatarSrc: "/avatar3.png",
@@ -36,6 +39,7 @@ export const mockAllArtistsData = [
     genre: "Alternative Rock"
   },
   {
+    id: 4,
     artistName: "Lyra Nova",
     tokenName: "$MLN",
     avatarSrc: "/avatar4.png",
@@ -48,6 +52,7 @@ export const mockAllArtistsData = [
     genre: "Electronic"
   },
   {
+    id: 5,
     artistName: "Riven Grey",
     tokenName: "$MRG",
     avatarSrc: "/avatar5.png",
@@ -60,6 +65,7 @@ export const mockAllArtistsData = [
     genre: "Indie"
   },
   {
+    id: 6,
     artistName: "Kai Mirage",
     tokenName: "$MKM",
     avatarSrc: "/avatar1.png",
@@ -72,6 +78,7 @@ export const mockAllArtistsData = [
     genre: "R&B"
   },
   {
+    id: 7,
     artistName: "Velvet Iris",
     tokenName: "$MVI",
     avatarSrc: "/avatar2.png",
@@ -83,6 +90,7 @@ export const mockAllArtistsData = [
     genre: "Pop"
   },
   {
+    id: 8,
     artistName: "Draco Vale",
     tokenName: "$MDV",
     avatarSrc: "/avatar3.png",
@@ -95,6 +103,7 @@ export const mockAllArtistsData = [
     genre: "Hip-Hop"
   },
   {
+    id: 9,
     artistName: "Sierra Wren",
     tokenName: "$MSW",
     avatarSrc: "/avatar4.png",

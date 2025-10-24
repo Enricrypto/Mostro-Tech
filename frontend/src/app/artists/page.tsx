@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { BadgesRow } from "@/components/dashboard/BadgesRow"
 import { FullArtistCard } from "@/components/molecules/FullArtistCardProfile"
 import { SectionSelector } from "@/components/navigation/SectionSelector"
@@ -19,163 +19,141 @@ import { ArrowUpRightIcon } from "@phosphor-icons/react"
 
 type SectionId = "music" | "community" | "proposals" | "token"
 
+const CommunitySection = () => (
+  <div className='flex w-full max-w-[1200px] gap-[39px]'>
+    {/* LEFT COLUMN: Top Holders */}
+    <div className='flex flex-col w-[580.5px] gap-6'>
+      <h2 className='text-white font-inter font-semibold text-[30px] leading-9'>
+        Top Holders
+      </h2>
+      <div className='flex flex-col gap-6 mt-4'>
+        {mockLeaderboardData.slice(0, 9).map((holder) => (
+          <LeaderBoard
+            key={holder.rank}
+            rank={holder.rank}
+            avatarSrc={holder.avatarSrc}
+            username={holder.username}
+            score={holder.score}
+            tokenSymbol={holder.tokenSymbol}
+          />
+        ))}
+      </div>
+    </div>
+
+    {/* RIGHT COLUMN: Fanbase */}
+    <div className='flex flex-col w-[580.5px] gap-6'>
+      <h2 className='text-white font-inter font-semibold text-[30px] leading-9'>
+        Fanbase
+      </h2>
+      <div className='flex flex-col gap-6 p-6 rounded-[10px] mt-4 bg-[#121B2B] border border-[#2D3953] shadow-md'>
+        {[0, 1, 2].map((rowIndex) => (
+          <div
+            key={rowIndex}
+            className='flex justify-between h-[76px] w-[532.5px]'
+          >
+            {mockFanbase
+              .slice(rowIndex * 6, rowIndex * 6 + 6)
+              .map((fan, index) => (
+                <Avatar
+                  key={index}
+                  variant={
+                    fan.initials
+                      ? "square-community-initials"
+                      : "square-community"
+                  }
+                  src={fan.src}
+                  initials={fan.initials}
+                />
+              ))}
+          </div>
+        ))}
+        <Button
+          variant='follow-share'
+          className='flex items-center w-[532.5px] h-10 gap-2.5 rounded-md border px-4 py-2'
+          icon={<ArrowUpRightIcon size={16} weight='bold' />}
+          iconPosition='right'
+        >
+          See all 23 Supporters
+        </Button>
+      </div>
+    </div>
+  </div>
+)
+
 export default function ArtistPage() {
-  const userHoldsTokens = false
-  const artist = mockFullArtistData[0]
-
-  const [selectedSection, setSelectedSection] = useState<SectionId>("music")
-
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const sectionFromUrl = searchParams.get("section") as SectionId | null
 
-  // Modal State
+  const [selectedSection, setSelectedSection] = useState<SectionId>(
+    sectionFromUrl || "music"
+  )
   const [eventModalData, setEventModalData] = useState<{
     title: string
     date: string
     venue: string
   } | null>(null)
 
+  const artist = mockFullArtistData[0]
+  const userHoldsTokens = false
+
+  useEffect(() => {
+    if (sectionFromUrl && sectionFromUrl !== selectedSection) {
+      setSelectedSection(sectionFromUrl)
+    }
+  }, [sectionFromUrl, selectedSection])
+
   const handleBuyToken = () => {
-    router.push("/token") // redirect to token page
+    setSelectedSection("token")
+    router.push("?section=token")
   }
 
-  // Open Modal from Event
   const handleOpenEventModal = (title: string, date: string, venue: string) => {
     setEventModalData({ title, date, venue })
   }
 
-  // Close Modal
-  const handleCloseEventModal = () => {
-    setEventModalData(null)
-  }
+  const handleCloseEventModal = () => setEventModalData(null)
 
-  // Function to claim access to event
   const handleClaimAccess = () => {
     console.log("User confirmed claim access to livestream")
-    // TODO: Add claim logic here
-    handleCloseEventModal() // close modal after claiming
+    handleCloseEventModal()
   }
 
-  // Function to view proposal
-  const handleViewProposal = () => {
-    router.push("./vote") // navigate to Vote page for that proposal
-  }
+  const handleViewProposal = () => router.push("./vote")
 
-  // Map selected section to JSX content
-  const sectionContentMap = {
-    community: (
-      <div
-        className='flex w-full max-w-[1200px] gap-[39px]'
-        style={{ height: "1156px" }}
-      >
-        {/* LEFT COLUMN: Top Holders */}
-        <div className='flex flex-col w-[580.5px] gap-[24px]'>
-          <h2 className='text-white font-inter font-semibold text-[30px] leading-[36px]'>
-            Top Holders
-          </h2>
-          <div className='flex flex-col gap-[24px] mt-4'>
-            {mockLeaderboardData.slice(0, 9).map((holder) => (
-              <LeaderBoard
-                key={holder.rank}
-                rank={holder.rank}
-                avatarSrc={holder.avatarSrc}
-                username={holder.username}
-                score={holder.score}
-                tokenSymbol={holder.tokenSymbol}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* RIGHT COLUMN: Fanbase */}
-        <div className='flex flex-col w-[580.5px] gap-[24px]'>
-          <h2 className='text-white font-inter font-semibold text-[30px] leading-[36px]'>
-            Fanbase
-          </h2>
-
-          <div
-            className='flex flex-col gap-[24px] p-[24px] rounded-[10px] mt-4'
-            style={{
-              width: "580.5px",
-              height: "376px",
-              background: "#121B2B",
-              border: "2px solid #2D3953",
-              boxShadow: "0px 4px 6px 0px #00000017"
-            }}
-          >
-            {[0, 1, 2].map((rowIndex) => (
-              <div
-                key={rowIndex}
-                className='flex justify-between'
-                style={{
-                  width: "532.5px",
-                  height: "76px"
-                }}
-              >
-                {mockFanbase
-                  .slice(rowIndex * 6, rowIndex * 6 + 6)
-                  .map((fan, index) => (
-                    <Avatar
-                      key={index}
-                      variant={
-                        fan.initials
-                          ? "square-community-initials"
-                          : "square-community"
-                      }
-                      src={fan.src}
-                      initials={fan.initials}
-                    />
-                  ))}
-              </div>
-            ))}
-            {/* Button at the bottom */}
-            <Button
-              variant='follow-share' // or your preferred variant
-              className='flex items-center w-[532.5px] h-[40px] gap-[10px] rounded-[6px] border-[1px] px-4 py-2'
-              icon={<ArrowUpRightIcon size={16} weight='bold' />}
-              iconPosition='right'
-            >
-              See all 23 Supporters
-            </Button>
-          </div>
-        </div>
-      </div>
-    ),
-    proposals: <ProposalsSection onViewProposal={handleViewProposal} />,
-    token: (
-      <TokenSection
-        onBuyToken={handleBuyToken}
-        onSellToken={() => console.log("Sell token")}
-      />
-    )
+  const renderSectionContent = () => {
+    switch (selectedSection) {
+      case "community":
+        return <CommunitySection />
+      case "proposals":
+        return <ProposalsSection onViewProposal={handleViewProposal} />
+      case "token":
+        return (
+          <TokenSection
+            onBuyToken={handleBuyToken}
+            onSellToken={() => console.log("Sell token")}
+          />
+        )
+      case "music":
+      default:
+        return <MusicSection onClaimAccess={handleOpenEventModal} />
+    }
   }
 
   return (
     <div className='bg-[#0A111F] min-h-screen w-full flex flex-col items-center pb-[100px]'>
       {selectedSection === "music" && (
-        <section className='sticky top-[149px] z-10 w-screen left-[00%] right-[50%] -ml-[50vw] -mr-[50vw] border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm py-5 px-4'>
+        <section className='sticky top-[149px] z-10 w-screen left-0 right-0 border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm py-5 px-4'>
           <div className='max-w-[1200px] mx-auto'>
             <BadgesRow />
           </div>
         </section>
       )}
 
-      {/* Full Artist Card */}
       <section className='relative w-full flex justify-center mt-20'>
-        <FullArtistCard
-          badgeText={artist.badgeText}
-          genreBadge={artist.genreBadge}
-          artistName={artist.artistName}
-          artistDescription={artist.artistDescription}
-          tokenName={artist.tokenName}
-          tokenPrice={artist.tokenPrice}
-          tokenHolders={artist.tokenHolders}
-          artistImage={artist.artistImage}
-          socials={artist.socials}
-          onBuyToken={handleBuyToken}
-        />
+        <FullArtistCard {...artist} onBuyToken={handleBuyToken} />
       </section>
 
-      {/* Section Selector */}
       <section className='relative w-full flex justify-center mt-20'>
         <SectionSelector
           selected={selectedSection}
@@ -183,30 +161,20 @@ export default function ArtistPage() {
         />
       </section>
 
-      {/* Render Section Content */}
       <section className='relative w-full flex justify-center mt-20'>
         <div className='flex flex-col w-full max-w-[1200px] px-4 mx-auto'>
-          {selectedSection === "music" ? (
-            <MusicSection onClaimAccess={handleOpenEventModal} />
-          ) : (
-            sectionContentMap[selectedSection]
-          )}
+          {renderSectionContent()}
         </div>
       </section>
 
       {eventModalData && (
         <div
           className='fixed inset-0 z-50 bg-black/50 flex items-center justify-center'
-          onClick={handleCloseEventModal} // clicking the overlay closes modal
+          onClick={handleCloseEventModal}
         >
-          <div
-            onClick={(e) => e.stopPropagation()} // prevent clicks inside modal from closing
-            className='relative'
-          >
+          <div onClick={(e) => e.stopPropagation()} className='relative'>
             <EventModal
-              title={eventModalData.title}
-              date={eventModalData.date}
-              venue={eventModalData.venue}
+              {...eventModalData}
               onCancel={handleCloseEventModal}
               onBuyOrConfirm={
                 userHoldsTokens ? handleClaimAccess : handleBuyToken

@@ -5,7 +5,6 @@ import { FeatureSongCard } from "@/components/display/FeaturedSong"
 import { SongCard } from "@/components/display/SongCard"
 import { PerksCard } from "@/components/molecules/PerksCard"
 import { UpcomingEvent } from "@/components/display/UpcomingEvent"
-import { BadgesRow } from "@/components/dashboard"
 import { PlayerCard } from "../PlayerCard"
 import { mockArtists } from "@/mocks/mockArtists"
 import { mockPerks } from "@/mocks/mockPerks"
@@ -88,13 +87,18 @@ export const MusicSection = ({
     setIsPlaying(true)
   }
 
+  const handleClosePlayer = () => {
+    setCurrentSong(null)
+    setIsPlaying(false)
+  }
+
   return (
     <div className='flex flex-col items-center gap-20'>
       {/* Music Drops */}
       <section className='relative w-full flex flex-col'>
         <div className='flex gap-4'>
           <MusicNoteIcon size={36} weight='fill' className='text-[#DCFD63]' />
-          <h2 className='font-inter font-semibold text-[30px] leading-[36px] text-[#DCFD63]'>
+          <h2 className='font-inter font-semibold text-[30px] leading-9 text-[#DCFD63]'>
             Music Drops
           </h2>
         </div>
@@ -122,7 +126,7 @@ export const MusicSection = ({
       {/* Fan Perks */}
       <section className='relative w-full mt-20 flex flex-col'>
         <div className='flex'>
-          <h2 className='font-inter font-semibold text-[30px] leading-[36px] text-white'>
+          <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
             Fan Perks
           </h2>
         </div>
@@ -143,7 +147,7 @@ export const MusicSection = ({
         <div className='flex gap-5'>
           {/* Featured Tracks */}
           <div className='flex flex-col gap-6'>
-            <h2 className='font-inter font-semibold text-[30px] leading-[36px] text-white'>
+            <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
               Featured Tracks
             </h2>
             <div className='flex flex-col gap-6 mt-4'>
@@ -163,7 +167,7 @@ export const MusicSection = ({
 
           {/* Upcoming Events */}
           <div className='flex-1 flex flex-col gap-6'>
-            <h2 className='font-inter font-semibold text-[30px] leading-[36px] text-white'>
+            <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
               Upcoming Events
             </h2>
             <div className='flex flex-col gap-6 mt-4'>
@@ -199,6 +203,7 @@ export const MusicSection = ({
             onPlayPause={handlePlayPause}
             onNext={handleNext}
             onPrev={handlePrev}
+            onClose={handleClosePlayer}
           />
         </div>
       )}

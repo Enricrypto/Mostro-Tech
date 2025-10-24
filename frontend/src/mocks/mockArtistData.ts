@@ -1,5 +1,6 @@
 export const mockArtistData = [
   {
+    id: 1,
     artistName: "Ava Solaris",
     tokenName: "$MAV",
     avatarSrc: "/avatar1.png",
@@ -12,6 +13,7 @@ export const mockArtistData = [
     genre: "Pop"
   },
   {
+    id: 2,
     artistName: "Noir Bloom",
     tokenName: "$MOI",
     avatarSrc: "/avatar2.png",
@@ -24,6 +26,7 @@ export const mockArtistData = [
     genre: "Rock"
   },
   {
+    id: 3,
     artistName: "Echo Drift",
     tokenName: "$MEC",
     avatarSrc: "/avatar3.png",

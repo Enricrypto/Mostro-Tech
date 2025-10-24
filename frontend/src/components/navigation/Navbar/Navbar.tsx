@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { SearchBar } from "@/components/inputs/SearchBar"
 import { Button } from "@/components/atoms/Button/Button"
-import { DropDownMenu } from "@/components/navigation/DropDownMenu"
+import { ProfileButton } from "@/components/navigation/ProfileButton"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
@@ -21,14 +21,14 @@ export function Navbar() {
       className={cn(
         "flex items-center justify-between",
         "w-full max-w-[982px] h-[73px]",
-        "px-6 py-4 rounded-[16px] border-2",
-        "border-[var(--color-navbar-border)] bg-[#121B2B] backdrop-blur-sm"
+        "px-6 py-4 rounded-2xl border-2",
+        "border-(--color-navbar-border) bg-[#121B2B] backdrop-blur-sm"
       )}
     >
       {/* Left section: Logo + Links */}
       <div className='flex items-center gap-6'>
         {/* Logo */}
-        <div className='flex-shrink-0'>
+        <div className='shrink-0'>
           <Image
             src='/logo.png'
             alt='Mostro Logo'
@@ -55,12 +55,12 @@ export function Navbar() {
       {/* Right section: SearchBar + Profile / Dropdown */}
       <div className='flex items-center gap-3'>
         <SearchBar
-          className='rounded-[6px] border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]'
+          className='rounded-md border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]'
           placeholder='Search...'
         />
 
         <div className='relative'>
-          <DropDownMenu />
+          <ProfileButton />
         </div>
       </div>
     </nav>

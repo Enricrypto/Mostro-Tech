@@ -13,12 +13,12 @@ export const mockFullArtistData: {
   socials?: SocialType[]
 }[] = [
   {
-    badgeText: "Top Artist",
+    badgeText: "Featured Artist of the Month",
     genreBadge: "Indie",
-    artistName: "Alice Wonderland",
+    artistName: "Luna Eclipse",
     artistDescription:
-      "Alice is an indie-pop sensation known for her ethereal vocals, dreamy synths, and mesmerizing live performances. Her music blends emotional depth with catchy melodies, captivating audiences around the world.",
-    tokenName: "ALICE",
+      "Experimental electronic artist pushing boundaries with immersive soundscapes and innovative production techniques. Known for sold-out shows across Europe.",
+    tokenName: "MARTIST",
     tokenPrice: "12.34",
     tokenHolders: "1,234",
     artistImage: "/avatar1.png",

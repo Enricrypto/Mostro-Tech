@@ -20,8 +20,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    return (
-      <BaseButton ref={ref} variant={variant} size={size} {...props}>
+    const content = (
+      <>
         {icon && iconPosition === "left" && (
           <span className='icon'>{icon}</span>
         )}
@@ -29,6 +29,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {icon && iconPosition === "right" && (
           <span className='icon'>{icon}</span>
         )}
+      </>
+    )
+
+    return (
+      <BaseButton ref={ref} variant={variant} size={size} {...props}>
+        {content}
       </BaseButton>
     )
   }

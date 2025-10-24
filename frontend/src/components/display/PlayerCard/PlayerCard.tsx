@@ -41,7 +41,7 @@ export const PlayerCard: FC<PlayerCardProps> = ({
 }) => {
   return (
     <div
-      className='relative w-[1348px] h-[80px] flex justify-between items-center rounded-[16px] px-6 overflow-visible'
+      className='relative w-[1348px] h-20 flex justify-between items-center rounded-2xl px-6 overflow-visible'
       style={{
         background: "linear-gradient(270deg, #DCFD63 0%, #71D6FB 100%)",
         backdropFilter: "blur(4px)",
@@ -53,22 +53,22 @@ export const PlayerCard: FC<PlayerCardProps> = ({
       {onClose && (
         <Button
           onClick={onClose}
-          className='w-[40px] h-[40px] flex items-center justify-center rounded-full bg-[grey] text-white hover:bg-[#9c8be7] transition p-0'
+          className='w-10 h-10 flex items-center justify-center rounded-full bg-[grey] text-white hover:bg-[#9c8be7] transition p-0'
         >
           <XIcon size={20} weight='bold' />
         </Button>
       )}
 
       {/* LEFT SECTION */}
-      <div className='flex items-center gap-4 w-[205px] h-[48px]'>
+      <div className='flex items-center gap-4 w-[205px] h-12'>
         {avatarUrl && (
           <Avatar src={avatarUrl} className='w-10 h-10 rounded-[26px]' />
         )}
         <div className='flex flex-col justify-center gap-1'>
-          <span className='font-semibold text-[18px] leading-[28px] text-black'>
+          <span className='font-semibold text-[18px] leading-7 text-black'>
             {songName}
           </span>
-          <span className='font-medium text-[12px] leading-[20px] text-black'>
+          <span className='font-medium text-[12px] leading-5 text-black'>
             {songDetails}
           </span>
         </div>
@@ -76,32 +76,32 @@ export const PlayerCard: FC<PlayerCardProps> = ({
 
       {/* MIDDLE SECTION */}
       <div className='flex items-center gap-4 w-[765px]'>
-        <div className='flex items-center justify-center w-[64px] h-[40px] rounded-[6px] text-white'>
+        <div className='flex items-center justify-center w-16 h-10 rounded-md text-white'>
           {currentTime}
         </div>
 
         <ProgressBar
           value={progress * 100}
           variant='purple'
-          className='w-[533px] h-[16px] rounded-[40px]'
+          className='w-[533px] h-4 rounded-[40px]'
         />
 
-        <div className='flex items-center justify-center w-[68px] h-[40px] rounded-[6px] text-white'>
+        <div className='flex items-center justify-center w-[68px] h-10 rounded-md text-white'>
           {totalTime}
         </div>
       </div>
 
       {/* RIGHT SECTION */}
-      <div className='flex items-center gap-2 w-[120px] h-[40px]'>
+      <div className='flex items-center gap-2 w-[120px] h-10'>
         <Button
-          className='w-[40px] h-[40px] flex items-center justify-center rounded-[26px] text-black'
+          className='w-10 h-10 flex items-center justify-center rounded-[26px] text-black'
           onClick={onPrev}
         >
           <SkipBackIcon size={20} weight='bold' />
         </Button>
 
         <Button
-          className='w-[40px] h-[40px] rounded-[26px] flex items-center justify-center bg-[#6654D3] text-white p-0'
+          className='w-10 h-10 rounded-[26px] flex items-center justify-center bg-[#6654D3] text-white p-0'
           onClick={onPlayPause}
         >
           {isPlaying ? (
@@ -112,7 +112,7 @@ export const PlayerCard: FC<PlayerCardProps> = ({
         </Button>
 
         <Button
-          className='w-[40px] h-[40px] flex items-center justify-center rounded-[26px] text-black'
+          className='w-10 h-10 flex items-center justify-center rounded-[26px] text-black'
           onClick={onNext}
         >
           <SkipForwardIcon size={24} weight='bold' />

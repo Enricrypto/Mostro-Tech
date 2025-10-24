@@ -4,7 +4,7 @@ export const mockLeaderboardData = [
     rank: 1,
     avatarSrc: "/avatar6.png",
     username: "mostrofan.eth",
-    score: 102000000000000000000,
+    score: 10200,
     tokenSymbol: "MST"
   },
   {

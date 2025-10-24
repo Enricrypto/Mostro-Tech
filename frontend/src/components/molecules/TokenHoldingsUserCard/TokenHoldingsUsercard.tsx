@@ -6,6 +6,7 @@ import { Badge } from "@/components/utils/Badge"
 import { SketchLogoIcon } from "@phosphor-icons/react"
 
 export interface TokenHoldingsUserCardProps {
+  id: number
   avatarSrc: string
   userName: string
   tokenCount: number
@@ -15,6 +16,7 @@ export interface TokenHoldingsUserCardProps {
 }
 
 export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
+  id,
   avatarSrc,
   userName,
   tokenCount,
@@ -28,7 +30,7 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
 
   return (
     <div
-      className='flex flex-col justify-between border-2 rounded-[10px] p-[24px] gap-[14px] w-[384px] h-[172px] transition-shadow duration-200 hover:shadow-[0_0_16.9px_5px_#71D6FB80]'
+      className='flex flex-col justify-between border-2 rounded-[10px] p-6 gap-3.5 w-[384px] h-[172px] transition-shadow duration-200 hover:shadow-[0_0_16.9px_5px_#71D6FB80]'
       style={{
         background: "#121B2B",
         boxShadow: "0px 4px 6px 0px #00000017",
@@ -38,16 +40,16 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
       {/* Top Section */}
       <div className='flex justify-between items-center'>
         {/* Left Side */}
-        <div className='flex items-center gap-[12px]'>
+        <div className='flex items-center gap-3'>
           <Avatar
             src={avatarSrc || "/default-avatar.png"}
             variant='rounded-sm'
           />
           <div className='flex flex-col'>
-            <span className='text-[20px] font-semibold leading-[28px] text-white'>
+            <span className='text-[20px] font-semibold leading-7 text-white'>
               {userName}
             </span>
-            <span className='text-[12px] font-medium leading-[20px] text-[#B3B3B3]'>
+            <span className='text-[12px] font-medium leading-5 text-[#B3B3B3]'>
               {tokenCount} tokens
             </span>
           </div>
@@ -55,7 +57,7 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
         {/* Right Side */}
         <Badge
           variant={badgeVariant}
-          className='rounded-[10px] text-[12px] font-medium flex items-center justify-center px-2 py-[2px]'
+          className='rounded-[10px] text-[12px] font-medium flex items-center justify-center px-2 py-0.5'
         >
           {badgeText}
         </Badge>
@@ -79,7 +81,7 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
         {/* Right Part */}
         <div className='flex flex-col items-center gap-1'>
           <div className='flex items-center gap-2'>
-            <SketchLogoIcon className='w-[20px] h-[20px] text-[#4995E0]' />
+            <SketchLogoIcon className='w-5 h-5 text-[#4995E0]' />
             <span className='text-[16px] font-bold text-white'>
               {rightTopPerks}
             </span>

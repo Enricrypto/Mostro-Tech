@@ -2,6 +2,7 @@ import { TokenHoldingsUserCardProps } from "@/components/molecules/TokenHoldings
 
 export const mockTokenHoldings: TokenHoldingsUserCardProps[] = [
   {
+    id: 1,
     avatarSrc: "/avatar1.png",
     userName: "Alice",
     tokenCount: 1,
@@ -10,6 +11,7 @@ export const mockTokenHoldings: TokenHoldingsUserCardProps[] = [
     rightTopPerks: 5
   },
   {
+    id: 2,
     avatarSrc: "/avatar2.png",
     userName: "Bob",
     tokenCount: 3,
@@ -18,6 +20,7 @@ export const mockTokenHoldings: TokenHoldingsUserCardProps[] = [
     rightTopPerks: 2
   },
   {
+    id: 3,
     avatarSrc: "/avatar3.png",
     userName: "Charlie",
     tokenCount: 7,
@@ -26,6 +29,7 @@ export const mockTokenHoldings: TokenHoldingsUserCardProps[] = [
     rightTopPerks: 8
   },
   {
+    id: 4,
     avatarSrc: "/avatar4.png",
     userName: "Dave",
     tokenCount: 2,
@@ -34,6 +38,7 @@ export const mockTokenHoldings: TokenHoldingsUserCardProps[] = [
     rightTopPerks: 3
   },
   {
+    id: 5,
     avatarSrc: "/avatar5.png",
     userName: "Eve",
     tokenCount: 4,
@@ -42,6 +47,7 @@ export const mockTokenHoldings: TokenHoldingsUserCardProps[] = [
     rightTopPerks: 6
   },
   {
+    id: 6,
     avatarSrc: "/avatar6.png",
     userName: "Frank",
     tokenCount: 5,
