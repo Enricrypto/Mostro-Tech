@@ -12,14 +12,9 @@ import { cn } from "@/lib/utils"
 export function DropDownMenu() {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
-  const { user, logout, ready, authenticated } = usePrivy()
+  const { user, logout, ready } = usePrivy()
   const { login } = useLogin()
   const router = useRouter()
-
-  // Redirect after login
-  useEffect(() => {
-    if (user) router.push("/")
-  }, [user, router])
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -104,7 +99,7 @@ export function DropDownMenu() {
               ? displayName && displayName.length > 20
                 ? `${displayName.slice(0, 6)}...${displayName.slice(-4)}`
                 : displayName || ""
-              : "Connect Wallet"}
+              : "Login / Sign Up"}
           </span>
           {isLoggedIn && <CaretDownIcon className='w-4 h-4 text-black' />}
         </div>

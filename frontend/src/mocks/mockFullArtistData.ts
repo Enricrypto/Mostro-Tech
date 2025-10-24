@@ -3,8 +3,8 @@ import type { SocialType } from "@/components/molecules/FullArtistCardProfile"
 
 export const mockFullArtistData: {
   badgeText: string
+  genreBadge: string
   artistName: string
-  artistHandle: string
   artistDescription: string
   tokenName: string
   tokenPrice: string
@@ -14,10 +14,10 @@ export const mockFullArtistData: {
 }[] = [
   {
     badgeText: "Top Artist",
+    genreBadge: "Indie",
     artistName: "Alice Wonderland",
-    artistHandle: "@alicew",
     artistDescription:
-      "Alice is an indie-pop sensation known for her ethereal vocals and dreamy synths.",
+      "Alice is an indie-pop sensation known for her ethereal vocals, dreamy synths, and mesmerizing live performances. Her music blends emotional depth with catchy melodies, captivating audiences around the world.",
     tokenName: "ALICE",
     tokenPrice: "12.34",
     tokenHolders: "1,234",
@@ -26,10 +26,10 @@ export const mockFullArtistData: {
   },
   {
     badgeText: "Rising Star",
+    genreBadge: "Reggae",
     artistName: "Bob Marleyson",
-    artistHandle: "@bobmarleyson",
     artistDescription:
-      "Bob blends reggae and jazz influences to create smooth, soulful tracks.",
+      "Bob Marleyson seamlessly fuses reggae and jazz influences to create smooth, soulful tracks that resonate with listeners. His unique sound and lyrical storytelling are earning him a dedicated following across multiple platforms.",
     tokenName: "BOB",
     tokenPrice: "8.91",
     tokenHolders: "987",
@@ -38,10 +38,10 @@ export const mockFullArtistData: {
   },
   {
     badgeText: "Legend",
+    genreBadge: "Pop Rock",
     artistName: "Clara Smith",
-    artistHandle: "@clarasmith",
     artistDescription:
-      "Clara has been topping charts for over a decade with her pop-rock anthems.",
+      "Clara has been topping charts for over a decade with her energetic pop-rock anthems. Known for her powerful vocals and stage presence, she continues to inspire fans worldwide with every new release.",
     tokenName: "CLARA",
     tokenPrice: "23.45",
     tokenHolders: "2,345",
