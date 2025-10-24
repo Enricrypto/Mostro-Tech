@@ -1,15 +1,15 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import { Badge } from "@/components/utils/Badge"
 import { Button } from "@/components/atoms/Button"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Socials } from "@/components/atoms/Socials"
-import { mockFullArtistData } from "@/mocks/mockFullArtistData"
+import { ShareArtistModal } from "@/components/utils/Modal/ShareArtistModal/ShareArtistModal"
 import {
   StarIcon,
-  MusicNoteIcon,
   UserPlusIcon,
+  UserCheckIcon,
   LinkSimpleIcon,
   CurrencyDollarIcon
 } from "@phosphor-icons/react"
@@ -24,8 +24,8 @@ export type SocialType =
 
 export interface FullArtistCardProps {
   badgeText: string
+  genreBadge: string
   artistName: string
-  artistHandle: string
   artistDescription: string
   tokenName: string
   tokenPrice: string
@@ -37,8 +37,8 @@ export interface FullArtistCardProps {
 
 export const FullArtistCard: React.FC<FullArtistCardProps> = ({
   badgeText,
+  genreBadge,
   artistName,
-  artistHandle,
   artistDescription,
   tokenName,
   tokenPrice,
@@ -47,6 +47,23 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
   socials = ["instagram", "youtube", "spotify"],
   onBuyToken
 }) => {
+  const [isFollowing, setIsFollowing] = useState(false)
+  const [isShareOpen, setIsShareOpen] = useState(false) // modal state
+
+  const handleClick = () => {
+    // Toggle the state
+    setIsFollowing((prev) => !prev)
+    // Here you can also trigger your API call to follow/unfollow the user
+  }
+
+  const handleShareClick = () => {
+    setIsShareOpen(true) // open modal
+  }
+
+  const handleCloseModal = () => {
+    setIsShareOpen(false) // close modal
+  }
+
   return (
     <div
       className='flex flex-col gap-8 rounded-[10px] border-2'
@@ -78,15 +95,17 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
 
           <Button
             variant='follow-share'
-            icon={<UserPlusIcon />}
+            icon={isFollowing ? <UserCheckIcon /> : <UserPlusIcon />}
             iconPosition='left'
+            onClick={handleClick}
           >
-            Follow
+            {isFollowing ? "Following" : "Follow"}
           </Button>
           <Button
             variant='follow-share'
             icon={<LinkSimpleIcon />}
             iconPosition='left'
+            onClick={handleShareClick}
           >
             Share
           </Button>
@@ -113,15 +132,8 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
         >
           {/* Name + Handle + Badge */}
           <div className='flex flex-col gap-6'>
-            <div>
-              <h1 className='text-4xl font-normal text-white'>{artistName}</h1>
-              <p className='text-xl text-[var(--color-muted)]'>
-                {artistHandle}
-              </p>
-            </div>
-
             <div className='flex justify-start'>
-              <Badge variant='genre'>{badgeText}</Badge>
+              <Badge variant='genre'>{genreBadge}</Badge>
             </div>
 
             <p className='text-lg text-white leading-7'>{artistDescription}</p>
@@ -177,16 +189,21 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
             >
               Buy Token
             </Button>
-            <Button
-              variant='join-fun-club'
-              icon={<MusicNoteIcon />}
-              iconPosition='left'
-            >
-              Join Fun Club
-            </Button>
           </div>
         </div>
       </div>
+
+      {/* Share Modal */}
+      {isShareOpen && (
+        <div
+          className='fixed inset-0 z-50 bg-black/50 flex items-center justify-center'
+          onClick={handleCloseModal} // clicking the overlay closes modal
+        >
+          <div onClick={(e) => e.stopPropagation()}>
+            <ShareArtistModal />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import type { ArtistProfileBannerProps } from "../components/molecules/ArtistProfileBanner"
 
-export const bannerPropsData: ArtistProfileBannerProps[] = [
+export const bannerPropsData: ArtistProfileBannerProps[] &
+  { latestSong: { title: string; artist: string } }[] = [
   {
     artistName: "Jane Doe",
     description: "Music innovator and blockchain enthusiast.",
@@ -10,7 +11,8 @@ export const bannerPropsData: ArtistProfileBannerProps[] = [
     avatarSrc: "/avatar1.png",
     genreBadge: "Experimental",
     verifiedBadge: "Jazz",
-    variant: "default"
+    variant: "default",
+    latestSong: { title: "Song 1", artist: "Jane Doe" } // <-- add this
   },
   {
     artistName: "John Smith",
@@ -21,7 +23,8 @@ export const bannerPropsData: ArtistProfileBannerProps[] = [
     avatarSrc: "/avatar2.png",
     genreBadge: "Electronic",
     verifiedBadge: "Rock",
-    variant: "purple"
+    variant: "purple",
+    latestSong: { title: "Song 2", artist: "John Smith" }
   },
   {
     artistName: "Alice Johnson",
@@ -32,6 +35,7 @@ export const bannerPropsData: ArtistProfileBannerProps[] = [
     avatarSrc: "/avatar3.png",
     genreBadge: "Hip-Hop",
     verifiedBadge: "Pop",
-    variant: "red"
+    variant: "red",
+    latestSong: { title: "Song 3", artist: "Alice Johnson" }
   }
 ]

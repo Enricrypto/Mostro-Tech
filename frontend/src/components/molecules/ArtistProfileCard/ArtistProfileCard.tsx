@@ -3,21 +3,16 @@
 import React from "react"
 import { WalletIcon, ArrowSquareOutIcon } from "@phosphor-icons/react"
 import { Avatar } from "@/components/atoms/Avatar"
-import { Button } from "@/components/atoms/Button"
 
 interface ProfileCardProps {
   name: string
-  handle: string
   walletAddress: string
-  onDisconnect: () => void
   avatarUrl: string
 }
 
 export const ArtistProfileCard: React.FC<ProfileCardProps> = ({
   name,
-  handle,
   walletAddress,
-  onDisconnect,
   avatarUrl
 }) => {
   return (
@@ -36,22 +31,16 @@ export const ArtistProfileCard: React.FC<ProfileCardProps> = ({
         </div>
 
         {/* Profile Info */}
-        <div className='flex flex-col gap-[12px]'>
+        <div className='flex flex-col gap-[32px]'>
           {/* Name */}
           <span
-            className='font-inter font-semibold text-white whitespace-nowrap overflow-hidden text-ellipsis block'
+            className='font-inter font-semibold text-white whitespace-nowrap overflow-hidden'
             style={{
               fontSize: "30px",
-              lineHeight: "36px",
               letterSpacing: "-0.75%"
             }}
           >
             {name}
-          </span>
-
-          {/* Handle */}
-          <span className='font-inter font-medium text-white whitespace-nowrap text-sm'>
-            @{handle}
           </span>
 
           {/* Wallet Info */}
@@ -72,11 +61,11 @@ export const ArtistProfileCard: React.FC<ProfileCardProps> = ({
       </div>
 
       {/* Right Section - Disconnect Button */}
-      <div className='ml-auto self-start'>
+      {/* <div className='ml-auto self-start'>
         <Button variant='connect-wallet' onClick={onDisconnect}>
           Disconnect Wallet
         </Button>
-      </div>
+      </div> */}
     </div>
   )
 }

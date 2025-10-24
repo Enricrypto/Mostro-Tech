@@ -10,6 +10,7 @@ import { Button } from "@/components/atoms/Button"
 import { LeaderBoard } from "@/components/molecules/Leaderboard"
 import { NewLaunchCard } from "@/components/molecules/NewLaunchCard"
 import { TrendingTokenCard } from "@/components/molecules/TrendingTokenCard"
+import { PlayerCard } from "@/components/display/PlayerCard"
 import { bannerPropsData } from "@/mocks/mockBannerProps"
 import { statsCardVariants } from "@/mocks/mockStatsData"
 import { mockArtistData } from "@/mocks/mockArtistData"
@@ -20,8 +21,25 @@ import { ArrowUpRightIcon } from "@phosphor-icons/react"
 
 export default function DashboardPage() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentSong, setCurrentSong] = useState<null | {
+    title: string
+    artist: string
+  }>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [showPlayer, setShowPlayer] = useState(true)
+
   const router = useRouter()
   const currentBanner = bannerPropsData[currentIndex]
+
+  const handlePlay = (song: { title: string; artist: string }) => {
+    setCurrentSong(song)
+    setIsPlaying(true)
+  }
+
+  const handleClosePlayer = () => {
+    setShowPlayer(false)
+    setCurrentSong(null)
+  }
 
   // Auto-rotate banner
   useEffect(() => {
@@ -45,6 +63,7 @@ export default function DashboardPage() {
         <ArtistProfileBanner
           {...currentBanner}
           variant={currentBanner.variant}
+          onPlay={() => handlePlay(currentBanner.latestSong)}
         />
 
         {/* Dots */}
@@ -177,6 +196,24 @@ export default function DashboardPage() {
           </div>
         </div>
       </section>
+
+      {currentSong && (
+        <div className='fixed bottom-0 left-0 w-full px-6 py-4 z-50 flex justify-center'>
+          <PlayerCard
+            songName={currentSong.title}
+            songDetails={currentSong.artist}
+            currentTime='0:00'
+            totalTime='3:45'
+            progress={0}
+            avatarUrl={currentBanner.avatarSrc}
+            isPlaying={isPlaying}
+            onPlayPause={() => setIsPlaying((prev) => !prev)}
+            onNext={() => {}}
+            onPrev={() => {}}
+            onClose={handleClosePlayer}
+          />
+        </div>
+      )}
     </div>
   )
 }

@@ -5,7 +5,8 @@ import {
   PauseIcon,
   SkipBackIcon,
   SkipForwardIcon,
-  PlayIcon
+  PlayIcon,
+  XIcon
 } from "@phosphor-icons/react"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Button } from "@/components/atoms/Button"
@@ -22,6 +23,7 @@ export interface PlayerCardProps {
   onPlayPause?: () => void
   onNext?: () => void
   onPrev?: () => void
+  onClose?: () => void
 }
 
 export const PlayerCard: FC<PlayerCardProps> = ({
@@ -34,17 +36,29 @@ export const PlayerCard: FC<PlayerCardProps> = ({
   isPlaying,
   onPlayPause,
   onNext,
-  onPrev
+  onPrev,
+  onClose
 }) => {
   return (
     <div
-      className='w-[1348px] h-[80px] flex justify-between items-center rounded-[16px] px-6'
+      className='relative w-[1348px] h-[80px] flex justify-between items-center rounded-[16px] px-6 overflow-visible'
       style={{
         background: "linear-gradient(270deg, #DCFD63 0%, #71D6FB 100%)",
         backdropFilter: "blur(4px)",
-        opacity: 1
+        opacity: 1,
+        position: "relative"
       }}
     >
+      {/* Close button (visible in top-right corner) */}
+      {onClose && (
+        <Button
+          onClick={onClose}
+          className='w-[40px] h-[40px] flex items-center justify-center rounded-full bg-[grey] text-white hover:bg-[#9c8be7] transition p-0'
+        >
+          <XIcon size={20} weight='bold' />
+        </Button>
+      )}
+
       {/* LEFT SECTION */}
       <div className='flex items-center gap-4 w-[205px] h-[48px]'>
         {avatarUrl && (
@@ -62,19 +76,16 @@ export const PlayerCard: FC<PlayerCardProps> = ({
 
       {/* MIDDLE SECTION */}
       <div className='flex items-center gap-4 w-[765px]'>
-        {/* Current time */}
         <div className='flex items-center justify-center w-[64px] h-[40px] rounded-[6px] text-white'>
           {currentTime}
         </div>
 
-        {/* Progress bar */}
         <ProgressBar
-          value={progress * 100} // Radix Progress expects 0–100
+          value={progress * 100}
           variant='purple'
           className='w-[533px] h-[16px] rounded-[40px]'
         />
 
-        {/* Total time */}
         <div className='flex items-center justify-center w-[68px] h-[40px] rounded-[6px] text-white'>
           {totalTime}
         </div>

@@ -1,9 +1,10 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { Badge } from "@/components/utils/Badge"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Button } from "@/components/atoms/Button"
-import { ArrowUpRightIcon } from "@phosphor-icons/react"
+import { ArrowUpRightIcon, PlayIcon } from "@phosphor-icons/react"
 
 interface ArtistProfileBannerProps {
   artistName: string
@@ -15,6 +16,7 @@ interface ArtistProfileBannerProps {
   genreBadge: string
   verifiedBadge: string
   variant?: "default" | "purple" | "red"
+  onPlay?: () => void
 }
 
 export function ArtistProfileBanner({
@@ -26,8 +28,11 @@ export function ArtistProfileBanner({
   avatarSrc,
   genreBadge,
   verifiedBadge,
-  variant = "default"
+  variant = "default",
+  onPlay
 }: ArtistProfileBannerProps) {
+  const router = useRouter()
+
   const bgColor =
     variant === "purple" ? "#998ce1" : variant === "red" ? "#fd6363" : "#dcfd63"
 
@@ -36,14 +41,19 @@ export function ArtistProfileBanner({
       style={{ backgroundColor: bgColor }}
       className='w-full min-h-[510px] shadow-md py-16'
     >
-      {/* Inner container */}
       <div className='flex justify-between w-full'>
         {/* LEFT: Avatar + Badges */}
         <div className='relative flex-1 flex justify-center items-start min-w-[250px]'>
-          {/* Fixed-size avatar wrapper (important!) */}
-          <div className='relative inline-block'>
+          <div className='relative inline-block group'>
             {/* Avatar */}
             <Avatar src={avatarSrc} alt={artistName} variant='square-lg' />
+
+            {/* Hover overlay with play button */}
+            <div className='absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
+              <Button variant='song-play-icon' onClick={onPlay}>
+                <PlayIcon size={24} weight='bold' />
+              </Button>
+            </div>
 
             {/* Lower-left badge */}
             <Badge
@@ -58,10 +68,9 @@ export function ArtistProfileBanner({
             {/* Upper-right badge */}
             <Badge
               variant='genre'
-              className='absolute top-10 left-80 
-             rotate-[12deg]
-             w-[131px] h-[39px] gap-2 border border-[#71D6FB]
-             rounded-[28px] bg-white text-black'
+              className='absolute top-10 left-80 rotate-[12deg]
+                 w-[131px] h-[39px] gap-2 border border-[#71D6FB]
+                 rounded-[28px] bg-white text-black'
             >
               {verifiedBadge}
             </Badge>
@@ -70,7 +79,7 @@ export function ArtistProfileBanner({
 
         {/* RIGHT: Text + Stats + Button */}
         <div className='flex flex-col flex-1 gap-6 min-w-[300px] pr-8'>
-          {/* Artist name + description */}
+          {/* Artist Name & Description */}
           <div className='flex flex-col gap-4'>
             <h2 className='font-poppins text-[48px] font-normal leading-[48px] text-black'>
               {artistName}
@@ -101,10 +110,10 @@ export function ArtistProfileBanner({
           {/* View Artist Button */}
           <Button
             variant='continue'
-            className='w-[288px] h-[40px] px-4 py-2 gap-2 rounded-[6px]
-            flex items-center justify-center'
+            className='w-[288px] h-[40px] px-4 py-2 gap-2 rounded-[6px] flex items-center justify-center'
             icon={<ArrowUpRightIcon size={20} weight='bold' />}
             iconPosition='right'
+            onClick={() => router.push("/profile")}
           >
             <span className='font-inter font-medium text-[14px] leading-[24px]'>
               View Artist

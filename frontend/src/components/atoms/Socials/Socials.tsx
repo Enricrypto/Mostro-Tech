@@ -12,17 +12,17 @@ import {
 } from "@phosphor-icons/react"
 import type { ComponentProps } from "react"
 
-// CVA for social button
+// CVA for social button with hover
 const socialButtonCVA = cva(
-  "inline-flex items-center justify-center transition-all duration-200 ease-out rounded-full border text-inherit",
+  "inline-flex items-center justify-center transition-all duration-200 ease-out rounded-full border text-inherit transform hover:scale-105 hover:brightness-110",
   {
     variants: {
       themeVariant: {
         black:
-          "border-[var(--color-navbar-border)] bg-[var(--color-night)] text-white",
-        blue: "border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)]",
+          "border-[var(--color-navbar-border)] bg-[var(--color-night)] text-white hover:bg-[var(--color-night-hover)]",
+        blue: "border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)] hover:bg-[var(--color-skyblue-hover)]",
         yellow:
-          "border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black"
+          "border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black hover:bg-[var(--color-booger-buster-hover)]"
       },
       size: {
         default: "w-[44px] h-[32px]",

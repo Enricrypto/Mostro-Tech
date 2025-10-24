@@ -10,6 +10,7 @@ import { Avatar } from "@/components/atoms/Avatar"
 import { Button } from "@/components/atoms/Button"
 import { MusicSection } from "@/components/display/MusicSection"
 import { ProposalsSection } from "@/components/molecules/ProposalsSection"
+import { TokenSection } from "@/components/molecules/TokenSection/TokenSection"
 import { EventModal } from "@/components/utils/Modal/EventModal"
 import { mockFullArtistData } from "@/mocks/mockFullArtistData"
 import { mockLeaderboardData } from "@/mocks/mockLeaderboardData"
@@ -140,7 +141,12 @@ export default function ArtistPage() {
       </div>
     ),
     proposals: <ProposalsSection onViewProposal={handleViewProposal} />,
-    token: <div className='text-white mt-4'>Token Section Placeholder</div>
+    token: (
+      <TokenSection
+        onBuyToken={handleBuyToken}
+        onSellToken={() => console.log("Sell token")}
+      />
+    )
   }
 
   return (
@@ -157,8 +163,8 @@ export default function ArtistPage() {
       <section className='relative w-full flex justify-center mt-20'>
         <FullArtistCard
           badgeText={artist.badgeText}
+          genreBadge={artist.genreBadge}
           artistName={artist.artistName}
-          artistHandle={artist.artistHandle}
           artistDescription={artist.artistDescription}
           tokenName={artist.tokenName}
           tokenPrice={artist.tokenPrice}
