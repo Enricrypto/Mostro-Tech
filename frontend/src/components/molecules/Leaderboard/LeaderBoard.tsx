@@ -41,7 +41,7 @@ export function LeaderBoard({
       {/* LEFT SIDE: Rank + Avatar + Username */}
       <div className='flex items-center gap-[14px]'>
         <span className='w-[21px] text-[18px] font-semibold leading-[28px] text-[var(--color-muted)]'>
-          #{rank}
+          # {rank}
         </span>
         <Avatar
           variant='rounded-sm'
@@ -55,10 +55,10 @@ export function LeaderBoard({
 
       {/* RIGHT SIDE: Score + Token Symbol */}
       <div className='flex items-center gap-[8px]'>
-        <span className='w-[63px] text-right text-[18px] font-semibold leading-[28px] text-[var(--color-skyblue)]'>
+        <span className='text-right text-[18px] font-semibold leading-[28px] text-[var(--color-skyblue)]'>
           {score}
         </span>
-        <span className='w-[33px] text-[12px] font-medium leading-[20px] text-[var(--color-muted)]'>
+        <span className='text-[12px] font-medium leading-[20px] text-[var(--color-muted)]'>
           {tokenSymbol}
         </span>
       </div>

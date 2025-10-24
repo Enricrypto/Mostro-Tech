@@ -1,51 +1,45 @@
 export type Voting = {
-	id: number,
-    title: string,
-    artist: string,
-    date: string,
-    vote: boolean,
-    status: string,
+  title: string
+  artist: string
+  date: string
+  vote: boolean
+  status: string
 }
 
-export const votingHistory: Voting[] = [
+export const mockVotingHistory: Voting[] = [
   {
-    id: 1,
     title: "Song A",
     artist: "Daft Punk",
-    date: "2025-10-01",
+    date: "2 days ago",
     vote: true,
-    status: "Approved",
+    status: "Active"
   },
   {
-    id: 2,
     title: "Song B",
     artist: "Justice",
-    date: "2025-10-02",
+    date: "5 days ago",
     vote: false,
-    status: "Pending",
+    status: "Executed"
   },
   {
-    id: 3,
     title: "Song C",
     artist: "Kavinsky",
-    date: "2025-10-03",
+    date: "3 days ago",
     vote: true,
-    status: "Rejected",
+    status: "Rejected"
   },
   {
-    id: 4,
     title: "Song D",
     artist: "Air",
-    date: "2025-10-04",
+    date: "21 days ago",
     vote: false,
-    status: "Approved",
+    status: "Active"
   },
   {
-    id: 5,
     title: "Song E",
     artist: "Phoenix",
-    date: "2025-10-05",
+    date: "25 days ago",
     vote: true,
-    status: "Pending",
-  },
-];
+    status: "Executed"
+  }
+]

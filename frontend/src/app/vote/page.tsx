@@ -67,7 +67,7 @@ export default function VotePage() {
               voterName='Your Name'
               voterSubtext='Fan Club Member'
               onViewOtherProposals={handleViewOtherProposals}
-              avatarSrc='/avatar.png'
+              avatarSrc='/avatar1.png'
             />
           </div>
         </div>
