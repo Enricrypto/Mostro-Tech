@@ -9,7 +9,7 @@ interface ProposalData {
   id: number
   status: ProposalStatus
   title: string
-  requestedTokens: number
+  requestedTokens: string
   yesPercentage?: number
   noPercentage?: number
   badgeText?: string

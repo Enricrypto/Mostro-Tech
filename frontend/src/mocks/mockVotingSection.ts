@@ -1,7 +1,9 @@
 import { VotingSectionProps } from "@/components/molecules/VotingSection"
 
 export const mockVotingSection: VotingSectionProps = {
-  description: "Vote on the next project proposal for the DAO.",
+  title: "New Album Production",
+  artist: "Luna Eclipse",
+  description: "Open to all $MLUNA token holders.",
   yesVotes: 1200,
   noVotes: 300,
   participants: 148,

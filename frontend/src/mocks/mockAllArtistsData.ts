@@ -110,7 +110,7 @@ export const mockAllArtistsData = [
     avatarSrc: "/nina-summers.png",
     badgeText: "0%",
     description:
-      "Acoustic-folk artist with heartfelt lyrics and cinematic arrangements.",
+      "Channels the soul of New Orleans into her innovative jazz fusion, weaving together traditional brass with electronic rhythms. An exhilarating blend of improvisation and groove. A unique voice in contemporary music.",
     holders: "0",
     marketCap: "0",
     totalSupply: "1B",

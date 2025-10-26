@@ -48,14 +48,14 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
       </div>
 
       {/* Info & Controls */}
-      <div className='flex flex-col justify-between flex-1 gap-2'>
+      <div className='flex flex-col justify-between flex-1 gap-2 min-w-0'>
         {/* Artist Name & Latest Single */}
-        <div className='flex flex-col gap-1'>
-          <span className='text-white font-semibold text-[18px] leading-7 truncate'>
-            {artist.name}
+        <div className='flex flex-col gap-1 min-w-0'>
+          <span className='text-white font-semibold text-[18px] leading-7 truncate block'>
+            {artist.latestSingle.title}
           </span>
-          <span className='text-(--color-muted) font-medium text-[12px] leading-5 truncate'>
-            {artist.latestSingle.title} - {artist.latestSingle.duration}
+          <span className='text-(--color-muted) font-medium text-[12px] leading-5 truncate block'>
+            {artist.name} - {artist.latestSingle.duration}
           </span>
         </div>
 

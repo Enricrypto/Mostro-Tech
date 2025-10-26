@@ -3,6 +3,7 @@
 import { Avatar } from "@/components/atoms/Avatar/Avatar"
 import { Badge } from "@/components/utils/Badge/Badge"
 import { Button } from "@/components/atoms/Button/Button"
+import { Tooltip } from "@/components/atoms/Tooltip"
 import { ClockIcon } from "@phosphor-icons/react"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
@@ -81,9 +82,16 @@ export function ArtistCard({
           <Badge variant='genre'>{genre}</Badge>
         </div>
         {/* Description text */}
-        <p className='text-[#B3B3B3] font-medium text-[12px] leading-5 w-full line-clamp-2'>
-          {description || "No description provided."}
-        </p>
+        <Tooltip
+          content={description || "No description provided."}
+          variant='blue'
+          side='top'
+          align='center'
+        >
+          <p className='text-[#B3B3B3] font-medium text-[12px] leading-5 w-full line-clamp-2'>
+            {description || "No description provided."}
+          </p>
+        </Tooltip>
       </div>
 
       {/* Stats Section: holders, market cap, volume */}

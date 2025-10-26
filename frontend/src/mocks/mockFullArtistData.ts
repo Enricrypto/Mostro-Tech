@@ -22,7 +22,7 @@ export const mockFullArtistData: {
     tokenPrice: "12.34",
     tokenHolders: "1,234",
     artistImage: "/avatar1.png",
-    socials: ["instagram", "spotify", "youtube"] as SocialType[]
+    socials: ["instagram", "twitter", "youtube"] as SocialType[]
   },
   {
     badgeText: "Rising Star",
@@ -46,6 +46,6 @@ export const mockFullArtistData: {
     tokenPrice: "23.45",
     tokenHolders: "2,345",
     artistImage: "/avatar3.png",
-    socials: ["instagram", "tiktok", "youtube"] as SocialType[]
+    socials: ["instagram", "twitter", "youtube"] as SocialType[]
   }
 ]

@@ -51,7 +51,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
       {/* Top Section */}
       <div className='flex flex-col gap-2'>
         <div className='flex justify-between items-center gap-2 flex-wrap'>
-          <p className='text-white font-inter font-semibold text-[18px] leading-[28px] truncate'>
+          <p className='text-white font-inter font-semibold text-[18px] leading-7 truncate'>
             {title}
           </p>
           {status === "ongoing" && badgeText && (
@@ -62,8 +62,8 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
           {status === "executed" && <Badge variant='increase'>Executed</Badge>}
           {status === "closed" && <Badge variant='decrease'>Closed</Badge>}
         </div>
-        <p className='text-[var(--color-grey)] font-inter font-medium text-[12px] leading-[20px]'>
-          Requesting: {requestedTokens} tokens
+        <p className='text-(--color-grey) font-inter font-medium text-[12px] leading-5'>
+          Requesting: ${requestedTokens} Tokens
         </p>
       </div>
 
@@ -73,10 +73,10 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
           <ProgressBar value={yesPercentage} variant='blue' />
           <div className='flex justify-between items-center gap-3 flex-nowrap'>
             <div className='flex flex-col justify-between'>
-              <p className='text-white font-inter font-bold text-[12px] leading-[20px]'>
+              <p className='text-white font-inter font-bold text-[12px] leading-5'>
                 {yesPercentage}% Yes
               </p>
-              <p className='text-[var(--color-grey)] font-inter font-medium text-[12px] leading-[20px]'>
+              <p className='text-(--color-grey) font-inter font-medium text-[12px] leading-5'>
                 {noPercentage}% No
               </p>
             </div>
@@ -94,13 +94,13 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
       )}
 
       {status === "executed" && (
-        <div className='text-[var(--color-highlight)] font-inter font-medium text-[12px] leading-[20px] mt-4'>
+        <div className='text-(--color-highlight) font-inter font-medium text-[12px] leading-5 mt-4'>
           Successfully funded and completed
         </div>
       )}
 
       {status === "closed" && (
-        <div className='text-[var(--color-grey)] font-inter font-medium text-[12px] leading-[20px] mt-4'>
+        <div className='text-(--color-grey) font-inter font-medium text-[12px] leading-5 mt-4'>
           Proposal closed without execution
         </div>
       )}

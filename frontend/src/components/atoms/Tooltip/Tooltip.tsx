@@ -22,8 +22,9 @@ export const Tooltip: React.FC<TooltipProps> = ({
 }) => {
   const baseStyles = `
   rounded-[6px] gap-[10px] px-[13px] py-[7px] 
-  flex items-center justify-center shadow-[0_2px_4px_0_rgba(30,41,59,0.25)]
-  text-center text-sm font-medium
+  shadow-[0_2px_4px_0_rgba(30,41,59,0.25)]
+  text-sm font-medium text-left
+  max-w-xs break-words whitespace-pre-wrap
 `
 
   const variantStyles: Record<TooltipVariant, string> = {

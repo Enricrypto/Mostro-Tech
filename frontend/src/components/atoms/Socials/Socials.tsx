@@ -78,8 +78,8 @@ export const Socials: React.FC<SocialsProps> = ({
   return (
     <div
       className={cn(
-        "flex items-center justify-center gap-[8px]",
-        size === "compact" && "gap-[4px]",
+        "flex items-center justify-center gap-2",
+        size === "compact" && "gap-1",
         className
       )}
     >

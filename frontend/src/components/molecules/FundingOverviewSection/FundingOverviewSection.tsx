@@ -9,7 +9,7 @@ export interface FundingOverviewSectionProps {
   subtitle: string
   description: string
   infoCards: Array<
-    | { variant: "amount"; value: number; tokens: number }
+    | { variant: "amount"; value: number | string; tokens: number }
     | { variant: "date"; date: string }
   >
   fundAllocations: Array<{
@@ -33,14 +33,14 @@ export const FundingOverviewSection: React.FC<FundingOverviewSectionProps> = ({
         {/* TOP SECTION */}
         <div className='flex flex-col gap-4'>
           <div className='flex flex-col gap-1'>
-            <span className='font-inter font-semibold text-[30px] text-white leading-[36px]'>
+            <span className='font-inter font-semibold text-[30px] text-white leading-9'>
               {title}
             </span>
-            <span className='font-poppins font-normal text-[18px] text-[var(--color-highlight)] leading-[28px]'>
+            <span className='font-poppins font-normal text-[18px] text-(--color-highlight) leading-7'>
               {subtitle}
             </span>
           </div>
-          <p className='font-poppins font-normal text-[18px] text-white leading-[28px]'>
+          <p className='font-poppins font-normal text-[18px] text-white leading-7'>
             {description}
           </p>
         </div>
@@ -61,13 +61,13 @@ export const FundingOverviewSection: React.FC<FundingOverviewSectionProps> = ({
                   <CurrencyDollarSimpleIcon
                     size={16}
                     weight='bold'
-                    className='text-[var(--color-skyblue)]'
+                    className='text-(--color-skyblue)'
                   />
                 ) : (
                   <CalendarIcon
                     size={16}
                     weight='bold'
-                    className='text-[var(--color-highlight)]'
+                    className='text-(--color-highlight)'
                   />
                 )}
               </div>
@@ -79,7 +79,7 @@ export const FundingOverviewSection: React.FC<FundingOverviewSectionProps> = ({
                     <span className='font-inter font-semibold text-[30px] text-white'>
                       ${card.value}
                     </span>
-                    <span className='font-poppins font-normal text-[15px] text-[var(--color-grey)]'>
+                    <span className='font-poppins font-normal text-[15px] text-(--color-grey)'>
                       {Number(card.tokens).toLocaleString()} Tokens
                     </span>
                   </>
@@ -95,7 +95,7 @@ export const FundingOverviewSection: React.FC<FundingOverviewSectionProps> = ({
 
         {/* BOTTOM SECTION - Fund Allocation */}
         <div className='flex flex-col gap-4'>
-          <span className='font-inter font-semibold text-[30px] text-white leading-[36px]'>
+          <span className='font-inter font-semibold text-[30px] text-white leading-9'>
             Fund Allocation
           </span>
           <div className='flex flex-col gap-4'>

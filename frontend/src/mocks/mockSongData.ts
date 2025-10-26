@@ -7,19 +7,19 @@ export const mockSongData: {
   avatarUrl: string
 }[] = [
   {
-    songName: "Midnight Dreams",
+    songName: "Luna Eclipse",
     subtitle: "Latest Single - 3:45",
     variant: "song-play",
     avatarUrl: "/avatar1.png"
   },
   {
-    songName: "Prime Time",
+    songName: "Luna Eclipse",
     subtitle: "Latest Single - 4:12",
     variant: "song-play",
     avatarUrl: "/avatar2.png"
   },
   {
-    songName: "Cosmic Waves",
+    songName: "Luna Eclipse",
     subtitle: "Album Track - 4:12",
     variant: "song-unlock",
     unlockAmount: 5,
@@ -27,13 +27,13 @@ export const mockSongData: {
     avatarUrl: "/avatar3.png"
   },
   {
-    songName: "Electric Nights",
+    songName: "Luna Eclipse",
     subtitle: "Exclusive Track - 3:58",
     variant: "song-play",
     avatarUrl: "/avatar4.png"
   },
   {
-    songName: "Total Recall",
+    songName: "Luna Eclipse",
     subtitle: "Latest Single - 3:45",
     variant: "song-unlock",
     unlockAmount: 3,

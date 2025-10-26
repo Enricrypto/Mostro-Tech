@@ -45,7 +45,7 @@ export const TokenSection: FC<TokenSectionProps> = ({
           </Button>
 
           <Button
-            variant='button-cancel-red-border'
+            variant='button-cancel-red'
             className='flex items-center gap-2'
             icon={<CurrencyDollarIcon size={16} weight='bold' />}
             onClick={onSellToken}

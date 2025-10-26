@@ -6,6 +6,8 @@ import { ThumbsUpIcon, ThumbsDownIcon } from "@phosphor-icons/react"
 import { VotingProgress } from "../VotingProgress"
 
 export interface VotingSectionProps {
+  artist: string
+  title: string
   description: string
   yesVotes?: number
   noVotes?: number
@@ -28,10 +30,10 @@ export const VotingSection: React.FC<VotingSectionProps> = ({
     <div className='w-[382px] h-[598px] flex flex-col gap-6 p-6 rounded-[10px] border-2 border-[#2D3953]'>
       {/* 1st Part: Voting Title + Description */}
       <div className='flex flex-col gap-6'>
-        <span className='font-inter font-semibold text-[30px] text-white leading-[36px]'>
+        <span className='font-inter font-semibold text-[30px] text-white leading-9'>
           Voting
         </span>
-        <p className='font-poppins font-normal text-[18px] text-white leading-[28px]'>
+        <p className='font-poppins font-normal text-[18px] text-white leading-7'>
           {description}
         </p>
       </div>

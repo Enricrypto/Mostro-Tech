@@ -1,7 +1,8 @@
 "use client"
 
 import React from "react"
-import { Badge } from "@/components/utils/Badge" // adjust path if needed
+import { Badge } from "@/components/utils/Badge"
+import { Tooltip } from "@/components/atoms/Tooltip"
 
 interface FundAllocationCardProps {
   title: string
@@ -15,22 +16,24 @@ export const FundAllocationCard: React.FC<FundAllocationCardProps> = ({
   bottomLeftValue
 }) => {
   return (
-    <div className='w-[462px] h-[104px] p-6 flex flex-col gap-[14px] rounded-[10px] border-2 border-[var(--color-datacard-border)] bg-[var(--color-datacard-bg)]'>
+    <div className='w-[462px] h-[104px] p-6 flex flex-col gap-3.5 rounded-[10px] border-2 border-(--color-datacard-border) bg-(--color-datacard-bg)'>
       {/* Top Section */}
-      <div className='w-[414px] h-[28px] flex justify-between items-center'>
+      <div className='flex justify-between items-center'>
         {/* Left Side */}
-        <div className='w-[131px] h-[28px] flex items-center text-left text-[var(--color-white)] font-inter font-semibold text-[18px] leading-[28px]'>
-          {title}
-        </div>
+        <Tooltip variant='blue' content={title}>
+          <div className='max-w-[250px] truncate text-white font-inter font-semibold text-[18px] leading-7 cursor-pointer'>
+            {title}
+          </div>
+        </Tooltip>
 
         {/* Right Side - Badge */}
         <Badge variant='neutral'>{badgeText}</Badge>
       </div>
 
       {/* Bottom Section */}
-      <div className='w-[414px] h-[28px] flex items-center'>
-        <div className='w-[84px] h-[20px] text-[var(--color-grey)] font-inter font-medium text-[12px] leading-[20px] text-left'>
-          {Number(bottomLeftValue).toLocaleString()} tokens
+      <div className='flex items-center'>
+        <div className='text-(--color-grey) font-inter font-medium text-[12px] leading-5 text-left'>
+          {bottomLeftValue} tokens
         </div>
       </div>
     </div>

@@ -5,17 +5,17 @@ import { ArrowRightIcon } from "@phosphor-icons/react"
 import { Button } from "@/components/atoms/Button"
 import { cn } from "@/lib/utils"
 
-interface ProposalConfirmationModalProps {
+export interface ProposalConfirmationModalProps {
+  title: string
+  artist: string
   vote: "YES" | "NO"
-  voterName: string
-  voterSubtext?: string
   onViewOtherProposals: () => void
   avatarSrc?: string
 }
 
 export const ProposalConfirmationModal: React.FC<
   ProposalConfirmationModalProps
-> = ({ vote, voterName, voterSubtext, onViewOtherProposals, avatarSrc }) => {
+> = ({ vote, title, artist, onViewOtherProposals, avatarSrc }) => {
   // Dynamic color variants for vote text
   const variants = {
     YES: "text-[var(--color-green)]",
@@ -30,15 +30,15 @@ export const ProposalConfirmationModal: React.FC<
       )}
     >
       {/* Top Part */}
-      <div className='flex items-center gap-4 w-[256px] h-12'>
-        <Avatar src={avatarSrc} alt={voterName} variant='rounded-sm' />
-        <div className='flex flex-col w-[200px] h-12'>
+      <div className='flex items-center gap-4 h-12'>
+        <Avatar src={avatarSrc} alt={artist} variant='rounded-sm' />
+        <div className='flex flex-col h-12'>
           <span className='text-white font-inter font-semibold text-[18px] leading-7'>
-            {voterName}
+            {title}
           </span>
-          {voterSubtext && (
+          {artist && (
             <span className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-5'>
-              {voterSubtext}
+              {artist}
             </span>
           )}
         </div>

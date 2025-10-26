@@ -56,8 +56,8 @@ export default function VotePage() {
           <div onClick={(e) => e.stopPropagation()} className='relative'>
             <ProposalConfirmationModal
               vote={voteType}
-              voterName='Username'
-              voterSubtext='Fan Club Member'
+              title={mockVotingSection.title}
+              artist={mockVotingSection.artist}
               onViewOtherProposals={handleViewOtherProposals}
               avatarSrc='/avatar1.png'
             />
