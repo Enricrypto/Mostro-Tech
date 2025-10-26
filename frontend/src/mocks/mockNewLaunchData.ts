@@ -1,30 +1,30 @@
 export const mockNewLaunchData = [
   {
     id: 1,
-    avatarUrl: "/avatar1.png",
-    name: "Luma",
-    badgeText: "Pop",
+    avatarUrl: "/dj-adonis.png",
+    name: "DJ Adonis",
+    badgeText: "R&B & Hip Hop",
     launchInDays: 3,
-    price: 150,
+    price: 0.001,
     dynamicRightTopText: "1B"
   },
   {
     id: 2,
-    avatarUrl: "/avatar2.png",
-    name: "Ryder",
-    badgeText: "Rock",
+    avatarUrl: "/nina-summers.png",
+    name: "Nina Summers",
+    badgeText: "Jazz Fusion",
     launchInDays: 5,
-    price: 200,
-    dynamicRightTopText: "500M"
+    price: 0.001,
+    dynamicRightTopText: "1B"
   },
   {
     id: 3,
     avatarUrl: "/avatar3.png",
-    name: "Jazzon",
-    badgeText: "Jazz",
+    name: "Thunder Bible",
+    badgeText: "Metal",
     launchInDays: 7,
-    price: 175,
-    dynamicRightTopText: "750M"
+    price: 0.001,
+    dynamicRightTopText: "1B"
   },
   {
     id: 4,
@@ -32,8 +32,8 @@ export const mockNewLaunchData = [
     name: "K-Hip",
     badgeText: "Hip-Hop",
     launchInDays: 2,
-    price: 220,
-    dynamicRightTopText: "850M"
+    price: 0.001,
+    dynamicRightTopText: "1B"
   },
   {
     id: 5,
@@ -41,8 +41,8 @@ export const mockNewLaunchData = [
     name: "Indiea",
     badgeText: "Indie",
     launchInDays: 10,
-    price: 130,
-    dynamicRightTopText: "600M"
+    price: 0.001,
+    dynamicRightTopText: "1B"
   },
   {
     id: 6,
@@ -50,8 +50,8 @@ export const mockNewLaunchData = [
     name: "ElecTron",
     badgeText: "Electronic",
     launchInDays: 1,
-    price: 190,
-    dynamicRightTopText: "950M"
+    price: 0.001,
+    dynamicRightTopText: "1B"
   },
   {
     id: 7,
@@ -59,8 +59,8 @@ export const mockNewLaunchData = [
     name: "R&Bee",
     badgeText: "R&B",
     launchInDays: 4,
-    price: 210,
-    dynamicRightTopText: "1.1B"
+    price: 0.001,
+    dynamicRightTopText: "1B"
   },
   {
     id: 8,
@@ -68,8 +68,8 @@ export const mockNewLaunchData = [
     name: "Clasina",
     badgeText: "Classical",
     launchInDays: 6,
-    price: 160,
-    dynamicRightTopText: "720M"
+    price: 0.001,
+    dynamicRightTopText: "1B"
   },
   {
     id: 9,
@@ -77,7 +77,7 @@ export const mockNewLaunchData = [
     name: "Xperio",
     badgeText: "Experimental",
     launchInDays: 8,
-    price: 140,
-    dynamicRightTopText: "500M"
+    price: 0.001,
+    dynamicRightTopText: "1B"
   }
 ]

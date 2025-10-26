@@ -31,8 +31,8 @@ export function ProposalsSection({ onViewProposal }: ProposalsSectionProps) {
     <div className='flex flex-col w-[1200px] h-[868px] gap-[39px]'>
       {/* Top bar */}
       <div className='flex justify-between items-center w-full h-[42px]'>
-        <h2 className='text-white font-inter font-semibold text-[30px] leading-[36px]'>
-          Proposals
+        <h2 className='text-white font-inter font-semibold text-[30px] leading-9'>
+          Voting
         </h2>
         <div className='flex gap-4'>
           {(["all", "ongoing", "executed", "closed"] as ProposalStatus[]).map(

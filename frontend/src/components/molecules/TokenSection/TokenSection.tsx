@@ -28,8 +28,8 @@ export const TokenSection: FC<TokenSectionProps> = ({
   return (
     <div className='flex flex-col w-[1200px] gap-6'>
       {/* Header */}
-      <div className='flex justify-between items-center w-full h-[40px]'>
-        <h2 className='text-white font-inter font-semibold text-[30px] leading-[36px] tracking-[-0.75%]'>
+      <div className='flex justify-between items-center w-full h-10'>
+        <h2 className='text-white font-inter font-semibold text-[30px] leading-9 tracking-[-0.75%]'>
           Token Activity
         </h2>
 
@@ -57,7 +57,7 @@ export const TokenSection: FC<TokenSectionProps> = ({
       </div>
 
       {/* Dashboard Data */}
-      <div className='flex flex-col w-full h-[112px]'>
+      <div className='flex flex-col w-full h-28'>
         <DashBoardDataArtist
           totalPrice={totalPrice}
           priceChange={priceChange}

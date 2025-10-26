@@ -108,7 +108,7 @@ export default function DashboardPage() {
       </section>
 
       {/* ===== STATS CARDS ===== */}
-      <section className='flex flex-wrap justify-center gap-6 mt-14 px-4'>
+      <section className='flex flex-wrap justify-center gap-6 mt-20 px-4'>
         {statsCardVariants.map((card) => (
           <DashBoardStatsCard key={card.topText} {...card} />
         ))}
@@ -136,7 +136,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Artists Grid */}
-        <div className='max-w-[1200px] mx-auto flex flex-wrap gap-6 mt-4'>
+        <div className='max-w-[1200px] mx-auto flex flex-wrap gap-6 mt-10'>
           {mockArtistData.map((artist) => (
             <ArtistCard key={artist.id || artist.artistName} {...artist} />
           ))}
@@ -161,13 +161,27 @@ export default function DashboardPage() {
 
       {/* ===== NEW LAUNCHES ===== */}
       <section className='flex flex-col gap-6 mt-20 px-4'>
-        <div className='max-w-[1200px] mx-auto'>
-          <SectionHeader title='New Launches' />
-          <div className='flex flex-wrap gap-6 mt-10'>
-            {mockNewLaunchData.slice(0, 3).map((launch) => (
-              <NewLaunchCard key={launch.id || launch.name} {...launch} />
-            ))}
+        <div className='w-full max-w-[1200px] mx-auto flex justify-between items-center'>
+          {/* Title */}
+          <div className='flex-1'>
+            <SectionHeader title='New Launches' />
           </div>
+
+          <div>
+            <Button
+              variant='follow-share'
+              icon={<ArrowUpRightIcon size={20} weight='bold' />}
+              iconPosition='right'
+              onClick={() => router.push("/launches")}
+            >
+              View All
+            </Button>
+          </div>
+        </div>
+        <div className='max-w-[1200px] mx-auto flex flex-wrap gap-6 mt-10'>
+          {mockNewLaunchData.slice(0, 3).map((launch) => (
+            <NewLaunchCard key={launch.id || launch.name} {...launch} />
+          ))}
         </div>
       </section>
 
@@ -182,7 +196,7 @@ export default function DashboardPage() {
                   key={token.id}
                   avatarSrc={token.iconUrl}
                   name={token.name}
-                  subtitle={token.value}
+                  subtitle={token.tokenName}
                   value={token.price}
                   badgeText={token.change}
                 />

@@ -1,50 +1,50 @@
 export const trendingTokens = [
   {
     id: 1,
-    name: "$MFR",
-    value: "50,000",
-    iconUrl: "/avatar1.png",
-    price: "$12.34",
-    change: "+3.2%"
+    name: "Kings Quest",
+    tokenName: "MKIN",
+    iconUrl: "/kings-quest.png",
+    price: "3.45",
+    change: "+24%"
   },
   {
     id: 2,
-    name: "$MPQ",
-    value: "30,000",
-    iconUrl: "/avatar2.png",
-    price: "$45.67",
+    name: "Lil Lion",
+    tokenName: "MLIL",
+    iconUrl: "/lil-lion.png",
+    price: "3.24",
     change: "-1.5%"
   },
   {
     id: 3,
-    name: "$MLT",
-    value: "20,000",
+    name: "Pucci Mane",
+    tokenName: "MPUC",
     iconUrl: "/avatar3.png",
-    price: "$0.89",
+    price: "3.18",
     change: "+0.8%"
   },
   {
     id: 4,
-    name: "$MYZ",
-    value: "10,000",
-    iconUrl: "/avatar4.png",
-    price: "$123.45",
+    name: "Elliot James",
+    tokenName: "MELL",
+    iconUrl: "/elliot-james.png",
+    price: "2.97",
     change: "+5.1%"
   },
   {
     id: 5,
-    name: "$MMC",
-    value: "80,000",
+    name: "Voltaire",
+    tokenName: "MVOL",
     iconUrl: "/avatar5.png",
-    price: "$67.89",
+    price: "2.84",
     change: "-2.3%"
   },
   {
     id: 6,
-    name: "$MEW",
-    value: "25,000",
-    iconUrl: "/avatar1.png",
-    price: "$0.12",
+    name: "Big Planet",
+    tokenName: "MBIG",
+    iconUrl: "/big-planet.png",
+    price: "1.11",
     change: "+1.0%"
   }
 ]

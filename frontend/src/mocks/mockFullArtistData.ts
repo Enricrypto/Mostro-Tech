@@ -18,7 +18,7 @@ export const mockFullArtistData: {
     artistName: "Luna Eclipse",
     artistDescription:
       "Experimental electronic artist pushing boundaries with immersive soundscapes and innovative production techniques. Known for sold-out shows across Europe.",
-    tokenName: "MARTIST",
+    tokenName: "MLUNA",
     tokenPrice: "12.34",
     tokenHolders: "1,234",
     artistImage: "/avatar1.png",

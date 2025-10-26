@@ -9,16 +9,37 @@ export const mockPerks: Perk[] = [
   {
     id: 1,
     title: "Early Access",
-    description: "Get music before release",
-    tokenAmount: 50
+    description: "Early Access to New Tracks",
+    tokenAmount: "$50 USDC / 5,000 tokens"
   },
-  {  id: 2, title: "VIP Chat", description: "Join exclusive chat", tokenAmount: 30 },
-  {  id: 3, title: "Merch Discount", description: "Save on merch", tokenAmount: 20 },
   {
-    id: 4, title: "Backstage Pass",
-    description: "Access virtual backstage",
-    tokenAmount: 100
+    id: 2,
+    title: "Beats Package",
+    description: "Access to New Music Drops",
+    tokenAmount: "$100 USDC / 10,000 tokens"
   },
-  { id: 5,title: "Limited NFT", description: "Claim limited NFT", tokenAmount: 70 },
-  { id: 6,title: "Fan Badge", description: "Special profile badge", tokenAmount: 40 }
+  {
+    id: 3,
+    title: "Limited Edition T-Shirt",
+    description: "Special Merch",
+    tokenAmount: "$60 USDC / 6,000 tokens"
+  },
+  {
+    id: 4,
+    title: "European Concert Ticket",
+    description: "VIP Access to Concerts",
+    tokenAmount: "$30 USDC / 3,000 tokens"
+  },
+  {
+    id: 5,
+    title: "Monthly Community Livestream",
+    description: "Interactive Connection to Artist",
+    tokenAmount: "$80 USDC / 8,000 tokens"
+  },
+  {
+    id: 6,
+    title: "Virtual One on One - 1hr",
+    description: "Meet and Greet",
+    tokenAmount: "$300 USDC / 30,000 tokens"
+  }
 ]

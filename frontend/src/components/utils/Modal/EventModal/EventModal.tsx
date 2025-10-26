@@ -39,15 +39,15 @@ export const EventModal: React.FC<EventModalProps> = ({
     >
       <div
         onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
-        className='bg-gradient-to-r from-[#352B6D] via-[#4995E0] to-[#4995E0] border border-[#2D3953] rounded-lg p-6 w-[425px] flex flex-col gap-4'
+        className='bg-linear-to-r from-[#352B6D] via-[#4995E0] to-[#4995E0] border border-[#2D3953] rounded-lg p-6 w-[425px] flex flex-col gap-4'
       >
         {/* Event Title */}
-        <h2 className='text-white font-semibold text-[18px] leading-[28px]'>
+        <h2 className='text-white font-semibold text-[18px] leading-7'>
           {title}
         </h2>
 
         {/* Date & Venue */}
-        <div className='flex gap-4 text-white text-[12px] leading-[20px] font-medium'>
+        <div className='flex gap-4 text-white text-[12px] leading-5 font-medium'>
           <div className='flex items-center gap-2'>
             <CalendarIcon size={16} />
             {date}
@@ -59,9 +59,7 @@ export const EventModal: React.FC<EventModalProps> = ({
         </div>
 
         {/* Info Text */}
-        <p className='text-white text-[14px] leading-[20px] w-[377px]'>
-          {infoText}
-        </p>
+        <p className='text-white text-[14px] leading-5 w-[377px]'>{infoText}</p>
 
         {/* Buttons */}
         <div className='flex gap-4 w-[218px]'>

@@ -38,32 +38,29 @@ export function ArtistCard({
   return (
     <div
       className={cn(
-        "w-[384px] h-[395px] rounded-[10px] border-2 border-[#2D3953] bg-[#121B2B] shadow-[0px_4px_6px_0px_#00000017] p-6 flex flex-col gap-[14px] transition-all duration-300 ease-out hover:scale-[1.02] hover:border-[#dcfd63]"
+        "w-[384px] h-[395px] rounded-[10px] border-2 border-[#2D3953] bg-[#121B2B] shadow-[0px_4px_6px_0px_#00000017] p-6 flex flex-col gap-3.5 transition-all duration-300 ease-out hover:scale-[1.02] hover:border-[#dcfd63]"
       )}
     >
       {/* Top Section of Artist Card */}
-      <div className='flex w-[336px] h-[151px] gap-[24px]'>
+      <div className='flex w-[336px] h-[151px] gap-6'>
         {/* Avatar on the left */}
         <div className='w-[151px] h-[151px]'>
           <Avatar variant='square-sm-lg' src={avatarSrc} alt={artistName} />
         </div>
 
         {/* Artist info + token + badge on the right */}
-        <div className='flex flex-col justify-start w-[146px] gap-[12px]'>
+        <div className='flex flex-col justify-start gap-3'>
           {" "}
-          {/* Removed fixed height h-[62px] to allow gap to work */}
           {/* Artist Name */}
-          <p className='text-white font-inter font-medium text-[24px] leading-[28px] tracking-[-0.5%]'>
+          <p className='text-white font-inter font-medium text-[24px] leading-7 tracking-[-0.5%]'>
             {artistName}{" "}
-            {/* Removed fixed width/height to allow text to size naturally */}
           </p>
           {/* Token Name + Badge */}
           <div className='flex items-center gap-[15px]'>
             {" "}
-            {/* Removed w/h to prevent constraining children */}
             {/* Token Name */}
-            <p className='text-white font-inter text-[16px] leading-[20px]'>
-              {tokenName} {/* Removed w/h */}
+            <p className='text-white font-inter text-[16px] leading-5'>
+              ${tokenName}
             </p>
             {/* Badge Icon */}
             <Badge
@@ -77,57 +74,57 @@ export function ArtistCard({
       </div>
 
       {/* Description + Genre Badge Section */}
-      <div className='flex flex-col justify-start w-[336px] gap-[8px] h-[70px]'>
+      <div className='flex flex-col justify-start w-[336px] gap-2 h-[70px]'>
         {" "}
         {/* Section container */}
         <div className='flex justify-start'>
           <Badge variant='genre'>{genre}</Badge>
         </div>
         {/* Description text */}
-        <p className='text-[#B3B3B3] font-medium text-[12px] leading-[20px] w-full h-[40px]'>
+        <p className='text-[#B3B3B3] font-medium text-[12px] leading-5 w-full line-clamp-2'>
           {description || "No description provided."}
         </p>
       </div>
 
       {/* Stats Section: holders, market cap, volume */}
-      <div className='flex w-[336px] h-[44px] gap-[36px]'>
-        {/* 1) Holders */}
-        <div className='flex flex-col items-start gap-[8px]'>
-          <p className='text-white font-poppins font-normal text-[18px] leading-[20px]'>
+      <div className='flex w-[336px] h-11 gap-9'>
+        {/* Holders */}
+        <div className='flex flex-col items-start gap-2'>
+          <p className='text-white font-poppins font-normal text-[18px] leading-5'>
             {holders}
           </p>
-          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-[16px]'>
+          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-4'>
             Holders
           </p>
         </div>
 
-        {/* 2) Market Cap */}
-        <div className='flex flex-col items-start gap-[8px]'>
-          <p className='text-white font-poppins font-normal text-[18px] leading-[20px]'>
-            {marketCap}
+        {/* Market Cap */}
+        <div className='flex flex-col items-start gap-2'>
+          <p className='text-white font-poppins font-normal text-[18px] leading-5'>
+            ${marketCap}
           </p>
-          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-[16px] whitespace-nowrap'>
+          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-4 whitespace-nowrap'>
             Market Cap
           </p>
         </div>
 
-        {/* 3) Total Supply */}
-        <div className='flex flex-col items-start gap-[8px]'>
-          <p className='text-white font-poppins font-normal text-[18px] leading-[20px]'>
+        {/* Total Supply */}
+        <div className='flex flex-col items-start gap-2'>
+          <p className='text-white font-poppins font-normal text-[18px] leading-5'>
             {totalSupply}
           </p>
-          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-[16px] whitespace-nowrap'>
+          <p className='text-[#B3B3B3] font-inter font-medium text-[12px] leading-4 whitespace-nowrap'>
             Total Supply
           </p>
         </div>
       </div>
 
       {/* Button Section */}
-      <div className='w-[336px] h-[40px]'>
+      <div className='w-[336px] h-10'>
         <Button
           variant='follow-share'
           icon={<ArrowUpRightIcon weight='fill' size={16} />}
-          className='w-full h-full px-[16px] py-[8px] gap-[10px]'
+          className='w-full h-full px-4 py-2 gap-2.5'
         >
           View Artist
         </Button>

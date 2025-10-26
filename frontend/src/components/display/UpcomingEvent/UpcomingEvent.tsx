@@ -11,7 +11,7 @@ import {
 } from "@phosphor-icons/react"
 import { cva, type VariantProps } from "class-variance-authority"
 
-type EventStatus = "on-sale" | "sold-out" | "coming-soon"
+type EventStatus = "on-sale" | "sold-out" | "token-holders-only"
 
 interface Event {
   title: string
@@ -49,7 +49,7 @@ export const UpcomingEvent = ({
   const variantMap: Record<EventStatus, "increase" | "closed" | "neutral"> = {
     "on-sale": "increase",
     "sold-out": "closed",
-    "coming-soon": "neutral"
+    "token-holders-only": "neutral"
   }
 
   return (

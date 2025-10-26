@@ -10,7 +10,7 @@ import {
 } from "@phosphor-icons/react"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Button } from "@/components/atoms/Button"
-import { ProgressBar } from "@/components/atoms/ProgressBar"
+import { SeekBar } from "@/components/atoms/SeekBar"
 
 export interface PlayerCardProps {
   songName: string
@@ -18,6 +18,7 @@ export interface PlayerCardProps {
   currentTime: string
   totalTime: string
   progress: number
+  onSeek?: (progress: number) => void
   avatarUrl?: string
   isPlaying?: boolean
   onPlayPause?: () => void
@@ -32,6 +33,7 @@ export const PlayerCard: FC<PlayerCardProps> = ({
   currentTime,
   totalTime,
   progress,
+  onSeek,
   avatarUrl,
   isPlaying,
   onPlayPause,
@@ -49,22 +51,12 @@ export const PlayerCard: FC<PlayerCardProps> = ({
         position: "relative"
       }}
     >
-      {/* Close button (visible in top-right corner) */}
-      {onClose && (
-        <Button
-          onClick={onClose}
-          className='w-10 h-10 flex items-center justify-center rounded-full bg-[grey] text-white hover:bg-[#9c8be7] transition p-0'
-        >
-          <XIcon size={20} weight='bold' />
-        </Button>
-      )}
-
       {/* LEFT SECTION */}
       <div className='flex items-center gap-4 w-[205px] h-12'>
         {avatarUrl && (
           <Avatar src={avatarUrl} className='w-10 h-10 rounded-[26px]' />
         )}
-        <div className='flex flex-col justify-center gap-1'>
+        <div className='flex flex-col justify-center gap-1 whitespace-nowrap'>
           <span className='font-semibold text-[18px] leading-7 text-black'>
             {songName}
           </span>
@@ -80,8 +72,9 @@ export const PlayerCard: FC<PlayerCardProps> = ({
           {currentTime}
         </div>
 
-        <ProgressBar
-          value={progress * 100}
+        <SeekBar
+          value={progress}
+          onChange={(val: number) => onSeek && onSeek(val)}
           variant='purple'
           className='w-[533px] h-4 rounded-[40px]'
         />
@@ -92,7 +85,7 @@ export const PlayerCard: FC<PlayerCardProps> = ({
       </div>
 
       {/* RIGHT SECTION */}
-      <div className='flex items-center gap-2 w-[120px] h-10'>
+      <div className='flex items-center gap-3 h-10 pr-4'>
         <Button
           className='w-10 h-10 flex items-center justify-center rounded-[26px] text-black'
           onClick={onPrev}
@@ -117,6 +110,15 @@ export const PlayerCard: FC<PlayerCardProps> = ({
         >
           <SkipForwardIcon size={24} weight='bold' />
         </Button>
+        {/* Close button */}
+        {onClose && (
+          <Button
+            onClick={onClose}
+            className='absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-full bg-gray-600 text-white hover:bg-gray-500 transition p-0'
+          >
+            <XIcon size={18} weight='bold' />
+          </Button>
+        )}
       </div>
     </div>
   )

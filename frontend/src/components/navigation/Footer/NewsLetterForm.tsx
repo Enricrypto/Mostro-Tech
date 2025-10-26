@@ -44,13 +44,13 @@ export function NewsletterForm({ spacing = "1rem" }: NewsletterFormProps) {
               placeholder='Name'
               className='
                 w-full
-                h-[36px]
-                rounded-[var(--radius-sm)]
-                border border-[var(--input-border,#CBD5E1)]
+                h-9
+                rounded-sm
+                border border-(--input-border,#CBD5E1)
                 px-3 py-2
                 font-inter
                 text-[14px]
-                leading-[20px]
+                leading-5
                 text-[#B3B3B3]
               '
             />
@@ -70,13 +70,13 @@ export function NewsletterForm({ spacing = "1rem" }: NewsletterFormProps) {
               placeholder='Surname'
               className='
                 w-full
-                h-[36px]
-                rounded-[var(--radius-sm)]
-                border border-[var(--input-border,#CBD5E1)]
+                h-9
+                rounded-sm
+                border border-(--input-border,#CBD5E1)
                 px-3 py-2
                 font-inter
                 text-[14px]
-                leading-[20px]
+                leading-5
                 text-[#B3B3B3]
               '
             />
@@ -90,21 +90,21 @@ export function NewsletterForm({ spacing = "1rem" }: NewsletterFormProps) {
 
         {/* Email + Button */}
         <ThemedForm.Item>
-          <div className='flex w-full gap-[8px]'>
+          <div className='flex w-full gap-2'>
             <ThemedForm.Control className='flex-1'>
               <InputField
                 {...form.register("email")}
                 placeholder='Email'
                 className='
                   w-full
-                  h-[40px]
-                  rounded-[var(--radius-sm)]
-                  border border-[var(--input-border,#CBD5E1)]
-                  px-[12px]
-                  py-[8px]
+                  h-10
+                  rounded-sm
+                  border border-(--input-border,#CBD5E1)
+                  px-3
+                  py-2
                   font-inter
                   text-[14px]
-                  leading-[24px]
+                  leading-6
                   text-[#B3B3B3]
                 '
               />
@@ -115,12 +115,12 @@ export function NewsletterForm({ spacing = "1rem" }: NewsletterFormProps) {
               disabled={form.formState.isSubmitting}
               className='
                 w-[100px]
-                h-[40px]
-                rounded-[6px]
+                h-10
+                rounded-md
                 bg-[#DCFD63]
                 text-[14px]
                 font-medium
-                leading-[24px]
+                leading-6
                 font-inter
                 cursor-pointer
                 hover:text-white

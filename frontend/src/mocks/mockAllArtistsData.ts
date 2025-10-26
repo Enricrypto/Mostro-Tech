@@ -1,118 +1,119 @@
 export const mockAllArtistsData = [
   {
     id: 1,
-    artistName: "Ava Solaris",
-    tokenName: "$MAV",
-    avatarSrc: "/avatar1.png",
+    artistName: "Atlas Monroe",
+    tokenName: "MATL",
+    avatarSrc: "/avatar2.png",
     badgeText: "+27%",
     description:
-      "Blending ethereal vocals with experimental synthwave textures.",
-    holders: "1.2K",
-    marketCap: "$320K",
-    totalSupply: "45K",
-    genre: "Pop"
-  },
-  {
-    id: 2,
-    artistName: "Noir Bloom",
-    tokenName: "$MOI",
-    avatarSrc: "/avatar2.png",
-    badgeText: "-12%",
-    description:
-      "Dark pop artist pushing emotional boundaries and sonic contrast.",
-    holders: "890",
-    marketCap: "$210K",
-    totalSupply: "32K",
+      "Alt-rock powerhouse merging emotional intensity with anthemic soundscapes. Known for electrifying performances and soaring guitar riffs across the US indie circuit.",
+    holders: "3,142",
+    marketCap: "258K",
+    totalSupply: "1B",
     genre: "Rock"
   },
   {
+    id: 2,
+    artistName: "Big Planet",
+    tokenName: "MBIG",
+    avatarSrc: "/big-planet.png",
+    badgeText: "-12%",
+    description:
+      "Big Planet weaves tales of wanderlust and human connection through their harmonious blend of acoustic melodies and heartfelt storytelling. Hailing from Ireland, their music is a journey for the soul.",
+    holders: "2,329",
+    marketCap: "382K",
+    totalSupply: "1B",
+    genre: "Folk"
+  },
+  {
     id: 3,
-    artistName: "Echo Drift",
-    tokenName: "$MEC",
-    avatarSrc: "/avatar3.png",
-    badgeText: "+9%",
+    artistName: "DJ Adonis",
+    tokenName: "MDJA",
+    avatarSrc: "/dj-adonis.png",
+    badgeText: "0%",
     description:
       "Post-ambient project creating immersive soundscapes for the metaverse.",
-    holders: "540",
-    marketCap: "$120K",
-    totalSupply: "18K",
-    genre: "Alternative Rock"
+    holders: "0",
+    marketCap: "0",
+    totalSupply: "1B",
+    genre: "R&B & Hip Hop"
   },
   {
     id: 4,
-    artistName: "Lyra Nova",
-    tokenName: "$MLN",
-    avatarSrc: "/avatar4.png",
+    artistName: "Elliot James",
+    tokenName: "MELL",
+    avatarSrc: "/elliot-james.png",
     badgeText: "+31%",
     description:
-      "Celestial pop producer blending orchestral layers with trap beats.",
-    holders: "2.1K",
-    marketCap: "$410K",
-    totalSupply: "58K",
-    genre: "Electronic"
-  },
-  {
-    id: 5,
-    artistName: "Riven Grey",
-    tokenName: "$MRG",
-    avatarSrc: "/avatar5.png",
-    badgeText: "-8%",
-    description:
-      "Indie-rock visionary known for introspective lyrics and reverb-heavy guitars.",
-    holders: "1.5K",
-    marketCap: "$365K",
-    totalSupply: "41K",
-    genre: "Indie"
-  },
-  {
-    id: 6,
-    artistName: "Kai Mirage",
-    tokenName: "$MKM",
-    avatarSrc: "/avatar1.png",
-    badgeText: "+15%",
-    description:
-      "Neo-R&B artist fusing nostalgic soul with futuristic production.",
-    holders: "980",
-    marketCap: "$240K",
-    totalSupply: "29K",
-    genre: "R&B"
-  },
-  {
-    id: 7,
-    artistName: "Velvet Iris",
-    tokenName: "$MVI",
-    avatarSrc: "/avatar2.png",
-    badgeText: "+22%",
-    description: "Dream-pop duo crafting lush, cinematic sound worlds.",
-    holders: "1.8K",
-    marketCap: "$398K",
-    totalSupply: "47K",
+      "A powerful voice and magnetic stage presence. A blend of catchy hooks with heartfelt lyrics, creating anthems for a new generation.",
+    holders: "2,870",
+    marketCap: "402K",
+    totalSupply: "1B",
     genre: "Pop"
   },
   {
-    id: 8,
-    artistName: "Draco Vale",
-    tokenName: "$MDV",
+    id: 5,
+    artistName: "Kings Quest",
+    tokenName: "MKIN",
+    avatarSrc: "/kings-quest.png",
+    badgeText: "-8%",
+    description:
+      "Fusing raw energy with melodic hooks, Kings Quest deliver powerful performances that captivate audiences. A dynamic blend of gritty guitar riffs, driving rhythms, and provocative lyrics. Known for their strong iive shows in the UK.",
+    holders: "950",
+    marketCap: "54K",
+    totalSupply: "1B",
+    genre: "Alternative"
+  },
+  {
+    id: 6,
+    artistName: "Lil Lion",
+    tokenName: "MLIL",
+    avatarSrc: "/lil-lion.png",
+    badgeText: "+15%",
+    description:
+      "Fierce charisma and a flow that blends Korean and English lyrics. A high-octane mix of hooks, beats, and stunning performances that are captivating a global audience.",
+    holders: "889",
+    marketCap: "48K",
+    totalSupply: "1B",
+    genre: "Hip Hop"
+  },
+  {
+    id: 7,
+    artistName: "Liz Cherry",
+    tokenName: "MLIZ",
     avatarSrc: "/avatar3.png",
+    badgeText: "+22%",
+    description:
+      "Hip hop & R&B artist blending soulful vocals with raw lyricism. Redefining authenticity through poetry, rhythm, and empowerment. Celebrated for her magnetic live sessions across the UK.",
+    holders: "985",
+    marketCap: "56K",
+    totalSupply: "1B",
+    genre: "R&B Hip Hop"
+  },
+  {
+    id: 8,
+    artistName: "Luna Eclipse",
+    tokenName: "MLUN",
+    avatarSrc: "/avatar1.png",
     badgeText: "-4%",
     description:
-      "Rapper and producer blending grime, trap, and cosmic storytelling.",
-    holders: "2.6K",
-    marketCap: "$520K",
-    totalSupply: "66K",
-    genre: "Hip-Hop"
+      "Experimental electronic artist pushing boundaries with immersive soundscapes and innovative production.",
+    holders: "1,247",
+    marketCap: "155K",
+    totalSupply: "1B",
+    genre: "Electronic"
   },
   {
     id: 9,
-    artistName: "Sierra Wren",
-    tokenName: "$MSW",
-    avatarSrc: "/avatar4.png",
-    badgeText: "+11%",
+    artistName: "Nina Summers",
+    tokenName: "MNIN",
+    avatarSrc: "/nina-summers.png",
+    badgeText: "0%",
     description:
       "Acoustic-folk artist with heartfelt lyrics and cinematic arrangements.",
-    holders: "750",
-    marketCap: "$180K",
-    totalSupply: "22K",
-    genre: "Folk"
+    holders: "0",
+    marketCap: "0",
+    totalSupply: "1B",
+    genre: "Jazz Fusion"
   }
 ]

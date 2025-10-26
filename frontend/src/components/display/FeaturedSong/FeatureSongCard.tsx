@@ -32,13 +32,13 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
   return (
     <div
       className={cn(
-        "artist-music-card flex flex-row items-center gap-4 p-6 rounded-[10px] border-2 border-[var(--color-datacard-border)] shadow-md",
+        "artist-music-card flex flex-row items-center gap-4 p-6 rounded-[10px] border-2 border-(--color-datacard-border) shadow-md",
         "w-[384px] h-[199px] bg-[#121B2B]",
         className
       )}
     >
       {/* Artist Image */}
-      <div className='w-[151px] h-[151px] rounded-[26px] overflow-hidden flex-shrink-0 relative'>
+      <div className='w-[151px] h-[151px] rounded-[26px] overflow-hidden shrink-0 relative'>
         <Image
           src={artist.image}
           alt={`Artist ${artist.name}`}
@@ -51,10 +51,10 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
       <div className='flex flex-col justify-between flex-1 gap-2'>
         {/* Artist Name & Latest Single */}
         <div className='flex flex-col gap-1'>
-          <span className='text-white font-semibold text-[18px] leading-[28px] truncate'>
+          <span className='text-white font-semibold text-[18px] leading-7 truncate'>
             {artist.name}
           </span>
-          <span className='text-[var(--color-muted)] font-medium text-[12px] leading-[20px] truncate'>
+          <span className='text-(--color-muted) font-medium text-[12px] leading-5 truncate'>
             {artist.latestSingle.title} - {artist.latestSingle.duration}
           </span>
         </div>

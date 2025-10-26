@@ -13,61 +13,61 @@ export const mockArtists: Artist[] = [
   {
     id: "1",
     name: "Luna Eclipse",
-    image: "/avatar4.png",
+    image: "/weekend-glow.png",
     latestSingle: {
-      title: "Nebula Dreams",
-      duration: "3:45",
-      audioUrl: "/audio/nebula-dreams.mp3"
+      title: "Weekend Glow",
+      duration: "0:00",
+      audioUrl: "/weekend-glow.mp3"
     }
   },
   {
     id: "2",
-    name: "Solar Pulse",
-    image: "/avatar5.png",
+    name: "Luna Eclipse",
+    image: "/black-cat.png",
     latestSingle: {
-      title: "Photon Rush",
-      duration: "4:12",
-      audioUrl: "/audio/photon-rush.mp3"
+      title: "Black Cat",
+      duration: "0:00",
+      audioUrl: "/black-cat.mp3"
     }
   },
   {
     id: "3",
-    name: "Aurora Wave",
-    image: "/avatar6.png",
+    name: "Luna Eclipse",
+    image: "/neon-bounce.png",
     latestSingle: {
-      title: "Polar Lights",
-      duration: "3:58",
-      audioUrl: "/audio/polar-lights.mp3"
+      title: "Neon Bounce",
+      duration: "0:00",
+      audioUrl: "/neon-bounce.mp3"
     }
   },
   {
     id: "4",
-    name: "Nebula Drift",
-    image: "/avatar1.png",
+    name: "Luna Eclipse",
+    image: "/take-back-the-night.png",
     latestSingle: {
-      title: "Cosmic Flow",
-      duration: "4:05",
-      audioUrl: "/audio/cosmic-flow.mp3"
+      title: "Take Back The Night",
+      duration: "0:00",
+      audioUrl: "/take-back-the-night.mp3"
     }
   },
   {
     id: "5",
-    name: "Orbit Echo",
-    image: "/avatar2.png",
+    name: "Luna Eclipse",
+    image: "/deeper-kind.png",
     latestSingle: {
-      title: "Gravity Pulse",
-      duration: "3:50",
-      audioUrl: "/audio/gravity-pulse.mp3"
+      title: "Deeper Kind",
+      duration: "0:00",
+      audioUrl: "/deeper-kind.mp3"
     }
   },
   {
     id: "6",
-    name: "Stellar Ray",
-    image: "/avatar3.png",
+    name: "Luna Eclipse",
+    image: "/free-to-believe.png",
     latestSingle: {
-      title: "Lightwave",
-      duration: "4:20",
-      audioUrl: "/audio/lightwave.mp3"
+      title: "Free to Believe",
+      duration: "0:00",
+      audioUrl: "/free-to-believe.mp3"
     }
   }
 ]

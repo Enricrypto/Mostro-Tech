@@ -17,7 +17,7 @@ import { mockLeaderboardData } from "@/mocks/mockLeaderboardData"
 import { mockFanbase } from "@/mocks/mockFanBase"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 
-type SectionId = "music" | "community" | "proposals" | "token"
+type SectionId = "music" | "community" | "voting" | "token"
 
 const CommunitySection = () => (
   <div className='flex w-full max-w-[1200px] gap-[39px]'>
@@ -125,7 +125,7 @@ export default function ArtistPage() {
     switch (selectedSection) {
       case "community":
         return <CommunitySection />
-      case "proposals":
+      case "voting":
         return <ProposalsSection onViewProposal={handleViewProposal} />
       case "token":
         return (
@@ -153,7 +153,6 @@ export default function ArtistPage() {
       <section className='relative w-full flex justify-center mt-20'>
         <FullArtistCard {...artist} onBuyToken={handleBuyToken} />
       </section>
-
       <section className='relative w-full flex justify-center mt-20'>
         <SectionSelector
           selected={selectedSection}

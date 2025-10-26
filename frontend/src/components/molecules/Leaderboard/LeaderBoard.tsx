@@ -27,8 +27,6 @@ export function LeaderBoard({
         className
       )}
       style={{
-        width: "580px",
-        height: "88px",
         borderRadius: "10px",
         borderWidth: "1px",
         borderStyle: "solid",
@@ -39,26 +37,26 @@ export function LeaderBoard({
       }}
     >
       {/* LEFT SIDE: Rank + Avatar + Username */}
-      <div className='flex items-center gap-[14px]'>
-        <span className='w-[21px] text-[18px] font-semibold leading-[28px] text-[var(--color-muted)]'>
+      <div className='flex items-center gap-3.5'>
+        <span className='text-[18px] font-semibold leading-7 text-(--color-muted)'>
           # {rank}
         </span>
         <Avatar
           variant='rounded-sm'
           src={avatarSrc}
-          className='w-[40px] h-[40px] rounded-[26px]'
+          className='w-10 h-10 rounded-[26px]'
         />
-        <span className='text-[18px] font-semibold leading-[28px] text-[var(--color-white)]'>
+        <span className='text-[18px] font-semibold leading-7 text-white'>
           {username}
         </span>
       </div>
 
       {/* RIGHT SIDE: Score + Token Symbol */}
-      <div className='flex items-center gap-[8px]'>
-        <span className='text-right text-[18px] font-semibold leading-[28px] text-[var(--color-skyblue)]'>
+      <div className='flex items-center gap-2'>
+        <span className='text-right text-[18px] font-semibold leading-7 text-(--color-skyblue)'>
           {score}
         </span>
-        <span className='text-[12px] font-medium leading-[20px] text-[var(--color-muted)]'>
+        <span className='text-[12px] font-medium leading-5 text-(--color-muted)'>
           {tokenSymbol}
         </span>
       </div>

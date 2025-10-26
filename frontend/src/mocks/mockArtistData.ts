@@ -1,41 +1,41 @@
 export const mockArtistData = [
   {
     id: 1,
-    artistName: "Ava Solaris",
-    tokenName: "$MAV",
+    artistName: "Luna Eclipse",
+    tokenName: "MLUN",
     avatarSrc: "/avatar1.png",
     badgeText: "+27%",
     description:
-      "Blending ethereal vocals with experimental synthwave textures.",
+      "Experimental electronic artist pushing boundaries with immersive soundscapes and innovative production.",
     holders: "1.2K",
-    marketCap: "$320K",
-    totalSupply: "45K",
-    genre: "Pop"
+    marketCap: "320K",
+    totalSupply: "1B",
+    genre: "Electronic"
   },
   {
     id: 2,
-    artistName: "Noir Bloom",
-    tokenName: "$MOI",
+    artistName: "Atlas Monroe",
+    tokenName: "MATL",
     avatarSrc: "/avatar2.png",
     badgeText: "-12%",
     description:
-      "Dark pop artist pushing emotional boundaries and sonic contrast.",
+      "Alt-rock powerhouse merging emotional intensity with anthemic soundscapes. Known for electrifying performances and soaring guitar riffs across the US indie circuit.",
     holders: "890",
-    marketCap: "$210K",
-    totalSupply: "32K",
+    marketCap: "210K",
+    totalSupply: "1B",
     genre: "Rock"
   },
   {
     id: 3,
-    artistName: "Echo Drift",
-    tokenName: "$MEC",
+    artistName: "Liz Cherry",
+    tokenName: "MLIZ",
     avatarSrc: "/avatar3.png",
     badgeText: "+9%",
     description:
-      "Post-ambient project creating immersive soundscapes for the metaverse.",
+      "Hip hop & R&B artist blending soulful vocals with raw lyricism. Redefining authenticity through poetry, rhythm, and empowerment. Celebrated for her magnetic live sessions across the UK.",
     holders: "540",
-    marketCap: "$120K",
-    totalSupply: "18K",
-    genre: "Alternative Rock"
+    marketCap: "120K",
+    totalSupply: "1B",
+    genre: "R&B"
   }
 ]

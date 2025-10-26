@@ -26,7 +26,7 @@ interface SectionSelectorProps {
 const sections: Section[] = [
   { id: "music", label: "Music", icon: <MusicNotesIcon size={16} /> },
   { id: "community", label: "Community", icon: <UsersIcon size={16} /> },
-  { id: "proposals", label: "Proposals", icon: <HandIcon size={16} /> },
+  { id: "voting", label: "Voting", icon: <HandIcon size={16} /> },
   { id: "token", label: "Token", icon: <CurrencyDollarIcon size={16} /> }
 ]
 
@@ -38,7 +38,7 @@ export const SectionSelector: React.FC<SectionSelectorProps> = ({
   return (
     <div
       className={cn(
-        "flex justify-between items-center w-[594px] h-[56px] px-3 rounded-[6px] border border-[#6654D3]",
+        "flex justify-between items-center w-[594px] h-14 px-3 rounded-md border border-[#6654D3]",
         className
       )}
     >

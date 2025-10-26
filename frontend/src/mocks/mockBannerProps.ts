@@ -3,39 +3,42 @@ import type { ArtistProfileBannerProps } from "../components/molecules/ArtistPro
 export const bannerPropsData: ArtistProfileBannerProps[] &
   { latestSong: { title: string; artist: string } }[] = [
   {
-    artistName: "Jane Doe",
-    description: "Music innovator and blockchain enthusiast.",
+    artistName: "Luna Eclipse",
+    description:
+      "Experimental electronic artist pushing boundaries with immersive soundscapes and innovative production techniques. Known for sold-out shows across Europe.",
     tokenHolders: "12.3K",
     marketCap: "$1.2M",
     followers: "8.7K",
     avatarSrc: "/avatar1.png",
-    genreBadge: "Experimental",
-    verifiedBadge: "Jazz",
+    genreBadge: "Immersive",
+    verifiedBadge: "Electronic",
     variant: "default",
-    latestSong: { title: "Song 1", artist: "Jane Doe" } // <-- add this
+    latestSong: { title: "Song 1", artist: "Luna Eclipse" } // <-- add this
   },
   {
-    artistName: "John Smith",
-    description: "Electronic music producer and NFT collector.",
+    artistName: "Atlas Monroe",
+    description:
+      "Alt-rock powerhouse merging emotional intensity with anthemic soundscapes. known for electrifying performances and soaring guitar riffs across the US indie circuit.",
     tokenHolders: "8.9K",
     marketCap: "$950K",
     followers: "5.4K",
     avatarSrc: "/avatar2.png",
-    genreBadge: "Electronic",
+    genreBadge: "Anthemic",
     verifiedBadge: "Rock",
     variant: "purple",
-    latestSong: { title: "Song 2", artist: "John Smith" }
+    latestSong: { title: "Song 2", artist: "Atlas Monroe" }
   },
   {
-    artistName: "Alice Johnson",
-    description: "Hip-hop artist building a decentralized fan platform.",
+    artistName: "Liz Cherry",
+    description:
+      "Hip hop & R&B artist blending soulful vocals with raw lyricism. Redefining authenticity through poetry, rhythm, and empowerment. Celebrated for her magnetic live sessions across the UK.",
     tokenHolders: "15.1K",
     marketCap: "$2.3M",
     followers: "10.2K",
     avatarSrc: "/avatar3.png",
-    genreBadge: "Hip-Hop",
-    verifiedBadge: "Pop",
+    genreBadge: "Soulful",
+    verifiedBadge: "R&B",
     variant: "red",
-    latestSong: { title: "Song 3", artist: "Alice Johnson" }
+    latestSong: { title: "Song 3", artist: "Liz Cherry" }
   }
 ]

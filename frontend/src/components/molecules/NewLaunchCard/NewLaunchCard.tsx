@@ -42,13 +42,13 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
           weight='bold'
           className='text-highlight group-hover:text-white transition-colors duration-200'
         />
-        <span className='font-inter font-medium text-[12px] leading-5 text-highlight group-hover:text-white transition-colors duration-200'>
+        <span className='text-[12px] text-highlight group-hover:text-white transition-colors duration-200'>
           Launch in {launchInDays} days
         </span>
       </div>
 
       {/* Section 1: Avatar + Name + Badge */}
-      <div className='flex items-center gap-4 w-[336px] h-[58px]'>
+      <div className='flex items-center gap-3 pt-6'>
         <Avatar
           src={avatarUrl}
           variant='rounded-sm'

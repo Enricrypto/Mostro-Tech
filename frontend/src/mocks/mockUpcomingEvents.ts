@@ -1,5 +1,5 @@
 // mocks/events.ts
-export type EventStatus = "on-sale" | "sold-out" | "coming-soon"
+export type EventStatus = "on-sale" | "sold-out" | "token-holders-only"
 
 export interface Event {
   title: string
@@ -11,17 +11,17 @@ export interface Event {
 
 export const upcomingEvents: Event[] = [
   {
-    title: "Moonlight Festival",
-    date: "Oct 25",
+    title: "Live in Berlin",
+    date: "Nov 15, 2025",
     time: "20:00",
-    location: "Barcelona, Spain",
+    location: "Berlin, Germany",
     status: "on-sale"
   },
   {
-    title: "Golden Sounds Tour",
-    date: "Nov 3",
+    title: "Stuido Session Livestream",
+    date: "Oct 30, 2025 ",
     time: "21:30",
-    location: "Berlin, Germany",
+    location: "Online",
     status: "sold-out"
   },
   {
@@ -29,6 +29,6 @@ export const upcomingEvents: Event[] = [
     date: "Nov 15",
     time: "19:00",
     location: "Paris, France",
-    status: "coming-soon"
+    status: "token-holders-only"
   }
 ]

@@ -43,7 +43,7 @@ export function ArtistProfileBanner({
     >
       <div className='flex justify-between w-full'>
         {/* LEFT: Avatar + Badges */}
-        <div className='relative flex-1 flex justify-center items-start min-w-[250px]'>
+        <div className='relative flex-1 flex justify-center items-start'>
           <div className='relative inline-block group'>
             {/* Avatar */}
             <Avatar src={avatarSrc} alt={artistName} variant='square-lg' />
@@ -79,7 +79,7 @@ export function ArtistProfileBanner({
             {/* Upper-right badge */}
             <Badge
               variant='genre'
-              className='absolute top-10 left-80 rotate-[12deg]
+              className='absolute top-10 left-80 rotate-[12deg] 
                  w-[131px] h-[39px] gap-2 border border-[#71D6FB]
                  rounded-[28px] bg-white text-black'
             >
@@ -89,7 +89,7 @@ export function ArtistProfileBanner({
         </div>
 
         {/* RIGHT: Text + Stats + Button */}
-        <div className='flex flex-col flex-1 gap-6 min-w-[300px] pr-8'>
+        <div className='flex flex-col flex-1 gap-6 pr-30'>
           {/* Artist Name & Description */}
           <div className='flex flex-col gap-4'>
             <h2 className='font-poppins text-[48px] font-normal leading-12 text-black'>
