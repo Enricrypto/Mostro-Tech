@@ -33,7 +33,7 @@ export const FundAllocationCard: React.FC<FundAllocationCardProps> = ({
       {/* Bottom Section */}
       <div className='flex items-center'>
         <div className='text-(--color-grey) font-inter font-medium text-[12px] leading-5 text-left'>
-          {bottomLeftValue} tokens
+          ${bottomLeftValue} tokens
         </div>
       </div>
     </div>

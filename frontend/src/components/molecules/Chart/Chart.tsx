@@ -5,6 +5,7 @@ import ApexCharts from "apexcharts"
 import { Badge } from "@/components/utils/Badge"
 import { mockPriceData } from "@/mocks/mockPriceData"
 import { ArrowUpIcon, ArrowDownIcon } from "@phosphor-icons/react"
+import { formatNumberWithCommas } from "../../../../utils/numberFormatter"
 
 export type Timeframe = "1h" | "24h" | "7d" | "30d" | "90d" | "1y" | "All"
 const timeframes: Timeframe[] = ["1h", "24h", "7d", "30d", "90d", "1y", "All"]
@@ -13,89 +14,117 @@ export const Chart = () => {
   const chartRef = useRef<HTMLDivElement>(null)
   const [selectedTimeframe, setSelectedTimeframe] = useState<Timeframe>("24h")
 
-  // The "real" current price is the last price in the 'All' timeframe
-  const currentPrice = mockPriceData.All[mockPriceData.All.length - 1]
+  const now = new Date()
 
-  // Calculate price change for the selected timeframe
-  const data = mockPriceData[selectedTimeframe]
-  const firstPrice = data[0]
-  const lastPrice = data[data.length - 1]
-  const priceChange = ((lastPrice - firstPrice) / firstPrice) * 100
+  // Prepare realistic OHLC data
+  let lastClose = mockPriceData[selectedTimeframe][0]
+  const ohlcData = mockPriceData[selectedTimeframe].map((price, i) => {
+    const open = lastClose
+    const changePct = Math.random() * 0.03 * (Math.random() < 0.8 ? 1 : -1)
+    const close = open * (1 + changePct)
+    const high = Math.max(open, close) * (1 + Math.random() * 0.02)
+    const low = Math.min(open, close) * (1 - Math.random() * 0.02)
+    lastClose = close
+
+    let timestamp: Date
+    switch (selectedTimeframe) {
+      case "1h":
+        timestamp = new Date(
+          now.getTime() -
+            (mockPriceData[selectedTimeframe].length - 1 - i) * 60 * 1000
+        )
+        break
+      case "24h":
+        timestamp = new Date(
+          now.getTime() -
+            (mockPriceData[selectedTimeframe].length - 1 - i) * 60 * 60 * 1000
+        )
+        break
+      case "7d":
+      case "30d":
+      case "90d":
+        timestamp = new Date(
+          now.getTime() -
+            (mockPriceData[selectedTimeframe].length - 1 - i) *
+              24 *
+              60 *
+              60 *
+              1000
+        )
+        break
+      case "1y":
+      case "All":
+        // calculate first month based on token age
+        const monthsOld = mockPriceData[selectedTimeframe].length
+        const startMonthDate = new Date(
+          now.getFullYear(),
+          now.getMonth() - (monthsOld - 1),
+          1
+        )
+        timestamp = new Date(
+          startMonthDate.getFullYear(),
+          startMonthDate.getMonth() + i,
+          1
+        )
+        break
+      default:
+        timestamp = now
+    }
+
+    return { x: timestamp, y: [open, high, low, close] }
+  })
+
+  // Price change
+  const firstClose = ohlcData[0].y[3]
+  const lastClosePrice = ohlcData[ohlcData.length - 1].y[3]
+  const priceChange = ((lastClosePrice - firstClose) / firstClose) * 100
   const isUp = priceChange >= 0
+
+  // Current price independent of timeframe
+  const currentPrice = mockPriceData.All[mockPriceData.All.length - 1]
+  const formattedCurrentPrice = currentPrice.toFixed(2) // 2 decimals
 
   useEffect(() => {
     if (!chartRef.current) return
 
-    const data = mockPriceData[selectedTimeframe]
-
-    const categories = data.map((_, i) => {
-      const now = new Date()
-      switch (selectedTimeframe) {
-        case "1h":
-          const date1h = new Date(now.getTime() - (59 - i) * 60 * 1000)
-          return `${date1h.getHours().toString().padStart(2, "0")}:${date1h
-            .getMinutes()
-            .toString()
-            .padStart(2, "0")}`
-        case "24h":
-          const date24h = new Date(now.getTime() - (23 - i) * 60 * 60 * 1000)
-          return `${date24h.getHours().toString().padStart(2, "0")}:00`
-        case "7d":
-        case "30d":
-        case "90d":
-          const dateDays = new Date(
-            now.getTime() - (data.length - 1 - i) * 24 * 60 * 60 * 1000
-          )
-          return `${dateDays.getDate().toString().padStart(2, "0")}/${(
-            dateDays.getMonth() + 1
-          )
-            .toString()
-            .padStart(2, "0")}`
-        case "1y":
-        case "All":
-          const dateMonths = new Date(now.getFullYear(), i, 1)
-          return `${(dateMonths.getMonth() + 1)
-            .toString()
-            .padStart(2, "0")}/${dateMonths.getFullYear()}`
-      }
-    })
-
     const options: ApexCharts.ApexOptions = {
       chart: {
-        type: "area",
+        type: "candlestick",
         height: 500,
         toolbar: { show: false },
         zoom: { enabled: false },
         animations: { enabled: true, easing: "easeinout", speed: 800 }
       },
-      series: [{ name: "Price", data }],
-      stroke: { curve: "smooth", width: 2 },
-      fill: {
-        type: "gradient",
-        gradient: {
-          shadeIntensity: 1,
-          opacityFrom: 0.4,
-          opacityTo: 0,
-          stops: [0, 100]
+      series: [{ name: "Price", data: ohlcData }],
+      plotOptions: {
+        candlestick: {
+          colors: { upward: "#00B746", downward: "#EF403C" }
         }
       },
       xaxis: {
-        categories,
-        labels: { style: { colors: "#FFFFFF" } },
+        type: "datetime",
+        labels: {
+          style: { colors: "#FFFFFF" },
+          formatter: (value: string, timestamp?: number) => {
+            const date = timestamp ? new Date(timestamp) : new Date(value)
+            if (selectedTimeframe === "1y" || selectedTimeframe === "All") {
+              return date.toLocaleString("en-US", { month: "short" })
+            }
+            return date.toLocaleDateString("en-US")
+          }
+        },
         axisBorder: { show: false },
         axisTicks: { show: false },
-        tickAmount: Math.min(data.length, 10)
+        tickAmount: Math.min(ohlcData.length, 10)
       },
       yaxis: {
         labels: {
-          formatter: (val) => `$${val.toFixed(4)}`,
+          formatter: (val) => "$" + Number(val).toFixed(2),
           style: { colors: "#FFFFFF" }
         }
       },
       tooltip: {
-        enabled: true,
-        y: { formatter: (val) => `$${val.toFixed(4)}` },
-        marker: { show: false }
+        y: { formatter: (val: number) => "$" + val.toFixed(2) }
       },
       dataLabels: { enabled: false },
       markers: { size: 0, hover: { size: 0 } },
@@ -134,10 +163,10 @@ export const Chart = () => {
         ))}
       </div>
 
-      {/* Current price + price action badge */}
+      {/* Current price + badge */}
       <div className='absolute top-4 right-6 flex items-center gap-4'>
         <Badge
-          variant={isUp ? "increase" : "decrease"} // you can map this to your variants
+          variant={isUp ? "increase" : "decrease"}
           className='flex items-center gap-1 text-sm font-bold'
         >
           {isUp ? (
@@ -149,7 +178,7 @@ export const Chart = () => {
         </Badge>
 
         <div className='text-white font-bold text-[30px]'>
-          ${currentPrice.toFixed(4)}
+          ${formattedCurrentPrice}
         </div>
       </div>
 

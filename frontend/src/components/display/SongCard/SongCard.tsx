@@ -26,6 +26,7 @@ interface SongCardProps extends VariantProps<typeof songCardCVA> {
   unlockAmount?: number
   unlockToken?: string
   onPlay?: () => void
+  isPlaying?: boolean
 }
 
 export function SongCard({
@@ -34,21 +35,22 @@ export function SongCard({
   variant,
   unlockAmount,
   unlockToken,
-  onPlay
+  onPlay,
+  isPlaying
 }: SongCardProps) {
   return (
     <div className={songCardCVA({ variant })}>
       {/* Left Section (Icon) */}
-      <div className='w-12 h-12 rounded-full bg-[var(--color-highlight)] flex items-center justify-center'>
+      <div className='w-12 h-12 rounded-full bg-(--color-highlight) flex items-center justify-center'>
         <MusicNoteIcon size={24} color='var(--color-black)' weight='fill' />
       </div>
 
       {/* Middle Section */}
       <div className='flex flex-1 flex-col items-start justify-center gap-1'>
-        <h3 className='text-white font-semibold text-[16px] leading-[20px]'>
+        <h3 className='text-white font-semibold text-[16px] leading-5'>
           {songName}
         </h3>
-        <p className='text-[var(--color-grey)] text-[10px] leading-[18px]'>
+        <p className='text-(--color-grey) text-[10px] leading-[18px]'>
           {subtitle}
         </p>
       </div>

@@ -17,13 +17,13 @@ export const TokenSection: FC<TokenSectionProps> = ({
 }) => {
   // Mock data - replace with real data later
   const totalPrice = "$12.45"
-  const priceChange = "+3.2%"
-  const holders = "1,245"
-  const holdersChange = "+12"
-  const marketCap = "$124,500"
-  const marketCapChange = "+8.5%"
-  const totalSupply = "10,000,000"
-  const circulating = "7,500,000"
+  const priceChange = "+12% (24h)"
+  const holders = "1,247"
+  const holdersChange = "+12 this week"
+  const marketCap = "$155,000"
+  const marketCapChange = "+12% (7d)"
+  const totalSupply = "1B"
+  const circulating = "440K circulating"
 
   return (
     <div className='flex flex-col w-[1200px] gap-6'>
@@ -32,32 +32,10 @@ export const TokenSection: FC<TokenSectionProps> = ({
         <h2 className='text-white font-inter font-semibold text-[30px] leading-9 tracking-[-0.75%]'>
           Token Activity
         </h2>
-
-        <div className='flex gap-2'>
-          <Button
-            variant='yes'
-            className='flex items-center gap-2'
-            icon={<CurrencyDollarIcon size={16} weight='bold' />}
-            onClick={onBuyToken}
-            iconPosition='left'
-          >
-            Buy Token
-          </Button>
-
-          <Button
-            variant='button-cancel-red'
-            className='flex items-center gap-2'
-            icon={<CurrencyDollarIcon size={16} weight='bold' />}
-            onClick={onSellToken}
-            iconPosition='left'
-          >
-            Sell Token
-          </Button>
-        </div>
       </div>
 
       {/* Dashboard Data */}
-      <div className='flex flex-col w-full h-28'>
+      <div className='flex flex-col w-full h-28 mt-10'>
         <DashBoardDataArtist
           totalPrice={totalPrice}
           priceChange={priceChange}
@@ -69,7 +47,30 @@ export const TokenSection: FC<TokenSectionProps> = ({
           circulating={circulating}
         />
       </div>
-      <Chart />
+      <div className='flex gap-2 justify-end mt-10'>
+        <Button
+          variant='yes'
+          className='flex items-center gap-2'
+          icon={<CurrencyDollarIcon size={16} weight='bold' />}
+          onClick={onBuyToken}
+          iconPosition='left'
+        >
+          Buy Token
+        </Button>
+
+        <Button
+          variant='button-cancel-red'
+          className='flex items-center gap-2'
+          icon={<CurrencyDollarIcon size={16} weight='bold' />}
+          onClick={onSellToken}
+          iconPosition='left'
+        >
+          Sell Token
+        </Button>
+      </div>
+      <div className='mt-3 mb-20'>
+        <Chart />
+      </div>
     </div>
   )
 }

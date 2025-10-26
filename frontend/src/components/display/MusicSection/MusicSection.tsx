@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import { FeatureSongCard } from "@/components/display/FeaturedSong"
 import { SongCard } from "@/components/display/SongCard"
 import { PerksCard } from "@/components/molecules/PerksCard"
@@ -12,181 +12,100 @@ import { mockSongData } from "@/mocks/mockSongData"
 import { upcomingEvents } from "@/mocks/mockUpcomingEvents"
 import { MusicNoteIcon } from "@phosphor-icons/react"
 import { formatTime } from "../../../../utils/formatTime"
-
-// Core song data (used internally, in state, etc.)
-export interface SongData {
-  songName: string
-  subtitle: string
-  variant?: "song-play" | "song-unlock"
-  unlockAmount?: number
-  unlockToken?: string
-  avatarUrl?: string
-  audioUrl?: string
-}
-
-// Used only for components like <SongCard /> or <FeatureSongCard />
-export interface SongCardProps extends SongData {
-  onPlay?: () => void
-}
+import { useMusicPlayerStore } from "@/stores/musicPlayerStore"
 
 export const MusicSection = ({
   onClaimAccess
 }: {
   onClaimAccess: (title: string, date: string, venue: string) => void
 }) => {
-  const [currentSong, setCurrentSong] = useState<SongData | null>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [progress, setProgress] = useState(0)
-  const [currentTime, setCurrentTime] = useState(0)
-  const [duration, setDuration] = useState(0)
-  const [artistDurations, setArtistDurations] = useState<
-    Record<string, string>
-  >({})
+  const {
+    currentSong,
+    isPlaying,
+    progress,
+    currentTime,
+    duration,
+    setCurrentSong,
+    playPause,
+    setProgress,
+    setCurrentTime,
+    setDuration,
+    nextSong,
+    prevSong,
+    closePlayer,
+    setPlaylist
+  } = useMusicPlayerStore()
 
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  // when isPlaying changes, play/pause the real audio element
+  // Auto-play/pause and handle new song
   useEffect(() => {
     if (!audioRef.current) return
-    if (isPlaying) {
-      audioRef.current.play()
-    } else {
-      audioRef.current.pause()
-    }
-  }, [isPlaying])
 
-  // Add getAudioDuration here
-  const getAudioDuration = (audioUrl: string): Promise<string> => {
-    return new Promise((resolve) => {
-      const audio = new Audio(audioUrl)
-      audio.addEventListener("loadedmetadata", () => {
-        const minutes = Math.floor(audio.duration / 60)
-        const seconds = Math.floor(audio.duration % 60)
-        const formatted = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`
-        resolve(formatted)
+    if (currentSong?.audioUrl) {
+      audioRef.current.src = currentSong.audioUrl
+      audioRef.current.play().catch(() => {
+        // Handle autoplay restrictions
       })
-    })
-  }
+    } else if (!currentSong) {
+      audioRef.current.pause()
+      audioRef.current.src = ""
+    }
+  }, [currentSong])
 
-  // Load actual duration on mount
+  // Initialize playlist
   useEffect(() => {
-    mockArtists.forEach(async (artist) => {
-      if (artist.latestSingle.audioUrl) {
-        const duration = await getAudioDuration(artist.latestSingle.audioUrl)
-        setArtistDurations((prev) => ({ ...prev, [artist.id]: duration }))
-      }
-    })
-  }, [])
+    const playlist = [
+      ...mockSongData,
+      ...mockArtists.map((a) => ({
+        songName: a.latestSingle.title,
+        subtitle: a.latestSingle.duration || "0:00",
+        avatarUrl: a.image,
+        audioUrl: a.latestSingle.audioUrl
+      }))
+    ]
+    setPlaylist(playlist)
+  }, [setPlaylist])
 
-  const handleSeek = (progress: number) => {
-    if (!audioRef.current) return
-    const duration = audioRef.current.duration
-    audioRef.current.currentTime = duration * progress // set audio to new time
-    setProgress(progress) // update UI immediately
-    setCurrentTime(duration * progress)
-  }
-
-  // handle song progress
+  // Update progress
   const handleTimeUpdate = () => {
     if (!audioRef.current) return
     const current = audioRef.current.currentTime
-    const duration = audioRef.current.duration || 0
-
+    const dur = audioRef.current.duration || 0
     setCurrentTime(current)
-    if (duration && !isNaN(duration)) {
-      setProgress(current / duration)
-    } else {
-      setProgress(0) // fallback to 0 if duration is invalid
-    }
+    setProgress(dur ? current / dur : 0)
   }
 
-  const handlePlaySong = async (song: SongCardProps) => {
-    let duration = song.subtitle || "0:00" // fallback if no subtitle
+  const handleSeek = (progressValue: number) => {
+    if (!audioRef.current) return
+    const dur = audioRef.current.duration
+    audioRef.current.currentTime = dur * progressValue
+    setProgress(progressValue)
+    setCurrentTime(dur * progressValue)
+  }
 
-    if (song.audioUrl) {
-      duration = await getAudioDuration(song.audioUrl)
-    }
-
-    setCurrentSong({
-      ...song,
-      subtitle: duration,
-      variant: song.variant ?? "song-play"
-    })
-
-    setIsPlaying(true)
+  const handlePlaySong = (song: typeof currentSong | null) => {
+    if (!song) return
+    setCurrentSong(song)
     setProgress(0)
-
     if (song.audioUrl && audioRef.current) {
       audioRef.current.src = song.audioUrl
       audioRef.current.play()
     }
   }
 
-  const handlePlayPause = () => setIsPlaying((prev) => !prev)
-
-  const handleNext = () => {
-    if (!currentSong) return
-    const allSongs = [
-      ...mockSongData,
-      ...mockArtists.map((a) => ({
-        songName: a.latestSingle.title,
-        subtitle: "0:00",
-        avatarUrl: a.image,
-        audioUrl: a.latestSingle.audioUrl
-      }))
-    ]
-
-    const currentIndex = allSongs.findIndex(
-      (s) => s.songName === currentSong.songName
-    )
-
-    const nextIndex = (currentIndex + 1) % allSongs.length
-    setCurrentSong(allSongs[nextIndex])
-    setProgress(0)
-    setIsPlaying(true)
-  }
-
-  const handlePrev = () => {
-    if (!currentSong) return
-    const allSongs = [
-      ...mockSongData,
-      ...mockArtists.map((a) => ({
-        songName: a.latestSingle.title,
-        subtitle: "0:00",
-        avatarUrl: a.image,
-        audioUrl: a.latestSingle.audioUrl
-      }))
-    ]
-
-    const currentIndex = allSongs.findIndex(
-      (s) => s.songName === currentSong.songName
-    )
-
-    const prevIndex = (currentIndex - 1 + allSongs.length) % allSongs.length
-    setCurrentSong(allSongs[prevIndex])
-    setProgress(0)
-    setIsPlaying(true)
-  }
-
-  const handleClosePlayer = () => {
-    setCurrentSong(null)
-    setIsPlaying(false)
-  }
-
   return (
     <div className='flex flex-col items-center gap-20'>
+      {/* About the Artist */}
       <section className='flex flex-col gap-[39px] w-full max-w-[1200px] mx-auto py-10'>
-        {/* Title */}
         <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
           About the Artist
         </h2>
-
-        {/* Description */}
         <p className='w-full font-inter font-normal text-[20px] leading-7 text-white'>
-          Luna Eclipse is a pioneering electronic artist known for pushing the
-          boundaries of sound design and immersive live experiences. With a
-          background in classical music and a passion for technology, Luna
-          creates otherworldly soundscapes that transport audiences to new
+          Luna Eclipse is a pioneering electronic artist and producer known for
+          pushing the boundaries of sound design and immersive live experiences.
+          With a background in classical music and a passion for technology,
+          Luna creates otherworldly soundscapes that transport audiences to new
           dimensions. Her unique blend of atmospheric textures and driving
           rhythms has earned her a devoted following across Europe and beyond.
         </p>
@@ -207,14 +126,13 @@ export const MusicSection = ({
               artist={{
                 ...artist,
                 latestSingle: {
-                  ...artist.latestSingle,
-                  duration: artistDurations[artist.id] || "0:00"
+                  ...artist.latestSingle
                 }
               }}
               onPlay={() =>
                 handlePlaySong({
                   songName: artist.latestSingle.title,
-                  subtitle: artistDurations[artist.id] || "0:00",
+                  subtitle: artist.latestSingle.duration || "0:00",
                   avatarUrl: artist.image,
                   audioUrl: artist.latestSingle.audioUrl,
                   variant: "song-play"
@@ -230,11 +148,9 @@ export const MusicSection = ({
 
       {/* Fan Perks */}
       <section className='relative w-full mt-20 flex flex-col'>
-        <div className='flex'>
-          <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
-            Fan Perks
-          </h2>
-        </div>
+        <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
+          Fan Perks
+        </h2>
         <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-[39px] gap-y-[29px] mt-10'>
           {mockPerks.map((perk, i) => (
             <PerksCard
@@ -250,7 +166,6 @@ export const MusicSection = ({
       {/* Featured Tracks + Upcoming Events */}
       <section className='relative w-full mt-20 mb-20'>
         <div className='flex gap-5'>
-          {/* Featured Tracks */}
           <div className='flex flex-col gap-6'>
             <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
               Featured Tracks
@@ -270,7 +185,6 @@ export const MusicSection = ({
             </div>
           </div>
 
-          {/* Upcoming Events */}
           <div className='flex-1 flex flex-col gap-6'>
             <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
               Upcoming Events
@@ -300,11 +214,9 @@ export const MusicSection = ({
           ref={audioRef}
           src={currentSong.audioUrl}
           onTimeUpdate={handleTimeUpdate}
-          onEnded={handleNext}
+          onEnded={() => nextSong()}
           onLoadedMetadata={() => {
-            if (audioRef.current) {
-              setDuration(audioRef.current.duration)
-            }
+            if (audioRef.current) setDuration(audioRef.current.duration)
           }}
         />
       )}
@@ -314,17 +226,17 @@ export const MusicSection = ({
         <div className='fixed bottom-0 left-0 w-full px-6 py-4 z-50 flex justify-center'>
           <PlayerCard
             songName={currentSong.songName}
-            songDetails={currentSong.subtitle}
+            songDetails={currentSong.subtitle || "0:00"} // fallback if undefined
             currentTime={formatTime(currentTime)}
             totalTime={formatTime(duration)}
             progress={progress}
             onSeek={handleSeek}
             avatarUrl={currentSong.avatarUrl}
             isPlaying={isPlaying}
-            onPlayPause={handlePlayPause}
-            onNext={handleNext}
-            onPrev={handlePrev}
-            onClose={handleClosePlayer}
+            onPlayPause={playPause}
+            onNext={nextSong}
+            onPrev={prevSong}
+            onClose={closePlayer}
           />
         </div>
       )}

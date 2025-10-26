@@ -10,17 +10,17 @@ export const mockFundAllocations: FundingOverviewSectionProps["fundAllocations"]
     {
       title: "Touring & Logistics",
       badgeText: "High Priority",
-      bottomLeftValue: "5,000 USDC = 402 Tokens"
+      bottomLeftValue: "5,000 USDC = 402"
     },
     {
       title: "Live Recording",
       badgeText: "Medium",
-      bottomLeftValue: "2,500 USDC = 201 Tokens"
+      bottomLeftValue: "2,500 USDC = 201"
     },
     {
-      title: "Limited Edition Merch & Vip After Party",
+      title: "Limited Edition Merch & Vip Closing Party",
       badgeText: "Low Priority",
-      bottomLeftValue: "2,500 USDC = 201 Tokens"
+      bottomLeftValue: "2,500 USDC = 201"
     }
   ]
 

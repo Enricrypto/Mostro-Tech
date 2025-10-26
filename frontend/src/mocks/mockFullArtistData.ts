@@ -14,10 +14,10 @@ export const mockFullArtistData: {
 }[] = [
   {
     badgeText: "Featured Artist of the Month",
-    genreBadge: "Indie",
+    genreBadge: "Electronic",
     artistName: "Luna Eclipse",
     artistDescription:
-      "Experimental electronic artist pushing boundaries with immersive soundscapes and innovative production techniques. Known for sold-out shows across Europe.",
+      "Experimental electronic artist and producer pushing boundaries with immersive soundscapes and innovative production techniques. Known for sold-out shows across Europe.",
     tokenName: "MLUNA",
     tokenPrice: "12.34",
     tokenHolders: "1,234",

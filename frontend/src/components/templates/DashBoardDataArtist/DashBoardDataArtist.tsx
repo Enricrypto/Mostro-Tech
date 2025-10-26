@@ -30,7 +30,7 @@ export function DashBoardDataArtist({
   circulating
 }: DashBoardDataArtistProps) {
   return (
-    <div className='w-[1200px] h-[112px] flex gap-6'>
+    <div className='w-[1200px] h-28 flex gap-6'>
       <DataArtistCard
         topText='Total Price'
         bottomLeftText={totalPrice}

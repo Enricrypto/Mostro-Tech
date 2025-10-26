@@ -5,39 +5,45 @@ export const mockSongData: {
   unlockAmount?: number
   unlockToken?: string
   avatarUrl: string
+  audioUrl: string
 }[] = [
   {
-    songName: "Luna Eclipse",
-    subtitle: "Latest Single - 3:45",
+    songName: "Midnight Dreams",
+    subtitle: "Luna Eclipse - 3:45",
     variant: "song-play",
-    avatarUrl: "/avatar1.png"
+    avatarUrl: "/avatar1.png",
+    audioUrl: "/midnight-dreams.mp3"
   },
   {
-    songName: "Luna Eclipse",
-    subtitle: "Latest Single - 4:12",
+    songName: "Prime Time",
+    subtitle: "Luna Eclipse - 4:12",
     variant: "song-play",
-    avatarUrl: "/avatar2.png"
+    avatarUrl: "/avatar1.png",
+    audioUrl: "/prime-time.mp3"
   },
   {
-    songName: "Luna Eclipse",
-    subtitle: "Album Track - 4:12",
+    songName: "Cosmic Waves",
+    subtitle: "Luna Eclipse - 4:12",
     variant: "song-unlock",
     unlockAmount: 5,
     unlockToken: "MLUNA",
-    avatarUrl: "/avatar3.png"
+    avatarUrl: "/avatar1.png",
+    audioUrl: "/cosmic-waves.mp3"
   },
   {
-    songName: "Luna Eclipse",
-    subtitle: "Exclusive Track - 3:58",
+    songName: "Electric Nights",
+    subtitle: "Luna Eclipse - 3:58",
     variant: "song-play",
-    avatarUrl: "/avatar4.png"
+    avatarUrl: "/avatar1.png",
+    audioUrl: "/electric-nights.mp3"
   },
   {
-    songName: "Luna Eclipse",
-    subtitle: "Latest Single - 3:45",
+    songName: "Total Recall",
+    subtitle: "Luna Eclipse - 3:45",
     variant: "song-unlock",
     unlockAmount: 3,
     unlockToken: "MLUNA",
-    avatarUrl: "/avatar5.png"
+    avatarUrl: "/avatar1.png",
+    audioUrl: "/total-recall.mp3"
   }
 ]

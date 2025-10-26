@@ -5,7 +5,7 @@ export const bannerPropsData: ArtistProfileBannerProps[] &
   {
     artistName: "Luna Eclipse",
     description:
-      "Experimental electronic artist pushing boundaries with immersive soundscapes and innovative production techniques. Known for sold-out shows across Europe.",
+      "Experimental electronic artist and producer pushing boundaries with immersive soundscapes and innovative production techniques. Known for sold-out shows across Europe.",
     tokenHolders: "12.3K",
     marketCap: "$1.2M",
     followers: "8.7K",

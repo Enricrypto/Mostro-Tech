@@ -29,12 +29,6 @@ export const mockProposals: Proposal[] = [
   },
   {
     id: 3,
-    status: "closed",
-    title: "Community Event",
-    requestedTokens: "2,490 USDC = 200 tokens"
-  },
-  {
-    id: 4,
     status: "ongoing",
     title: "Remix & Collab Series",
     requestedTokens: "8,000 USDC = 643",
@@ -43,36 +37,30 @@ export const mockProposals: Proposal[] = [
     badgeText: "Ongoing"
   },
   {
-    id: 5,
+    id: 4,
     status: "executed",
-    title: "Music Video Production",
-    requestedTokens: "14,940 USDC = 1,200 tokens"
+    title: "London Showcase & Livestream 2025",
+    requestedTokens: "5,000 USDC = 5,000,000"
+  },
+  {
+    id: 5,
+    status: "closed",
+    title: "Live Remix Album",
+    requestedTokens: "8,000 USDC = 8,000"
   },
   {
     id: 6,
-    status: "closed",
-    title: "Fan Meetup",
-    requestedTokens: "3,735 USDC = 300 tokens"
-  },
-  {
-    id: 7,
     status: "ongoing",
     title: "Multimedia EP",
-    requestedTokens: "12,000 USDC = 964 tokens",
+    requestedTokens: "12,000 USDC = 964",
     yesPercentage: 78,
     noPercentage: 22,
     badgeText: "Ongoing"
   },
   {
-    id: 8,
+    id: 7,
     status: "executed",
-    title: "Exclusive NFT Sale",
-    requestedTokens: "11,205 USDC = 900 tokens"
-  },
-  {
-    id: 9,
-    status: "closed",
-    title: "Soundcheck Live Stream",
-    requestedTokens: "1,868 USDC = 150 tokens"
+    title: "Nordic Tour 2025",
+    requestedTokens: "10,000 USDC = 1,000,000"
   }
 ]

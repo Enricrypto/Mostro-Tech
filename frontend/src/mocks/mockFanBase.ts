@@ -10,10 +10,10 @@ export const mockFanbase: { src?: string; initials?: string }[] = [
   { src: "/avatar6.png" }
 ]
 
-// Repeat until we have at least 18 items
-while (mockFanbase.length < 18) {
+// Repeat until we have at least 36 items
+while (mockFanbase.length < 36) {
   mockFanbase.push(...mockFanbase)
 }
 
-// Trim exactly to 18
-mockFanbase.length = 18
+// Trim exactly to 36
+mockFanbase.length = 36
