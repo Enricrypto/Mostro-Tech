@@ -5,43 +5,47 @@ import Image from "next/image"
 import { Button } from "@/components/atoms/Button"
 import { PlayIcon, PauseIcon } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
-import type { Artist } from "@/data/artists"
 
-export type FeatureSongCardProps = {
-  className?: string
-  artist: Artist
+export interface FeatureSongCardProps {
+  musicDrop: {
+    title: string
+    duration: string
+    audioUrl: string
+    image: string
+  }
   currentSongName?: string
   isPlaying?: boolean
-  onPlay?: () => void
+  onPlay: () => void
+  className?: string
 }
 
 export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
-  className,
-  artist,
+  musicDrop,
   currentSongName,
   isPlaying = false,
-  onPlay
+  onPlay,
+  className
 }) => {
   const [localPlaying, setLocalPlaying] = useState(false)
 
   // Sync localPlaying with global player state
   useEffect(() => {
-    setLocalPlaying(currentSongName === artist.latestSingle.title && isPlaying)
-  }, [currentSongName, isPlaying, artist.latestSingle.title])
+    setLocalPlaying(currentSongName === musicDrop.title && isPlaying)
+  }, [currentSongName, isPlaying, musicDrop.title])
 
   return (
     <div
       className={cn(
-        "artist-music-card flex flex-row items-center gap-4 p-6 rounded-[10px] border-2 border-(--color-datacard-border) shadow-md",
+        "artist-music-card flex flex-row items-center gap-4 p-6 rounded-[10px] border-2 border-gray-700 shadow-md",
         "w-[384px] h-[199px] bg-[#121B2B]",
         className
       )}
     >
-      {/* Artist Image */}
+      {/* Music Drop Image */}
       <div className='w-[151px] h-[151px] rounded-[26px] overflow-hidden shrink-0 relative'>
         <Image
-          src={artist.image}
-          alt={`Artist ${artist.name}`}
+          src={musicDrop.image}
+          alt={musicDrop.title}
           fill
           className='object-cover'
         />
@@ -49,13 +53,13 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
 
       {/* Info & Controls */}
       <div className='flex flex-col justify-between flex-1 gap-2 min-w-0'>
-        {/* Artist Name & Latest Single */}
+        {/* Song Title & Duration */}
         <div className='flex flex-col gap-1 min-w-0'>
           <span className='text-white font-semibold text-[18px] leading-7 truncate block'>
-            {artist.latestSingle.title}
+            {musicDrop.title}
           </span>
           <span className='text-(--color-muted) font-medium text-[12px] leading-5 truncate block'>
-            {artist.name} - {artist.latestSingle.duration}
+            {musicDrop.duration}
           </span>
         </div>
 

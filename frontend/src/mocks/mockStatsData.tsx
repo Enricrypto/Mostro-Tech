@@ -14,30 +14,30 @@ export const statsData = {
     change: "+12 this week",
     icon: <UsersIcon size={16} color='#998CE1' />
   },
+  totalMarketCap: {
+    value: "2.4M",
+    change: "+24% this month",
+    icon: <CurrencyDollarIcon size={16} color='#71D6FB' />
+  },
+  activeHolders: {
+    value: "8,423",
+    change: "+25 today",
+    icon: <CodesandboxLogoIcon size={16} color='#998CE1' />
+  },
   totalTokensLaunched: {
-    value: 1024,
-    change: "+52 today",
+    value: 153,
+    change: "+12% this week",
     icon: <RocketLaunchIcon size={16} color='#DCFD63' />
   },
   proposalsApproved: {
-    value: 512,
-    change: "+30 today",
+    value: 97,
+    change: "+12% this week",
     icon: <CheckCircleIcon size={16} color='#42EE5C' />
   },
-  totalMarketCap: {
-    value: "12.4K",
-    change: "+2.1K today",
-    icon: <CurrencyDollarIcon size={16} color='#71D6FB' />
-  },
   totalFundingRaised: {
-    value: 84,
-    change: "+5 this week",
+    value: "$32K+",
+    change: "+2.4K this week",
     icon: <WalletIcon size={16} color='#998CE1' />
-  },
-  artistHolders: {
-    value: "3.2K",
-    change: "+400 today",
-    icon: <CodesandboxLogoIcon size={16} color='#998CE1' />
   }
 }
 
@@ -48,6 +48,18 @@ export const statsCardVariants = [
     bottomLeftText: statsData.totalArtists.value.toString(),
     bottomRightText: statsData.totalArtists.change,
     icon: statsData.totalArtists.icon
+  },
+  {
+    topText: "Total Market Cap",
+    bottomLeftText: statsData.totalMarketCap.value.toString(),
+    bottomRightText: statsData.totalMarketCap.change,
+    icon: statsData.totalMarketCap.icon
+  },
+  {
+    topText: "Active Holders",
+    bottomLeftText: statsData.activeHolders.value.toString(),
+    bottomRightText: statsData.activeHolders.change,
+    icon: statsData.activeHolders.icon
   },
   {
     topText: "Total Tokens Launched",
@@ -62,21 +74,9 @@ export const statsCardVariants = [
     icon: statsData.proposalsApproved.icon
   },
   {
-    topText: "Total Market Cap",
-    bottomLeftText: statsData.totalMarketCap.value.toString(),
-    bottomRightText: statsData.totalMarketCap.change,
-    icon: statsData.totalMarketCap.icon
-  },
-  {
     topText: "Total Funding Raised",
     bottomLeftText: statsData.totalFundingRaised.value.toString(),
     bottomRightText: statsData.totalFundingRaised.change,
     icon: statsData.totalFundingRaised.icon
-  },
-  {
-    topText: "Artist Holders",
-    bottomLeftText: statsData.artistHolders.value.toString(),
-    bottomRightText: statsData.artistHolders.change,
-    icon: statsData.artistHolders.icon
   }
 ]

@@ -39,7 +39,7 @@ export const VotingSection: React.FC<VotingSectionProps> = ({
       </div>
 
       {/* 2nd Part: Voting Progress */}
-      <VotingProgress yesVotes={yesVotes} noVotes={noVotes} />
+      <VotingProgress noVotes={noVotes} yesVotes={yesVotes} />
 
       {/* 3rd Part: Vote Buttons */}
       <div className='flex flex-col gap-4'>

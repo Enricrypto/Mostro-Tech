@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { FundingOverviewSection } from "@/components/molecules/FundingOverviewSection"
+import { FundingOverviewSection } from "@/components/sections/FundingOverviewSection"
 import { VotingSection } from "@/components/molecules/VotingSection"
 import { ProposalConfirmationModal } from "@/components/utils/Modal/ProposalConfirmationModal"
 import { Button } from "@/components/atoms/Button"
@@ -59,7 +59,7 @@ export default function VotePage() {
               title={mockVotingSection.title}
               artist={mockVotingSection.artist}
               onViewOtherProposals={handleViewOtherProposals}
-              avatarSrc='/avatar1.png'
+              avatarSrc='/artists/luna-eclipse.png'
             />
           </div>
         </div>

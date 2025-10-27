@@ -18,7 +18,7 @@ export default function AllArtists() {
       <section className='relative flex flex-col items-center mt-[105px] mb-20 w-full'>
         <div className='max-w-[1200px] w-full px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[21px]'>
           {mockAllArtistsData.map((artist) => (
-            <ArtistCard key={artist.id} {...artist} />
+            <ArtistCard key={artist.id} {...artist} id={artist.id} />
           ))}
         </div>
       </section>

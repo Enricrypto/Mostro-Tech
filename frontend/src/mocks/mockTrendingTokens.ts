@@ -3,7 +3,7 @@ export const trendingTokens = [
     id: 1,
     name: "Kings Quest",
     tokenName: "MKIN",
-    iconUrl: "/kings-quest.png",
+    iconUrl: "/artists/kings-quest.png",
     price: "3.45",
     change: "+24%"
   },
@@ -11,7 +11,7 @@ export const trendingTokens = [
     id: 2,
     name: "Lil Lion",
     tokenName: "MLIL",
-    iconUrl: "/lil-lion.png",
+    iconUrl: "/artists/lil-lion.png",
     price: "3.24",
     change: "-1.5%"
   },
@@ -19,7 +19,7 @@ export const trendingTokens = [
     id: 3,
     name: "Pucci Mane",
     tokenName: "MPUC",
-    iconUrl: "/avatar3.png",
+    iconUrl: "/artists/pucci-mane.png",
     price: "3.18",
     change: "+0.8%"
   },
@@ -27,7 +27,7 @@ export const trendingTokens = [
     id: 4,
     name: "Elliot James",
     tokenName: "MELL",
-    iconUrl: "/elliot-james.png",
+    iconUrl: "/artists/elliot-james.png",
     price: "2.97",
     change: "+5.1%"
   },
@@ -35,7 +35,7 @@ export const trendingTokens = [
     id: 5,
     name: "Voltaire",
     tokenName: "MVOL",
-    iconUrl: "/avatar5.png",
+    iconUrl: "/artists/voltaire.png",
     price: "2.84",
     change: "-2.3%"
   },
@@ -43,7 +43,7 @@ export const trendingTokens = [
     id: 6,
     name: "Big Planet",
     tokenName: "MBIG",
-    iconUrl: "/big-planet.png",
+    iconUrl: "/artists/big-planet.png",
     price: "1.11",
     change: "+1.0%"
   }

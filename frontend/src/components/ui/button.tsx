@@ -48,8 +48,9 @@ export const baseButtonVariants = cva(
         "text-white-transparent":
           "bg-transparent border-none text-white font-medium text-[14px] leading-[24px] rounded-[6px] px-4 py-2 hover:opacity-80",
         session: "bg-transparent text-[#B3B3B3] ",
-        yes: "bg-[var(--color-green)] text-black hover:bg-[var(--color-green-hover)]",
-        no: "bg-[var(--color-red)] text-black hover:bg-[var(--color-red-hover)]",
+        yes: "bg-[var(--color-green)] text-black border border-[var(--color-green)] hover:bg-transparent hover:text-white transition-colors duration-200",
+        no: "bg-[var(--color-red)] text-black border border-[var(--color-red)] hover:bg-transparent hover:text-white transition-colors duration-200",
+
         voted:
           "bg-[var(--color-light-gray)] text-[var(--color-gray-text)] hover:bg-[var(--color-light-gray-hover)]",
         "follow-share":

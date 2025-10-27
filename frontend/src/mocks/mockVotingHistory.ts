@@ -1,51 +1,28 @@
-export type Voting = {
-  id: number
-  title: string
-  artist: string
-  date: string
-  vote: boolean
-  status: string
-}
+import { VotingHistoryProps } from "@/components/molecules/VotingHisory"
 
-export const mockVotingHistory: Voting[] = [
+export const mockVotingHistory: VotingHistoryProps[] = [
   {
     id: 1,
-    title: "One More Time",
-    artist: "Daft Punk",
+    title: "European Tour 2026",
+    artist: "Luna Eclipse",
     date: "2 days ago",
-    vote: true,
+    vote: "Yes",
     status: "Active"
   },
   {
     id: 2,
-    title: "D.A.N.C.E.",
-    artist: "Justice",
-    date: "5 days ago",
-    vote: false,
+    title: "New Album Production",
+    artist: "Luna Eclipse",
+    date: "10 days ago",
+    vote: "Yes",
     status: "Executed"
   },
   {
     id: 3,
-    title: "Nightcall",
-    artist: "Kavinsky",
-    date: "3 days ago",
-    vote: true,
+    title: "Live Remix Album",
+    artist: "Luna Eclipse",
+    date: "35 days ago",
+    vote: "No",
     status: "Rejected"
-  },
-  {
-    id: 4,
-    title: "La Femme d'Argent",
-    artist: "Air",
-    date: "21 days ago",
-    vote: false,
-    status: "Active"
-  },
-  {
-    id: 5,
-    title: "Lisztomania",
-    artist: "Phoenix",
-    date: "25 days ago",
-    vote: true,
-    status: "Executed"
   }
 ]

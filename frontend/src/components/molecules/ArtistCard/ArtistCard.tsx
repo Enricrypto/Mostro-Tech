@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { Avatar } from "@/components/atoms/Avatar/Avatar"
 import { Badge } from "@/components/utils/Badge/Badge"
 import { Button } from "@/components/atoms/Button/Button"
@@ -10,6 +11,7 @@ import { cn } from "@/lib/utils"
 import React from "react"
 
 interface ArtistFullCardProps {
+  id: number
   artistName: string
   tokenName: string
   avatarSrc: string
@@ -22,6 +24,7 @@ interface ArtistFullCardProps {
 }
 
 export function ArtistCard({
+  id,
   artistName,
   tokenName,
   avatarSrc,
@@ -32,6 +35,8 @@ export function ArtistCard({
   totalSupply,
   genre
 }: ArtistFullCardProps) {
+  const router = useRouter()
+
   // Convert badgeText to number to determine variant
   const numberValue = parseFloat(badgeText.replace(/[^0-9.-]+/g, "")) // removes any symbols like %
   const badgeVariant = numberValue >= 0 ? "increase" : "decrease"
@@ -133,6 +138,7 @@ export function ArtistCard({
           variant='follow-share'
           icon={<ArrowUpRightIcon weight='fill' size={16} />}
           className='w-full h-full px-4 py-2 gap-2.5'
+          onClick={() => router.push(`/artists/${id}`)}
         >
           View Artist
         </Button>

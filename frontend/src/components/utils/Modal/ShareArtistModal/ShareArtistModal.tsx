@@ -55,7 +55,7 @@ export const ShareArtistModal = () => {
         }}
       >
         Spread the word about Luna Eclipse! Invite your friends to explore her
-        sound and join the $MARTIST community.
+        sound and join the $MLUNA community.
       </p>
 
       {/* URL + copy */}

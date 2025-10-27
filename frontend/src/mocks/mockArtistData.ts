@@ -3,7 +3,7 @@ export const mockArtistData = [
     id: 1,
     artistName: "Luna Eclipse",
     tokenName: "MLUN",
-    avatarSrc: "/avatar1.png",
+    avatarSrc: "/artists/luna-eclipse.png",
     badgeText: "+27%",
     description:
       "Experimental electronic artist pushing boundaries with immersive soundscapes and innovative production.",
@@ -16,7 +16,7 @@ export const mockArtistData = [
     id: 2,
     artistName: "Atlas Monroe",
     tokenName: "MATL",
-    avatarSrc: "/avatar2.png",
+    avatarSrc: "/artists/atlas-monroe.png",
     badgeText: "-12%",
     description:
       "Alt-rock powerhouse merging emotional intensity with anthemic soundscapes. Known for electrifying performances and soaring guitar riffs across the US indie circuit.",
@@ -29,7 +29,7 @@ export const mockArtistData = [
     id: 3,
     artistName: "Liz Cherry",
     tokenName: "MLIZ",
-    avatarSrc: "/avatar3.png",
+    avatarSrc: "/artists/liz-cherry.png",
     badgeText: "+9%",
     description:
       "Hip hop & R&B artist blending soulful vocals with raw lyricism. Redefining authenticity through poetry, rhythm, and empowerment. Celebrated for her magnetic live sessions across the UK.",

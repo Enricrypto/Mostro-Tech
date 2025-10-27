@@ -57,7 +57,7 @@ export function VotingProgress({
       <ProgressBar
         value={percentage}
         variant={variant}
-        className='w-full h-[16px] rounded-full'
+        className='w-full h-4 rounded-full'
       />
 
       {/* Votes Count */}
@@ -70,18 +70,18 @@ export function VotingProgress({
   return (
     <div className='flex flex-col gap-4 w-full'>
       <VoteRow
-        label='No'
-        icon={<ThumbsDownIcon size={20} />}
-        votes={noVotes}
-        percentage={noPercentage}
-        variant='red'
-      />
-      <VoteRow
         label='Yes'
         icon={<ThumbsUpIcon size={20} />}
         votes={yesVotes}
         percentage={yesPercentage}
         variant='green'
+      />
+      <VoteRow
+        label='No'
+        icon={<ThumbsDownIcon size={20} />}
+        votes={noVotes}
+        percentage={noPercentage}
+        variant='red'
       />
     </div>
   )

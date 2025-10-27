@@ -1,2 +1,2 @@
-export { UpcomingEvent } from './UpcomingEvent'
-export type { UpcomingEventProps } from './UpcomingEvent'
+export { UpcomingEvent } from "./UpcomingEvent"
+export type { EventStatus } from "./UpcomingEvent"

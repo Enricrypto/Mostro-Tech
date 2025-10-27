@@ -1,12 +1,12 @@
 export const mockFanbase: { src?: string; initials?: string }[] = [
-  { src: "/avatar1.png" },
-  { src: "/avatar2.png" },
+  { src: "/artists/luna-eclipse.png" },
+  { src: "/artists/atlas-monroe.png" },
   { initials: "AB" },
-  { src: "/avatar3.png" },
+  { src: "/artists/liz-cherry.png" },
   { initials: "CD" },
   { src: "/avatar4.png" },
   { initials: "EF" },
-  { src: "/avatar5.png" },
+  { src: "/avatar6.png" },
   { src: "/avatar6.png" }
 ]
 

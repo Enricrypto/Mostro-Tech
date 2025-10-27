@@ -1,4 +1,4 @@
-import { FundingOverviewSectionProps } from "@/components/molecules/FundingOverviewSection"
+import { FundingOverviewSectionProps } from "@/components/sections/FundingOverviewSection"
 
 export const mockInfoCards: FundingOverviewSectionProps["infoCards"] = [
   { variant: "amount", value: "10,000 USDC", tokens: 803 }, // Requested amount card

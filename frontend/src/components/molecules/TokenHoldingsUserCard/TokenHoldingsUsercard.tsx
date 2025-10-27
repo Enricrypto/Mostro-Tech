@@ -8,24 +8,24 @@ import { SketchLogoIcon } from "@phosphor-icons/react"
 export interface TokenHoldingsUserCardProps {
   id: number
   avatarSrc: string
-  userName: string
+  artist: string
   tokenCount: number
-  badgeText: string
-  leftTopValue: number
-  rightTopPerks: number
+  performance: string
+  amount: number
+  perks: number
 }
 
 export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
   id,
   avatarSrc,
-  userName,
+  artist,
   tokenCount,
-  badgeText,
-  leftTopValue,
-  rightTopPerks
+  performance,
+  amount,
+  perks
 }) => {
   // Convert badgeText to number to determine variant
-  const numberValue = parseFloat(badgeText.replace(/[^0-9.-]+/g, "")) // removes any symbols like %
+  const numberValue = parseFloat(performance.replace(/[^0-9.-]+/g, "")) // removes any symbols like %
   const badgeVariant = numberValue >= 0 ? "increase" : "decrease"
 
   return (
@@ -47,7 +47,7 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
           />
           <div className='flex flex-col'>
             <span className='text-[20px] font-semibold leading-7 text-white'>
-              {userName}
+              {artist}
             </span>
             <span className='text-[12px] font-medium leading-5 text-[#B3B3B3]'>
               {tokenCount} tokens
@@ -59,7 +59,7 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
           variant={badgeVariant}
           className='rounded-[10px] text-[12px] font-medium flex items-center justify-center px-2 py-0.5'
         >
-          {badgeText}
+          {performance}
         </Badge>
       </div>
 
@@ -70,9 +70,7 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
       <div className='flex justify-between items-center'>
         {/* Left Part */}
         <div className='flex flex-col items-center gap-1'>
-          <span className='text-[16px] font-bold text-white'>
-            ${leftTopValue}
-          </span>
+          <span className='text-[16px] font-bold text-white'>${amount}</span>
           <span className='text-[12px] font-medium text-[#B3B3B3]'>
             Current Value
           </span>
@@ -82,9 +80,7 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
         <div className='flex flex-col items-center gap-1'>
           <div className='flex items-center gap-2'>
             <SketchLogoIcon className='w-5 h-5 text-[#4995E0]' />
-            <span className='text-[16px] font-bold text-white'>
-              {rightTopPerks}
-            </span>
+            <span className='text-[16px] font-bold text-white'>{perks}</span>
           </div>
           <span className='text-[12px] font-medium text-[#B3B3B3]'>
             Perks Unlocked

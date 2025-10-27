@@ -190,7 +190,7 @@ export default function DashboardPage() {
         <div className='max-w-[1200px] mx-auto'>
           <SectionHeader title='Trending Tokens' />
           {chunkArray(trendingTokens, 3).map((chunk, idx) => (
-            <div key={idx} className='flex flex-wrap gap-6 mt-4'>
+            <div key={idx} className='flex flex-wrap gap-6 mt-10'>
               {chunk.map((token) => (
                 <TrendingTokenCard
                   key={token.id}

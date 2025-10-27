@@ -9,17 +9,10 @@ import {
   MapPinIcon,
   TicketIcon
 } from "@phosphor-icons/react"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva } from "class-variance-authority"
+import type { Artist } from "@/data/artists"
 
-type EventStatus = "on-sale" | "sold-out" | "token-holders-only"
-
-interface Event {
-  title: string
-  date: string
-  time: string
-  location: string
-  status: EventStatus
-}
+export type EventStatus = "on-sale" | "sold-out" | "token-holders-only"
 
 const upcomingEventCVA = cva(
   "h-[158px] p-6 bg-[#121B2B] border-2 rounded-lg flex flex-col justify-between transition-shadow duration-200",
@@ -36,16 +29,19 @@ const upcomingEventCVA = cva(
   }
 )
 
+interface UpcomingEventProps {
+  artist: Artist
+  event: NonNullable<Artist["musicEvents"]>[number]
+  onClaim?: () => void
+  className?: string
+}
+
 export const UpcomingEvent = ({
+  artist,
   event,
   onClaim,
   className
-}: {
-  event: Event
-  onClaim?: () => void
-  className?: string
-}) => {
-  // Map event statuses to existing badge variants
+}: UpcomingEventProps) => {
   const variantMap: Record<EventStatus, "increase" | "closed" | "neutral"> = {
     "on-sale": "increase",
     "sold-out": "closed",
@@ -55,8 +51,8 @@ export const UpcomingEvent = ({
   return (
     <div
       className={cn(
-        upcomingEventCVA({ variant: "default" }) +
-          " hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380]",
+        upcomingEventCVA({ variant: "default" }),
+        "hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380]",
         className
       )}
     >

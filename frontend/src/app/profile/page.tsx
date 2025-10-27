@@ -1,10 +1,9 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import * as jdenticon from "jdenticon"
 import { usePrivy } from "@privy-io/react-auth"
 import { useRouter } from "next/navigation"
-import { ProfileCard } from "@/components/molecules/ProfileCard"
+import { ProfileCardContainer } from "@/components/molecules/ProfileCardContainer"
 import { DataBanner } from "@/components/molecules/DataBanner"
 import { TokenHoldingsUserCard } from "@/components/molecules/TokenHoldingsUserCard"
 import { PerksCard } from "@/components/molecules/PerksCard"
@@ -16,6 +15,7 @@ import { mockTokenHoldings } from "@/mocks/mockTokenHoldings"
 import { mockVotingHistory } from "@/mocks/mockVotingHistory"
 import { mockDataBanner } from "@/mocks/mockDataBanner"
 import { mockSongData } from "@/mocks/mockSongData"
+import { mockFavoriteSongs } from "@/mocks/mockFavoriteSongs"
 import { mockArtists } from "@/mocks/mockArtists"
 import { useMusicPlayerStore } from "@/stores/musicPlayerStore"
 import { PlayerCard } from "@/components/display/PlayerCard"
@@ -69,16 +69,6 @@ export default function ProfilePage() {
     setPlaylist(playlist)
   }, [setPlaylist])
 
-  if (!ready || !user) return <LoadingSpinner text='Loading profile...' />
-
-  const getIdenticon = (value: string, size = 80) => {
-    const svg = jdenticon.toSvg(value, size)
-    return `data:image/svg+xml;base64,${btoa(svg)}`
-  }
-
-  const avatarValue =
-    user?.wallet?.address || user?.farcaster?.username || "Anonymous"
-
   // Play a song
   const handlePlaySong = (song: typeof currentSong | null) => {
     if (!song) return
@@ -121,25 +111,23 @@ export default function ProfilePage() {
     setCurrentTime(dur * progressValue)
   }
 
+  if (!ready || !user) return <LoadingSpinner text='Loading profile...' />
+
   return (
     <div className='flex-1 mt-12 flex flex-col items-center w-full px-4'>
       {/* Profile Card */}
-      <ProfileCard
-        name={user?.farcaster?.username || "Anonymous"}
-        walletAddress={user?.wallet?.address || "No wallet"}
-        avatarUrl={getIdenticon(avatarValue)}
-      />
+      <ProfileCardContainer />
 
       {/* Data Banner */}
       <section className='min-w-[1200px] mt-12'>
         <DataBanner {...mockDataBanner} />
       </section>
 
-      {/* Featured Tracks */}
+      {/* Favorite Tracks */}
       <section className='w-full max-w-[1200px] mt-20 mb-20'>
-        <SectionHeader title='Featured Tracks' />
+        <SectionHeader title='Favorite Tracks' />
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
-          {mockSongData.map((song, index) => (
+          {mockFavoriteSongs.map((song, index) => (
             <SongCard
               key={index}
               songName={song.songName}
@@ -148,7 +136,6 @@ export default function ProfilePage() {
               unlockAmount={song.unlockAmount}
               unlockToken={song.unlockToken}
               onPlay={() => handlePlaySong(song)}
-              // This prop may need to be added to SongCard component
               isPlaying={currentSong?.songName === song.songName && isPlaying}
             />
           ))}
@@ -160,10 +147,7 @@ export default function ProfilePage() {
         <SectionHeader title='Token Holdings' />
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10'>
           {mockTokenHoldings.map((holding) => (
-            <TokenHoldingsUserCard
-              key={holding.id || holding.userName}
-              {...holding}
-            />
+            <TokenHoldingsUserCard key={holding.id} {...holding} />
           ))}
         </div>
       </section>
@@ -187,21 +171,22 @@ export default function ProfilePage() {
         <SectionHeader title='Voting History' />
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-10'>
           {mockVotingHistory.map((vote) => (
-            <VotingHistory key={vote.id || vote.title} {...vote} />
+            <VotingHistory key={vote.id} {...vote} />
           ))}
         </div>
       </section>
 
-      {/* Hidden Audio Element */}
-      {currentSong && (
+      {/* Hidden Audio Element (always rendered) */}
+      {currentSong?.audioUrl && (
         <audio
           ref={audioRef}
           src={currentSong.audioUrl}
           onTimeUpdate={handleTimeUpdate}
-          onEnded={() => nextSong()}
+          onEnded={nextSong}
           onLoadedMetadata={() => {
             if (audioRef.current) setDuration(audioRef.current.duration)
           }}
+          style={{ display: "none" }} // keeps it hidden
         />
       )}
 
