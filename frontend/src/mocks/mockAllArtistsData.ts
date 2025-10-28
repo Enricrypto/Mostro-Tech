@@ -1,20 +1,6 @@
 export const mockAllArtistsData = [
   {
     id: 1,
-    slug: "luna-eclipse",
-    artistName: "Luna Eclipse",
-    tokenName: "MLUN",
-    avatarSrc: "/artists/luna-eclipse.png",
-    badgeText: "-4%",
-    description:
-      "Experimental electronic artist pushing boundaries with immersive soundscapes and innovative production.",
-    holders: "1,247",
-    marketCap: "155K",
-    totalSupply: "1B",
-    genre: "Electronic"
-  },
-  {
-    id: 2,
     slug: "atlas-monroe",
     artistName: "Atlas Monroe",
     tokenName: "MATL",
@@ -28,21 +14,7 @@ export const mockAllArtistsData = [
     genre: "Rock"
   },
   {
-    id: 3,
-    slug: "liz-cherry",
-    artistName: "Liz Cherry",
-    tokenName: "MLIZ",
-    avatarSrc: "/artists/liz-cherry.png",
-    badgeText: "+22%",
-    description:
-      "Hip hop & R&B artist blending soulful vocals with raw lyricism. Redefining authenticity through poetry, rhythm, and empowerment. Celebrated for her magnetic live sessions across the UK.",
-    holders: "985",
-    marketCap: "56K",
-    totalSupply: "1B",
-    genre: "R&B Hip Hop"
-  },
-  {
-    id: 4,
+    id: 2,
     slug: "big-planet",
     artistName: "Big Planet",
     tokenName: "MBIG",
@@ -56,7 +28,7 @@ export const mockAllArtistsData = [
     genre: "Folk"
   },
   {
-    id: 5,
+    id: 3,
     slug: "dj-adonis",
     artistName: "DJ Adonis",
     tokenName: "MDJA",
@@ -70,7 +42,7 @@ export const mockAllArtistsData = [
     genre: "R&B & Hip Hop"
   },
   {
-    id: 6,
+    id: 4,
     slug: "elliot-james",
     artistName: "Elliot James",
     tokenName: "MELL",
@@ -84,7 +56,7 @@ export const mockAllArtistsData = [
     genre: "Pop"
   },
   {
-    id: 7,
+    id: 5,
     slug: "kings-quest",
     artistName: "Kings Quest",
     tokenName: "MKIN",
@@ -98,7 +70,7 @@ export const mockAllArtistsData = [
     genre: "Alternative"
   },
   {
-    id: 8,
+    id: 6,
     slug: "lil-lion",
     artistName: "Lil Lion",
     tokenName: "MLIL",
@@ -111,7 +83,34 @@ export const mockAllArtistsData = [
     totalSupply: "1B",
     genre: "Hip Hop"
   },
-
+  {
+    id: 7,
+    slug: "liz-cherry",
+    artistName: "Liz Cherry",
+    tokenName: "MLIZ",
+    avatarSrc: "/artists/liz-cherry.png",
+    badgeText: "+22%",
+    description:
+      "Hip hop & R&B artist blending soulful vocals with raw lyricism. Redefining authenticity through poetry, rhythm, and empowerment. Celebrated for her magnetic live sessions across the UK.",
+    holders: "985",
+    marketCap: "56K",
+    totalSupply: "1B",
+    genre: "R&B Hip Hop"
+  },
+  {
+    id: 8,
+    slug: "luna-eclipse",
+    artistName: "Luna Eclipse",
+    tokenName: "MLUN",
+    avatarSrc: "/artists/luna-eclipse.png",
+    badgeText: "-4%",
+    description:
+      "Experimental electronic artist pushing boundaries with immersive soundscapes and innovative production.",
+    holders: "1,247",
+    marketCap: "155K",
+    totalSupply: "1B",
+    genre: "Electronic"
+  },
   {
     id: 9,
     slug: "nina-summers",

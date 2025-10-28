@@ -1,6 +1,16 @@
 export const mockNewLaunchData = [
   {
     id: 1,
+    slug: "big-planet",
+    avatarUrl: "/artists/big-planet.png",
+    name: "Big Planet",
+    badgeText: "Pop",
+    launchInDays: 7,
+    price: 0.001,
+    dynamicRightTopText: "1B"
+  },
+  {
+    id: 2,
     slug: "dj-adonis",
     avatarUrl: "/artists/dj-adonis.png",
     name: "DJ Adonis",
@@ -10,42 +20,32 @@ export const mockNewLaunchData = [
     dynamicRightTopText: "1B"
   },
   {
-    id: 2,
-    slug: "nina-summers",
-    avatarUrl: "/artists/nina-summers.png",
-    name: "Nina Summers",
-    badgeText: "Jazz Fusion",
-    launchInDays: 5,
-    price: 0.001,
-    dynamicRightTopText: "1B"
-  },
-  {
     id: 3,
-    slug: "thunder-bible",
-    avatarUrl: "/artists/thunder-bible.png",
-    name: "Thunder Bible",
-    badgeText: "Metal",
-    launchInDays: 7,
+    slug: "elliot-james",
+    avatarUrl: "/artists/elliot-james.png",
+    name: "Elliot james",
+    badgeText: "Hip Hop",
+    launchInDays: 3,
     price: 0.001,
     dynamicRightTopText: "1B"
   },
   {
     id: 4,
-    slug: "voltaire",
-    avatarUrl: "/artists/voltaire.png",
-    name: "Voltaire",
-    badgeText: "Electronic",
-    launchInDays: 2,
-    price: 0.001,
-    dynamicRightTopText: "1B"
-  },
-  {
-    id: 5,
     slug: "lil-lion",
     avatarUrl: "/artists/lil-lion.png",
     name: "Lil Lion",
     badgeText: "Rock",
     launchInDays: 4,
+    price: 0.001,
+    dynamicRightTopText: "1B"
+  },
+  {
+    id: 5,
+    slug: "kings-quest",
+    avatarUrl: "/artists/kings-quest.png",
+    name: "Kings Quest",
+    badgeText: "Jazz",
+    launchInDays: 5,
     price: 0.001,
     dynamicRightTopText: "1B"
   },
@@ -61,31 +61,31 @@ export const mockNewLaunchData = [
   },
   {
     id: 7,
-    slug: "elliot-james",
-    avatarUrl: "/artists/elliot-james.png",
-    name: "Elliot james",
-    badgeText: "Hip Hop",
-    launchInDays: 3,
-    price: 0.001,
-    dynamicRightTopText: "1B"
-  },
-  {
-    id: 8,
-    slug: "kings-quest",
-    avatarUrl: "/artists/kings-quest.png",
-    name: "Kings Quest",
-    badgeText: "Jazz",
+    slug: "nina-summers",
+    avatarUrl: "/artists/nina-summers.png",
+    name: "Nina Summers",
+    badgeText: "Jazz Fusion",
     launchInDays: 5,
     price: 0.001,
     dynamicRightTopText: "1B"
   },
   {
-    id: 9,
-    slug: "big-planet",
-    avatarUrl: "/artists/big-planet.png",
-    name: "Big Planet",
-    badgeText: "Pop",
+    id: 8,
+    slug: "thunder-bible",
+    avatarUrl: "/artists/thunder-bible.png",
+    name: "Thunder Bible",
+    badgeText: "Metal",
     launchInDays: 7,
+    price: 0.001,
+    dynamicRightTopText: "1B"
+  },
+  {
+    id: 9,
+    slug: "voltaire",
+    avatarUrl: "/artists/voltaire.png",
+    name: "Voltaire",
+    badgeText: "Electronic",
+    launchInDays: 2,
     price: 0.001,
     dynamicRightTopText: "1B"
   }

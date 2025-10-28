@@ -10,7 +10,7 @@ import { PerksCard } from "@/components/molecules/PerksCard"
 import { VotingHistory } from "@/components/molecules/VotingHisory"
 import { LoadingSpinner } from "@/components/atoms/LoadingSpinner"
 import { SongCard } from "@/components/display/SongCard"
-import { mockPerks } from "@/mocks/mockPerks"
+import { mockPerksCombined } from "@/mocks/mockPerks"
 import { mockTokenHoldings } from "@/mocks/mockTokenHoldings"
 import { mockVotingHistory } from "@/mocks/mockVotingHistory"
 import { mockDataBanner } from "@/mocks/mockDataBanner"
@@ -160,7 +160,7 @@ export default function ProfilePage() {
       <section className='w-full max-w-[1200px] mt-20'>
         <SectionHeader title='Unlocked Perks' />
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-10'>
-          {mockPerks.map((perk) => (
+          {mockPerksCombined.map((perk) => (
             <PerksCard
               key={perk.id || perk.title}
               {...perk}

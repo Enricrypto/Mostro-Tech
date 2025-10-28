@@ -1,6 +1,6 @@
 "use client"
 
-import { LockIcon } from "@phosphor-icons/react"
+import { LockOpenIcon } from "@phosphor-icons/react"
 import { Badge } from "@/components/utils/Badge"
 import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -22,14 +22,14 @@ const perksCardCVA = cva(
 
 export interface PerksCardProps extends VariantProps<typeof perksCardCVA> {
   title: string
-  description: string
+  name: string
   tokenAmount: string | number
   className?: string
 }
 
 export function PerksCard({
   title,
-  description,
+  name,
   tokenAmount,
   variant,
   className
@@ -38,15 +38,15 @@ export function PerksCard({
     <div className={cn(perksCardCVA({ variant }), className)}>
       {/* Top Section */}
       <div className='flex justify-between items-center text-white'>
-        <span className='flex items-center justify-start font-inter font-semibold text-[18px] leading-[28px]'>
+        <span className='flex items-center justify-start font-inter font-semibold text-[18px] leading-7'>
           {title}
         </span>
-        <LockIcon size={20} />
+        <LockOpenIcon size={20} />
       </div>
 
       {/* Middle Section */}
-      <div className='font-inter font-medium text-[12px] leading-[20px] text-[#B3B3B3]'>
-        {description}
+      <div className='font-inter font-medium text-[12px] leading-5 text-[#B3B3B3]'>
+        {name}
       </div>
 
       {/* Bottom Section - Badge */}

@@ -148,7 +148,7 @@ export const artistsData: Artist[] = [
     image: "/artists/luna-eclipse.png",
     latestSingle: {
       title: "Weekend Glow",
-      duration: "0:00",
+      duration: "1:00",
       audioUrl: "/luna-eclipse/songs/weekend-glow.mp3"
     },
     badgeText: "Featured Artist of the Month",
@@ -256,37 +256,37 @@ export const artistsData: Artist[] = [
     musicDrops: [
       {
         title: "Weekend Glow",
-        duration: "0:00",
+        duration: "1:00",
         audioUrl: "/luna-eclipse/songs/weekend-glow.mp3",
         image: "/luna-eclipse/images/weekend-glow.png"
       },
       {
         title: "Black Cat",
-        duration: "0:00",
+        duration: "1:00",
         audioUrl: "/luna-eclipse/songs/black-cat.mp3",
         image: "/luna-eclipse/images/black-cat.png"
       },
       {
         title: "Neon Bounce",
-        duration: "0:00",
+        duration: "1:00",
         audioUrl: "/luna-eclipse/songs/neon-bounce.mp3",
         image: "/luna-eclipse/images/neon-bounce.png"
       },
       {
         title: "Take Back The Night",
-        duration: "0:00",
+        duration: "3:44",
         audioUrl: "/luna-eclipse/songs/take-back-the-night.mp3",
         image: "/luna-eclipse/images/take-back-the-night.png"
       },
       {
         title: "Deeper Kind",
-        duration: "0:00",
+        duration: "2:35",
         audioUrl: "/luna-eclipse/songs/deeper-kind.mp3",
         image: "/luna-eclipse/images/deeper-kind.png"
       },
       {
         title: "Free to Believe",
-        duration: "0:00",
+        duration: "4:36",
         audioUrl: "/luna-eclipse/songs/free-to-believe.mp3",
         image: "/luna-eclipse/images/free-to-believe.png"
       }
@@ -294,21 +294,21 @@ export const artistsData: Artist[] = [
     featuredTracks: [
       {
         songName: "Midnight Dreams",
-        subtitle: "Luna Eclipse - 3:45",
+        subtitle: "Luna Eclipse - 3:15",
         variant: "song-play",
         avatarUrl: "/artists/luna-eclipse.png",
         audioUrl: "/luna-eclipse/songs/midnight-dreams.mp3"
       },
       {
         songName: "Prime Time",
-        subtitle: "Luna Eclipse - 4:12",
+        subtitle: "Luna Eclipse - 3:19",
         variant: "song-play",
         avatarUrl: "/artists/luna-eclipse.png",
         audioUrl: "/luna-eclipse/songs/prime-time.mp3"
       },
       {
         songName: "Cosmic Waves",
-        subtitle: "Luna Eclipse - 4:12",
+        subtitle: "Luna Eclipse - 1:00",
         variant: "song-unlock",
         unlockAmount: 5,
         unlockToken: "MLUNA",
@@ -317,14 +317,14 @@ export const artistsData: Artist[] = [
       },
       {
         songName: "Electric Nights",
-        subtitle: "Luna Eclipse - 3:58",
+        subtitle: "Luna Eclipse - 1:00",
         variant: "song-play",
         avatarUrl: "/artists/luna-eclipse.png",
         audioUrl: "/luna-eclipse/songs/electric-nights.mp3"
       },
       {
         songName: "Total Recall",
-        subtitle: "Luna Eclipse - 3:45",
+        subtitle: "Luna Eclipse - 3:03",
         variant: "song-unlock",
         unlockAmount: 3,
         unlockToken: "MLUNA",
@@ -341,9 +341,9 @@ export const artistsData: Artist[] = [
     name: "Atlas Monroe",
     image: "/artists/atlas-monroe.png",
     latestSingle: {
-      title: "Placeholder Song 1",
-      duration: "0:00",
-      audioUrl: "/placeholder.mp3"
+      title: "Can't Love Her Right",
+      duration: "2:27",
+      audioUrl: "/atlas-monroe/songs/can't-love-her-right.mp3"
     },
     badgeText: "Upcoming Artist",
     genreBadge: "Rock",
@@ -446,37 +446,37 @@ export const artistsData: Artist[] = [
     musicDrops: [
       {
         title: "Can't Love Her Right",
-        duration: "0:00",
+        duration: "2:27",
         audioUrl: "/atlas-monroe/songs/can't-love-her-right.mp3",
         image: "/atlas-monroe/images/can't-love-her-right.jpeg"
       },
       {
         title: "Hard To Hold",
-        duration: "0:00",
+        duration: "1:00",
         audioUrl: "/atlas-monroe/songs/hard-to-hold.mp3",
         image: "/atlas-monroe/images/hard-to-hold.jpg"
       },
       {
         title: "All About You",
-        duration: "0:00",
+        duration: "1:00",
         audioUrl: "/atlas-monroe/songs/all-about-you.mp3",
         image: "/atlas-monroe/images/all-about-you.jpeg"
       },
       {
         title: "Broken Promises",
-        duration: "0:00",
+        duration: "4:21",
         audioUrl: "/atlas-monroe/songs/broken-promises.mp3",
         image: "/atlas-monroe/images/broken-promises.jpeg"
       },
       {
         title: "Across the Universe",
-        duration: "0:00",
+        duration: "1:00",
         audioUrl: "/atlas-monroe/songs/across-the-universe.mp3",
         image: "/atlas-monroe/images/across-the-universe.jpeg"
       },
       {
         title: "Daisy After Dark",
-        duration: "0:00",
+        duration: "3:15",
         audioUrl: "/atlas-monroe/songs/daisy-after-dark.mp3",
         image: "/atlas-monroe/images/daisy-after-dark.jpeg"
       }
@@ -484,14 +484,14 @@ export const artistsData: Artist[] = [
     featuredTracks: [
       {
         songName: "Broken Promises",
-        subtitle: "Atlas Monroe - 3:30",
+        subtitle: "Atlas Monroe - 4:21",
         variant: "song-play",
         avatarUrl: "/atlas-monroe/images/broken-promises.jpeg",
         audioUrl: "/atlas-monroe/songs/broken-promises.mp3"
       },
       {
         songName: "Daisy After Dark",
-        subtitle: "Atlas Monroe - 4:00",
+        subtitle: "Atlas Monroe - 3:15",
         variant: "song-unlock",
         unlockAmount: 3,
         unlockToken: "MATL",
@@ -500,14 +500,14 @@ export const artistsData: Artist[] = [
       },
       {
         songName: "Across the Universe",
-        subtitle: "Atlas Monroe - 3:30",
+        subtitle: "Atlas Monroe - 1:00",
         variant: "song-play",
         avatarUrl: "/atlas-monroe/images/across-the-universe.jpeg",
         audioUrl: "/atlas-monroe/songs/across-the-universe.mp3"
       },
       {
         songName: "All About You",
-        subtitle: "Atlas Monroe - 4:00",
+        subtitle: "Atlas Monroe - 1:00",
         variant: "song-unlock",
         unlockAmount: 3,
         unlockToken: "MATL",
@@ -516,7 +516,7 @@ export const artistsData: Artist[] = [
       },
       {
         songName: "Hard To Hold",
-        subtitle: "Atlas Monroe - 3:30",
+        subtitle: "Atlas Monroe - 1:00",
         variant: "song-play",
         avatarUrl: "/atlas-monroe/images/hard-to-hold.jpg",
         audioUrl: "/atlas-monroe/songs/hard-to-hold.mp3"
@@ -531,9 +531,9 @@ export const artistsData: Artist[] = [
     name: "Liz Cherry",
     image: "/artists/liz-cherry.png",
     latestSingle: {
-      title: "Placeholder Song 1",
+      title: "Burning Up",
       duration: "0:00",
-      audioUrl: "/placeholder.mp3"
+      audioUrl: "/liz-cherry/songs/burning-up.mp3"
     },
     badgeText: "Rising Star",
     genreBadge: "R&B",
@@ -618,7 +618,7 @@ export const artistsData: Artist[] = [
     fanbase: mockFanbase,
     musicEvents: [
       {
-        title: "Paris Night Vibes",
+        title: "Paris Jam Session",
         date: "2025-12-20",
         time: "21:30",
         location: "Le Trianon",
@@ -636,45 +636,45 @@ export const artistsData: Artist[] = [
     musicDrops: [
       {
         title: "Burning Up",
-        duration: "0:00",
+        duration: "2:12",
         audioUrl: "/liz-cherry/songs/burning-up.mp3",
         image: "/liz-cherry/images/burning-up.jpg"
       },
       {
         title: "Better Be Best",
-        duration: "0:00",
+        duration: "2:05",
         audioUrl: "/liz-cherry/songs/better-be-best.mp3",
         image: "/liz-cherry/images/better-be-best.jpeg"
       },
       {
         title: "Bottom Dollar",
-        duration: "0:00",
+        duration: "2:05",
         audioUrl: "/liz-cherry/songs/bottom-dollar.mp3",
         image: "/liz-cherry/images/bottom-dollar.jpg"
       },
       {
         title: "Party All Night Long",
-        duration: "0:00",
+        duration: "1:00",
         audioUrl: "/liz-cherry/songs/party-all-night-long.mp3",
         image: "/liz-cherry/images/party-all-night-long.jpeg"
       },
       {
         title: "What's The Plan",
-        duration: "0:00",
+        duration: "1:00",
         audioUrl: "/liz-cherry/songs/what's-the-plan.mp3",
         image: "/liz-cherry/images/what's-the-plan.jpeg"
       },
       {
         title: "Crown On My Head",
-        duration: "0:00",
+        duration: "3:26",
         audioUrl: "/liz-cherry/songs/crown-on-my-head.mp3",
         image: "/liz-cherry/images/crown-on-my-head.jpeg"
       }
     ],
     featuredTracks: [
       {
-        songName: "Mock Track 1",
-        subtitle: "Liz Cherry - 3:30",
+        songName: "Crown On My Head",
+        subtitle: "Liz Cherry - 3:26",
         variant: "song-unlock",
         unlockAmount: 3,
         unlockToken: "MLIZ",
@@ -682,34 +682,34 @@ export const artistsData: Artist[] = [
         audioUrl: "/liz-cherry/songs/crown-on-my-head.mp3"
       },
       {
-        songName: "Mock Track 2",
-        subtitle: "Liz Cherry - 4:00",
+        songName: "Better Be Best",
+        subtitle: "Liz Cherry - 2:05",
         variant: "song-play",
         avatarUrl: "/artists/liz-cherry.png",
-        audioUrl: "/liz-cherry/songs/crown-on-my-head.mp3"
+        audioUrl: "/liz-cherry/songs/better-be-best.mp3"
       },
       {
-        songName: "Mock Track 2",
-        subtitle: "Liz Cherry - 4:00",
+        songName: "Heart First",
+        subtitle: "Liz Cherry - 3:28",
         variant: "song-play",
         avatarUrl: "/artists/liz-cherry.png",
-        audioUrl: "/liz-cherry/songs/crown-on-my-head.mp3"
+        audioUrl: "/liz-cherry/songs/heart-first.mp3"
       },
       {
-        songName: "Mock Track 2",
-        subtitle: "Liz Cherry - 4:00",
+        songName: "Out Of My Mind",
+        subtitle: "Liz Cherry - 1:00",
         variant: "song-play",
         avatarUrl: "/artists/liz-cherry.png",
-        audioUrl: "/liz-cherry/songs/crown-on-my-head.mp3"
+        audioUrl: "/liz-cherry/songs/out-of-my-mind.mp3"
       },
       {
-        songName: "Mock Track 2",
-        subtitle: "Liz Cherry - 4:00",
+        songName: "Hidden Treasure",
+        subtitle: "Liz Cherry - 2:45",
         variant: "song-unlock",
         unlockAmount: 3,
         unlockToken: "MLIZ",
         avatarUrl: "/artists/liz-cherry.png",
-        audioUrl: "/liz-cherry/songs/crown-on-my-head.mp3"
+        audioUrl: "/liz-cherry/songs/hidden-treasure.mp3"
       }
     ]
   }

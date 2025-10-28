@@ -52,7 +52,9 @@ export default function ArtistPage() {
 
   const handleClaimAccess = () => handleCloseEventModal()
 
-  const handleViewProposal = () => router.push("./vote")
+  const handleViewProposal = (_proposalId: number) => {
+    router.push("/vote") // static vote page
+  }
 
   const renderSectionContent = () => {
     switch (selectedSection) {

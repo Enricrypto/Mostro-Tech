@@ -165,7 +165,7 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
           onClick={handleCloseModal}
         >
           <div onClick={(e) => e.stopPropagation()}>
-            <ShareArtistModal />
+            <ShareArtistModal artistSlug={artist.slug} />
           </div>
         </div>
       )}

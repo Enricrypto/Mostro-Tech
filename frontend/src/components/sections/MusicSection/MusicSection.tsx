@@ -6,7 +6,13 @@ import { SongCard } from "@/components/display/SongCard"
 import { PerksCard } from "@/components/molecules/PerksCard"
 import { UpcomingEvent } from "@/components/display/UpcomingEvent"
 import { PlayerCard } from "@/components/display/PlayerCard"
-import { mockPerks } from "@/mocks/mockPerks"
+import {
+  mockPerksLuna,
+  mockPerksAtlas,
+  mockPerksLiz,
+  mockPerksCombined
+} from "@/mocks/mockPerks"
+
 import { useMusicPlayerStore, SongData } from "@/stores/musicPlayerStore"
 import { MusicNoteIcon } from "@phosphor-icons/react"
 import { formatTime } from "../../../../utils/formatTime"
@@ -129,6 +135,15 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
     setProgress(progressValue)
   }
 
+  const perksForArtist =
+    artist.name === "Luna Eclipse"
+      ? mockPerksLuna
+      : artist.name === "Atlas Monroe"
+      ? mockPerksAtlas
+      : artist.name === "Liz Cherry"
+      ? mockPerksLiz
+      : mockPerksCombined
+
   return (
     <div className='flex flex-col items-center gap-20'>
       {/* About the Artist */}
@@ -178,11 +193,11 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
           Fan Perks
         </h2>
         <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-[39px] gap-y-[29px] mt-10'>
-          {mockPerks.map((perk, i) => (
+          {perksForArtist.map((perk, i) => (
             <PerksCard
               key={i}
               title={perk.title}
-              description={perk.description}
+              name={perk.name}
               tokenAmount={perk.tokenAmount}
             />
           ))}

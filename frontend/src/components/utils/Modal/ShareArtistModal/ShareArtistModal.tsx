@@ -1,11 +1,22 @@
 "use client"
 
-import { CopySimpleIcon } from "@phosphor-icons/react"
 import { useState } from "react"
+import { CopySimpleIcon } from "@phosphor-icons/react"
+import { artistsData } from "@/data/artists"
 
-export const ShareArtistModal = () => {
+interface ShareArtistModalProps {
+  artistSlug: string
+}
+
+export const ShareArtistModal = ({ artistSlug }: ShareArtistModalProps) => {
   const [copied, setCopied] = useState(false)
-  const artistUrl = "https://musicverse.io/artist/lunaeclipse"
+
+  // Lookup artist from slug
+  const artist = artistsData.find((a) => a.slug === artistSlug)
+
+  if (!artist) return null // optional: handle missing artist
+
+  const artistUrl = `https://musicverse.io/artist/${artist.slug}`
 
   const handleCopy = () => {
     navigator.clipboard.writeText(artistUrl)
