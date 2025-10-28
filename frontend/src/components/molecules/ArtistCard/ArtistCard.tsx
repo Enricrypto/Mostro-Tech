@@ -51,16 +51,16 @@ export function ArtistCard({
       )}
     >
       {/* Top Section: Avatar + Genre Badge + Artist Info */}
-      <div className='flex gap-6'>
+      <div className='flex gap-4'>
         {/* Left column: Avatar + Genre */}
-        <div className='flex flex-col items-start gap-2'>
+        <div className='flex flex-col items-start gap-4'>
           <Avatar variant='square-sm-lg' src={avatarSrc} alt={artistName} />
           <Badge variant='genre'>{genre}</Badge>
         </div>
 
         {/* Right column: Artist Name + Token + Badge */}
         <div className='flex flex-col justify-start gap-2'>
-          <p className='text-white font-inter font-medium text-[24px] leading-7 tracking-[-0.5%]'>
+          <p className='text-white font-inter font-medium text-[24px] leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'>
             {artistName}
           </p>
 

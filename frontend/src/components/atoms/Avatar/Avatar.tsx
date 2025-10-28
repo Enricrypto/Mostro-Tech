@@ -12,6 +12,7 @@ export const avatarVariants = cva(baseAvatar, {
   variants: {
     variant: {
       "rounded-sm": "w-10 h-10 rounded-[26px]",
+      "square-sm": "w-10 h-10 rounded-[6px]",
       "rounded-initials": `w-10 h-10 rounded-[26px] ${initialsStyles}`,
       "square-lg": "w-[288px] h-[288px] rounded-[26px]",
       "square-lg-initials": `w-[288px] h-[288px] rounded-[26px] pt-3 pb-3 ${initialsStyles}`,
@@ -29,6 +30,7 @@ export const avatarVariants = cva(baseAvatar, {
 
 export type AvatarVariant =
   | "rounded-sm"
+  | "square-sm"
   | "rounded-initials"
   | "square-lg"
   | "square-lg-initials"

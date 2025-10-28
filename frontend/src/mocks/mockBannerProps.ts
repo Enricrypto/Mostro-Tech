@@ -15,9 +15,9 @@ export const bannerPropsData: ArtistProfileBannerProps[] &
     verifiedBadge: "Electronic",
     variant: "default",
     latestSong: {
-      title: "Black Cat",
+      title: "Weekend Glow",
       artist: "Luna Eclipse",
-      audioUrl: "/luna-eclipse/songs/black-cat.mp3"
+      audioUrl: "/luna-eclipse/songs/weekend-glow.mp3"
     }
   },
   {
@@ -33,9 +33,9 @@ export const bannerPropsData: ArtistProfileBannerProps[] &
     verifiedBadge: "Rock",
     variant: "purple",
     latestSong: {
-      title: "The Universe",
+      title: "Can't Love Her Right",
       artist: "Atlas Monroe",
-      audioUrl: "/atlas-monroe/songs/across-the-universe.mp3"
+      audioUrl: "/atlas-monroe/songs/can't-love-her-right.mp3"
     }
   },
   {
@@ -51,9 +51,9 @@ export const bannerPropsData: ArtistProfileBannerProps[] &
     verifiedBadge: "R&B",
     variant: "red",
     latestSong: {
-      title: "Better Be Best",
+      title: "Burning Up",
       artist: "Liz Cherry",
-      audioUrl: "/liz-cherry/songs/better-be-best.mp3"
+      audioUrl: "/liz-cherry/songs/burning-up.mp3"
     }
   }
 ]

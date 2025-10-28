@@ -15,7 +15,7 @@ export function BadgesRow() {
           <Badge
             key={badge.id}
             variant={isSelected ? "selected" : "unselected"}
-            className='cursor-pointer flex-shrink-0'
+            className='cursor-pointer shrink-0'
             onClick={() => setSelectedBadge(badge.id)}
           >
             {badge.label}

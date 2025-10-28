@@ -49,23 +49,16 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
         </span>
       </div>
 
-      {/* Section 1: Avatar + Name + Badge */}
-      <div className='flex items-center gap-3 pt-6'>
-        <Avatar
-          src={avatarUrl}
-          variant='rounded-sm'
-          className='w-10 h-10 rounded-[26px]'
-        />
-        <div className='flex flex-col gap-2 h-[58px]'>
-          <span className='font-inter font-semibold text-[20px] leading-7 text-white'>
+      {/* Section 1: Avatar + Name + Genre Badge */}
+      <div className='flex gap-3 pt-8'>
+        <Avatar src={avatarUrl} variant='square-sm-lg' />
+        <div className='flex flex-col items-start gap-2'>
+          <span className='font-inter font-semibold text-[20px] text-white'>
             {name}
           </span>
-          <Badge
-            variant='genre'
-            className='inline-flex px-2 py-0.5 gap-2 rounded-[10px] border border-[#71D6FB] bg-[#71D6FB4D] text-[#71D6FB] text-[12px] font-medium'
-          >
-            {badgeText}
-          </Badge>
+
+          {/* Genre Badge (same as ArtistCard) */}
+          <Badge variant='genre'>{badgeText}</Badge>
         </div>
       </div>
 

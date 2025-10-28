@@ -46,7 +46,7 @@ export const mockNewLaunchData = [
     name: "Lil Lion",
     badgeText: "Rock",
     launchInDays: 4,
-    price: 0.003,
+    price: 0.001,
     dynamicRightTopText: "1B"
   },
   {
@@ -56,7 +56,7 @@ export const mockNewLaunchData = [
     name: "Pucci Mane",
     badgeText: "R&B & Soul",
     launchInDays: 6,
-    price: 0.0015,
+    price: 0.001,
     dynamicRightTopText: "1B"
   },
   {
@@ -66,7 +66,7 @@ export const mockNewLaunchData = [
     name: "Elliot james",
     badgeText: "Hip Hop",
     launchInDays: 3,
-    price: 0.0025,
+    price: 0.001,
     dynamicRightTopText: "1B"
   },
   {
@@ -76,7 +76,7 @@ export const mockNewLaunchData = [
     name: "Kings Quest",
     badgeText: "Jazz",
     launchInDays: 5,
-    price: 0.0018,
+    price: 0.001,
     dynamicRightTopText: "1B"
   },
   {
@@ -86,7 +86,7 @@ export const mockNewLaunchData = [
     name: "Big Planet",
     badgeText: "Pop",
     launchInDays: 7,
-    price: 0.0032,
+    price: 0.001,
     dynamicRightTopText: "1B"
   }
 ]

@@ -4,32 +4,32 @@ import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center gap-2 font-body text-sm leading-6 transition-all duration-200 ease-out",
+  "inline-flex items-center justify-center font-body text-sm leading-6 transition-all duration-200 ease-out",
   {
     variants: {
       variant: {
-        // SMALL PILLS
+        // SMALL PILLS - auto-size
         closed:
-          "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default",
+          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[11px] cursor-default",
         increase:
-          "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] cursor-default",
+          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[11px] cursor-default",
         decrease:
-          "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default",
+          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[11px] cursor-default",
         neutral:
-          "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white cursor-default",
-        icon: "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] cursor-default",
+          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white text-[11px] cursor-default",
+        icon: "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[11px] cursor-default",
         iconClosed:
-          "min-w-[84px] h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default",
+          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[11px] cursor-default",
         genre:
-          "min-w-[84px] h-[22px] inline-flex items-center justify-center h-[22px] px-2 py-0.5 gap-2 rounded-[10px] border bg-[var(--color-skyblue-opacity)] border-[var(--color-skyblue)] text-[var(--color-skyblue)] cursor-pointer hover:bg-[var(--color-skyblue)] hover:text-[var(--color-dark-bg)] active:scale-95",
+          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-skyblue-opacity)] border-[var(--color-skyblue)] text-[var(--color-skyblue)] text-[11px] cursor-pointer hover:bg-[var(--color-skyblue)] hover:text-[var(--color-dark-bg)] active:scale-95",
 
-        // LARGE PILLS
+        // LARGE PILLS - keep height but remove fixed min-width for flexibility
         profileLabel:
-          "min-w-[119px] h-[32px] min-w-[119px] min-h-[32px] px-2 py-[2px] gap-2 rounded-[28px] bg-gradient-to-r from-[var(--color-skyblue)] to-[var(--color-highlight)] border-0 text-[var(--color-black)] flex-none",
+          "min-w-[80px] inline-flex items-center justify-center px-4 py-[2px] gap-2 rounded-[28px] bg-gradient-to-r from-[var(--color-skyblue)] to-[var(--color-highlight)] text-[var(--color-black)]",
         selected:
-          "min-w-[52px] h-[32px] px-4 py-2 rounded-[26px] bg-[var(--color-purple)] text-white",
+          "min-w-[80px] inline-flex items-center justify-center px-4 py-2 rounded-[26px] bg-[var(--color-purple)] text-white",
         unselected:
-          "min-w-[52px] h-[32px] py-2 px-4 rounded-[26px] bg-[var(--color-dark-blue)] text-white"
+          "min-w-[80px] inline-flex items-center justify-center px-4 py-2 rounded-[26px] bg-[var(--color-dark-blue)] text-white"
       }
     },
     defaultVariants: {

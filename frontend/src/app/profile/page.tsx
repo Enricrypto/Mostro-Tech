@@ -70,9 +70,13 @@ export default function ProfilePage() {
   }, [setPlaylist])
 
   // Play a song
-  const handlePlaySong = (song: typeof currentSong | null) => {
+  const handlePlaySong = (
+    song: typeof currentSong | null,
+    playlist: typeof mockFavoriteSongs
+  ) => {
     if (!song) return
     setCurrentSong(song)
+    setPlaylist(playlist) // sets the featured playlist
     if (song.audioUrl && audioRef.current) {
       audioRef.current.src = song.audioUrl
       audioRef.current.play()
@@ -83,16 +87,16 @@ export default function ProfilePage() {
   useEffect(() => {
     if (!audioRef.current) return
 
-    if (currentSong?.audioUrl) {
-      audioRef.current.src = currentSong.audioUrl
-      audioRef.current.play().catch(() => {
-        // Handle autoplay restrictions
-      })
-    } else if (!currentSong) {
+    if (!currentSong?.audioUrl) return
+
+    audioRef.current.src = currentSong.audioUrl
+
+    if (isPlaying) {
+      audioRef.current.play().catch(() => {})
+    } else {
       audioRef.current.pause()
-      audioRef.current.src = ""
     }
-  }, [currentSong])
+  }, [currentSong, isPlaying])
 
   // Update progress and currentTime
   const handleTimeUpdate = () => {
@@ -135,7 +139,7 @@ export default function ProfilePage() {
               variant={song.variant as "song-play" | "song-unlock"}
               unlockAmount={song.unlockAmount}
               unlockToken={song.unlockToken}
-              onPlay={() => handlePlaySong(song)}
+              onPlay={() => handlePlaySong(song, mockFavoriteSongs)}
               isPlaying={currentSong?.songName === song.songName && isPlaying}
             />
           ))}

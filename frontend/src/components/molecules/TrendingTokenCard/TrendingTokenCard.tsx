@@ -24,11 +24,11 @@ export const TrendingTokenCard: React.FC<TrendingTokenCardProps> = ({
   const badgeVariant = numberValue >= 0 ? "increase" : "decrease"
 
   return (
-    <div className='w-[384px] h-[148px] rounded-[10px] border border-[#2D3953] p-6 bg-[#121B2B] shadow-[0_4px_6px_0_#00000017] flex flex-col justify-between'>
+    <div className='w-[384px] h-[178px] rounded-[10px] border border-[#2D3953] p-6 bg-[#121B2B] shadow-[0_4px_6px_0_#00000017] flex flex-col justify-between'>
       {/* Top Section */}
-      <div className='flex items-center gap-3'>
-        <Avatar src={avatarSrc} variant='rounded-sm' />
-        <div className='flex flex-col justify-center gap-0.5 min-w-0'>
+      <div className='flex gap-3'>
+        <Avatar src={avatarSrc} variant='square-community' />
+        <div className='flex flex-col gap-0.5'>
           <span
             className='text-white font-semibold text-[20px] leading-7 whitespace-nowrap overflow-hidden text-ellipsis'
             title={name}

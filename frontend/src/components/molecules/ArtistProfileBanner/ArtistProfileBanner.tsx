@@ -50,7 +50,7 @@ export function ArtistProfileBanner({
             {/* Avatar */}
             <Avatar src={avatarSrc} alt={artistName} variant='square-lg' />
 
-            {/* Hover overlay with gradient + play button (bottom-left) */}
+            {/* Hover overlay with gradient + play button */}
             <div
               className='absolute inset-0 rounded-[26px] opacity-0 group-hover:opacity-100 
              transition-opacity duration-300 flex items-end justify-start p-[29px]'

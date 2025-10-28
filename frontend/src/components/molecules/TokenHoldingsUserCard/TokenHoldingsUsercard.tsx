@@ -30,7 +30,7 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
 
   return (
     <div
-      className='flex flex-col justify-between border-2 rounded-[10px] p-6 gap-3.5 w-[384px] h-[172px] transition-shadow duration-200 hover:shadow-[0_0_16.9px_5px_#71D6FB80]'
+      className='flex flex-col justify-between border-2 rounded-[10px] p-6 gap-3.5 w-[384px] h-48 transition-shadow duration-200 hover:shadow-[0_0_16.9px_5px_#71D6FB80]'
       style={{
         background: "#121B2B",
         boxShadow: "0px 4px 6px 0px #00000017",
@@ -38,12 +38,12 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
       }}
     >
       {/* Top Section */}
-      <div className='flex justify-between items-center'>
+      <div className='flex justify-between items-start'>
         {/* Left Side */}
-        <div className='flex items-center gap-3'>
+        <div className='flex gap-3'>
           <Avatar
             src={avatarSrc || "/default-avatar.png"}
-            variant='rounded-sm'
+            variant='square-community'
           />
           <div className='flex flex-col'>
             <span className='text-[20px] font-semibold leading-7 text-white'>
@@ -53,12 +53,9 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
               {tokenCount} tokens
             </span>
           </div>
+          {/* Right Side */}
         </div>
-        {/* Right Side */}
-        <Badge
-          variant={badgeVariant}
-          className='rounded-[10px] text-[12px] font-medium flex items-center justify-center px-2 py-0.5'
-        >
+        <Badge variant={badgeVariant} className='text-[12px] font-medium'>
           {performance}
         </Badge>
       </div>
