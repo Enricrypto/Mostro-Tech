@@ -45,16 +45,21 @@ export function ArtistCard({
   return (
     <div
       className={cn(
-        "w-[384px] h-[395px] rounded-[10px] border-2 border-[#2D3953] bg-[#121B2B]",
-        "shadow-[0px_4px_6px_0px_#00000017] p-6 flex flex-col gap-3.5",
+        "w-[384px] rounded-[10px] border-2 border-[#2D3953] bg-[#121B2B]",
+        "shadow-[0px_4px_6px_0px_#00000017] p-6 flex flex-col gap-4",
         "transition-all duration-300 ease-out hover:scale-[1.02] hover:border-[#dcfd63]"
       )}
     >
-      {/* Top Section: Avatar + Artist Info */}
-      <div className='flex w-[336px] h-[151px] gap-6'>
-        <Avatar variant='square-sm-lg' src={avatarSrc} alt={artistName} />
+      {/* Top Section: Avatar + Genre Badge + Artist Info */}
+      <div className='flex gap-6'>
+        {/* Left column: Avatar + Genre */}
+        <div className='flex flex-col items-start gap-2'>
+          <Avatar variant='square-sm-lg' src={avatarSrc} alt={artistName} />
+          <Badge variant='genre'>{genre}</Badge>
+        </div>
 
-        <div className='flex flex-col justify-start gap-3'>
+        {/* Right column: Artist Name + Token + Badge */}
+        <div className='flex flex-col justify-start gap-2'>
           <p className='text-white font-inter font-medium text-[24px] leading-7 tracking-[-0.5%]'>
             {artistName}
           </p>
@@ -73,24 +78,21 @@ export function ArtistCard({
         </div>
       </div>
 
-      {/* Description + Genre */}
-      <div className='flex flex-col justify-start w-[336px] gap-2 h-[70px]'>
-        <Badge variant='genre'>{genre}</Badge>
-        <Tooltip
-          content={description || "No description provided."}
-          variant='blue'
-          side='top'
-          align='center'
-        >
-          <p className='text-[#B3B3B3] font-medium text-[12px] leading-5 w-full line-clamp-2'>
-            {description || "No description provided."}
-          </p>
-        </Tooltip>
-      </div>
+      {/* Description */}
+      <Tooltip
+        content={description || "No description provided."}
+        variant='blue'
+        side='top'
+        align='center'
+      >
+        <p className='text-[#B3B3B3] font-medium text-[12px] leading-5 w-full line-clamp-2 mt-2'>
+          {description || "No description provided."}
+        </p>
+      </Tooltip>
 
-      {/* Stats */}
-      <div className='flex w-[336px] h-11 gap-9'>
-        <div className='flex flex-col items-start gap-2'>
+      {/* Stats Section */}
+      <div className='flex gap-9 mt-4'>
+        <div className='flex flex-col items-start gap-1'>
           <p className='text-white font-poppins text-[18px] leading-5'>
             {holders}
           </p>
@@ -99,7 +101,7 @@ export function ArtistCard({
           </p>
         </div>
 
-        <div className='flex flex-col items-start gap-2'>
+        <div className='flex flex-col items-start gap-1'>
           <p className='text-white font-poppins text-[18px] leading-5'>
             ${marketCap}
           </p>
@@ -108,7 +110,7 @@ export function ArtistCard({
           </p>
         </div>
 
-        <div className='flex flex-col items-start gap-2'>
+        <div className='flex flex-col items-start gap-1'>
           <p className='text-white font-poppins text-[18px] leading-5'>
             {totalSupply}
           </p>
@@ -122,7 +124,7 @@ export function ArtistCard({
       <Button
         variant='follow-share'
         icon={<ArrowUpRightIcon weight='fill' size={16} />}
-        className='w-[336px] h-10 px-4 py-2 gap-2.5'
+        className='w-full h-10 mt-4 px-4 py-2 gap-2.5'
         onClick={() => router.push(`/artists/${slug}`)}
       >
         View Artist
