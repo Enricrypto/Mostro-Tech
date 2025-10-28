@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { BadgesRow } from "@/components/dashboard/BadgesRow"
 import { ArtistProfileBanner } from "@/components/molecules/ArtistProfileBanner"
@@ -19,6 +19,7 @@ import { mockLeaderboardData } from "@/mocks/mockLeaderboardData"
 import { mockNewLaunchData } from "@/mocks/mockNewLaunchData"
 import { trendingTokens } from "@/mocks/mockTrendingTokens"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
+import { formatTime } from "../../utils/formatTime"
 
 // ===== Reusable Section Header =====
 const SectionHeader = ({ title }: { title: string }) => (
@@ -39,30 +40,43 @@ const chunkArray = <T,>(arr: T[], size: number): T[][] => {
 export default function DashboardPage() {
   const router = useRouter()
   const [currentIndex, setCurrentIndex] = useState(0)
+
   const [currentSong, setCurrentSong] = useState<{
     title: string
     artist: string
     avatarSrc: string
+    audioUrl: string
   } | null>(null)
-  const [isPlaying, setIsPlaying] = useState(false)
 
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [duration, setDuration] = useState(0)
+  const [progress, setProgress] = useState(0)
+
+  const audioRef = useRef<HTMLAudioElement | null>(null)
   const currentBanner = bannerPropsData[currentIndex]
 
+  // ===== Play a song =====
   const handlePlay = (song: {
     title: string
     artist: string
     avatarSrc: string
+    audioUrl: string
   }) => {
     setCurrentSong(song)
     setIsPlaying(true)
+    setProgress(0)
+    setCurrentTime(0)
   }
 
   const handleClosePlayer = () => {
     setCurrentSong(null)
     setIsPlaying(false)
+    setProgress(0)
+    setCurrentTime(0)
   }
 
-  // Auto-rotate banner
+  // ===== Auto-rotate banner =====
   useEffect(() => {
     if (isPlaying) return
     const interval = setInterval(() => {
@@ -71,16 +85,67 @@ export default function DashboardPage() {
     return () => clearInterval(interval)
   }, [isPlaying])
 
+  // ===== Sync audio element =====
+  useEffect(() => {
+    if (!audioRef.current) audioRef.current = new Audio()
+    const audio = audioRef.current
+
+    if (currentSong) {
+      audio.src = currentSong.audioUrl
+      audio.play().catch(() => {})
+    } else {
+      audio.pause()
+      audio.src = ""
+      setProgress(0)
+      setCurrentTime(0)
+      setDuration(0)
+    }
+
+    const handleTimeUpdate = () => {
+      setCurrentTime(audio.currentTime)
+      setDuration(audio.duration || 0)
+      setProgress(audio.duration ? audio.currentTime / audio.duration : 0)
+    }
+
+    const handleEnded = () => {
+      setIsPlaying(false)
+    }
+
+    audio.addEventListener("timeupdate", handleTimeUpdate)
+    audio.addEventListener("ended", handleEnded)
+
+    return () => {
+      audio.removeEventListener("timeupdate", handleTimeUpdate)
+      audio.removeEventListener("ended", handleEnded)
+    }
+  }, [currentSong])
+
+  // ===== Sync play/pause =====
+  useEffect(() => {
+    if (!audioRef.current) return
+    if (isPlaying) audioRef.current.play().catch(() => {})
+    else audioRef.current.pause()
+  }, [isPlaying])
+
+  // ===== Seek handler =====
+  const handleSeek = (value: number) => {
+    if (!audioRef.current) return
+    const seekTime = (audioRef.current.duration || 0) * value
+    audioRef.current.currentTime = seekTime
+    setCurrentTime(seekTime)
+    setProgress(value)
+  }
+
   return (
     <div className='bg-[#0A111F] min-h-screen w-full flex flex-col'>
-      {/* ===== BADGES SECTION (unchanged styles) ===== */}
-      <section className='sticky top-[149px] z-10 w-screen left-[00%] right-[50%] -ml-[50vw] -mr-[50vw] border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm py-5 px-4'>
+      {/* ===== BADGES SECTION ===== */}
+      <section className='sticky top-[149px] z-10 w-screen left-[0%] right-[50%] -ml-[50vw] -mr-[50vw] border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm py-5 px-4'>
         <div className='max-w-[1200px] mx-auto'>
           <BadgesRow />
         </div>
       </section>
 
-      {/* ===== ARTIST PROFILE BANNER (unchanged styles) ===== */}
+      {/* ===== ARTIST PROFILE BANNER ===== */}
       <section className='relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] mt-20'>
         <ArtistProfileBanner
           {...currentBanner}
@@ -88,7 +153,8 @@ export default function DashboardPage() {
           onPlay={() =>
             handlePlay({
               ...currentBanner.latestSong,
-              avatarSrc: currentBanner.avatarSrc
+              avatarSrc: currentBanner.avatarSrc,
+              audioUrl: currentBanner.latestSong.audioUrl
             })
           }
         />
@@ -117,12 +183,10 @@ export default function DashboardPage() {
       {/* ===== TOP ARTISTS ===== */}
       <section className='flex flex-col gap-6 mt-20 px-4'>
         <div className='w-full max-w-[1200px] mx-auto flex justify-between items-center'>
-          {/* Title */}
           <div className='flex-1'>
             <SectionHeader title='Top Artists' />
           </div>
 
-          {/* Button aligned right */}
           <div>
             <Button
               variant='follow-share'
@@ -135,10 +199,13 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Artists Grid */}
         <div className='max-w-[1200px] mx-auto flex flex-wrap gap-6 mt-10'>
           {mockArtistData.map((artist) => (
-            <ArtistCard key={artist.id || artist.artistName} {...artist} />
+            <ArtistCard
+              key={artist.id || artist.artistName}
+              {...artist}
+              slug={artist.slug}
+            />
           ))}
         </div>
       </section>
@@ -162,7 +229,6 @@ export default function DashboardPage() {
       {/* ===== NEW LAUNCHES ===== */}
       <section className='flex flex-col gap-6 mt-20 px-4'>
         <div className='w-full max-w-[1200px] mx-auto flex justify-between items-center'>
-          {/* Title */}
           <div className='flex-1'>
             <SectionHeader title='New Launches' />
           </div>
@@ -212,18 +278,20 @@ export default function DashboardPage() {
           <PlayerCard
             songName={currentSong.title}
             songDetails={currentSong.artist}
-            currentTime='0:00'
-            totalTime='3:45'
-            progress={0}
+            currentTime={formatTime(currentTime)}
+            totalTime={formatTime(duration)}
+            progress={progress}
             avatarUrl={currentSong.avatarSrc ?? currentBanner.avatarSrc}
             isPlaying={isPlaying}
             onPlayPause={() => setIsPlaying((prev) => !prev)}
             onNext={() => {}}
             onPrev={() => {}}
             onClose={handleClosePlayer}
+            onSeek={handleSeek}
           />
         </div>
       )}
+
       {/* ===== FOOTER ===== */}
       <div className='relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw]'>
         <Footer />

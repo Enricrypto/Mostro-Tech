@@ -1,6 +1,7 @@
 export const mockArtistData = [
   {
     id: 1,
+    slug: "luna-eclipse",
     artistName: "Luna Eclipse",
     tokenName: "MLUN",
     avatarSrc: "/artists/luna-eclipse.png",
@@ -14,6 +15,7 @@ export const mockArtistData = [
   },
   {
     id: 2,
+    slug: "atlas-monroe",
     artistName: "Atlas Monroe",
     tokenName: "MATL",
     avatarSrc: "/artists/atlas-monroe.png",
@@ -27,6 +29,7 @@ export const mockArtistData = [
   },
   {
     id: 3,
+    slug: "liz-cherry",
     artistName: "Liz Cherry",
     tokenName: "MLIZ",
     avatarSrc: "/artists/liz-cherry.png",

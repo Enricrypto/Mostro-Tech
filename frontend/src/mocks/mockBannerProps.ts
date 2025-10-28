@@ -1,8 +1,9 @@
 import type { ArtistProfileBannerProps } from "../components/molecules/ArtistProfileBanner"
 
 export const bannerPropsData: ArtistProfileBannerProps[] &
-  { latestSong: { title: string; artist: string } }[] = [
+  { latestSong: { title: string; artist: string; audioUrl: string } }[] = [
   {
+    slug: "luna-eclipse",
     artistName: "Luna Eclipse",
     description:
       "Experimental electronic artist and producer pushing boundaries with immersive soundscapes and innovative production techniques. Known for sold-out shows across Europe.",
@@ -13,12 +14,17 @@ export const bannerPropsData: ArtistProfileBannerProps[] &
     genreBadge: "Immersive",
     verifiedBadge: "Electronic",
     variant: "default",
-    latestSong: { title: "Song 1", artist: "Luna Eclipse" } // <-- add this
+    latestSong: {
+      title: "Black Cat",
+      artist: "Luna Eclipse",
+      audioUrl: "/luna-eclipse/songs/black-cat.mp3"
+    }
   },
   {
+    slug: "atlas-monroe",
     artistName: "Atlas Monroe",
     description:
-      "Alt-rock powerhouse merging emotional intensity with anthemic soundscapes. known for electrifying performances and soaring guitar riffs across the US indie circuit.",
+      "Alt-rock powerhouse merging emotional intensity with anthemic soundscapes. Known for electrifying performances and soaring guitar riffs across the US indie circuit.",
     tokenHolders: "8.9K",
     marketCap: "$950K",
     followers: "5.4K",
@@ -26,9 +32,14 @@ export const bannerPropsData: ArtistProfileBannerProps[] &
     genreBadge: "Anthemic",
     verifiedBadge: "Rock",
     variant: "purple",
-    latestSong: { title: "Song 2", artist: "Atlas Monroe" }
+    latestSong: {
+      title: "The Universe",
+      artist: "Atlas Monroe",
+      audioUrl: "/atlas-monroe/songs/across-the-universe.mp3"
+    }
   },
   {
+    slug: "liz-cherry",
     artistName: "Liz Cherry",
     description:
       "Hip hop & R&B artist blending soulful vocals with raw lyricism. Redefining authenticity through poetry, rhythm, and empowerment. Celebrated for her magnetic live sessions across the UK.",
@@ -39,6 +50,10 @@ export const bannerPropsData: ArtistProfileBannerProps[] &
     genreBadge: "Soulful",
     verifiedBadge: "R&B",
     variant: "red",
-    latestSong: { title: "Song 3", artist: "Liz Cherry" }
+    latestSong: {
+      title: "Better Be Best",
+      artist: "Liz Cherry",
+      audioUrl: "/liz-cherry/songs/better-be-best.mp3"
+    }
   }
 ]

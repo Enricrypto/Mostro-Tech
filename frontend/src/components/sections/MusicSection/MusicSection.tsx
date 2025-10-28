@@ -7,7 +7,7 @@ import { PerksCard } from "@/components/molecules/PerksCard"
 import { UpcomingEvent } from "@/components/display/UpcomingEvent"
 import { PlayerCard } from "@/components/display/PlayerCard"
 import { mockPerks } from "@/mocks/mockPerks"
-import { useMusicPlayerStore } from "@/stores/musicPlayerStore"
+import { useMusicPlayerStore, SongData } from "@/stores/musicPlayerStore"
 import { MusicNoteIcon } from "@phosphor-icons/react"
 import { formatTime } from "../../../../utils/formatTime"
 import type { Artist } from "@/data/artists"
@@ -37,59 +37,96 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
 
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
+  // Play a song and set the corresponding playlist
+  const handlePlaySong = (
+    song: SongData,
+    section: "musicDrops" | "featuredTracks"
+  ) => {
+    if (!song) return
+
+    let playlist: SongData[] = []
+
+    if (section === "musicDrops" && artist.musicDrops) {
+      playlist = artist.musicDrops.map((drop) => ({
+        songName: drop.title,
+        subtitle: drop.duration,
+        avatarUrl: drop.image,
+        audioUrl: drop.audioUrl,
+        variant: "song-play"
+      }))
+    } else if (section === "featuredTracks" && artist.featuredTracks) {
+      playlist = artist.featuredTracks.map((track) => ({
+        songName: track.songName,
+        subtitle: track.subtitle,
+        avatarUrl: track.avatarUrl,
+        audioUrl: track.audioUrl,
+        variant: track.variant
+      }))
+    }
+
+    setPlaylist(playlist)
+    setCurrentSong(song)
+    setProgress(0)
+    setCurrentTime(0)
+  }
+
   // Sync audio element with current song
   useEffect(() => {
-    if (!audioRef.current) return
+    if (!currentSong || !audioRef.current) return
 
-    if (currentSong?.audioUrl) {
-      audioRef.current.src = currentSong.audioUrl
-      audioRef.current.play().catch(() => {})
-    } else {
-      audioRef.current.pause()
-      audioRef.current.src = ""
+    const audio = audioRef.current
+    audio.src = currentSong.audioUrl || ""
+    audio.currentTime = 0
+
+    const handleCanPlay = () => {
+      if (isPlaying) audio.play().catch(() => {})
     }
-  }, [currentSong])
+
+    const handleEnded = () => nextSong()
+
+    const handleLoadedMetadata = () => setDuration(audio.duration)
+
+    const handleTimeUpdate = () => {
+      setCurrentTime(audio.currentTime)
+      setProgress(audio.duration ? audio.currentTime / audio.duration : 0)
+    }
+
+    audio.addEventListener("canplay", handleCanPlay)
+    audio.addEventListener("ended", handleEnded)
+    audio.addEventListener("loadedmetadata", handleLoadedMetadata)
+    audio.addEventListener("timeupdate", handleTimeUpdate)
+
+    return () => {
+      audio.pause()
+      audio.removeEventListener("canplay", handleCanPlay)
+      audio.removeEventListener("ended", handleEnded)
+      audio.removeEventListener("loadedmetadata", handleLoadedMetadata)
+      audio.removeEventListener("timeupdate", handleTimeUpdate)
+    }
+  }, [
+    currentSong,
+    isPlaying,
+    nextSong,
+    setCurrentTime,
+    setProgress,
+    setDuration
+  ])
 
   // Sync play/pause
   useEffect(() => {
     if (!audioRef.current) return
-
-    if (isPlaying) {
-      audioRef.current.play().catch(() => {})
-    } else {
-      audioRef.current.pause()
-    }
+    if (isPlaying) audioRef.current.play().catch(() => {})
+    else audioRef.current.pause()
   }, [isPlaying])
 
-  // Initialize playlist with featuredTracks first
-  useEffect(() => {
-    if (artist.featuredTracks) setPlaylist(artist.featuredTracks)
-  }, [artist.featuredTracks, setPlaylist])
-
-  const handleTimeUpdate = () => {
-    if (!audioRef.current) return
-    const current = audioRef.current.currentTime
-    const dur = audioRef.current.duration || 0
-    setCurrentTime(current)
-    setProgress(dur ? current / dur : 0)
-  }
-
+  // Seek
   const handleSeek = (progressValue: number) => {
     if (!audioRef.current) return
-    const dur = audioRef.current.duration || 0
-    audioRef.current.currentTime = dur * progressValue
+    const audio = audioRef.current
+    const newTime = (audio.duration || 0) * progressValue
+    audio.currentTime = newTime
+    setCurrentTime(newTime)
     setProgress(progressValue)
-    setCurrentTime(dur * progressValue)
-  }
-
-  const handlePlaySong = (song: typeof currentSong) => {
-    if (!song) return
-    setCurrentSong(song)
-    setProgress(0)
-    if (song.audioUrl && audioRef.current) {
-      audioRef.current.src = song.audioUrl
-      audioRef.current.play()
-    }
   }
 
   return (
@@ -113,23 +150,25 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
           </h2>
         </div>
         <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-[39px] gap-y-[21px] mt-10'>
-          {artist.musicDrops?.map((drop, index) => (
-            <FeatureSongCard
-              key={index}
-              musicDrop={drop}
-              currentSongName={currentSong?.songName}
-              isPlaying={isPlaying}
-              onPlay={() =>
-                handlePlaySong({
-                  songName: drop.title,
-                  subtitle: drop.duration,
-                  avatarUrl: drop.image,
-                  audioUrl: drop.audioUrl,
-                  variant: "song-play"
-                })
-              }
-            />
-          ))}
+          {artist.musicDrops?.map((drop, index) => {
+            const song: SongData = {
+              songName: drop.title,
+              subtitle: drop.duration,
+              avatarUrl: drop.image,
+              audioUrl: drop.audioUrl,
+              variant: "song-play"
+            }
+
+            return (
+              <FeatureSongCard
+                key={index}
+                musicDrop={drop}
+                currentSongName={currentSong?.songName}
+                isPlaying={isPlaying}
+                onPlay={() => handlePlaySong(song, "musicDrops")}
+              />
+            )
+          })}
         </div>
       </section>
 
@@ -166,7 +205,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
                   variant={track.variant}
                   unlockAmount={track.unlockAmount}
                   unlockToken={track.unlockToken}
-                  onPlay={() => handlePlaySong(track)}
+                  onPlay={() => handlePlaySong(track, "featuredTracks")}
                 />
               ))}
             </div>
@@ -193,17 +232,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
       </section>
 
       {/* Hidden Audio Element */}
-      {currentSong && (
-        <audio
-          ref={audioRef}
-          src={currentSong.audioUrl}
-          onTimeUpdate={handleTimeUpdate}
-          onEnded={() => nextSong()}
-          onLoadedMetadata={() => {
-            if (audioRef.current) setDuration(audioRef.current.duration)
-          }}
-        />
-      )}
+      <audio ref={audioRef} className='hidden' />
 
       {/* PlayerCard */}
       {currentSong && (

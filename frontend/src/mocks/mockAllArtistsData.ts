@@ -1,6 +1,7 @@
 export const mockAllArtistsData = [
   {
     id: 1,
+    slug: "luna-eclipse",
     artistName: "Luna Eclipse",
     tokenName: "MLUN",
     avatarSrc: "/artists/luna-eclipse.png",
@@ -14,6 +15,7 @@ export const mockAllArtistsData = [
   },
   {
     id: 2,
+    slug: "atlas-monroe",
     artistName: "Atlas Monroe",
     tokenName: "MATL",
     avatarSrc: "/artists/atlas-monroe.png",
@@ -27,6 +29,7 @@ export const mockAllArtistsData = [
   },
   {
     id: 3,
+    slug: "liz-cherry",
     artistName: "Liz Cherry",
     tokenName: "MLIZ",
     avatarSrc: "/artists/liz-cherry.png",
@@ -40,6 +43,7 @@ export const mockAllArtistsData = [
   },
   {
     id: 4,
+    slug: "big-planet",
     artistName: "Big Planet",
     tokenName: "MBIG",
     avatarSrc: "/artists/big-planet.png",
@@ -53,6 +57,7 @@ export const mockAllArtistsData = [
   },
   {
     id: 5,
+    slug: "dj-adonis",
     artistName: "DJ Adonis",
     tokenName: "MDJA",
     avatarSrc: "/artists/dj-adonis.png",
@@ -66,6 +71,7 @@ export const mockAllArtistsData = [
   },
   {
     id: 6,
+    slug: "elliot-james",
     artistName: "Elliot James",
     tokenName: "MELL",
     avatarSrc: "/artists/elliot-james.png",
@@ -79,6 +85,7 @@ export const mockAllArtistsData = [
   },
   {
     id: 7,
+    slug: "kings-quest",
     artistName: "Kings Quest",
     tokenName: "MKIN",
     avatarSrc: "/artists/kings-quest.png",
@@ -92,6 +99,7 @@ export const mockAllArtistsData = [
   },
   {
     id: 8,
+    slug: "lil-lion",
     artistName: "Lil Lion",
     tokenName: "MLIL",
     avatarSrc: "/artists/lil-lion.png",
@@ -106,6 +114,7 @@ export const mockAllArtistsData = [
 
   {
     id: 9,
+    slug: "nina-summers",
     artistName: "Nina Summers",
     tokenName: "MNIN",
     avatarSrc: "/artists/nina-summers.png",

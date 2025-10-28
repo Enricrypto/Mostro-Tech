@@ -7,6 +7,7 @@ import { Button } from "@/components/atoms/Button"
 import { CalendarBlankIcon, ArrowUpRightIcon } from "@phosphor-icons/react"
 
 interface NewLaunchCardProps {
+  slug: string
   avatarUrl: string
   name: string
   badgeText: string
@@ -16,6 +17,7 @@ interface NewLaunchCardProps {
 }
 
 export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
+  slug,
   avatarUrl,
   name,
   badgeText,
@@ -25,8 +27,8 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 }) => {
   const router = useRouter()
 
-  const handleButtonClick = () => {
-    router.push("/artists") // redirect to /artists
+  const handleButtonClick = (slug: string) => {
+    router.push(`/artists/${slug}`)
   }
 
   return (
@@ -95,7 +97,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
         variant='song-unlock'
         icon={<ArrowUpRightIcon />}
         iconPosition='right'
-        onClick={handleButtonClick}
+        onClick={() => handleButtonClick(slug)}
       >
         View Artist
       </Button>

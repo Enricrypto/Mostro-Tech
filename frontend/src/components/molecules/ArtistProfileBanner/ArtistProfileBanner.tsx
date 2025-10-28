@@ -6,7 +6,8 @@ import { Avatar } from "@/components/atoms/Avatar"
 import { Button } from "@/components/atoms/Button"
 import { ArrowUpRightIcon, PlayIcon } from "@phosphor-icons/react"
 
-interface ArtistProfileBannerProps {
+export interface ArtistProfileBannerProps {
+  slug: string
   artistName: string
   description: string
   tokenHolders: string
@@ -20,6 +21,7 @@ interface ArtistProfileBannerProps {
 }
 
 export function ArtistProfileBanner({
+  slug,
   artistName,
   description,
   tokenHolders,
@@ -124,7 +126,7 @@ export function ArtistProfileBanner({
             className='w-[288px] h-10 px-4 py-2 gap-2 rounded-md flex items-center justify-center'
             icon={<ArrowUpRightIcon size={20} weight='bold' />}
             iconPosition='right'
-            onClick={() => router.push("/profile")}
+            onClick={() => router.push(`/artists/${slug}`)}
           >
             <span className='font-inter font-medium text-[14px] leading-6'>
               View Artist

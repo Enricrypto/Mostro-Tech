@@ -5,7 +5,8 @@ import type { EventStatus } from "@/components/display/UpcomingEvent"
 
 // ------------------- Artist Interface -------------------
 export interface Artist {
-  id: string
+  id: number
+  slug: string
   name: string
   image: string
   latestSingle: {
@@ -141,7 +142,8 @@ const mockProposals: ProposalData[] = [
 export const artistsData: Artist[] = [
   // ---------------- Luna Eclipse ----------------
   {
-    id: "1",
+    id: 1,
+    slug: "luna-eclipse",
     name: "Luna Eclipse",
     image: "/artists/luna-eclipse.png",
     latestSingle: {
@@ -334,7 +336,8 @@ export const artistsData: Artist[] = [
 
   // ---------------- Atlas Monroe ----------------
   {
-    id: "2",
+    id: 2,
+    slug: "atlas-monroe",
     name: "Atlas Monroe",
     image: "/artists/atlas-monroe.png",
     latestSingle: {
@@ -483,8 +486,8 @@ export const artistsData: Artist[] = [
         songName: "Broken Promises",
         subtitle: "Atlas Monroe - 3:30",
         variant: "song-play",
-        avatarUrl: "/atlas-monroe/songs/broken-promises.jpeg",
-        audioUrl: "/atlas-monroe/images/broken-promises.mp3"
+        avatarUrl: "/atlas-monroe/images/broken-promises.jpeg",
+        audioUrl: "/atlas-monroe/songs/broken-promises.mp3"
       },
       {
         songName: "Daisy After Dark",
@@ -523,7 +526,8 @@ export const artistsData: Artist[] = [
 
   // ---------------- Liz Cherry ----------------
   {
-    id: "3",
+    id: 3,
+    slug: "liz-cherry",
     name: "Liz Cherry",
     image: "/artists/liz-cherry.png",
     latestSingle: {
