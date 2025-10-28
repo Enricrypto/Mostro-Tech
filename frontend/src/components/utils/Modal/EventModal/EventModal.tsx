@@ -1,11 +1,12 @@
 "use client"
 
+import { Button } from "@/components/atoms/Button"
+import { artistsData } from "@/data/artists"
 import {
   CalendarIcon,
   MapPinIcon,
   CurrencyDollarIcon
 } from "@phosphor-icons/react"
-import { Button } from "@/components/atoms/Button"
 
 interface EventModalProps {
   title: string
@@ -13,7 +14,8 @@ interface EventModalProps {
   venue: string
   onCancel: () => void
   onBuyOrConfirm: () => void
-  variant?: "noTokens" | "claimAccess" // default to "noTokens"
+  variant?: "noTokens" | "claimAccess" // default to no tokens
+  tokenName: string
 }
 
 export const EventModal: React.FC<EventModalProps> = ({
@@ -22,15 +24,17 @@ export const EventModal: React.FC<EventModalProps> = ({
   venue,
   onCancel,
   onBuyOrConfirm,
-  variant = "noTokens"
+  variant = "noTokens",
+  tokenName
 }) => {
   // Determine text and right button label based on variant
   const infoText =
     variant === "noTokens"
-      ? "You currently are not holding any $MLUNA tokens. Buy token to access this event."
+      ? `You currently are not holding any ${tokenName} tokens. Buy token to access this event.`
       : "Please confirm your claim access to the livestream."
 
-  const rightButtonLabel = variant === "noTokens" ? "Buy Token" : "I'm in"
+  const rightButtonLabel =
+    variant === "noTokens" ? `Buy ${tokenName}` : "I'm in"
 
   return (
     <div

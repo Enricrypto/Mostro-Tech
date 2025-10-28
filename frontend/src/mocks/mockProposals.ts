@@ -9,6 +9,7 @@ interface Proposal {
 }
 
 export const mockProposals: Proposal[] = [
+  // -------------------- ONGOING --------------------
   {
     id: 1,
     status: "ongoing",
@@ -37,18 +38,6 @@ export const mockProposals: Proposal[] = [
     badgeText: "Ongoing"
   },
   {
-    id: 4,
-    status: "executed",
-    title: "London Showcase & Livestream 2025",
-    requestedTokens: "5,000 USDC = 5,000,000"
-  },
-  {
-    id: 5,
-    status: "closed",
-    title: "Live Remix Album",
-    requestedTokens: "8,000 USDC = 8,000"
-  },
-  {
     id: 6,
     status: "ongoing",
     title: "Multimedia EP",
@@ -57,10 +46,26 @@ export const mockProposals: Proposal[] = [
     noPercentage: 22,
     badgeText: "Ongoing"
   },
+
+  // -------------------- EXECUTED --------------------
+  {
+    id: 4,
+    status: "executed",
+    title: "London Showcase & Livestream 2025",
+    requestedTokens: "5,000 USDC = 5,000,000"
+  },
   {
     id: 7,
     status: "executed",
     title: "Nordic Tour 2025",
     requestedTokens: "10,000 USDC = 1,000,000"
+  },
+
+  // -------------------- CLOSED --------------------
+  {
+    id: 5,
+    status: "closed",
+    title: "Live Remix Album",
+    requestedTokens: "8,000 USDC = 8,000"
   }
 ]

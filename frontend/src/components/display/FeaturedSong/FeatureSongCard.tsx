@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/atoms/Button"
 import { PlayIcon, PauseIcon } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
+import { Badge } from "@/components/utils/Badge"
 
 export interface FeatureSongCardProps {
   musicDrop: {
@@ -12,6 +13,7 @@ export interface FeatureSongCardProps {
     duration: string
     audioUrl: string
     image: string
+    badge: string
   }
   currentSongName?: string
   isPlaying?: boolean
@@ -52,7 +54,7 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
       </div>
 
       {/* Info & Controls */}
-      <div className='flex flex-col justify-between flex-1 gap-2 min-w-0'>
+      <div className='flex flex-col justify-between flex-1 gap-5 min-w-0'>
         {/* Song Title & Duration */}
         <div className='flex flex-col gap-1 min-w-0'>
           <span className='text-white font-semibold text-[18px] leading-7 truncate block'>
@@ -71,6 +73,9 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
             <PlayIcon size={20} weight='bold' className='text-white' />
           )}
         </Button>
+
+        {/* Price Badge */}
+        <Badge variant='neutral'>{musicDrop.badge}</Badge>
       </div>
     </div>
   )

@@ -54,20 +54,21 @@ export interface Artist {
     duration: string
     audioUrl: string
     image: string
+    badge: string
   }[]
 }
 
 // ------------------- Mock Fanbase -------------------
 const mockFanbase: { src?: string; initials?: string }[] = [
-  { src: "/pawel.png" },
-  { src: "/miracle.png" },
+  { src: "/token-holders/holder-3.jpeg" },
+  { src: "/token-holders/holder-2.jpeg" },
   { initials: "AB" },
-  { initials: "TK" },
+  { src: "/token-holders/holder-6.jpeg" },
   { initials: "CD" },
   { src: "/avatar4.png" },
-  { initials: "EF" },
-  { src: "/avatar6.png" },
-  { src: "/avatar6.png" }
+  { initials: "DJ" },
+  { src: "/token-holders/holder-10.png" },
+  { src: "/token-holders/holder-5.jpeg" }
 ]
 
 // Expand to exactly 36 items
@@ -162,74 +163,74 @@ export const artistsData: Artist[] = [
       price: "12.34",
       holders: "1.2K"
     },
-    socials: ["instagram", "twitter", "youtube"] as SocialType[],
+    socials: ["instagram", "twitter", "discord"] as SocialType[],
     leaderboard: [
       {
         rank: 1,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-1.jpeg",
         username: "mostrofan.sol",
         score: 10200,
         tokenSymbol: "MLUN"
       },
       {
         rank: 2,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-2.jpeg",
         username: "cryptomuse.sol",
         score: 9800,
         tokenSymbol: "MLUN"
       },
       {
         rank: 3,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-3.jpeg",
         username: "blockbeatz.sol",
         score: 9200,
         tokenSymbol: "MLUN"
       },
       {
         rank: 4,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-4.jpeg",
         username: "synthqueen.sol",
         score: 8900,
         tokenSymbol: "MLUN"
       },
       {
         rank: 5,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-5.jpeg",
         username: "djstellar.sol",
         score: 8600,
         tokenSymbol: "MLUN"
       },
       {
         rank: 6,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-6.jpeg",
         username: "melodymaker.sol",
         score: 8300,
         tokenSymbol: "MLUN"
       },
       {
         rank: 7,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-7.jpeg",
         username: "soundwave.sol",
         score: 8000,
         tokenSymbol: "MLUN"
       },
       {
         rank: 8,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-8.jpeg",
         username: "nightpulse.sol",
         score: 7700,
         tokenSymbol: "MLUN"
       },
       {
         rank: 9,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-9.jpeg",
         username: "beatdropper.sol",
         score: 7400,
         tokenSymbol: "MLUN"
       },
       {
         rank: 10,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-10.png",
         username: "loopmaster.sol",
         score: 7100,
         tokenSymbol: "MLUN"
@@ -258,37 +259,43 @@ export const artistsData: Artist[] = [
         title: "Weekend Glow",
         duration: "1:00",
         audioUrl: "/luna-eclipse/songs/weekend-glow.mp3",
-        image: "/luna-eclipse/images/weekend-glow.png"
+        image: "/luna-eclipse/images/weekend-glow.png",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Black Cat",
         duration: "1:00",
         audioUrl: "/luna-eclipse/songs/black-cat.mp3",
-        image: "/luna-eclipse/images/black-cat.png"
+        image: "/luna-eclipse/images/black-cat.png",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Neon Bounce",
         duration: "1:00",
         audioUrl: "/luna-eclipse/songs/neon-bounce.mp3",
-        image: "/luna-eclipse/images/neon-bounce.png"
+        image: "/luna-eclipse/images/neon-bounce.png",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Take Back The Night",
         duration: "3:44",
         audioUrl: "/luna-eclipse/songs/take-back-the-night.mp3",
-        image: "/luna-eclipse/images/take-back-the-night.png"
+        image: "/luna-eclipse/images/take-back-the-night.png",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Deeper Kind",
         duration: "2:35",
         audioUrl: "/luna-eclipse/songs/deeper-kind.mp3",
-        image: "/luna-eclipse/images/deeper-kind.png"
+        image: "/luna-eclipse/images/deeper-kind.png",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Free to Believe",
         duration: "4:36",
         audioUrl: "/luna-eclipse/songs/free-to-believe.mp3",
-        image: "/luna-eclipse/images/free-to-believe.png"
+        image: "/luna-eclipse/images/free-to-believe.png",
+        badge: "$5 USDC = 500 Tokens"
       }
     ],
     featuredTracks: [
@@ -350,76 +357,76 @@ export const artistsData: Artist[] = [
     description:
       "Alt-rock powerhouse merging emotional intensity with anthemic soundscapes. known for electrifying performances and soaring guitar riffs across the US indie circuit.",
     aboutTheArtist:
-      "Atlas Monroe is a dynamic alt-rock artist celebrated for merging raw emotional intensity with anthemic soundscapes. Known for electrifying live performances and soaring guitar riffs, Atlas captivates audiences across the US indie circuit. Their music blends heartfelt lyrics with explosive energy, creating an unforgettable experience for every listener.",
+      "Atlas Monroe is a dynamic alt-rock artist celebrated for merging raw emotional intensity with anthemic soundscapes. Known for electrifying live performances and soaring guitar riffs, Atlas has captivated audiences across the US indie circuit with his music that blends heartfelt lyrics with explosive energy.",
     token: { name: "MATL", price: "8.91", holders: "890" },
-    socials: ["instagram", "twitter", "youtube"] as SocialType[],
+    socials: ["instagram", "twitter", "discord"] as SocialType[],
     leaderboard: [
       {
         rank: 1,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-1.jpeg",
         username: "mostrofan.sol",
         score: 10200,
         tokenSymbol: "MATL"
       },
       {
         rank: 2,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-2.jpeg",
         username: "cryptomuse.sol",
         score: 9800,
         tokenSymbol: "MATL"
       },
       {
         rank: 3,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-3.jpeg",
         username: "blockbeatz.sol",
         score: 9200,
         tokenSymbol: "MATL"
       },
       {
         rank: 4,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-4.jpeg",
         username: "synthqueen.sol",
         score: 8900,
         tokenSymbol: "MATL"
       },
       {
         rank: 5,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-5.jpeg",
         username: "djstellar.sol",
         score: 8600,
         tokenSymbol: "MATL"
       },
       {
         rank: 6,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-6.jpeg",
         username: "melodymaker.sol",
         score: 8300,
         tokenSymbol: "MATL"
       },
       {
         rank: 7,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-7.jpeg",
         username: "soundwave.sol",
         score: 8000,
         tokenSymbol: "MATL"
       },
       {
         rank: 8,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-8.jpeg",
         username: "nightpulse.sol",
         score: 7700,
         tokenSymbol: "MATL"
       },
       {
         rank: 9,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-9.jpeg",
         username: "beatdropper.sol",
         score: 7400,
         tokenSymbol: "MATL"
       },
       {
         rank: 10,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-10.png",
         username: "loopmaster.sol",
         score: 7100,
         tokenSymbol: "MATL"
@@ -448,37 +455,43 @@ export const artistsData: Artist[] = [
         title: "Can't Love Her Right",
         duration: "2:27",
         audioUrl: "/atlas-monroe/songs/can't-love-her-right.mp3",
-        image: "/atlas-monroe/images/can't-love-her-right.jpeg"
+        image: "/atlas-monroe/images/can't-love-her-right.jpeg",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Hard To Hold",
         duration: "1:00",
         audioUrl: "/atlas-monroe/songs/hard-to-hold.mp3",
-        image: "/atlas-monroe/images/hard-to-hold.jpg"
+        image: "/atlas-monroe/images/hard-to-hold.jpg",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "All About You",
         duration: "1:00",
         audioUrl: "/atlas-monroe/songs/all-about-you.mp3",
-        image: "/atlas-monroe/images/all-about-you.jpeg"
+        image: "/atlas-monroe/images/all-about-you.jpeg",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Broken Promises",
         duration: "4:21",
         audioUrl: "/atlas-monroe/songs/broken-promises.mp3",
-        image: "/atlas-monroe/images/broken-promises.jpeg"
+        image: "/atlas-monroe/images/broken-promises.jpeg",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Across the Universe",
         duration: "1:00",
         audioUrl: "/atlas-monroe/songs/across-the-universe.mp3",
-        image: "/atlas-monroe/images/across-the-universe.jpeg"
+        image: "/atlas-monroe/images/across-the-universe.jpeg",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Daisy After Dark",
         duration: "3:15",
         audioUrl: "/atlas-monroe/songs/daisy-after-dark.mp3",
-        image: "/atlas-monroe/images/daisy-after-dark.jpeg"
+        image: "/atlas-monroe/images/daisy-after-dark.jpeg",
+        badge: "$5 USDC = 500 Tokens"
       }
     ],
     featuredTracks: [
@@ -540,76 +553,76 @@ export const artistsData: Artist[] = [
     description:
       "Hip hop & R&B artist blending soulful vocals with raw lyricism. Redefining authenticity through poetry, rhythm, and empowerment. Celebrated for her magnetic live sessions across the UK.",
     aboutTheArtist:
-      "Liz Cherry is an innovative R&B and hip-hop artist who fuses soulful vocals with incisive, heartfelt lyricism. Redefining authenticity through poetry, rhythm, and empowerment, Liz’s performances are magnetic and intimate, leaving a lasting impression on audiences across the UK. Her unique sound pushes the boundaries of contemporary R&B while staying deeply personal and relatable.",
+      "Liz Cherry is an innovative R&B and hip-hop artist who fuses soulful vocals with incisive, heartfelt lyricism. Redefining authenticity through poetry, rhythm, and empowerment, Liz’s performances are magnetic and intimate, leaving a lasting impression on audiences across the UK. Her unique, warm sound dances at the boundaries of contemporary R&B.",
     token: { name: "MLIZ", price: "6.45", holders: "540" },
-    socials: ["instagram", "twitter", "youtube"] as SocialType[],
+    socials: ["instagram", "twitter", "discord"] as SocialType[],
     leaderboard: [
       {
         rank: 1,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-1.jpeg",
         username: "mostrofan.sol",
         score: 10200,
         tokenSymbol: "MLIZ"
       },
       {
         rank: 2,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-2.jpeg",
         username: "cryptomuse.sol",
         score: 9800,
         tokenSymbol: "MLIZ"
       },
       {
         rank: 3,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-3.jpeg",
         username: "blockbeatz.sol",
         score: 9200,
         tokenSymbol: "MLIZ"
       },
       {
         rank: 4,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-4.jpeg",
         username: "synthqueen.sol",
         score: 8900,
         tokenSymbol: "MLIZ"
       },
       {
         rank: 5,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-5.jpeg",
         username: "djstellar.sol",
         score: 8600,
         tokenSymbol: "MLIZ"
       },
       {
         rank: 6,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-6.jpeg",
         username: "melodymaker.sol",
         score: 8300,
         tokenSymbol: "MLIZ"
       },
       {
         rank: 7,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-7.jpeg",
         username: "soundwave.sol",
         score: 8000,
         tokenSymbol: "MLIZ"
       },
       {
         rank: 8,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-8.jpeg",
         username: "nightpulse.sol",
         score: 7700,
         tokenSymbol: "MLIZ"
       },
       {
         rank: 9,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-9.jpeg",
         username: "beatdropper.sol",
         score: 7400,
         tokenSymbol: "MLIZ"
       },
       {
         rank: 10,
-        avatarSrc: "/avatar6.png",
+        avatarSrc: "/token-holders/holder-10.png",
         username: "loopmaster.sol",
         score: 7100,
         tokenSymbol: "MLIZ"
@@ -638,37 +651,43 @@ export const artistsData: Artist[] = [
         title: "Burning Up",
         duration: "2:12",
         audioUrl: "/liz-cherry/songs/burning-up.mp3",
-        image: "/liz-cherry/images/burning-up.jpg"
+        image: "/liz-cherry/images/burning-up.jpg",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Better Be Best",
         duration: "2:05",
         audioUrl: "/liz-cherry/songs/better-be-best.mp3",
-        image: "/liz-cherry/images/better-be-best.jpeg"
+        image: "/liz-cherry/images/better-be-best.jpeg",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Bottom Dollar",
         duration: "2:05",
         audioUrl: "/liz-cherry/songs/bottom-dollar.mp3",
-        image: "/liz-cherry/images/bottom-dollar.jpg"
+        image: "/liz-cherry/images/bottom-dollar.jpg",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Party All Night Long",
         duration: "1:00",
         audioUrl: "/liz-cherry/songs/party-all-night-long.mp3",
-        image: "/liz-cherry/images/party-all-night-long.jpeg"
+        image: "/liz-cherry/images/party-all-night-long.jpeg",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "What's The Plan",
         duration: "1:00",
         audioUrl: "/liz-cherry/songs/what's-the-plan.mp3",
-        image: "/liz-cherry/images/what's-the-plan.jpeg"
+        image: "/liz-cherry/images/what's-the-plan.jpeg",
+        badge: "$5 USDC = 500 Tokens"
       },
       {
         title: "Crown On My Head",
         duration: "3:26",
         audioUrl: "/liz-cherry/songs/crown-on-my-head.mp3",
-        image: "/liz-cherry/images/crown-on-my-head.jpeg"
+        image: "/liz-cherry/images/crown-on-my-head.jpeg",
+        badge: "$5 USDC = 500 Tokens"
       }
     ],
     featuredTracks: [

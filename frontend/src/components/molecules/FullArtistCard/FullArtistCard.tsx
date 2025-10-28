@@ -34,8 +34,8 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
 
   const socials: SocialType[] = artist.socials || [
     "instagram",
-    "youtube",
-    "spotify"
+    "twitter",
+    "discord"
   ]
 
   return (

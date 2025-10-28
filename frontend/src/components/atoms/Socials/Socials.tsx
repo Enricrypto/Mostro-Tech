@@ -8,7 +8,8 @@ import {
   SpotifyLogoIcon,
   XLogoIcon,
   TiktokLogoIcon,
-  YoutubeLogoIcon
+  YoutubeLogoIcon,
+  DiscordLogoIcon
 } from "@phosphor-icons/react"
 import type { ComponentProps } from "react"
 
@@ -43,6 +44,7 @@ export type SocialType =
   | "twitter"
   | "tiktok"
   | "youtube"
+  | "discord"
 
 // CVA + ComponentProps typing
 export type SocialButtonProps = ComponentProps<"button"> &
@@ -55,7 +57,8 @@ const SOCIAL_MAP: Record<SocialType, React.ElementType> = {
   spotify: SpotifyLogoIcon,
   twitter: XLogoIcon,
   tiktok: TiktokLogoIcon,
-  youtube: YoutubeLogoIcon
+  youtube: YoutubeLogoIcon,
+  discord: DiscordLogoIcon
 }
 
 // Socials component

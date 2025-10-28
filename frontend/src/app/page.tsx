@@ -91,6 +91,10 @@ export default function DashboardPage() {
     const audio = audioRef.current
 
     if (currentSong) {
+      // Ensure previous audio is paused
+      audio.pause()
+      audio.currentTime = 0
+
       audio.src = currentSong.audioUrl
       audio.play().catch(() => {})
     } else {

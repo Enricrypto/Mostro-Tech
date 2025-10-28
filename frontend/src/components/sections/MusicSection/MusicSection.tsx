@@ -147,7 +147,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
   return (
     <div className='flex flex-col items-center gap-20'>
       {/* About the Artist */}
-      <section className='flex flex-col gap-[39px] w-full max-w-[1200px] mx-auto py-10'>
+      <section className='flex flex-col gap-[39px] w-full max-w-[1200px] mx-auto'>
         <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
           About the Artist
         </h2>
@@ -158,11 +158,12 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
 
       {/* Music Drops */}
       <section className='relative w-full flex flex-col'>
-        <div className='flex gap-4'>
+        <div className='flex gap-4 items-center'>
           <MusicNoteIcon size={36} weight='fill' className='text-[#DCFD63]' />
           <h2 className='font-inter font-semibold text-[30px] leading-9 text-[#DCFD63]'>
             Music Drops
           </h2>
+          <span className='text-(--color-grey)'>Includes Surprise Perk</span>
         </div>
         <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-[39px] gap-y-[21px] mt-10'>
           {artist.musicDrops?.map((drop, index) => {

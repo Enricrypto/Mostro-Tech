@@ -28,11 +28,25 @@ export function ProposalsSection({
 
   const proposals: ProposalData[] = artist.proposals || []
 
+  // Desired order for statuses
+  const statusOrder: Record<ProposalStatus, number> = {
+    all: 0,
+    ongoing: 1,
+    executed: 2,
+    closed: 3
+  }
+
+  // Filter proposals by selected tab
   const filteredProposals: ProposalData[] =
     filter === "all" ? proposals : proposals.filter((p) => p.status === filter)
 
+  // Sort proposals by status according to our desired order
+  const sortedProposals = [...filteredProposals].sort(
+    (a, b) => statusOrder[a.status] - statusOrder[b.status]
+  )
+
   return (
-    <div className='flex flex-col w-[1200px] h-[868px] gap-[39px]'>
+    <div className='flex flex-col w-[1200px] h-[868px] gap-[39px] mb-20'>
       {/* Top bar */}
       <div className='flex justify-between items-center w-full h-[42px]'>
         <h2 className='text-white font-inter font-semibold text-[30px] leading-9'>
@@ -55,7 +69,7 @@ export function ProposalsSection({
 
       {/* Cards Grid */}
       <div className='grid grid-cols-2 gap-x-[19px] gap-y-[19px]'>
-        {filteredProposals.map((proposal) => {
+        {sortedProposals.map((proposal) => {
           // Skip anything that isn't a valid card variant
           if (proposal.status === "all") return null
 

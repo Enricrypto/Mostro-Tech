@@ -161,9 +161,9 @@
    LEADERBOARD 
    ========================================================= */
   .leaderboard {
-    @apply w-[580px] h-[88px] gap-[14px] p-6 
-         rounded-[10px] border border-[var(--color-button-bg-selected)]
-         bg-[var(--color-datacard-bg)] opacity-100;
+    @apply w-[580px] h-[88px] gap-3.5 p-6 
+         rounded-[10px] border border-(--color-button-bg-selected)
+         bg-(--color-datacard-bg) opacity-100;
     @apply transition-shadow duration-300 ease-out; /* smooth shadow transition */
   }
 

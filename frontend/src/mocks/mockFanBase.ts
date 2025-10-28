@@ -6,8 +6,8 @@ export const mockFanbase: { src?: string; initials?: string }[] = [
   { initials: "CD" },
   { src: "/avatar4.png" },
   { initials: "EF" },
-  { src: "/avatar6.png" },
-  { src: "/avatar6.png" }
+  { src: "/token-holders/holder-10.png" },
+  { src: "/token-holders/holder-5.jpeg" }
 ]
 
 // Repeat until we have at least 36 items

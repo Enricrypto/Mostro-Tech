@@ -62,7 +62,7 @@ export const DashBoardStatsOverview: React.FC = () => {
   ]
 
   return (
-    <div className='w-[2440px] h-[128px] flex gap-[8px] p-[8px] bg-white overflow-x-auto'>
+    <div className='w-[2440px] h-32 flex gap-2 p-2 bg-white overflow-x-auto'>
       {cardVariants.map((card, index) => (
         <DashBoardStatsCard
           key={index}

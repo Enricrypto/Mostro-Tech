@@ -123,6 +123,7 @@ export default function ArtistPage() {
                 userHoldsTokens ? handleClaimAccess : handleBuyToken
               }
               variant={userHoldsTokens ? "claimAccess" : "noTokens"}
+              tokenName={artist.token?.name || "Artist Token"}
             />
           </div>
         </div>
