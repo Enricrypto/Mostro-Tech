@@ -352,7 +352,7 @@ export const artistsData: Artist[] = [
     aboutTheArtist:
       "Atlas Monroe is a dynamic alt-rock artist celebrated for merging raw emotional intensity with anthemic soundscapes. Known for electrifying live performances and soaring guitar riffs, Atlas captivates audiences across the US indie circuit. Their music blends heartfelt lyrics with explosive energy, creating an unforgettable experience for every listener.",
     token: { name: "MATL", price: "8.91", holders: "890" },
-    socials: ["facebook", "twitter", "spotify"] as SocialType[],
+    socials: ["instagram", "twitter", "youtube"] as SocialType[],
     leaderboard: [
       {
         rank: 1,
