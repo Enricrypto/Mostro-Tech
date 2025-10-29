@@ -3,7 +3,11 @@
 import * as React from "react"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Badge } from "@/components/utils/Badge"
-import { SketchLogoIcon } from "@phosphor-icons/react"
+import {
+  ArrowUpIcon,
+  ArrowDownIcon,
+  SketchLogoIcon
+} from "@phosphor-icons/react"
 
 export interface TokenHoldingsUserCardProps {
   id: number
@@ -24,9 +28,10 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
   amount,
   perks
 }) => {
-  // Convert badgeText to number to determine variant
-  const numberValue = parseFloat(performance.replace(/[^0-9.-]+/g, "")) // removes any symbols like %
+  // Convert performance string to number to determine badge variant & icon
+  const numberValue = parseFloat(performance.replace(/[^0-9.-]+/g, ""))
   const badgeVariant = numberValue >= 0 ? "increase" : "decrease"
+  const Icon = numberValue >= 0 ? ArrowUpIcon : ArrowDownIcon
 
   return (
     <div
@@ -53,9 +58,14 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
               {tokenCount} tokens
             </span>
           </div>
-          {/* Right Side */}
         </div>
-        <Badge variant={badgeVariant} className='text-[12px] font-medium'>
+        {/* Right Side */}
+        {/* Badge with Icon */}
+        <Badge
+          variant={badgeVariant}
+          className='text-[12px] font-medium flex items-center gap-1'
+          icon={<Icon weight='bold' size={14} />}
+        >
           {performance}
         </Badge>
       </div>

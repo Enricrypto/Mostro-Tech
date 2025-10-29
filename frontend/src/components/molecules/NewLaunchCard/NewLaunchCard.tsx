@@ -37,22 +37,20 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
              p-6 border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
              transition-colors duration-200 hover:border-[#71D6FB]'
     >
-      {/* Top Launch Label */}
-      <div className='absolute top-6 right-6 flex items-center gap-2'>
-        <CalendarBlankIcon
-          size={16}
-          weight='bold'
-          className='text-highlight group-hover:text-white transition-colors duration-200'
-        />
-        <span className='text-[12px] text-highlight group-hover:text-white transition-colors duration-200'>
-          Launch in {launchInDays} days
-        </span>
-      </div>
-
       {/* Section 1: Avatar + Name + Genre Badge */}
-      <div className='flex gap-5 pt-8'>
+      <div className='flex gap-5 '>
         <Avatar src={avatarUrl} variant='square-sm-lg' />
         <div className='flex flex-col items-start gap-3'>
+          <div className='flex gap-2'>
+            <CalendarBlankIcon
+              size={16}
+              weight='bold'
+              className='text-highlight group-hover:text-white transition-colors duration-200'
+            />
+            <span className='text-[12px] text-highlight group-hover:text-white transition-colors duration-200'>
+              Launch in {launchInDays} days
+            </span>
+          </div>
           <span className='font-inter font-semibold text-[20px] text-white'>
             {name}
           </span>
