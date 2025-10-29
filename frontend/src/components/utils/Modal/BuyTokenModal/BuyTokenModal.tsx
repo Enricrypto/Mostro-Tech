@@ -67,7 +67,7 @@ export const BuyTokenModal = ({
               value={amount || ""}
               onChange={(e) => setAmount(Number(e.target.value))}
               placeholder='0.00'
-              className='bg-transparent text-white text-[20px] font-semibold outline-none no-spinner w-[45px]'
+              className='bg-transparent text-white text-[20px] font-semibold outline-none no-spinner'
             />
             <Badge variant='neutral'>$USDC</Badge>
           </div>
