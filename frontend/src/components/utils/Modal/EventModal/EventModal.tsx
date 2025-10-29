@@ -29,11 +29,10 @@ export const EventModal: React.FC<EventModalProps> = ({
   // Determine text and right button label based on variant
   const infoText =
     variant === "noTokens"
-      ? `You currently are not holding any ${tokenName} tokens. Buy token to access this event.`
+      ? `You currently are not holding any $MLUN tokens. Buy token to access this event.`
       : "Please confirm your claim access to the livestream."
 
-  const rightButtonLabel =
-    variant === "noTokens" ? `Buy ${tokenName}` : "I'm in"
+  const rightButtonLabel = variant === "noTokens" ? `Buy $MLUN` : "I'm in"
 
   return (
     <div

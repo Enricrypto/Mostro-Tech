@@ -58,7 +58,7 @@ export const BuyTokenModal = ({
         {/* BUY SECTION */}
         <div className='bg-[#121B2B] border-2 border-[#2D3953] rounded-[10px] shadow-[0_4px_6px_0_#00000017] p-6 flex flex-col gap-3.5'>
           <div className='text-[20px] font-semibold text-white'>
-            Buy <span className='text-[#DCFD63]'>${tokenSymbol}</span>
+            Buy <span className='text-[#DCFD63]'>$MLUN</span>
           </div>
 
           <div className='flex justify-between items-center'>
@@ -94,7 +94,7 @@ export const BuyTokenModal = ({
             <div className='text-white text-[20px] font-semibold'>
               {estimatedReceive.toFixed(2)}
             </div>
-            <Badge variant='increase'>${tokenSymbol}</Badge>
+            <Badge variant='increase'>$MLUN</Badge>
           </div>
           <div className='text-[#B3B3B3] text-[12px] font-medium'>
             ~ {(amount || 0).toFixed(2)} $USDC

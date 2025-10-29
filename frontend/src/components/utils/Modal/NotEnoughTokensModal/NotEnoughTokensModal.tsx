@@ -17,14 +17,14 @@ export const NotEnoughTokensModal = ({ tokenName, onClose, onBuy }: Props) => {
             Not enough tokens
           </h2>
           <p className='text-gray-400 mb-6'>
-            You need {tokenName} to vote. Buy tokens to participate.
+            You need $MLUN to vote. Buy tokens to participate.
           </p>
           <div className='flex justify-center gap-4'>
             <Button variant='button-cancel' onClick={onClose}>
               Cancel
             </Button>
             <Button variant='buy-token' onClick={onBuy}>
-              Buy Tokens
+              Buy $MLUN
             </Button>
           </div>
         </div>

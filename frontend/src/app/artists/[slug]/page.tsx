@@ -21,26 +21,11 @@ export default function ArtistPage() {
   const [selectedTokenName, setSelectedTokenName] = useState<string | null>(
     null
   )
-  const [selectedSection, setSelectedSection] = useState<SectionId>("music")
-  const [eventModalData, setEventModalData] = useState<{
-    title: string
-    date: string
-    venue: string
-  } | null>(null)
 
-  const userHoldsTokens = false
   const router = useRouter()
   const searchParams = useSearchParams()
   const { slug } = useParams()
   const artist = artistsData.find((a) => a.slug === slug)
-
-  // Set initial section from URL query
-  useEffect(() => {
-    const sectionFromUrl = searchParams.get("section") as SectionId | null
-    if (sectionFromUrl && sectionFromUrl !== selectedSection) {
-      setSelectedSection(sectionFromUrl)
-    }
-  }, [searchParams, selectedSection])
 
   if (!artist)
     return (
@@ -70,15 +55,29 @@ export default function ArtistPage() {
       </div>
     )
 
-  // Handlers
-  const handleBuyToken = (tokenName: string) => {
-    setSelectedSection("token") // only when clicked from main page
-    setSelectedTokenName(tokenName)
-    setIsBuyModalOpen(true)
-  }
+  const sectionFromUrl = searchParams.get("section") as SectionId | null
+  const [selectedSection, setSelectedSection] = useState<SectionId>(
+    sectionFromUrl || "music"
+  )
+  const [eventModalData, setEventModalData] = useState<{
+    title: string
+    date: string
+    venue: string
+  } | null>(null)
 
-  const openBuyTokenModal = (tokenName: string) => {
-    // opens BuyTokenModal from EventModal, does not change section
+  const userHoldsTokens = false
+
+  useEffect(() => {
+    if (sectionFromUrl && sectionFromUrl !== selectedSection) {
+      setSelectedSection(sectionFromUrl)
+    }
+  }, [sectionFromUrl, selectedSection])
+
+  const handleBuyToken = (tokenName: string) => {
+    // Close any open EventModal
+    handleCloseEventModal()
+
+    // Set token for BuyTokenModal
     setSelectedTokenName(tokenName)
     setIsBuyModalOpen(true)
   }
@@ -92,7 +91,9 @@ export default function ArtistPage() {
   }
 
   const handleCloseEventModal = () => setEventModalData(null)
+
   const handleClaimAccess = () => handleCloseEventModal()
+
   const handleViewProposal = (_proposalId: number) => {
     router.push("/vote") // static vote page
   }
@@ -126,7 +127,6 @@ export default function ArtistPage() {
 
   return (
     <div className='bg-[#0A111F] min-h-screen w-full flex flex-col'>
-      {/* Badges row */}
       {selectedSection === "music" && (
         <section className='top-[149px] -ml-[50vw] -mr-[50vw] border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm py-5 px-4 mt-20'>
           <div className='max-w-[1200px] mx-auto'>
@@ -135,7 +135,6 @@ export default function ArtistPage() {
         </section>
       )}
 
-      {/* Artist Card */}
       <section className='relative w-full flex justify-center mt-20'>
         <FullArtistCard
           artist={artist}
@@ -143,7 +142,6 @@ export default function ArtistPage() {
         />
       </section>
 
-      {/* Section Selector */}
       <section className='relative w-full flex justify-center mt-20'>
         <SectionSelector
           selected={selectedSection}
@@ -151,14 +149,12 @@ export default function ArtistPage() {
         />
       </section>
 
-      {/* Section Content */}
       <section className='relative w-full flex justify-center mt-20'>
         <div className='flex flex-col w-full max-w-[1200px] px-4 mx-auto'>
           {renderSectionContent()}
         </div>
       </section>
 
-      {/* Event Modal */}
       {eventModalData && (
         <div
           className='fixed inset-0 z-50 bg-black/50 flex items-center justify-center'
@@ -171,8 +167,7 @@ export default function ArtistPage() {
               onBuyOrConfirm={
                 userHoldsTokens
                   ? handleClaimAccess
-                  : () =>
-                      openBuyTokenModal(artist.token?.name || "Artist Token")
+                  : () => handleBuyToken(artist.token?.name || "Artist Token")
               }
               variant={userHoldsTokens ? "claimAccess" : "noTokens"}
               tokenName={artist.token?.name || "Artist Token"}
@@ -180,19 +175,16 @@ export default function ArtistPage() {
           </div>
         </div>
       )}
-
-      {/* Buy Token Modal */}
+      {/* BUY TOKEN MODAL */}
       {isBuyModalOpen && selectedTokenName && (
-        <div className='fixed inset-0 z-50 flex items-center justify-center'>
-          <BuyTokenModal
-            tokenSymbol={selectedTokenName}
-            onClose={() => setIsBuyModalOpen(false)}
-            onConfirm={() => {
-              console.log("Confirmed purchase for", selectedTokenName)
-              setIsBuyModalOpen(false)
-            }}
-          />
-        </div>
+        <BuyTokenModal
+          tokenSymbol={selectedTokenName}
+          onClose={() => setIsBuyModalOpen(false)}
+          onConfirm={() => {
+            console.log("Confirmed purchase for", selectedTokenName)
+            setIsBuyModalOpen(false)
+          }}
+        />
       )}
     </div>
   )
