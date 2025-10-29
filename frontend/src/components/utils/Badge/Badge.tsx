@@ -16,7 +16,7 @@ const badgeVariants = cva(
         decrease:
           "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[13px] cursor-default",
         neutral:
-          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white text-[11px] cursor-default",
+          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white text-[13px] cursor-default",
         icon: "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[13px] cursor-default",
         iconClosed:
           "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[13px] cursor-default",

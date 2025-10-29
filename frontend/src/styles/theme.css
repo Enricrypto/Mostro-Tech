@@ -151,6 +151,19 @@
     line-height: var(--text-datacard-value-line-height);
     letter-spacing: var(--text-datacard-value-letter-spacing);
   }
+
+  /* Remove number input spinners (arrows) */
+  .no-spinner::-webkit-outer-spin-button,
+  .no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .no-spinner {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield;
+  }
 }
 
 /* =========================================================

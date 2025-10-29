@@ -5,6 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { FundingOverviewSection } from "@/components/sections/FundingOverviewSection"
 import { VotingSection } from "@/components/molecules/VotingSection"
 import { ProposalConfirmationModal } from "@/components/utils/Modal/ProposalConfirmationModal"
+import { BuyTokenModal } from "@/components/utils/Modal/BuyTokenModal"
+import { NotEnoughTokensModal } from "@/components/utils/Modal/NotEnoughTokensModal"
 import { Button } from "@/components/atoms/Button"
 import { mockFundingOverview } from "@/mocks/mockFundingOverview"
 import { mockVotingSection } from "@/mocks/mockVotingSection"
@@ -15,24 +17,45 @@ export default function VotePage() {
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  // Grab the artist slug from URL (e.g. /vote?artist=luna-eclipse)
+  // Artist from URL
   const artistSlug = searchParams.get("artist")
-
-  // Optional: Find the artist object (for safety / display)
   const artist = artistsData.find((a) => a.slug === artistSlug)
 
+  // State
   const [voteType, setVoteType] = useState<"YES" | "NO" | null>(null)
+  const [isBuyModalOpen, setIsBuyModalOpen] = useState(false)
+  const [showNotEnoughTokensModal, setShowNotEnoughTokensModal] =
+    useState(false)
+  const [selectedTokenName, setSelectedTokenName] = useState<string | null>(
+    null
+  )
 
-  const handleVote = (vote: "YES" | "NO") => setVoteType(vote)
-  const handleCloseModal = () => setVoteType(null)
+  // Replace with real token check
+  const userHasTokens = false
+
+  // Handlers
+  const handleVote = (vote: "YES" | "NO") => {
+    if (!userHasTokens) {
+      setSelectedTokenName(artist?.token?.name || "ARTIST_TOKEN")
+      setShowNotEnoughTokensModal(true)
+      return
+    }
+    setVoteType(vote)
+  }
+
+  const handleCloseVoteModal = () => setVoteType(null)
+  const handleCloseBuyModal = () => setIsBuyModalOpen(false)
+  const handleCloseNotEnoughTokensModal = () =>
+    setShowNotEnoughTokensModal(false)
+
   const handleViewOtherProposals = () => {
-    handleCloseModal()
+    handleCloseVoteModal()
     router.push("/vote")
   }
-  // Navigate back to that same artist page
+
   const handleNavigateBack = () => {
     if (artist) router.push(`/artists/${artist.slug}`)
-    else router.push("/all-artists") // fallback
+    else router.push("/all-artists")
   }
 
   return (
@@ -60,11 +83,11 @@ export default function VotePage() {
         />
       </div>
 
-      {/* Confirmation Modal */}
+      {/* Vote Confirmation Modal */}
       {voteType && (
         <div
           className='fixed inset-0 z-50 bg-black/50 flex items-center justify-center'
-          onClick={handleCloseModal}
+          onClick={handleCloseVoteModal}
         >
           <div onClick={(e) => e.stopPropagation()} className='relative'>
             <ProposalConfirmationModal
@@ -75,6 +98,32 @@ export default function VotePage() {
               avatarSrc='/artists/luna-eclipse.png'
             />
           </div>
+        </div>
+      )}
+
+      {/* Not Enough Tokens Modal */}
+      {showNotEnoughTokensModal && selectedTokenName && (
+        <NotEnoughTokensModal
+          tokenName={selectedTokenName}
+          onClose={handleCloseNotEnoughTokensModal}
+          onBuy={() => {
+            setShowNotEnoughTokensModal(false)
+            setIsBuyModalOpen(true)
+          }}
+        />
+      )}
+
+      {/* Buy Token Modal */}
+      {isBuyModalOpen && selectedTokenName && (
+        <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/60'>
+          <BuyTokenModal
+            tokenSymbol={selectedTokenName}
+            onClose={handleCloseBuyModal}
+            onConfirm={() => {
+              console.log("Confirmed purchase for", selectedTokenName)
+              setIsBuyModalOpen(false)
+            }}
+          />
         </div>
       )}
     </div>

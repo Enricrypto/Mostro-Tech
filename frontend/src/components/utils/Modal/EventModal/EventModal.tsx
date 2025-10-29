@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/atoms/Button"
-import { artistsData } from "@/data/artists"
 import {
   CalendarIcon,
   MapPinIcon,

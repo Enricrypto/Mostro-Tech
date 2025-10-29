@@ -27,7 +27,7 @@ export const baseButtonVariants = cva(
         "button-cancel-black":
           "border border-black bg-transparent text-black hover:bg-black hover:text-white",
         "rounded-icon":
-          "w-10 h-10 rounded-full border border-[var(--color-skyblue)] bg-white text-black hover:bg-[var(--color-skyblue-opacity)]",
+          "w-10 h-10 rounded-full border border-[var(--color-skyblue)] text-white hover:bg-[var(--color-skyblue-opacity)]",
         highlight:
           "py-3 px-6 rounded-full bg-[var(--color-highlight)] text-black hover:bg-[var(--color-highlight-opacity)]",
         "connect-wallet":
