@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { FundingOverviewSection } from "@/components/sections/FundingOverviewSection"
 import { VotingSection } from "@/components/molecules/VotingSection"
 import { ProposalConfirmationModal } from "@/components/utils/Modal/ProposalConfirmationModal"
@@ -9,18 +9,31 @@ import { Button } from "@/components/atoms/Button"
 import { mockFundingOverview } from "@/mocks/mockFundingOverview"
 import { mockVotingSection } from "@/mocks/mockVotingSection"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
+import { artistsData } from "@/data/artists"
 
 export default function VotePage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+
+  // Grab the artist slug from URL (e.g. /vote?artist=luna-eclipse)
+  const artistSlug = searchParams.get("artist")
+
+  // Optional: Find the artist object (for safety / display)
+  const artist = artistsData.find((a) => a.slug === artistSlug)
+
   const [voteType, setVoteType] = useState<"YES" | "NO" | null>(null)
 
   const handleVote = (vote: "YES" | "NO") => setVoteType(vote)
   const handleCloseModal = () => setVoteType(null)
   const handleViewOtherProposals = () => {
     handleCloseModal()
-    router.push("/artists?section=proposals")
+    router.push("/vote")
   }
-  const handleNavigateBack = () => router.push("/artists")
+  // Navigate back to that same artist page
+  const handleNavigateBack = () => {
+    if (artist) router.push(`/artists/${artist.slug}`)
+    else router.push("/all-artists") // fallback
+  }
 
   return (
     <div className='bg-[#0A111F] flex flex-col w-full items-center px-4'>

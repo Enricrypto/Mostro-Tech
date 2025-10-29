@@ -5,7 +5,11 @@ import { Avatar } from "@/components/atoms/Avatar/Avatar"
 import { Badge } from "@/components/utils/Badge/Badge"
 import { Button } from "@/components/atoms/Button/Button"
 import { Tooltip } from "@/components/atoms/Tooltip"
-import { ClockIcon, ArrowUpRightIcon } from "@phosphor-icons/react"
+import {
+  ArrowUpIcon,
+  ArrowDownIcon,
+  ArrowUpRightIcon
+} from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
 import React from "react"
 
@@ -38,9 +42,14 @@ export function ArtistCard({
 }: ArtistCardProps) {
   const router = useRouter()
 
-  // Determine badge variant based on number value
+  // Extract numeric value from badge text
   const numberValue = parseFloat(badgeText.replace(/[^0-9.-]+/g, ""))
-  const badgeVariant = numberValue >= 0 ? "increase" : "decrease"
+  // Determine badge variant
+  const badgeVariant = numberValue > 0 ? "increase" : "decrease"
+
+  // Determine icon & color based on the artist popularity or numberValue
+  const isIncrease = numberValue > 0 // or artist.popularityChange > 0
+  const Icon = numberValue > 0 ? ArrowUpIcon : ArrowDownIcon
 
   return (
     <div
@@ -51,7 +60,7 @@ export function ArtistCard({
       )}
     >
       {/* Top Section: Avatar + Genre Badge + Artist Info */}
-      <div className='flex gap-4'>
+      <div className='flex gap-6'>
         {/* Left column: Avatar + Genre */}
         <div className='flex flex-col items-start gap-4'>
           <Avatar variant='square-sm-lg' src={avatarSrc} alt={artistName} />
@@ -59,7 +68,7 @@ export function ArtistCard({
         </div>
 
         {/* Right column: Artist Name + Token + Badge */}
-        <div className='flex flex-col justify-start gap-2'>
+        <div className='flex flex-col justify-start gap-4'>
           <p className='text-white font-inter font-medium text-[24px] leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'>
             {artistName}
           </p>
@@ -70,7 +79,7 @@ export function ArtistCard({
             </p>
             <Badge
               variant={badgeVariant}
-              icon={<ClockIcon weight='fill' size={14} />}
+              icon={<Icon weight='bold' size={14} className='text-current' />}
             >
               {badgeText}
             </Badge>

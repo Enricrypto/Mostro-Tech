@@ -10,6 +10,7 @@ import { CommunitySection } from "@/components/sections/CommunitySection"
 import { ProposalsSection } from "@/components/sections/ProposalsSection"
 import { TokenSection } from "@/components/sections/TokenSection/TokenSection"
 import { EventModal } from "@/components/utils/Modal/EventModal"
+import { MusicNoteIcon } from "@phosphor-icons/react"
 import { artistsData } from "@/data/artists"
 
 type SectionId = "music" | "community" | "voting" | "token"
@@ -20,7 +21,33 @@ export default function ArtistPage() {
   const { slug } = useParams()
   const artist = artistsData.find((a) => a.slug === slug)
 
-  if (!artist) return <div>Artist not found</div>
+  if (!artist)
+    return (
+      <div
+        className='flex flex-col items-center justify-center h-64 rounded-2xl p-6 text-center mt-50'
+        style={{
+          background:
+            "linear-gradient(135deg, var(--color-primary), var(--color-accent))",
+          color: "var(--color-white)",
+          boxShadow: "0 8px 24px rgba(0, 0, 0, 0.3)"
+        }}
+      >
+        <MusicNoteIcon size={48} weight='duotone' />
+        <h2
+          style={{
+            fontSize: "1.75rem",
+            fontWeight: 600,
+            marginBottom: "0.25rem"
+          }}
+        >
+          Artist Not Found
+        </h2>
+        <p style={{ fontSize: "1rem", color: "var(--color-light-gray)" }}>
+          We're curating something special! This page is a work in progress.
+          Stay tuned.
+        </p>
+      </div>
+    )
 
   const sectionFromUrl = searchParams.get("section") as SectionId | null
   const [selectedSection, setSelectedSection] = useState<SectionId>(
@@ -42,6 +69,10 @@ export default function ArtistPage() {
 
   const handleBuyToken = () => {
     setSelectedSection("token")
+  }
+
+  const handleSellToken = () => {
+    // TODO: implement token selling logic
   }
 
   const handleOpenEventModal = (title: string, date: string, venue: string) => {
@@ -72,7 +103,7 @@ export default function ArtistPage() {
           <TokenSection
             artist={artist}
             onBuyToken={handleBuyToken}
-            onSellToken={() => console.log("Sell token")}
+            onSellToken={handleSellToken}
           />
         )
       case "music":
@@ -93,7 +124,7 @@ export default function ArtistPage() {
         </section>
       )}
 
-      <section className='relative w-full flex justify-center mt-10'>
+      <section className='relative w-full flex justify-center mt-20'>
         <FullArtistCard artist={artist} onBuyToken={handleBuyToken} />
       </section>
 

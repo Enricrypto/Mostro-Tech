@@ -150,7 +150,7 @@ export default function DashboardPage() {
       </section>
 
       {/* ===== ARTIST PROFILE BANNER ===== */}
-      <section className='relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] mt-10'>
+      <section className='relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] mt-20'>
         <ArtistProfileBanner
           {...currentBanner}
           variant={currentBanner.variant}

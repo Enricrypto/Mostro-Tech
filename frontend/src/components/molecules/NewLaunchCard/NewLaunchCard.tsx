@@ -50,9 +50,9 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
       </div>
 
       {/* Section 1: Avatar + Name + Genre Badge */}
-      <div className='flex gap-3 pt-8'>
+      <div className='flex gap-5 pt-8'>
         <Avatar src={avatarUrl} variant='square-sm-lg' />
-        <div className='flex flex-col items-start gap-2'>
+        <div className='flex flex-col items-start gap-3'>
           <span className='font-inter font-semibold text-[20px] text-white'>
             {name}
           </span>
