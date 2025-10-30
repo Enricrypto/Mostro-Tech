@@ -1,0 +1,643 @@
+{
+  "address": "33pbYVD5NnHpnAc6kfSjiymWUt2Ttgp7NMTZMaY621c7",
+  "metadata": {
+    "name": "mostro_program",
+    "version": "0.1.0",
+    "spec": "0.1.0"
+  },
+  "instructions": [
+    {
+      "name": "buy_tokens_for_proposal",
+      "discriminator": [65, 12, 61, 116, 11, 143, 166, 134],
+      "accounts": [
+        {
+          "name": "buyer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "proposal",
+          "writable": true
+        },
+        {
+          "name": "artist_vault",
+          "writable": true
+        },
+        {
+          "name": "buyer_token_account",
+          "writable": true
+        },
+        {
+          "name": "buyer_usdc_account",
+          "writable": true
+        },
+        {
+          "name": "usdc_vault",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount_usdc",
+          "type": "u64"
+        },
+        {
+          "name": "artist_tokens_price",
+          "type": "u64"
+        },
+        {
+          "name": "is_campaign_purchase",
+          "type": "bool"
+        },
+        {
+          "name": "vault_bump",
+          "type": "u8"
+        }
+      ],
+      "returns": "u64"
+    },
+    {
+      "name": "create_artist",
+      "discriminator": [19, 246, 64, 224, 207, 250, 83, 11],
+      "accounts": [
+        {
+          "name": "admin",
+          "docs": [
+            "The admin or platform authority responsible for initializing new artists.",
+            "This is the signer who pays rent for the new PDA."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "artist",
+          "docs": [
+            "PDA for the artist’s account.",
+            "",
+            "PDA derivation:",
+            "- Derived from the static seed `\"artist\"`, but **validated** dynamically in the handler",
+            "using the artist’s name (we don't include it here because Anchor does not support",
+            "variable-length seeds directly in the `#[account(...)]` macro).",
+            "- The actual PDA check happens inside `create_artist_handler`.",
+            "",
+            "Why:",
+            "- This ensures every artist has a unique PDA tied to their name hash.",
+            "- Artists can be looked up deterministically (same name → same PDA).",
+            ""
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [97, 114, 116, 105, 115, 116]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "docs": ["Solana System Program (required for account creation)"],
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "artist_name",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "name": "latest_single_title",
+          "type": "string"
+        },
+        {
+          "name": "latest_single_duration",
+          "type": "string"
+        },
+        {
+          "name": "mint",
+          "type": "pubkey"
+        },
+        {
+          "name": "total_tokens",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "create_config",
+      "discriminator": [201, 207, 243, 114, 75, 111, 47, 189],
+      "accounts": [
+        {
+          "name": "admin",
+          "docs": [
+            "The admin signer — responsible for initializing the config",
+            "and paying rent for the PDA creation."
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config",
+          "docs": [
+            "The global configuration PDA.",
+            "",
+            "- Seeds: fixed \"global_config\" to ensure there’s only one.",
+            "- Payer: admin funds the rent for this account.",
+            "- Space: computed via Config::space() for safety and readability.",
+            "- The bump is automatically derived and stored by Anchor."
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103, 108, 111, 98, 97, 108, 95, 99, 111, 110, 102, 105, 103
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "docs": [
+            "The Solana system program — required for creating new accounts."
+          ],
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "percentage_artist",
+          "type": "u8"
+        },
+        {
+          "name": "percentage_mostro",
+          "type": "u8"
+        },
+        {
+          "name": "pump_fun_service_wallet",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "create_proposal",
+      "discriminator": [132, 116, 68, 174, 216, 160, 198, 22],
+      "accounts": [
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "artist",
+          "writable": true
+        },
+        {
+          "name": "proposal",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [112, 114, 111, 112, 111, 115, 97, 108]
+              },
+              {
+                "kind": "account",
+                "path": "artist"
+              },
+              {
+                "kind": "account",
+                "path": "creator"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "number_of_tokens",
+          "type": "u64"
+        },
+        {
+          "name": "milestone_reached",
+          "type": "bool"
+        },
+        {
+          "name": "early_access",
+          "type": "bool"
+        },
+        {
+          "name": "bump",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "finalize_proposal",
+      "discriminator": [23, 68, 51, 167, 109, 173, 187, 164],
+      "accounts": [
+        {
+          "name": "caller",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "proposal",
+          "docs": ["The proposal account to finalize"],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [112, 114, 111, 112, 111, 115, 97, 108]
+              },
+              {
+                "kind": "arg",
+                "path": "title"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "release_tokens",
+      "discriminator": [94, 13, 10, 16, 170, 196, 230, 42],
+      "accounts": [
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "proposal",
+          "writable": true
+        },
+        {
+          "name": "artist_wallet",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "artist_token_price",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "vote_proposal",
+      "discriminator": [247, 104, 114, 240, 237, 41, 200, 36],
+      "accounts": [
+        {
+          "name": "voter",
+          "docs": ["The wallet casting the vote"],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "proposal",
+          "docs": ["The proposal being voted on"],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [112, 114, 111, 112, 111, 115, 97, 108]
+              },
+              {
+                "kind": "arg",
+                "path": "proposal_title"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vote_marker",
+          "docs": ["A minimal PDA to prevent double voting"],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [118, 111, 116, 101]
+              },
+              {
+                "kind": "account",
+                "path": "proposal"
+              },
+              {
+                "kind": "account",
+                "path": "voter"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "vote_yes",
+          "type": "bool"
+        },
+        {
+          "name": "voter_token_balance",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Artist",
+      "discriminator": [142, 136, 31, 244, 208, 44, 128, 145]
+    },
+    {
+      "name": "Config",
+      "discriminator": [155, 12, 170, 224, 30, 250, 204, 130]
+    },
+    {
+      "name": "Proposal",
+      "discriminator": [26, 94, 189, 187, 116, 136, 53, 33]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "UnauthorizedAdmin",
+      "msg": "Only the admin can perform this action."
+    },
+    {
+      "code": 6001,
+      "name": "Unauthorized",
+      "msg": "Unauthorized access"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidPercentage",
+      "msg": "Percentages must sum to 100"
+    },
+    {
+      "code": 6003,
+      "name": "AlreadyVoted",
+      "msg": "User has already voted on this proposal"
+    },
+    {
+      "code": 6004,
+      "name": "InsufficientTokens",
+      "msg": "Insufficient tokens for operation"
+    },
+    {
+      "code": 6005,
+      "name": "InsufficientSol",
+      "msg": "Insufficient SOL for operation"
+    },
+    {
+      "code": 6006,
+      "name": "ProposalNotApproved",
+      "msg": "Proposal was not approved"
+    },
+    {
+      "code": 6007,
+      "name": "ProposalAlreadyExecuted",
+      "msg": "Proposal has already been executed"
+    },
+    {
+      "code": 6008,
+      "name": "InvalidTokenAmount",
+      "msg": "Invalid token amount"
+    },
+    {
+      "code": 6009,
+      "name": "InvalidSolAmount",
+      "msg": "Invalid SOL amount"
+    },
+    {
+      "code": 6010,
+      "name": "NoVotingPower",
+      "msg": "No voting power (no tokens held)"
+    },
+    {
+      "code": 6011,
+      "name": "VotingEnded",
+      "msg": "Voting period has already ended."
+    },
+    {
+      "code": 6012,
+      "name": "Overflow",
+      "msg": "Arithmetic overflow occurred."
+    },
+    {
+      "code": 6013,
+      "name": "VotingStillActive",
+      "msg": "Voting period is still active."
+    },
+    {
+      "code": 6014,
+      "name": "InvalidInstructionData",
+      "msg": "Invalid instruction data."
+    },
+    {
+      "code": 6015,
+      "name": "InvalidArtist",
+      "msg": "Invalid artist for this proposal."
+    },
+    {
+      "code": 6016,
+      "name": "ProposalNotFinalized",
+      "msg": "Proposal has not been finalized yet."
+    },
+    {
+      "code": 6017,
+      "name": "UnauthorizedArtist",
+      "msg": "Unauthorized artist"
+    },
+    {
+      "code": 6018,
+      "name": "InsufficientFunds",
+      "msg": "Insufficient funds in buyer account"
+    },
+    {
+      "code": 6019,
+      "name": "InsufficientVaultBalance",
+      "msg": "Insufficient vault balance"
+    }
+  ],
+  "types": [
+    {
+      "name": "Artist",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "type": "string"
+          },
+          {
+            "name": "latest_single",
+            "type": {
+              "defined": {
+                "name": "LatestSingle"
+              }
+            }
+          },
+          {
+            "name": "total_tokens",
+            "type": "u64"
+          },
+          {
+            "name": "campaign_tokens_sold",
+            "type": "u64"
+          },
+          {
+            "name": "mint",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Config",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "percentage_artist",
+            "type": "u8"
+          },
+          {
+            "name": "percentage_mostro",
+            "type": "u8"
+          },
+          {
+            "name": "admin_wallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "pump_fun_service_wallet",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LatestSingle",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "duration",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Proposal",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "artist",
+            "type": "pubkey"
+          },
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "number_of_tokens",
+            "type": "u64"
+          },
+          {
+            "name": "yes_votes",
+            "type": "u64"
+          },
+          {
+            "name": "no_votes",
+            "type": "u64"
+          },
+          {
+            "name": "start_date",
+            "type": "i64"
+          },
+          {
+            "name": "end_date",
+            "type": "i64"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "milestone_reached",
+            "type": "bool"
+          },
+          {
+            "name": "early_access",
+            "type": "bool"
+          },
+          {
+            "name": "usdc_collected",
+            "type": "u64"
+          },
+          {
+            "name": "artist_tokens_sold",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}
