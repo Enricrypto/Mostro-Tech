@@ -1,0 +1,1 @@
+export { ArtistFullCard } from "./ArtistFullCard"

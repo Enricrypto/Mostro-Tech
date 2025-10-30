@@ -1,0 +1,1 @@
+export { FundAllocationCard } from "./FundAllocationCard"

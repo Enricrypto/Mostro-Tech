@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+/* =========================================================
+   THEME CONFIGURATION
+   ========================================================= */
+:root {
+  /* Colors */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-primary: #6953da;
+  --color-primary-light: #9c8be7;
+  --color-accent: #3fd9ff;
+  --color-accent-dark: #1e97e6;
+  --color-highlight: #dcfd63; /* updated to match button highlight */
+  --color-highlight-opacity: #dcfd634d;
+  --color-muted: #d2d2d5;
+  --color-night: #0a111f;
+  --color-skyblue-opacity: #71d6fb4d;
+  --color-skyblue: #71d6fb;
+  --color-booger-buster: #fff70033;
+  --color-red-opacity: #fd63634d;
+  --color-red: #fd6363;
+  --color-green-opacity: #42ee5c4d;
+  --color-green: #42ee5c;
+  --color-purple-opacity: #6654d34d;
+  --color-purple: #6654d3;
+  --color-dark-blue: #272659;
+  --color-grey: #b3b3b3;
+
+  /* Buttons */
+  --color-button-bg-default: #ffffff;
+  --color-button-bg-selected: #998ce1;
+  --color-button-text-default: #0f172a;
+  --color-button-text-selected: #ffffff;
+
+  /* Button colors */
+  --color-light-blue-hover: #5ab4f2;
+  --color-light-gray: #f1f5f9;
+  --color-gray-text: #64748b;
+  --color-dark-bg: #121b2b;
+  --color-dark-bg-hover: #1a2438;
+
+  /* Navbar */
+  --color-navbar-border: #2d3953;
+
+  /* DataCard */
+  --color-datacard-bg: var(--color-dark-bg);
+  --color-datacard-border: var(--color-navbar-border);
+  /* New gradient for datacard value */
+  --color-datacard-gradient: linear-gradient(270deg, #4995e0 3.6%, #dcfd63 96%);
+
+  /* Alert dialog */
+  --color-alert-red: var(--color-red);
+  --color-alert-green: var(--color-green);
+  --color-alert-blue: var(--color-skyblue);
+  --color-alert-black: var(--color-black);
+  --color-alert-grey: var(--color-gray-text);
+
+  /* Hover & Active */
+  --hover-primary: var(--color-primary-light);
+  --active-primary: var(--color-primary);
+
+  /* Fonts */
+  --font-heading: var(--font-primary); /* Poppins for headings */
+  --font-body: var(--font-primary); /* Inter for body text */
+
+  /* Font sizes */
+  --text-h1: 2.5rem;
+  --text-h2: 2rem;
+  --text-h3: 1.75rem;
+  --text-h4: 1.5rem;
+  --text-p: 1rem;
+  --text-small: 0.875rem;
+  --text-large: 30px;
+  --leading-large: 36px;
+
+  /* Special text (DataCard) */
+  --text-datacard-value-font-size: 30px;
+  --text-datacard-value-line-height: 36px;
+  --text-datacard-value-letter-spacing: -0.75%;
+  --text-datacard-value-font-weight: 600;
+
+  /* Border radius & shadows */
+  --radius-pill: 30px;
+  --radius-card: 8px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --border-width: 1px;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0px 2px 4px 0px #00000014;
+  --shadow-md: 0px 4px 6px 0px #00000017;
+  --shadow-lg: 0px 8px 12px 0px #00000020;
+
+  /* Spacing */
+  --spacing-025: 1px;
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+
+  /* Z-index & opacity */
+  --z-tooltip: 1000;
+  --z-dropdown: 1100;
+  --z-modal: 1200;
+  --z-popover: 1300;
+  --opacity-disabled: 0.6;
+}
+
+/* ==============================
+   BASE LAYER — global defaults
+   ============================== */
+@layer base {
+  body {
+    font-family: var(--font-body); /* Inter */
+    color: var(--color-black);
+    background-color: var(--color-white);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading); /* Poppins */
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit; /* inherit Inter from body */
+  }
+
+  button {
+    transition: all 0.2s ease;
+  }
+
+  /* Text highlight */
+  .text-highlight {
+    color: var(--color-highlight);
+  }
+}
+
+@layer utilities {
+  /* Special typography cases */
+  .text-datacard-value {
+    font-family: var(--font-inter);
+    font-weight: var(--text-datacard-value-font-weight);
+    font-size: var(--text-datacard-value-font-size);
+    line-height: var(--text-datacard-value-line-height);
+    letter-spacing: var(--text-datacard-value-letter-spacing);
+  }
+
+  /* Remove number input spinners (arrows) */
+  .no-spinner::-webkit-outer-spin-button,
+  .no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .no-spinner {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield;
+  }
+}
+
+/* =========================================================
+   COMPONENTS
+   ========================================================= */
+@layer components {
+  /* =========================================================
+   LEADERBOARD 
+   ========================================================= */
+  .leaderboard {
+    @apply w-[580px] h-[88px] gap-3.5 p-6 
+         rounded-[10px] border border-(--color-button-bg-selected)
+         bg-(--color-datacard-bg) opacity-100;
+    @apply transition-shadow duration-300 ease-out; /* smooth shadow transition */
+  }
+
+  /* highlighted variant on hover */
+  .leaderboard:hover {
+    @apply shadow-[0px_0px_16.9px_5px_#71D6FB80];
+  }
+}
