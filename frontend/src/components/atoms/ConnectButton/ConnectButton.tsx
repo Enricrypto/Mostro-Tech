@@ -1,6 +1,3 @@
-// Replaces on the app by connect button inside navbar, but will keept it for
-// connecting other website to the App
-
 "use client"
 
 import { useLogin, usePrivy } from "@privy-io/react-auth"
