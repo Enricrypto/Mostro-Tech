@@ -1,6 +1,3 @@
-// Replaces on the app by connect button inside navbar, but will keept it for
-// connecting other website to the App
-
 "use client"
 
 import { useLogin, usePrivy } from "@privy-io/react-auth"
@@ -29,7 +26,7 @@ export const ConnectButton = () => {
     <div className='fixed top-4 right-4 z-50 flex items-center gap-3'>
       {user && displayName ? (
         <>
-          <span className='px-3 py-1 rounded font-body font-medium text-sm bg-[var(--color-accent-dark)] text-[var(--color-white)]'>
+          <span className='px-3 py-1 rounded font-body font-medium text-sm bg-(--color-accent-dark) text-white'>
             {displayName.length > 20
               ? `${displayName.slice(0, 6)}...${displayName.slice(-4)}`
               : displayName}
