@@ -29,6 +29,7 @@ It empowers creators to **tokenize their work**, **raise funds**, and **build vi
 ## 📁 Folder Structure
 
 ### 🧱 Frontend (`frontend/src`)
+
 ```
 
 src/
@@ -104,7 +105,7 @@ docs/
 ├── flow-diagrams/ # Visuals and process diagrams
 └── planning/ # MVP roadmap, sprints, and milestones
 
-````
+```
 
 ---
 
@@ -129,6 +130,7 @@ To get started:
 
 1. **Fork** the repository
 2. **Create** your feature branch
+
    ```bash
    git checkout -b feature/your-feature
    ```
