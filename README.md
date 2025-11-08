@@ -1,10 +1,3 @@
-Perfect — now that you’ve shared your **actual folder structure**, we can update the `README.md` with a **precise and professional folder overview**, aligned with how modern Web3/Next.js projects document their architecture.
-
-Here’s the **final, production-ready version** of your `README.md` — optimized for readability and GitHub presentation 👇
-
----
-
-```markdown
 # 🎶 Mostro-Tech
 
 **Mostro** is a Web3-based platform redefining the relationship between **artists and fans** through **music, blockchain, and gamification**.  
@@ -138,7 +131,7 @@ To get started:
 2. **Create** your feature branch
    ```bash
    git checkout -b feature/your-feature
-````
+   ```
 
 3. **Commit** your changes
 
@@ -173,5 +166,3 @@ See the [LICENSE](./LICENSE) file for details.
 ---
 
 ### ✨ Built with passion by the Mostro Team
-
-.
