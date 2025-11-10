@@ -31,13 +31,13 @@ export const SearchExpanded = ({
   return (
     <div
       className={cn(
-        "w-[var(--card-width)] h-[var(--card-height)] flex flex-col gap-[var(--space-lg)] rounded-[var(--radius-sm)] shadow-[var(--shadow-md)] bg-[var(--color-surface-default)] p-[var(--space-md)] font-body"
+        "w-(--card-width) h-(--card-height) flex flex-col gap-(--space-lg) rounded-sm shadow-(--shadow-md) bg-(--color-surface-default) p-(--space-md) font-body"
       )}
       style={{ border: "1px solid var(--border-color)" }}
     >
       <SearchBar value={inputValue} onChange={handleChange} />
 
-      <div className='flex gap-[var(--space-sm)]'>
+      <div className='flex gap-(--space-sm)'>
         {buttons.map((label) => (
           <PillButton
             key={label}
@@ -45,8 +45,8 @@ export const SearchExpanded = ({
             onClick={() => setSelectedButton(label)}
             className={cn(
               selectedButton === label
-                ? "bg-[var(--color-button-bg-selected)] text-[var(--color-button-text-selected)]"
-                : "bg-[var(--color-button-bg-default)] text-[var(--color-button-text-default)] hover:bg-[var(--color-button-hover)]"
+                ? "bg-(--color-button-bg-selected) text-(--color-button-text-selected)"
+                : "bg-(--color-button-bg-default) text-(--color-button-text-default) hover:bg-(--color-button-hover)"
             )}
           >
             {label}
@@ -54,7 +54,7 @@ export const SearchExpanded = ({
         ))}
       </div>
 
-      <div className='flex flex-col gap-[var(--space-xs)]'>
+      <div className='flex flex-col gap-(--space-xs)'>
         <MenuSectionTitle>Recent Searches</MenuSectionTitle>
         {recentSearches.map((search) => (
           <MenuItem key={search} label={search} />
