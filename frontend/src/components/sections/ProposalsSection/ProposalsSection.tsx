@@ -57,7 +57,9 @@ export function ProposalsSection({
             (status) => (
               <Button
                 key={status}
-                variant={filter === status ? "continue" : "default"}
+                variant={
+                  filter === status ? "continue" : "text-white-transparent"
+                }
                 onClick={() => setFilter(status)}
               >
                 {status.charAt(0).toUpperCase() + status.slice(1)}

@@ -68,7 +68,7 @@ export const PlayerCard: FC<PlayerCardProps> = ({
 
       {/* MIDDLE SECTION */}
       <div className='flex items-center gap-4 w-[765px]'>
-        <div className='flex items-center justify-center w-16 h-10 rounded-md text-white'>
+        <div className='flex items-center justify-center w-16 h-10 rounded-md text-black'>
           {currentTime}
         </div>
 
@@ -76,10 +76,10 @@ export const PlayerCard: FC<PlayerCardProps> = ({
           value={progress}
           onChange={(val: number) => onSeek && onSeek(val)}
           variant='purple'
-          className='w-[533px] h-4 rounded-[40px]'
+          className='w-full max-w-[533px] h-4 rounded-[40px]'
         />
 
-        <div className='flex items-center justify-center w-[68px] h-10 rounded-md text-white'>
+        <div className='flex items-center justify-center w-[68px] h-10 rounded-md text-black'>
           {totalTime}
         </div>
       </div>
@@ -87,6 +87,7 @@ export const PlayerCard: FC<PlayerCardProps> = ({
       {/* RIGHT SECTION */}
       <div className='flex items-center gap-3 h-10 pr-4'>
         <Button
+          variant='text-white-transparent'
           className='w-10 h-10 flex items-center justify-center rounded-[26px] text-black'
           onClick={onPrev}
         >
@@ -94,7 +95,8 @@ export const PlayerCard: FC<PlayerCardProps> = ({
         </Button>
 
         <Button
-          className='w-10 h-10 rounded-[26px] flex items-center justify-center bg-[#6654D3] text-white p-0'
+          size='icon-sm'
+          className='rounded-[26px] flex items-center justify-center bg-[#6654D3] text-white p-0'
           onClick={onPlayPause}
         >
           {isPlaying ? (
@@ -105,18 +107,20 @@ export const PlayerCard: FC<PlayerCardProps> = ({
         </Button>
 
         <Button
-          className='w-10 h-10 flex items-center justify-center rounded-[26px] text-black'
+          variant='text-white-transparent'
           onClick={onNext}
+          className='w-10 h-10 flex items-center justify-center rounded-[26px] text-black'
         >
           <SkipForwardIcon size={24} weight='bold' />
         </Button>
         {/* Close button */}
         {onClose && (
           <Button
+            size='icon-xs'
             onClick={onClose}
-            className='absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-full bg-gray-600 text-white hover:bg-gray-500 transition p-0'
+            className='absolute rounded-full top-2 right-2 p-0 bg-gray-600 text-white hover:bg-gray-500'
           >
-            <XIcon size={18} weight='bold' />
+            <XIcon size={16} weight='bold' />
           </Button>
         )}
       </div>

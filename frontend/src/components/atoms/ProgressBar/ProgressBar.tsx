@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 // ProgressBar container
 const progressBarCVA = cva(
-  "relative overflow-hidden rounded-[40px] w-full", // width full, height handled by size variant
+  "relative w-full overflow-hidden rounded-[8px] h-4 bg-[var(--color-skyblue-opacity)]",
   {
     variants: {
       variant: {
@@ -14,34 +14,31 @@ const progressBarCVA = cva(
         red: "bg-[var(--color-red-opacity)]",
         green: "bg-[var(--color-green-opacity)]",
         purple: "bg-[var(--color-purple-opacity)]"
-      },
-      size: {
-        sm: "h-2 sm:h-3 md:h-4",
-        md: "h-4 sm:h-5 md:h-6",
-        lg: "h-6 sm:h-7 md:h-8"
       }
     },
     defaultVariants: {
-      variant: "blue",
-      size: "md"
+      variant: "blue"
     }
   }
 )
 
 // ProgressBar indicator
-const progressBarIndicatorCVA = cva("h-full transition-all rounded-[40px]", {
-  variants: {
-    variant: {
-      blue: "bg-[var(--color-skyblue)]",
-      red: "bg-[var(--color-red)]",
-      green: "bg-[var(--color-green)]",
-      purple: "bg-[var(--color-purple)]"
+const progressBarIndicatorCVA = cva(
+  "h-full transition-all rounded-[8px] bg-[var(--color-skyblue)]",
+  {
+    variants: {
+      variant: {
+        blue: "bg-[var(--color-skyblue)]",
+        red: "bg-[var(--color-red)]",
+        green: "bg-[var(--color-green)]",
+        purple: "bg-[var(--color-purple)]"
+      }
+    },
+    defaultVariants: {
+      variant: "blue"
     }
-  },
-  defaultVariants: {
-    variant: "blue"
   }
-})
+)
 
 interface ProgressBarProps
   extends React.ComponentProps<typeof ProgressPrimitive.Root>,
@@ -52,19 +49,18 @@ interface ProgressBarProps
 export function ProgressBar({
   value,
   variant = "blue",
-  size = "md",
   className,
   ...props
 }: ProgressBarProps) {
   return (
     <ProgressPrimitive.Root
-      className={cn(progressBarCVA({ variant, size }), className)}
+      className={cn(progressBarCVA({ variant }), className)}
       value={value}
       {...props}
     >
       <ProgressPrimitive.Indicator
         className={progressBarIndicatorCVA({ variant })}
-        style={{ transform: `translateX(-${100 - value}%)` }}
+        style={{ width: `${value}%` }}
       />
     </ProgressPrimitive.Root>
   )
