@@ -11,11 +11,10 @@ export const baseButtonVariants = cva(
   {
     variants: {
       size: {
-        default:
-          "h-9 px-4 py-2 text-sm sm:h-10 sm:px-5 sm:py-2.5 md:h-11 md:px-6 md:py-3",
-        sm: "h-8 px-3 py-1.5 text-sm sm:h-9 sm:px-4 sm:py-2",
-        lg: "h-10 px-6 py-3 text-base sm:h-11 sm:px-7 sm:py-3.5",
-        icon: "w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14",
+        default: "h-10 px-4 sm:px-5 md:px-6",
+        sm: "h-8 px-3 sm:px-4",
+        lg: "h-12 px-6 sm:px-8",
+        icon: "w-10 h-10 sm:w-12 sm:h-12",
         "icon-sm": "w-8 h-8 sm:w-10 sm:h-10",
         "icon-lg": "w-12 h-12 sm:w-14 sm:h-14"
       }

@@ -11,10 +11,11 @@ export const baseButtonVariants = cva(
   {
     variants: {
       size: {
-        default: "h-9 px-4 py-2 sm:h-10 sm:px-5 md:h-12 md:px-6",
-        sm: "h-8 px-3 py-1.5 sm:h-9 sm:px-4",
-        lg: "h-10 px-6 sm:h-12 sm:px-8",
+        default: "h-10 px-4 sm:px-5 md:px-6",
+        sm: "h-8 px-3 sm:px-4",
+        lg: "h-12 px-6 sm:px-8",
         icon: "w-10 h-10 sm:w-12 sm:h-12",
+        "icon-xs": "w-6 h-6 sm:w-7 sm:h-7",
         "icon-sm": "w-8 h-8 sm:w-10 sm:h-10",
         "icon-lg": "w-12 h-12 sm:w-14 sm:h-14"
       }
@@ -80,7 +81,7 @@ const buttonVisualVariants = {
     hover:bg-black hover:text-white
   `,
   "rounded-icon": `
-    w-10 h-10 rounded-full border border-[var(--color-skyblue)] text-white 
+    w-4 h-4 rounded-full border border-[var(--color-skyblue)] text-white 
     hover:bg-[var(--color-skyblue-opacity)]
   `,
   highlight: `

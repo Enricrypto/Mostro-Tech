@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const seekBarCVA = cva(
-  "relative w-[334px] h-[16px] touch-none select-none flex items-center",
+  "relative w-full max-w-[533px] h-4 touch-none select-none flex items-center",
   {
     variants: {
       variant: {
