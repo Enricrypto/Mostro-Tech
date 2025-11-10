@@ -39,7 +39,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
     >
       {/* Section 1: Avatar + Name + Genre Badge */}
       <div className='flex gap-5 '>
-        <Avatar src={avatarUrl} variant='square-sm-lg' />
+        <Avatar src={avatarUrl} variant='square-md' />
         <div className='flex flex-col items-start gap-3'>
           <div className='flex gap-2'>
             <CalendarBlankIcon

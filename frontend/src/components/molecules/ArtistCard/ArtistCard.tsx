@@ -63,7 +63,7 @@ export function ArtistCard({
       <div className='flex gap-6'>
         {/* Left column: Avatar + Genre */}
         <div className='flex flex-col items-start gap-4'>
-          <Avatar variant='square-sm-lg' src={avatarSrc} alt={artistName} />
+          <Avatar variant='square-md' src={avatarSrc} alt={artistName} />
           <Badge variant='genre'>{genre}</Badge>
         </div>
 

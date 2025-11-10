@@ -29,7 +29,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
       }}
     >
       <div className='flex items-center gap-6'>
-        <Avatar src={avatarUrl} variant='square-sm-lg' />
+        <Avatar src={avatarUrl} variant='square-md' />
         <div className='flex flex-col gap-4 pb-8'>
           <span className='font-semibold text-white text-[30px]'>{name}</span>
           <span className='text-white text-[16px]'>{handle}</span>
