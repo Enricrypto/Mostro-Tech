@@ -21,15 +21,19 @@ export const Tooltip: React.FC<TooltipProps> = ({
   variant
 }) => {
   const baseStyles = `
-  rounded-[6px] gap-[10px] px-[13px] py-[7px] 
-  shadow-[0_2px_4px_0_rgba(30,41,59,0.25)]
-  text-sm font-medium text-left
-  max-w-xs break-words whitespace-pre-wrap
-`
+    rounded-[6px] gap-[10px]
+    px-[13px] py-[7px]
+    text-sm font-medium text-left
+    shadow-[0_2px_4px_0_rgba(30,41,59,0.25)]
+    max-w-xs break-words whitespace-pre-wrap
+    sm:max-w-[180px] sm:text-xs sm:px-[10px] sm:py-[5px]
+    md:max-w-xs md:text-sm md:px-[13px] md:py-[7px]
+  `
 
   const variantStyles: Record<TooltipVariant, string> = {
-    blue: "bg-[#71D6FB] text-black border-none",
-    white: "bg-white text-black border border-[#71D6FB]"
+    blue: "bg-[var(--color-accent)] text-[var(--color-black)] border-none",
+    white:
+      "bg-[var(--color-white)] text-[var(--color-black)] border border-[var(--color-accent)]"
   }
 
   return (
@@ -41,13 +45,14 @@ export const Tooltip: React.FC<TooltipProps> = ({
             side={side}
             align={align}
             sideOffset={8}
+            avoidCollisions
             className={cn(baseStyles, variantStyles[variant])}
           >
             {content}
             <TooltipPrimitive.Arrow
               className={cn(
                 "fill-current",
-                variant === "blue" ? "text-[#71D6FB]" : "text-white"
+                variant === "blue" ? "text-(--color-accent)" : "text-white"
               )}
             />
           </TooltipPrimitive.Content>
