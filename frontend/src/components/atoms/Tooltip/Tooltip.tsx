@@ -21,14 +21,14 @@ export const Tooltip: React.FC<TooltipProps> = ({
   variant
 }) => {
   const baseStyles = `
-    rounded-[6px] gap-[10px]
-    px-[13px] py-[7px]
-    text-sm font-medium text-left
-    shadow-[0_2px_4px_0_rgba(30,41,59,0.25)]
-    max-w-xs break-words whitespace-pre-wrap
-    sm:max-w-[180px] sm:text-xs sm:px-[10px] sm:py-[5px]
-    md:max-w-xs md:text-sm md:px-[13px] md:py-[7px]
-  `
+  rounded-[0.375rem] gap-[0.625rem]
+  px-[0.8125rem] py-[0.4375rem]
+  text-sm font-medium text-left
+  shadow-[0_0.125rem_0.25rem_0_rgba(30,41,59,0.25)]
+  max-w-[20rem] break-words whitespace-pre-wrap
+  sm:max-w-[11.25rem] sm:text-xs sm:px-[0.625rem] sm:py-[0.3125rem]
+  md:max-w-[20rem] md:text-sm md:px-[0.8125rem] md:py-[0.4375rem]
+`
 
   const variantStyles: Record<TooltipVariant, string> = {
     blue: "bg-[var(--color-accent)] text-[var(--color-black)] border-none",

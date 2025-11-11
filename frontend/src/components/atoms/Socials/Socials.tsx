@@ -20,14 +20,15 @@ const socialButtonCVA = cva(
       themeVariant: {
         black:
           "border-[var(--color-navbar-border)] bg-[var(--color-night)] text-white hover:bg-[var(--color-primary)]",
-        blue: "border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)] hover:bg-[var(--color-primary)]",
+        blue: "border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-highlight)] hover:bg-[var(--color-primary)]",
         yellow:
-          "border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black hover:bg-[var(--color-primary)]"
+          "border-[var(--color-dark-blue)] bg-[var(--color-booger-buster)] text-black hover:bg-[var(--color-primary)]"
       },
       size: {
         default:
-          "w-[44px] h-[32px] sm:w-[40px] sm:h-[30px] md:w-[44px] md:h-[32px]",
-        compact: "w-9 h-7 sm:w-8 sm:h-6 md:w-9 md:h-7"
+          "w-[2.75rem] h-[2rem] sm:w-[2.5rem] sm:h-[1.875rem] md:w-[2.75rem] md:h-[2rem]",
+        compact:
+          "w-[2.25rem] h-[1.75rem] sm:w-[2rem] sm:h-[1.5rem] md:w-[2.25rem] md:h-[1.75rem]"
       }
     },
     defaultVariants: {
