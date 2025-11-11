@@ -6,7 +6,12 @@ import { cn } from "@/lib/utils"
 
 // ProgressBar container
 const progressBarCVA = cva(
-  "relative w-full overflow-hidden rounded-[8px] h-4 bg-[var(--color-skyblue-opacity)]",
+  `
+  relative w-full overflow-hidden rounded-[0.5rem]
+  h-[0.75rem] sm:h-[0.875rem] md:h-[1rem]
+  bg-[var(--color-skyblue-opacity)]
+  transition-all duration-300 ease-out
+  `,
   {
     variants: {
       variant: {
@@ -24,7 +29,10 @@ const progressBarCVA = cva(
 
 // ProgressBar indicator
 const progressBarIndicatorCVA = cva(
-  "h-full transition-all rounded-[8px] bg-[var(--color-skyblue)]",
+  `
+  h-full transition-all duration-300 ease-out rounded-[0.5rem]
+  bg-[var(--color-skyblue)]
+  `,
   {
     variants: {
       variant: {
@@ -60,7 +68,9 @@ export function ProgressBar({
     >
       <ProgressPrimitive.Indicator
         className={progressBarIndicatorCVA({ variant })}
-        style={{ width: `${value}%` }}
+        style={{
+          width: `${Math.min(Math.max(value, 0), 100)}%`
+        }}
       />
     </ProgressPrimitive.Root>
   )
