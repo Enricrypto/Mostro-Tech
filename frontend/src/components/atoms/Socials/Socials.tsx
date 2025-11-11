@@ -25,8 +25,9 @@ const socialButtonCVA = cva(
           "border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black hover:bg-[var(--color-primary)]"
       },
       size: {
-        default: "w-[44px] h-[32px]",
-        compact: "w-9 h-7"
+        default:
+          "w-[44px] h-[32px] sm:w-[40px] sm:h-[30px] md:w-[44px] md:h-[32px]",
+        compact: "w-9 h-7 sm:w-8 sm:h-6 md:w-9 md:h-7"
       }
     },
     defaultVariants: {
@@ -80,8 +81,7 @@ export const Socials: React.FC<SocialsProps> = ({
   return (
     <div
       className={cn(
-        "flex items-center justify-center gap-2",
-        size === "compact" && "gap-1",
+        "flex flex-wrap items-center justify-center gap-2 sm:gap-1 md:gap-2",
         className
       )}
     >
