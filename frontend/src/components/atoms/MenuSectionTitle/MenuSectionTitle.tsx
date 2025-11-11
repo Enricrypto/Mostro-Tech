@@ -16,15 +16,23 @@ export const MenuSectionTitle = ({
 }: MenuSectionTitleProps) => {
   // Size mapping for responsiveness
   const sizeClasses = {
-    sm: "w-[120px] h-[32px] px-3 py-1 gap-2 text-sm",
-    md: "w-[160px] h-[40px] px-4 py-2 gap-3 text-base",
-    lg: "w-[200px] h-[48px] px-6 py-3 gap-4 text-lg"
+    sm: "min-w-[7rem] min-h-[2rem] px-[0.75rem] py-[0.4rem] text-[0.875rem]", // ~14px
+    md: "min-w-[9rem] min-h-[2.5rem] px-[1rem] py-[0.5rem] text-[1rem]", // ~16px
+    lg: "min-w-[11rem] min-h-[3rem] px-[1.25rem] py-[0.75rem] text-[1.125rem]" // ~18px
   }[size]
 
   return (
     <div
       className={cn(
-        "flex items-center font-heading text-black bg-(--color-surface-default)",
+        `
+        flex items-center justify-start
+        font-heading font-semibold
+        text-(--color-text-primary)
+        bg-(--color-surface-default)
+        border border-(--border-color)
+        rounded-lg
+        tracking-tight select-none
+        `,
         sizeClasses,
         className
       )}

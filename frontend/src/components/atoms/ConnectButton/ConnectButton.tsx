@@ -2,12 +2,35 @@
 
 import { useLogin, usePrivy } from "@privy-io/react-auth"
 import { Button } from "@/components/atoms/Button"
+import { cn } from "@/lib/utils"
+import { cva, type VariantProps } from "class-variance-authority"
+
+const userBadgeCVA = cva(
+  "rounded font-body font-medium text-white flex items-center justify-center",
+  {
+    variants: {
+      size: {
+        sm: "text-xs px-2 py-1",
+        md: "text-sm px-3 py-1.5",
+        lg: "text-base px-4 py-2"
+      },
+      theme: {
+        accentDark: "bg-[var(--color-accent-dark)]",
+        primary: "bg-[var(--color-primary)]"
+      }
+    },
+    defaultVariants: {
+      size: "md",
+      theme: "accentDark"
+    }
+  }
+)
 
 export const ConnectButton = () => {
   const { login } = useLogin()
   const { user, logout } = usePrivy()
 
-  // Get a display name: email > Google > wallet > DID
+  // Display name: email > Google > wallet > DID
   const displayName =
     user?.email?.address ||
     user?.google?.email ||
@@ -23,21 +46,21 @@ export const ConnectButton = () => {
   const handleLogout = () => logout()
 
   return (
-    <div className='fixed top-4 right-4 z-50 flex items-center gap-3'>
+    <div className='fixed top-4 right-4 z-50 flex flex-col sm:flex-row items-center gap-2 sm:gap-3'>
       {user && displayName ? (
         <>
-          <span className='px-3 py-1 rounded font-body font-medium text-sm bg-(--color-accent-dark) text-white'>
+          <span className={cn(userBadgeCVA())}>
             {displayName.length > 20
               ? `${displayName.slice(0, 6)}...${displayName.slice(-4)}`
               : displayName}
           </span>
 
-          <Button variant='highlight' onClick={handleLogout}>
+          <Button size='default' variant='highlight' onClick={handleLogout}>
             Logout
           </Button>
         </>
       ) : (
-        <Button variant='highlight' onClick={handleLogin}>
+        <Button size='default' variant='highlight' onClick={handleLogin}>
           Launch App
         </Button>
       )}

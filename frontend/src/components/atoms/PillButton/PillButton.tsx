@@ -6,7 +6,14 @@ import type { ComponentProps } from "react"
 
 // CVA for PillButton with responsive sizes
 const pillButtonCVA = cva(
-  "inline-flex items-center justify-center gap-2 rounded-full transition-all duration-200 ease-out font-body",
+  `
+  inline-flex items-center justify-center gap-[0.5rem]
+  rounded-full font-body transition-all duration-200 ease-out
+  min-h-[2.5rem] sm:min-h-[2.75rem] md:min-h-[3rem]
+  px-[1.2rem] sm:px-[1.6rem] md:px-[2rem]
+  whitespace-nowrap
+  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
+  `,
   {
     variants: {
       themeVariant: {
@@ -21,12 +28,12 @@ const pillButtonCVA = cva(
       },
       selected: {
         true: "font-semibold opacity-90",
-        false: ""
+        false: "opacity-100"
       },
       size: {
-        sm: "text-sm px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5",
-        md: "text-base px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3",
-        lg: "text-lg px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-4"
+        sm: "text-[0.875rem] sm:text-[0.9rem] md:text-[1rem]",
+        md: "text-[1rem] sm:text-[1.05rem] md:text-[1.125rem]",
+        lg: "text-[1.125rem] sm:text-[1.25rem] md:text-[1.375rem]"
       }
     },
     defaultVariants: {
