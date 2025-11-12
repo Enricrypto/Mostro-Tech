@@ -1,6 +1,6 @@
 "use client"
 
-import { DataArtistCard } from "@/components/molecules/DataArtistCard"
+import { DataArtistCard } from "@/components/atoms/DataArtistCard"
 import {
   CurrencyDollarIcon,
   UsersIcon,

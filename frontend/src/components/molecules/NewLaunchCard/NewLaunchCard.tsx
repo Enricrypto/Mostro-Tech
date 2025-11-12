@@ -33,15 +33,16 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 
   return (
     <div
-      className='group relative flex flex-col rounded-[10px] w-[384px] border-2 gap-3.5
-             p-6 border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
-             transition-colors duration-200 hover:border-[#71D6FB]'
+      className='group relative flex flex-col w-full max-w-[384px] rounded-[10px] border-2 p-6 gap-4
+                 border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
+                 transition-colors duration-200 hover:border-[#71D6FB]'
     >
       {/* Section 1: Avatar + Name + Genre Badge */}
-      <div className='flex gap-5 '>
+      <div className='flex flex-row items-start gap-4'>
         <Avatar src={avatarUrl} variant='square-md' />
-        <div className='flex flex-col items-start gap-3'>
-          <div className='flex gap-2'>
+
+        <div className='flex flex-col gap-2'>
+          <div className='flex items-center gap-2'>
             <CalendarBlankIcon
               size={16}
               weight='bold'
@@ -51,20 +52,22 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
               Launch in {launchInDays} days
             </span>
           </div>
-          <span className='font-inter font-semibold text-[20px] text-white'>
+          <span className='font-inter font-semibold text-[20px] text-white truncate max-w-60'>
             {name}
           </span>
 
           {/* Genre Badge (same as ArtistCard) */}
-          <Badge variant='genre'>{badgeText}</Badge>
+          <Badge variant='genre' className='w-max'>
+            {badgeText}
+          </Badge>
         </div>
       </div>
 
       {/* Section 2: Divider */}
-      <div className='w-[336px] border-t border-[#D2D3D5] my-4' />
+      <div className='border-t border-[#D2D3D5] my-4' />
 
       {/* Section 3: Price & Total Supply */}
-      <div className='flex justify-between items-center w-[336px] h-11'>
+      <div className='flex flex-row justify-between items-start sm:items-center gap-4 sm:gap-0'>
         <div className='flex flex-col'>
           <span className='text-white text-[18px] font-poppins font-normal leading-5'>
             ${price}
@@ -73,6 +76,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
             Initial Price
           </span>
         </div>
+
         <div className='flex flex-col'>
           <span className='text-white text-[18px] font-poppins font-normal leading-5'>
             {dynamicRightTopText}
@@ -89,6 +93,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
         icon={<ArrowUpRightIcon />}
         iconPosition='right'
         onClick={() => handleButtonClick(slug)}
+        className='mt-4 w-full sm:w-auto'
       >
         View Artist
       </Button>

@@ -6,12 +6,13 @@ import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const perksCardCVA = cva(
-  "flex flex-col justify-between w-[374px] h-[134px] p-[18px] gap-[14px] rounded-[10px] border flex-shrink-0 bg-[#121B2B] transition-shadow duration-200 hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380]",
+  "flex flex-col justify-between w-[374px] h-[134px] p-[18px] gap-[14px] rounded-[10px] border flex-shrink-0 bg-[var(--color-night)] transition-shadow duration-200 hover:border-[var(--color-purple)] hover:shadow-[0_0_16.9px_5px_var(--color-purple-opacity)]",
   {
     variants: {
       variant: {
-        default: "border-[#998CE1]",
-        highlighted: "border-[#6654d3] shadow-[0_0_16.9px_5px_#6654D380]"
+        default: "border-[var(--color-primary)]",
+        highlighted:
+          "border-[var(--color-purple)] shadow-[0_0_16.9px_5px_var(--color-purple-opacity)]"
       }
     },
     defaultVariants: {
@@ -38,19 +39,19 @@ export function PerksCard({
     <div className={cn(perksCardCVA({ variant }), className)}>
       {/* Top Section */}
       <div className='flex justify-between items-center text-white'>
-        <span className='flex items-center justify-start font-inter font-semibold text-[18px] leading-7'>
+        <span className='flex items-center font-inter font-semibold text-[18px] leading-7 truncate max-w-[260px]'>
           {title}
         </span>
         <LockOpenIcon size={20} />
       </div>
 
       {/* Middle Section */}
-      <div className='font-inter font-medium text-[12px] leading-5 text-[#B3B3B3]'>
+      <div className='font-inter font-medium text-[12px] leading-5 text-(--color-grey) truncate'>
         {name}
       </div>
 
       {/* Bottom Section - Badge */}
-      <Badge variant='neutral' className='self-start inline-flex'>
+      <Badge variant='neutral' className='w-max'>
         {tokenAmount} tokens
       </Badge>
     </div>

@@ -9,7 +9,6 @@ const progressBarCVA = cva(
   `
   relative w-full overflow-hidden rounded-[0.5rem]
   h-[0.75rem] sm:h-[0.875rem] md:h-[1rem]
-  bg-[var(--color-skyblue-opacity)]
   transition-all duration-300 ease-out
   `,
   {
@@ -31,7 +30,8 @@ const progressBarCVA = cva(
 const progressBarIndicatorCVA = cva(
   `
   h-full transition-all duration-300 ease-out rounded-[0.5rem]
-  bg-[var(--color-skyblue)]
+  h-[0.75rem] sm:h-[0.875rem] md:h-[1rem]
+  transition-all duration-300 ease-out
   `,
   {
     variants: {
@@ -56,7 +56,7 @@ interface ProgressBarProps
 
 export function ProgressBar({
   value,
-  variant = "blue",
+  variant,
   className,
   ...props
 }: ProgressBarProps) {

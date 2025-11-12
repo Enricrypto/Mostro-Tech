@@ -16,7 +16,13 @@ export const FundAllocationCard: React.FC<FundAllocationCardProps> = ({
   bottomLeftValue
 }) => {
   return (
-    <div className='w-[462px] h-[104px] p-6 flex flex-col gap-3.5 rounded-[10px] border-2 border-(--color-datacard-border) bg-(--color-datacard-bg)'>
+    <div
+      className='w-full max-w-[462px] h-[104px] p-6 flex flex-col gap-3.5 rounded-[10px] border-2'
+      style={{
+        borderColor: "var(--color-datacard-border)",
+        backgroundColor: "var(--color-datacard-bg)"
+      }}
+    >
       {/* Top Section */}
       <div className='flex justify-between items-center'>
         {/* Left Side */}
@@ -32,7 +38,10 @@ export const FundAllocationCard: React.FC<FundAllocationCardProps> = ({
 
       {/* Bottom Section */}
       <div className='flex items-center'>
-        <div className='text-(--color-grey) font-inter font-medium text-[12px] leading-5 text-left'>
+        <div
+          className='font-inter font-medium text-[12px] leading-5'
+          style={{ color: "var(--color-grey)" }}
+        >
           ${bottomLeftValue} tokens
         </div>
       </div>

@@ -39,12 +39,14 @@ export function VotingProgress({
     percentage: number
     variant: "red" | "green"
   }) => (
-    <div className='flex flex-col gap-2 w-full'>
+    <div className='flex flex-col gap-2 w-full min-w-0'>
       {/* Top Row: Icon + Label + Percentage */}
-      <div className='flex justify-between items-center w-full'>
-        <div className={`flex items-center gap-2 ${variants[variant]}`}>
+      <div className='flex justify-between items-center w-full min-w-0'>
+        <div className={`flex items-center gap-2 ${variants[variant]} min-w-0`}>
           <span className='flex items-center justify-center'>{icon}</span>
-          <span className='font-inter font-medium text-[16px]'>{label}</span>
+          <span className='font-inter font-medium text-[16px] truncate max-w-[calc(100%-60px)]'>
+            {label}
+          </span>
         </div>
         <span
           className={`font-inter font-medium text-[16px] ${variants[variant]}`}
@@ -61,14 +63,14 @@ export function VotingProgress({
       />
 
       {/* Votes Count */}
-      <div className='w-full font-inter font-medium text-[12px] text-[#B3B3B3]'>
+      <div className='w-full font-inter font-medium text-[12px] text-[#B3B3B3] truncate'>
         {votes} {votes === 1 ? "vote" : "votes"}
       </div>
     </div>
   )
 
   return (
-    <div className='flex flex-col gap-4 w-full'>
+    <div className='flex flex-col gap-4 w-full max-w-full'>
       <VoteRow
         label='Yes'
         icon={<ThumbsUpIcon size={20} />}

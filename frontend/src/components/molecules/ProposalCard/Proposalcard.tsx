@@ -8,7 +8,7 @@ import { ArrowRightIcon, ClockClockwiseIcon } from "@phosphor-icons/react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const proposalCardCVA = cva(
-  "min-w-[462px] max-h-[188px] p-[24px] flex flex-col gap-[14px] rounded-[10px] bg-[var(--color-datacard-bg)] transition-all duration-300 ease-out",
+  "w-full max-w-[462px] min-w-[280px] max-h-[188px] p-[24px] flex flex-col gap-[14px] rounded-[10px] bg-[var(--color-datacard-bg)] transition-all duration-300 ease-out",
   {
     variants: {
       variant: {
@@ -49,28 +49,28 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
   return (
     <div className={proposalCardCVA({ variant: status })}>
       {/* Top Section */}
-      <div className='flex flex-col gap-2'>
-        <div className='flex justify-between items-center gap-2 flex-wrap'>
-          <p className='text-white font-inter font-semibold text-[18px] leading-7 truncate'>
-            {title}
-          </p>
-          {status === "ongoing" && badgeText && (
-            <Badge variant='increase' icon={<ClockClockwiseIcon size={14} />}>
-              {badgeText}
-            </Badge>
-          )}
-          {status === "executed" && <Badge variant='increase'>Executed</Badge>}
-          {status === "closed" && <Badge variant='decrease'>Closed</Badge>}
-        </div>
-        <p className='text-(--color-grey) font-inter font-medium text-[12px] leading-5'>
-          Requesting: ${requestedTokens} Tokens
+      <div className='flex justify-between items-center gap-2'>
+        <p className='text-white font-inter font-semibold text-[18px] leading-7 truncate max-w-[65%]'>
+          {title}
         </p>
+        {status === "ongoing" && badgeText && (
+          <Badge variant='increase' icon={<ClockClockwiseIcon size={14} />}>
+            {badgeText}
+          </Badge>
+        )}
+        {status === "executed" && <Badge variant='increase'>Executed</Badge>}
+        {status === "closed" && <Badge variant='decrease'>Closed</Badge>}
       </div>
+      <p className='text-(--color-grey) font-inter font-medium text-[12px] leading-5'>
+        Requesting: ${requestedTokens} Tokens
+      </p>
 
       {/* Conditional Content */}
       {status === "ongoing" && yesPercentage !== undefined && (
         <>
+          {/* Progress bar keeps same height */}
           <ProgressBar value={yesPercentage} variant='blue' />
+
           <div className='flex justify-between items-center gap-3 flex-nowrap'>
             <div className='flex flex-col justify-between'>
               <p className='text-white font-inter font-bold text-[12px] leading-5'>
@@ -86,6 +86,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
               icon={<ArrowRightIcon weight='bold' />}
               iconPosition='right'
               onClick={onViewProposal}
+              className='whitespace-nowrap'
             >
               View Proposal
             </Button>
