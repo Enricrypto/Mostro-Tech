@@ -40,117 +40,144 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
 
   return (
     <div
-      className='flex flex-col gap-8 rounded-[10px] border-2'
-      style={{
-        width: "1348px",
-        height: "506px",
-        gap: "32px",
-        padding: "24px",
-        borderColor: "#2D3953",
-        borderRadius: "10px",
-        background:
-          "linear-gradient(106.97deg, #121B2B 74.58%, #DCFD63 83.9%, #4995E0 91.25%)",
-        boxShadow: "0px 4px 6px 0px #00000017",
-        opacity: 1,
-        transform: "rotate(0deg)"
-      }}
+      className='
+        flex flex-col gap-8 rounded-[10px] border-2
+        w-full max-w-[1348px]
+        p-6 md:p-8
+        mx-auto
+        border-[#2D3953]
+        bg-[linear-gradient(106.97deg,#121B2B_74.58%,#DCFD63_83.9%,#4995E0_91.25%)]
+        shadow-md
+      '
     >
       {/* Top Section */}
-      <div className='flex justify-between items-center'>
-        <Badge variant='profileLabel' className='flex items-center gap-2'>
+      <div
+        className='
+    flex flex-col items-center gap-4
+    md:flex-row md:items-center md:justify-between md:gap-4
+  '
+      >
+        {/* Badge */}
+        <Badge
+          variant='profileLabel'
+          className='flex items-center gap-2 justify-center'
+        >
           <StarIcon size={20} className='text-[#EEFF00]' />
-          <span className='text-xs font-medium text-black'>
+          <span className='text-xs md:text-sm font-medium text-black'>
             {artist.badgeText}
           </span>
         </Badge>
 
-        <div className='flex items-center gap-2'>
+        {/* Socials + Buttons */}
+        <div
+          className='
+      flex flex-col items-center gap-3
+      sm:flex-row sm:flex-wrap sm:justify-center
+      md:justify-end md:items-center
+    '
+        >
+          {/* Social icons */}
           <Socials socials={socials} size='default' themeVariant='black' />
 
-          <Button
-            variant='follow-share'
-            icon={isFollowing ? <UserCheckIcon /> : <UserPlusIcon />}
-            iconPosition='left'
-            onClick={handleClick}
+          {/* Buttons */}
+          <div
+            className='
+        flex items-center gap-2
+        sm:flex-row sm:gap-3
+      '
           >
-            {isFollowing ? "Following" : "Follow"}
-          </Button>
+            <Button
+              variant='follow-share'
+              icon={isFollowing ? <UserCheckIcon /> : <UserPlusIcon />}
+              iconPosition='left'
+              onClick={handleClick}
+            >
+              {isFollowing ? "Following" : "Follow"}
+            </Button>
 
-          <Button
-            variant='follow-share'
-            icon={<LinkSimpleIcon />}
-            iconPosition='left'
-            onClick={handleShareClick}
-          >
-            Share
-          </Button>
+            <Button
+              variant='follow-share'
+              icon={<LinkSimpleIcon />}
+              iconPosition='left'
+              onClick={handleShareClick}
+            >
+              Share
+            </Button>
+          </div>
         </div>
       </div>
 
       {/* Bottom Section */}
-      <div className='flex gap-12'>
+      <div
+        className='
+    flex flex-col md:flex-row gap-8 md:gap-12
+    items-center md:items-start text-center md:text-left
+  '
+      >
+        {/* Avatar */}
         <Avatar
           variant='square-lg'
           src={artist.image}
           alt={`${artist.name} profile picture`}
+          className='w-[180px] h-[180px] md:w-60 md:h-60 shrink-0'
         />
 
-        <div className='flex flex-col flex-1' style={{ gap: "36px" }}>
-          <div className='flex flex-col gap-6 w-[680px] h-[214px]'>
-            <h1 className='font-poppins font-normal text-[48px] leading-12 tracking-[-0.012em] text-white'>
+        {/* Artist Info + Token Data */}
+        <div className='flex flex-col flex-1 gap-6 md:gap-9 items-center md:items-start'>
+          {/* Artist Info */}
+          <div className='flex flex-col gap-4 md:gap-6 max-w-[680px] items-center md:items-start'>
+            <h1
+              className='
+          font-poppins font-normal
+          text-[clamp(1.75rem,3vw,3rem)]
+          leading-tight text-white
+        '
+            >
               {artist.name}
             </h1>
-            <div className='flex justify-start'>
+
+            <div className='flex justify-center md:justify-start'>
               <Badge variant='genre'>{artist.genreBadge}</Badge>
             </div>
-            <p className='text-lg text-white leading-7'>{artist.description}</p>
+
+            <p className='text-[clamp(0.875rem,1.3vw,1.125rem)] text-white leading-7 text-justify'>
+              {artist.description}
+            </p>
           </div>
 
-          <div className='flex items-center gap-10 flex-wrap'>
-            <div className='flex flex-col gap-1'>
-              <span
-                className='text-datacard-value bg-clip-text text-transparent'
-                style={{
-                  backgroundImage:
-                    "linear-gradient(270deg, #4995E0 3.6%, #DCFD63 96%)"
-                }}
+          {/* Token Data */}
+          <div className='flex flex-wrap justify-center md:justify-start items-center gap-8 md:gap-10'>
+            {[
+              { label: "Token", value: `$${artist.token?.name}` },
+              { label: "Price", value: `$${artist.token?.price}` },
+              { label: "Holders", value: artist.token?.holders }
+            ].map((item) => (
+              <div
+                key={item.label}
+                className='flex flex-col items-center md:items-start gap-1'
               >
-                ${artist.token?.name}
-              </span>
-              <span className='text-sm text-white'>Token</span>
-            </div>
-            <div className='flex flex-col gap-1'>
-              <span
-                className='text-datacard-value bg-clip-text text-transparent'
-                style={{
-                  backgroundImage:
-                    "linear-gradient(270deg, #4995E0 3.6%, #DCFD63 96%)"
-                }}
-              >
-                ${artist.token?.price}
-              </span>
-              <span className='text-sm text-white'>Price</span>
-            </div>
-            <div className='flex flex-col gap-1'>
-              <span
-                className='text-datacard-value bg-clip-text text-transparent'
-                style={{
-                  backgroundImage:
-                    "linear-gradient(270deg, #4995E0 3.6%, #DCFD63 96%)"
-                }}
-              >
-                {artist.token?.holders}
-              </span>
-              <span className='text-sm text-white'>Holders</span>
-            </div>
+                <span
+                  className='text-datacard-value bg-clip-text text-transparent'
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(270deg, #4995E0 3.6%, #DCFD63 96%)"
+                  }}
+                >
+                  {item.value}
+                </span>
+                <span className='text-sm text-white'>{item.label}</span>
+              </div>
+            ))}
           </div>
 
-          <div className='flex gap-4 flex-wrap'>
+          {/* CTA */}
+          <div className='flex w-full justify-center md:justify-start'>
             <Button
               variant='buy-token'
               icon={<CurrencyDollarIcon />}
               iconPosition='left'
               onClick={onBuyToken}
+              className='w-full md:w-auto'
             >
               Buy Token
             </Button>

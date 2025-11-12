@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react"
 import { PrivyProvider } from "@privy-io/react-auth"
 import { toSolanaWalletConnectors } from "@privy-io/react-auth/solana"
 
+const disablePrivy = process.env.NEXT_PUBLIC_DISABLE_PRIVY === "true"
+
 export default function Providers({ children }: { children: React.ReactNode }) {
   const appId = process.env.NEXT_PUBLIC_PRIVY_APP_ID!
   const [mounted, setMounted] = useState(false)

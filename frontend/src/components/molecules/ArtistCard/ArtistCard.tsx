@@ -48,38 +48,50 @@ export function ArtistCard({
   const badgeVariant = numberValue > 0 ? "increase" : "decrease"
 
   // Determine icon & color based on the artist popularity or numberValue
-  const isIncrease = numberValue > 0 // or artist.popularityChange > 0
   const Icon = numberValue > 0 ? ArrowUpIcon : ArrowDownIcon
 
   return (
     <div
       className={cn(
-        "w-[384px] rounded-[10px] border-2 border-[#2D3953] bg-[#121B2B]",
-        "shadow-[0px_4px_6px_0px_#00000017] p-6 flex flex-col gap-4",
-        "transition-all duration-300 ease-out hover:scale-[1.02] hover:border-[#dcfd63]"
+        `
+        w-full max-w-[24rem] sm:max-w-md md:max-w-lg
+        rounded-[0.625rem] border-2 border-(--color-dark-blue)
+       bg-(--color-dark-bg) shadow-[0px_4px_6px_0px_#00000017]
+        p-4 sm:p-5 md:p-6
+        flex flex-col gap-4
+        transition-all duration-300 ease-out
+        hover:scale-[1.02] hover:border-(--color-highlight)
+        `
       )}
     >
       {/* Top Section: Avatar + Genre Badge + Artist Info */}
-      <div className='flex gap-6'>
+      <div className='flex gap-4 sm:gap-6'>
         {/* Left column: Avatar + Genre */}
-        <div className='flex flex-col items-start gap-4'>
+        <div className='flex flex-col items-start gap-3 sm:gap-4'>
           <Avatar variant='square-md' src={avatarSrc} alt={artistName} />
           <Badge variant='genre'>{genre}</Badge>
         </div>
 
         {/* Right column: Artist Name + Token + Badge */}
-        <div className='flex flex-col justify-start gap-4'>
-          <p className='text-white font-inter font-medium text-[24px] leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'>
+        <div className='flex flex-col justify-start gap-3 sm:gap-4'>
+          <p
+            className='text-white  font-medium leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'
+            style={{ fontSize: "clamp(1.25rem, 2vw, 1.5rem)" }}
+          >
             {artistName}
           </p>
 
-          <div className='flex items-center gap-[15px]'>
-            <p className='text-white font-inter text-[16px] leading-5'>
+          <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
+            <p
+              className='text-white leading-5'
+              style={{ fontSize: "clamp(0.9rem, 1.5vw, 1rem)" }}
+            >
               ${tokenName}
             </p>
             <Badge
               variant={badgeVariant}
               icon={<Icon weight='bold' size={14} className='text-current' />}
+              className='text-[clamp(0.7rem,1vw,0.875rem)] px-[clamp(0.25rem,0.5vw,0.5rem)]'
             >
               {badgeText}
             </Badge>
@@ -94,39 +106,36 @@ export function ArtistCard({
         side='top'
         align='center'
       >
-        <p className='text-[#B3B3B3] font-medium text-[12px] leading-5 w-full line-clamp-2 mt-2'>
+        <p
+          className='text-(--color-grey) font-medium w-full line-clamp-2 mt-2'
+          style={{ fontSize: "0.75rem", lineHeight: "1.25rem" }}
+        >
           {description || "No description provided."}
         </p>
       </Tooltip>
 
       {/* Stats Section */}
       <div className='flex gap-9 mt-4'>
-        <div className='flex flex-col items-start gap-1'>
-          <p className='text-white font-poppins text-[18px] leading-5'>
-            {holders}
-          </p>
-          <p className='text-[#B3B3B3] font-inter text-[12px] leading-4'>
-            Holders
-          </p>
-        </div>
-
-        <div className='flex flex-col items-start gap-1'>
-          <p className='text-white font-poppins text-[18px] leading-5'>
-            ${marketCap}
-          </p>
-          <p className='text-[#B3B3B3] font-inter text-[12px] leading-4 whitespace-nowrap'>
-            Market Cap
-          </p>
-        </div>
-
-        <div className='flex flex-col items-start gap-1'>
-          <p className='text-white font-poppins text-[18px] leading-5'>
-            {totalSupply}
-          </p>
-          <p className='text-[#B3B3B3] font-inter text-[12px] leading-4 whitespace-nowrap'>
-            Total Supply
-          </p>
-        </div>
+        {[
+          { label: "Holders", value: holders },
+          { label: "Market Cap", value: `$${marketCap}` },
+          { label: "Total Supply", value: totalSupply }
+        ].map(({ label, value }) => (
+          <div key={label} className='flex flex-col items-start gap-1'>
+            <p
+              className='text-white font-poppins leading-5'
+              style={{ fontSize: "1.125rem" }}
+            >
+              {value}
+            </p>
+            <p
+              className='text-(--color-grey) font-inter leading-4 whitespace-nowrap'
+              style={{ fontSize: "0.75rem" }}
+            >
+              {label}
+            </p>
+          </div>
+        ))}
       </div>
 
       {/* View Artist Button */}

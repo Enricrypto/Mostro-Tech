@@ -35,15 +35,20 @@ export function ArtistProfileBanner({
 }: ArtistProfileBannerProps) {
   const router = useRouter()
 
+  // Map variant to theme colors
   const bgColor =
-    variant === "purple" ? "#998ce1" : variant === "red" ? "#fd6363" : "#dcfd63"
+    variant === "purple"
+      ? "var(--color-primary)"
+      : variant === "red"
+      ? "var(--color-red)"
+      : "var(--color-highlight)"
 
   return (
     <div
       style={{ backgroundColor: bgColor }}
-      className='w-full min-h-[510px] shadow-md py-16'
+      className='w-full min-h-[510px] py-16 shadow-md'
     >
-      <div className='flex justify-between w-full'>
+      <div className='flex flex-col md:flex-row justify-between w-full px-6 md:px-16 gap-8'>
         {/* LEFT: Avatar + Badges */}
         <div className='relative flex-1 flex justify-center items-start'>
           <div className='relative inline-block group'>
@@ -53,7 +58,7 @@ export function ArtistProfileBanner({
             {/* Hover overlay with gradient + play button */}
             <div
               className='absolute inset-0 rounded-[26px] opacity-0 group-hover:opacity-100 
-             transition-opacity duration-300 flex items-end justify-start p-[29px]'
+              transition-opacity duration-300 flex items-end justify-start p-[29px]'
               style={{
                 background:
                   "linear-gradient(180deg, rgba(43, 43, 43, 0.25) 0%, rgba(0, 0, 0, 0.5) 100%)"
@@ -61,8 +66,8 @@ export function ArtistProfileBanner({
             >
               <button
                 onClick={onPlay}
-                className='w-[52px] h-[52px] rounded-[36px] border border-[#737373] 
-               flex items-center justify-center bg-[#565656] p-[8px_16px]'
+                className='w-[52px] h-[52px] rounded-[36px] border border-(--color-muted) 
+                 flex items-center justify-center bg-(--color-grey) p-[8px_16px]'
               >
                 <PlayIcon size={24} weight='bold' color='white' />
               </button>
@@ -71,9 +76,11 @@ export function ArtistProfileBanner({
             {/* Lower-left badge */}
             <Badge
               variant='genre'
-              className='absolute top-50 -left-40 -rotate-12
-                 w-[131px] h-[39px] gap-2 border border-[#71D6FB]
-                 rounded-[28px] bg-white text-black'
+              className='hidden lg:flex absolute top-50 -left-40 -rotate-12
+                 w-[131px] h-[39px] gap-2 border border-(--color-accent)
+                 rounded-[28px] bg-white text-black
+                 text-[clamp(0.7rem,1vw,0.875rem)]
+                 justify-center items-center'
             >
               {genreBadge}
             </Badge>
@@ -81,9 +88,11 @@ export function ArtistProfileBanner({
             {/* Upper-right badge */}
             <Badge
               variant='genre'
-              className='absolute top-10 left-80 rotate-[12deg] 
-                 w-[131px] h-[39px] gap-2 border border-[#71D6FB]
-                 rounded-[28px] bg-white text-black'
+              className='hidden lg:flex absolute top-10 left-78 rotate-12 
+                 w-[131px] h-[39px] gap-2 border border-(--color-accent)
+                 rounded-[28px] bg-white text-black
+                 text-[clamp(0.7rem,1vw,0.875rem)]
+                 justify-center items-center'
             >
               {verifiedBadge}
             </Badge>
@@ -91,13 +100,13 @@ export function ArtistProfileBanner({
         </div>
 
         {/* RIGHT: Text + Stats + Button */}
-        <div className='flex flex-col flex-1 gap-6 pr-30'>
+        <div className='flex flex-col flex-1 gap-6'>
           {/* Artist Name & Description */}
           <div className='flex flex-col gap-4'>
-            <h2 className='font-poppins text-[48px] font-normal leading-12 text-black'>
+            <h2 className='text-[clamp(2rem,4vw,3rem)] leading-tight text-black'>
               {artistName}
             </h2>
-            <p className='font-inter text-[20px] font-normal leading-7 text-black'>
+            <p className='text-[clamp(1rem,2vw,1.25rem)] leading-7 text-black'>
               {description}
             </p>
           </div>
@@ -110,10 +119,10 @@ export function ArtistProfileBanner({
               { label: "Followers", value: followers }
             ].map((stat) => (
               <div key={stat.label} className='flex flex-col gap-1'>
-                <span className='font-inter font-bold text-[40px] leading-12 text-black'>
+                <span className='font-bold text-[clamp(2rem,4vw,2.5rem)] leading-tight text-black'>
                   {stat.value}
                 </span>
-                <span className='font-inter text-[16px] leading-7 text-black'>
+                <span className='text-[clamp(0.875rem,1.5vw,1rem)] leading-6 text-black'>
                   {stat.label}
                 </span>
               </div>
