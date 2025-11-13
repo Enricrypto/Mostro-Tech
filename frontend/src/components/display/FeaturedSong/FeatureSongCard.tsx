@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/atoms/Button"
+import { Tooltip } from "@/components/atoms/Tooltip"
 import { PlayIcon, PauseIcon } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/utils/Badge"
@@ -30,7 +31,6 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
 }) => {
   const [localPlaying, setLocalPlaying] = useState(false)
 
-  // Sync localPlaying with global player state
   useEffect(() => {
     setLocalPlaying(currentSongName === musicDrop.title && isPlaying)
   }, [currentSongName, isPlaying, musicDrop.title])
@@ -38,44 +38,73 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
   return (
     <div
       className={cn(
-        "artist-music-card flex flex-row items-center gap-4 p-6 rounded-[10px] border-2 border-gray-700 shadow-md",
-        "w-[384px] h-[199px] bg-[#121B2B]",
+        "artist-music-card flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 p-4 sm:p-5 rounded-[10px] border border-[#2D3953] shadow-[0_4px_6px_0_#00000017]",
+        "bg-[#121B2B] w-full max-w-[calc(50%-0.5rem)] sm:max-w-sm md:max-w-[280px] lg:max-w-[384px]",
+        "transition-all duration-200",
         className
       )}
     >
-      {/* Music Drop Image */}
-      <div className='w-[151px] h-[151px] rounded-[26px] overflow-hidden shrink-0 relative'>
+      {/* Image — hidden on mobile, scaled down on iPad */}
+      <div className='relative hidden sm:block w-[100px] md:w-[120px] h-[120px] md:h-[130px] rounded-[15px] overflow-hidden shrink-0'>
         <Image
           src={musicDrop.image}
           alt={musicDrop.title}
           fill
           className='object-cover'
+          sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px'
         />
       </div>
 
       {/* Info & Controls */}
-      <div className='flex flex-col justify-between flex-1 gap-5 min-w-0'>
-        {/* Song Title & Duration */}
-        <div className='flex flex-col gap-1 min-w-0'>
-          <span className='text-white font-semibold text-[18px] leading-7 truncate block'>
-            {musicDrop.title}
-          </span>
-          <span className='text-(--color-muted) font-medium text-[12px] leading-5 truncate block'>
-            {musicDrop.duration}
-          </span>
+      <div className='flex flex-col justify-between flex-1 min-w-0 sm:text-left w-full gap-3 sm:gap-4'>
+        {/* Top Row — title + duration inline on mobile */}
+        <div className='flex flex-col sm:flex-col gap-1 min-w-0'>
+          <div className='flex flex-col justify-center sm:justify-start gap-2'>
+            <Tooltip
+              content={musicDrop.title}
+              side='top'
+              align='center'
+              variant='blue'
+            >
+              <span className='text-white font-semibold text-[16px] sm:text-[18px] md:text-[16px] lg:text-[20px] leading-7 truncate cursor-default'>
+                {musicDrop.title}
+              </span>
+            </Tooltip>
+            <span className='text-(--color-muted) font-medium text-[12px] sm:text-[13px] md:text-[11px] lg:text-[13px] leading-5 truncate'>
+              {musicDrop.duration}
+            </span>
+          </div>
         </div>
 
-        {/* Play/Pause Button */}
-        <Button variant='song-play-icon' onClick={onPlay} className='p-0'>
-          {localPlaying ? (
-            <PauseIcon size={20} weight='bold' className='text-white' />
-          ) : (
-            <PlayIcon size={20} weight='bold' className='text-white' />
-          )}
-        </Button>
+        {/* Play + Badge inline on mobile, stacked on tablet/desktop */}
+        <div className='flex w-36 h-6 justify-between sm:flex-col sm:items-start sm:w-auto sm:h-auto sm:gap-3'>
+          <Button
+            variant='song-play-icon'
+            onClick={onPlay}
+            className='p-1 w-6 h-6 sm:w-auto sm:h-auto'
+          >
+            {localPlaying ? (
+              <PauseIcon
+                size={12}
+                weight='bold'
+                className='md:size-4 text-white'
+              />
+            ) : (
+              <PlayIcon
+                size={12}
+                weight='bold'
+                className='md:size-4 text-white'
+              />
+            )}
+          </Button>
 
-        {/* Price Badge */}
-        <Badge variant='neutral'>{musicDrop.badge}</Badge>
+          <Badge
+            variant='neutral'
+            className='w-fit px-1 py-1 text-[9px] md:px-2 md:py-1 md:text-[10px] lg:px-3 lg:py-1 lg:text-[11px] whitespace-nowrap shrink'
+          >
+            {musicDrop.badge}
+          </Badge>
+        </div>
       </div>
     </div>
   )
