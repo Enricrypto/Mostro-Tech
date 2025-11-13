@@ -140,7 +140,7 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
               <Badge variant='genre'>{artist.genreBadge}</Badge>
             </div>
 
-            <p className='text-[clamp(0.875rem,1.3vw,1.125rem)] text-white leading-7 text-justify'>
+            <p className='text-white leading-7 text-justify'>
               {artist.description}
             </p>
           </div>

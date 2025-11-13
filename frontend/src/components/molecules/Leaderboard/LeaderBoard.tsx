@@ -23,7 +23,8 @@ export function LeaderBoard({
   return (
     <div
       className={cn(
-        "leaderboard flex md:flex-row md:justify-between md:items-center gap-4 md:gap-14 p-6",
+        "flex flex-row justify-between items-center gap-3 sm:gap-6 md:gap-10 px-4 sm:px-5 md:px-6 py-4 sm:py-5 md:py-6 rounded-[10px] border border-(--color-muted) bg-(--color-card-bg)",
+        "w-full transition-all duration-300",
         className
       )}
       style={{
@@ -35,26 +36,26 @@ export function LeaderBoard({
       }}
     >
       {/* LEFT SIDE: Rank + Avatar + Username */}
-      <div className='flex items-center gap-3.5 w-full md:w-auto md:justify-start'>
-        <span className='shrink-0 text-[18px] font-semibold leading-7 text-(--color-muted)'>
+      <div className='flex items-center gap-2 sm:gap-3 md:gap-3.5 min-w-0 shrink'>
+        <span className='shrink-0 text-[16px] sm:text-[17px] md:text-[18px] font-semibold leading-7 text-(--color-muted)'>
           # {rank}
         </span>
         <Avatar
           variant='rounded-sm'
           src={avatarSrc}
-          className='shrink-0 w-10 h-10 rounded-[26px]'
+          className='shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-[26px]'
         />
-        <span className='text-[18px] font-semibold leading-7 text-white truncate'>
+        <span className='text-[16px] sm:text-[17px] md:text-[18px] font-semibold leading-7 text-white truncate max-w-[60%] sm:max-w-[200px]'>
           {username}
         </span>
       </div>
 
       {/* RIGHT SIDE: Score + Token Symbol */}
-      <div className='flex items-center gap-2 w-full md:w-auto justify-end md:justify-end'>
-        <span className='text-[18px] font-semibold leading-7 text-(--color-skyblue)'>
+      <div className='flex items-center gap-1.5 sm:gap-2 justify-end shrink-0'>
+        <span className='text-[16px] sm:text-[17px] md:text-[18px] font-semibold leading-7 text-(--color-skyblue)'>
           {score}
         </span>
-        <span className='text-[12px] font-medium leading-5 text-(--color-muted)'>
+        <span className='text-[12px] sm:text-[13px] md:text-[14px] font-medium leading-5 text-(--color-muted)'>
           {tokenSymbol}
         </span>
       </div>
