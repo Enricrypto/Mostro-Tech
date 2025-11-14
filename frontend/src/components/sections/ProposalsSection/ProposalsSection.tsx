@@ -46,7 +46,7 @@ export function ProposalsSection({
   )
 
   return (
-    <div className='flex flex-col max-w-[1200px] mb-20'>
+    <div className='flex flex-col w-full max-w-[1200px] mx-auto mb-20'>
       {/* Top bar desktop / iPad */}
       <div className='hidden md:flex justify-between items-center w-full h-[42px]'>
         <h2 className='text-white font-inter font-semibold text-[30px] leading-9'>
@@ -110,6 +110,7 @@ export function ProposalsSection({
             />
           )
         })}
+        <ProposalCard key='create-proposal' />
       </div>
     </div>
   )

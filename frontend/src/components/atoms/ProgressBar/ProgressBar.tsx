@@ -17,7 +17,9 @@ const progressBarCVA = cva(
         blue: "bg-[var(--color-skyblue-opacity)]",
         red: "bg-[var(--color-red-opacity)]",
         green: "bg-[var(--color-green-opacity)]",
-        purple: "bg-[var(--color-purple-opacity)]"
+        purple: "bg-[var(--color-purple-opacity)]",
+        primary: "bg-white/20",
+        "setup-profile": "bg-white/20"
       }
     },
     defaultVariants: {
@@ -39,7 +41,9 @@ const progressBarIndicatorCVA = cva(
         blue: "bg-[var(--color-skyblue)]",
         red: "bg-[var(--color-red)]",
         green: "bg-[var(--color-green)]",
-        purple: "bg-[var(--color-purple)]"
+        purple: "bg-[var(--color-purple)]",
+        primary: "bg-[var(--color-primary)]",
+        "setup-profile": "bg-[var(--color-highlight)]"
       }
     },
     defaultVariants: {
