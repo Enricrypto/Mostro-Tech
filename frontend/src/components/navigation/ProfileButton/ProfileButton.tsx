@@ -21,7 +21,7 @@ export function ProfileButton() {
 
   const isLoggedIn = Boolean(user && displayName)
   const disableLogin = !ready
-  const buttonSizeClasses = "w-[224px] h-[42px]"
+  const buttonSizeClasses = "w-[140px] md:w-[180] lg:w-[224px]"
 
   const handleLogin = async () => {
     await login({
