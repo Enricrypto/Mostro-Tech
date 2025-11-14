@@ -17,7 +17,7 @@ export const FundAllocationCard: React.FC<FundAllocationCardProps> = ({
 }) => {
   return (
     <div
-      className='w-full max-w-[462px] h-[104px] p-6 flex flex-col gap-3.5 rounded-[10px] border-2'
+      className='w-[312px] md:w-[462px] p-5 flex flex-col gap-3 rounded-[10px] border-2'
       style={{
         borderColor: "var(--color-datacard-border)",
         backgroundColor: "var(--color-datacard-bg)"
@@ -27,13 +27,18 @@ export const FundAllocationCard: React.FC<FundAllocationCardProps> = ({
       <div className='flex justify-between items-center'>
         {/* Left Side */}
         <Tooltip variant='blue' content={title}>
-          <div className='max-w-[250px] truncate text-white font-inter font-semibold text-[18px] leading-7 cursor-pointer'>
+          <div className=' text-white font-inter font-semibold text-[12px] md:text-[14px] lg:text-[14px] leading-7 truncate'>
             {title}
           </div>
         </Tooltip>
 
         {/* Right Side - Badge */}
-        <Badge variant='neutral'>{badgeText}</Badge>
+        <Badge
+          variant='neutral'
+          className='text-[10px] md:text-[12px] lg:text-[12px]'
+        >
+          {badgeText}
+        </Badge>
       </div>
 
       {/* Bottom Section */}

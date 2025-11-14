@@ -75,15 +75,15 @@ export default function VotePage() {
 
       {/* Main Content */}
       <div className='flex flex-col lg:flex-row w-full max-w-[1200px] gap-6 mt-10 mb-20'>
-        <div className="flex-1">
-          <FundingOverviewSection {...mockFundingOverview}/>
+        <div className='flex-1'>
+          <FundingOverviewSection {...mockFundingOverview} />
         </div>
-        <div className="lg:basis-[25%] shrink-0">
-          <VotingSection 
+        <div>
+          <VotingSection
             {...mockVotingSection}
             onVoteYes={() => handleVote("YES")}
             onVoteNo={() => handleVote("NO")}
-            />
+          />
         </div>
       </div>
 
