@@ -12,33 +12,39 @@ export default function AllArtists() {
   )
 
   return (
-    <div className='bg-[#0A111F] min-h-screen w-full flex flex-col'>
-      {/* ===== BADGES SECTION ===== */}
-      <section className='top-[149px] -ml-[50vw] -mr-[50vw] border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm py-5 px-4 mt-20'>
-        <div className='max-w-[1200px] mx-auto'>
-          <BadgesRow />
-        </div>
-      </section>
+    <>
+      {/* ===== FULL-WIDTH SECTIONS ===== */}
+      <div className='relative w-screen'>
+        {/* Badges Section */}
+        <section className='relative mt-20 w-screen'>
+          {/* Full-width background & borders */}
+          <div className='absolute inset-0 w-screen border-t-2 border-b-2 border-[#121B2B] bg-[--color-black] backdrop-blur-sm pointer-events-none'></div>
 
-      {/* ===== ARTISTS GRID ===== */}
-      <section className='relative flex flex-col items-center mt-20 mb-20 w-full gap-10'>
-        {/* Header wrapper: full width and left-aligned */}
-        <div className='w-full max-w-[1200px] px-4 flex justify-start'>
+          {/* Scrollable content */}
+          <div className='relative z-10 max-w-[1200px] mx-auto overflow-x-auto py-5 px-4 md:px-12'>
+            <BadgesRow />
+          </div>
+        </section>
+      </div>
+
+      <div className='bg-[--color-black] min-h-screen w-full max-w-[1200px] mx-auto flex flex-col'>
+        {/* ===== ARTISTS GRID ===== */}
+        <section className='w-full mt-20 px-4'>
           <SectionHeader title='All Artists' />
-        </div>
 
-        {/* Grid stays centered */}
-        <div className='max-w-[1200px] w-full px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[21px]'>
-          {mockAllArtistsData.map((artist) => (
-            <ArtistCard
-              key={artist.id}
-              {...artist}
-              id={artist.id}
-              slug={artist.slug}
-            />
-          ))}
-        </div>
-      </section>
-    </div>
+          {/* Grid stays centered */}
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10'>
+            {mockAllArtistsData.map((artist) => (
+              <ArtistCard
+                key={artist.id}
+                {...artist}
+                id={artist.id}
+                slug={artist.slug}
+              />
+            ))}
+          </div>
+        </section>
+      </div>
+    </>
   )
 }

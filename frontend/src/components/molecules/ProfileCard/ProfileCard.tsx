@@ -23,9 +23,9 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
   return (
     <div
       className='
-        w-full max-w-[1200px] p-6 rounded-[10px] flex flex-col md:flex-row 
-        items-center md:items-start gap-6 md:gap-12
-      '
+    w-full max-w-[1200px] p-6 rounded-[10px] flex flex-col md:flex-row 
+    items-center md:items-start md:justify-between gap-6 md:gap-12
+  '
       style={{
         background: "linear-gradient(90deg, #352B6D 18.27%, #6654D3 100%)",
         boxShadow: "0px 4px 6px 0px #00000017"
@@ -55,12 +55,8 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
       </div>
 
       {/* Right Section: Disconnect Button */}
-      <div className='w-full md:w-auto mt-4 md:mt-0 flex justify-center md:justify-end'>
-        <Button
-          variant='connect-wallet'
-          className='w-full md:w-auto'
-          onClick={onDisconnect}
-        >
+      <div className='w-full md:w-auto mt-4 flex justify-center md:mt-0 md:justify-end'>
+        <Button variant='connect-wallet' onClick={onDisconnect}>
           Disconnect Wallet
         </Button>
       </div>

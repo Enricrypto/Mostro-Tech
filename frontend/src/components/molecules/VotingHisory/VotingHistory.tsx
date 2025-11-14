@@ -2,14 +2,8 @@
 
 import { ThumbsDownIcon, ThumbsUpIcon } from "@phosphor-icons/react"
 import { Badge } from "@/components/utils/Badge"
-import { cva, type VariantProps } from "class-variance-authority"
 
-const votingHistoryCVA = cva(
-  "flex flex-col justify-between w-[374px] max-w-full min-w-0 h-[134px] p-[18px] gap-[14px] rounded-[10px] border flex-shrink-0 bg-[#121B2B] transition-shadow duration-200 hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380]"
-)
-
-export interface VotingHistoryProps
-  extends VariantProps<typeof votingHistoryCVA> {
+interface VotingHistoryProps {
   id: number
   title: string
   artist: string
@@ -19,7 +13,6 @@ export interface VotingHistoryProps
 }
 
 export function VotingHistory({
-  id,
   title,
   artist,
   date,
@@ -35,10 +28,23 @@ export function VotingHistory({
   const voteVariant = isYes ? "increase" : "decrease"
 
   return (
-    <div className={votingHistoryCVA()}>
+    <div
+      className='
+    flex flex-col justify-between
+    w-full
+    max-w-full
+    min-h-[132px]
+    p-6 gap-4 rounded-[10px] border border-gray-600
+    bg-[#121B2B] transition-shadow duration-200
+    hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380]
+    
+    sm:max-w-[361px]   /* mobile layout */
+    md:max-w-[588px]   /* desktop layout */
+  '
+    >
       {/* Top row: title + vote badge */}
-      <div className='flex justify-between items-center text-white min-w-0'>
-        <span className='flex items-center font-inter font-semibold text-[18px] leading-7 truncate max-w-[250px]'>
+      <div className='flex justify-between items-center w-full min-w-0'>
+        <span className='flex-1 font-inter font-semibold text-white text-lg leading-6 truncate'>
           {title}
         </span>
         <Badge variant={voteVariant} icon={voteIcon}>
@@ -48,14 +54,14 @@ export function VotingHistory({
 
       {/* Middle row: artist + status badge */}
       <div className='flex justify-between items-center w-full min-w-0'>
-        <span className='font-inter font-medium text-[12px] leading-5 text-[#B3B3B3] truncate max-w-[200px]'>
+        <span className='flex-1 font-inter font-medium text-sm text-[#B3B3B3] truncate'>
           {artist}
         </span>
         <Badge variant='neutral'>{status}</Badge>
       </div>
 
       {/* Bottom row: date */}
-      <span className='font-inter font-medium text-[12px] leading-5 text-[#B3B3B3] truncate max-w-full'>
+      <span className='font-inter font-medium text-sm text-[#B3B3B3] truncate'>
         {date}
       </span>
     </div>

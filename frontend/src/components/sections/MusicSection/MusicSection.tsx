@@ -145,10 +145,10 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
       : mockPerksCombined
 
   return (
-    <div className='flex flex-col items-center gap-20'>
+    <div className='flex flex-col items-center gap-20 w-full max-w-[1200px] mx-auto'>
       {/* About the Artist */}
-      <section className='flex flex-col gap-[39px] w-full max-w-[1200px] mx-auto'>
-        <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
+      <section className='flex flex-col'>
+        <h2 className='font-inter font-semibold text-[30px] leading-9 text-white mb-10'>
           About the Artist
         </h2>
         <p className='w-full font-inter font-normal text-[20px] leading-7 text-white'>
@@ -158,14 +158,25 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
 
       {/* Music Drops */}
       <section className='relative w-full flex flex-col'>
-        <div className='flex gap-4 items-center'>
-          <MusicNoteIcon size={36} weight='fill' className='text-[#DCFD63]' />
-          <h2 className='font-inter font-semibold text-[30px] leading-9 text-[#DCFD63]'>
-            Music Drops
-          </h2>
-          <span className='text-(--color-grey)'>Includes Surprise Perk</span>
+        <div className='flex flex-col md:flex-row md:gap-4 items-start md:items-center'>
+          <div className='flex gap-4 items-center'>
+            <MusicNoteIcon
+              size={36}
+              weight='regular'
+              className='text-[#DCFD63]'
+            />
+            <h2 className='font-inter font-semibold text-[30px] leading-9 text-[#DCFD63]'>
+              Music Drops
+            </h2>
+          </div>
+
+          {/* Move span below on mobile, inline on md+ */}
+          <span className='mt-4 md:mt-0 md:ml-2 text-(--color-grey)'>
+            Includes Surprise Perk
+          </span>
         </div>
-        <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-[39px] gap-y-[21px] mt-10'>
+
+        <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10'>
           {artist.musicDrops?.map((drop, index) => {
             const song: SongData = {
               songName: drop.title,
@@ -189,11 +200,11 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
       </section>
 
       {/* Fan Perks */}
-      <section className='relative w-full mt-20 flex flex-col'>
-        <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
+      <section className='relative w-full mt-10 flex flex-col'>
+        <h2 className='font-semibold text-[30px] leading-9 text-white'>
           Fan Perks
         </h2>
-        <div className='grid grid-cols-1 sm:grid-cols-3 gap-x-[39px] gap-y-[29px] mt-10'>
+        <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 mt-10'>
           {perksForArtist.map((perk, i) => (
             <PerksCard
               key={i}
@@ -206,43 +217,41 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
       </section>
 
       {/* Featured Tracks + Upcoming Events */}
-      <section className='relative w-full mt-20 mb-20'>
-        <div className='flex gap-5'>
-          <div className='flex flex-col gap-6'>
-            <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
-              Featured Tracks
-            </h2>
-            <div className='flex flex-col gap-6 mt-4'>
-              {artist.featuredTracks?.map((track, index) => (
-                <SongCard
-                  key={index}
-                  songName={track.songName}
-                  subtitle={track.subtitle}
-                  variant={track.variant}
-                  unlockAmount={track.unlockAmount}
-                  unlockToken={track.unlockToken}
-                  onPlay={() => handlePlaySong(track, "featuredTracks")}
-                />
-              ))}
-            </div>
+      <section className='w-full mt-20 mb-20 flex flex-col md:flex-row gap-12'>
+        <div className='flex flex-col flex-1'>
+          <h2 className='font-semibold text-[30px] leading-9 text-white'>
+            Featured Tracks
+          </h2>
+          <div className='grid grid-cols-1 gap-6 mt-10'>
+            {artist.featuredTracks?.map((track, index) => (
+              <SongCard
+                key={index}
+                songName={track.songName}
+                subtitle={track.subtitle}
+                variant={track.variant}
+                unlockAmount={track.unlockAmount}
+                unlockToken={track.unlockToken}
+                onPlay={() => handlePlaySong(track, "featuredTracks")}
+              />
+            ))}
           </div>
+        </div>
 
-          <div className='flex-1 flex flex-col gap-6'>
-            <h2 className='font-inter font-semibold text-[30px] leading-9 text-white'>
-              Upcoming Events
-            </h2>
-            <div className='flex flex-col gap-6 mt-4'>
-              {artist.musicEvents?.map((event, index) => (
-                <UpcomingEvent
-                  key={index}
-                  artist={artist}
-                  event={event}
-                  onClaim={() =>
-                    onClaimAccess(event.title, event.date, event.location)
-                  }
-                />
-              ))}
-            </div>
+        <div className='flex-1 flex flex-col'>
+          <h2 className='font-semibold text-[30px] leading-9 text-white'>
+            Upcoming Events
+          </h2>
+          <div className='flex flex-col gap-6 mt-10'>
+            {artist.musicEvents?.map((event, index) => (
+              <UpcomingEvent
+                key={index}
+                artist={artist}
+                event={event}
+                onClaim={() =>
+                  onClaimAccess(event.title, event.date, event.location)
+                }
+              />
+            ))}
           </div>
         </div>
       </section>

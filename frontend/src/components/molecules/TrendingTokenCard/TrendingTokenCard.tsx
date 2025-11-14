@@ -30,12 +30,12 @@ export const TrendingTokenCard: React.FC<TrendingTokenCardProps> = ({
       <div className='flex gap-3 min-w-0'>
         <Avatar src={avatarSrc} variant='square-community' />
         <div className='flex flex-col gap-0.5 min-w-0'>
-          <span
-            className='text-white font-semibold text-[20px] leading-7 truncate'
-            title={name}
+          <p
+            className='text-white font-medium leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'
+            style={{ fontSize: "clamp(1.25rem, 2vw, 1.4rem)" }}
           >
             {name}
-          </span>
+          </p>
           <span
             className='text-[#B3B3B3] font-medium text-[12px] leading-5 truncate'
             title={subtitle}

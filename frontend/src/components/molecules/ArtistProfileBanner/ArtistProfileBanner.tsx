@@ -48,7 +48,7 @@ export function ArtistProfileBanner({
       style={{ backgroundColor: bgColor }}
       className='w-full min-h-[510px] py-16 shadow-md'
     >
-      <div className='flex flex-col md:flex-row justify-between w-full px-6 md:px-16 gap-8'>
+      <div className='flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between w-full px-6 md:px-16 gap-8 text-center md:text-left'>
         {/* LEFT: Avatar + Badges */}
         <div className='relative flex-1 flex justify-center items-start'>
           <div className='relative inline-block group'>
@@ -132,7 +132,7 @@ export function ArtistProfileBanner({
           {/* View Artist Button */}
           <Button
             variant='continue'
-            className='w-[288px] h-10 px-4 py-2 gap-2 rounded-md flex items-center justify-center'
+            className='md:max-w-[288px] h-10 px-4 py-2 gap-2 rounded-md'
             icon={<ArrowUpRightIcon size={20} weight='bold' />}
             iconPosition='right'
             onClick={() => router.push(`/artists/${slug}`)}

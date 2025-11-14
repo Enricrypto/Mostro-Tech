@@ -18,8 +18,8 @@ export function DataArtistCard({
   return (
     <div
       className={cn(
-        "w-full max-w-[18rem] sm:max-w-[20rem] md:max-w-88",
-        "p-4 sm:p-5 md:p-6",
+        "w-full",
+        "p-2 md:p-3 lg:p-6",
         "bg-(--color-datacard-bg) border border-(--color-datacard-border)",
         "rounded-[0.625rem] flex flex-col gap-3"
       )}
@@ -54,7 +54,7 @@ export function DataArtistCard({
           <span
             className='text-white font-semibold'
             style={{
-              fontSize: "clamp(1.5rem, 3vw, 1.875rem)",
+              fontSize: "clamp(1rem, 2vw, 1.875rem)",
               lineHeight: "1.25",
               letterSpacing: "-0.015em"
             }}

@@ -23,7 +23,7 @@ export const mockNewLaunchData = [
     id: 3,
     slug: "elliot-james",
     avatarUrl: "/artists/elliot-james.png",
-    name: "Elliot james",
+    name: "Elliot James",
     badgeText: "Hip Hop",
     launchInDays: 3,
     price: 0.001,

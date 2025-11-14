@@ -11,15 +11,20 @@ export const avatarVariants = cva(baseAvatar, {
   variants: {
     variant: {
       "rounded-sm": "w-10 h-10 rounded-[26px]",
-      "square-sm": "w-10 h-10 rounded-[6px]",
-      "rounded-initials": "w-10 h-10 rounded-[26px]",
+      "square-sm": "w-10 h-10 rounded-[6px] bg-[var(--color-highlight)]",
+      "square-sm-initials":
+        "w-10 h-10 rounded-[6px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
+      "rounded-initials":
+        "w-10 h-10 rounded-[26px] bg-[var(--color-highlight)] text-black",
       "square-lg": "w-[18rem] h-[18rem] rounded-[26px]",
       "square-lg-initials":
         "w-[18rem] h-[18rem] rounded-[26px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
-      "square-md": "w-[9.5rem] h-[9.5rem] rounded-[26px]",
+      "square-md":
+        "w-[9.5rem] h-[9.5rem] rounded-[26px] bg-[var(--color-highlight)]",
       "square-md-initials":
         "w-[9.5rem] h-[9.5rem] rounded-[26px] pt-2 pb-2 bg-[var(--color-highlight)] text-black",
-      "square-community": "w-[4.75rem] h-[4.75rem] rounded-[15px]",
+      "square-community":
+        "w-[4.75rem] h-[4.75rem] rounded-[15px] bg-[var(--color-highlight)]",
       "square-community-initials":
         "w-[4.75rem] h-[4.75rem] rounded-[15px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
       circle: "w-10 h-10 rounded-full"
@@ -36,6 +41,7 @@ export const avatarVariants = cva(baseAvatar, {
 export type AvatarVariant =
   | "rounded-sm"
   | "square-sm"
+  | "square-sm-initials"
   | "rounded-initials"
   | "square-lg"
   | "square-lg-initials"

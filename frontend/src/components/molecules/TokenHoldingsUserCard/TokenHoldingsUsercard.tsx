@@ -32,7 +32,14 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
   const Icon = numberValue >= 0 ? ArrowUpIcon : ArrowDownIcon
 
   return (
-    <div className='flex flex-col justify-between gap-3.5 w-full max-w-[384px] p-4 rounded-lg border transition-shadow duration-200 hover:shadow-[0_0_16.9px_5px_#71D6FB80] bg-[#121B2B] border-[#2D3953] h-auto'>
+    <div
+      className='
+  flex flex-col justify-between gap-4 w-full
+  sm:max-w-[360px] md:max-w-[384px] p-4 rounded-lg border
+  transition-shadow duration-200 hover:shadow-[0_0_16.9px_5px_#71D6FB80]
+  bg-[#121B2B] border-[#2D3953] h-auto
+'
+    >
       {/* Top Section */}
       <div className='flex justify-between items-start flex-wrap gap-3'>
         {/* Left */}

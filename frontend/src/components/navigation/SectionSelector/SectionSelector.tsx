@@ -38,7 +38,7 @@ export const SectionSelector: React.FC<SectionSelectorProps> = ({
   return (
     <div
       className={cn(
-        "flex justify-between items-center w-[594px] h-14 px-3 rounded-md border border-[#6654D3]",
+        "flex justify-between items-center w-[368px] md:w-[594px] h-14 p-2 rounded-md border border-(--color-primary) gap-2",
         className
       )}
     >
@@ -52,7 +52,7 @@ export const SectionSelector: React.FC<SectionSelectorProps> = ({
             icon={section.icon}
             iconPosition='left'
             onClick={() => onSelect(section.id)}
-            className='flex-1' // spread buttons evenly
+            className='flex-1 justify-center gap-2 px-2 py-2 text-[11px] md:text-base'
           >
             {section.label}
           </Button>

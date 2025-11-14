@@ -42,9 +42,8 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
     <div
       className='
         flex flex-col gap-8 rounded-[10px] border-2
-        w-full max-w-[1348px]
+        w-full max-w-[1348px] mx-auto
         p-6 md:p-8
-        mx-auto
         border-[#2D3953]
         bg-[linear-gradient(106.97deg,#121B2B_74.58%,#DCFD63_83.9%,#4995E0_91.25%)]
         shadow-md

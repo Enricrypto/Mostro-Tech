@@ -8,7 +8,7 @@ import { ArrowRightIcon, ClockClockwiseIcon } from "@phosphor-icons/react"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const proposalCardCVA = cva(
-  "w-full max-w-[462px] min-w-[280px] max-h-[188px] p-[24px] flex flex-col gap-[14px] rounded-[10px] bg-[var(--color-datacard-bg)] transition-all duration-300 ease-out",
+  "w-full min-w-[280px] p-[18px] flex flex-col gap-[18px] rounded-[10px] bg-[var(--color-datacard-bg)] transition-all duration-300 ease-out",
   {
     variants: {
       variant: {
