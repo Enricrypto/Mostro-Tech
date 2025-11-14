@@ -54,16 +54,16 @@ export const TokenSection: FC<TokenSectionProps> = ({
   const tokenSymbol = token?.name as "MLUN" | "MATL" | "MLIZ"
 
   return (
-    <div className='flex flex-col w-[1200px] gap-6'>
+    <div className='flex flex-col w-full gap-6 mx-auto max-w-[1200px] justify-between'>
       {/* Header */}
-      <div className='flex justify-between items-center w-full h-10'>
+      <div className='flex w-full'>
         <h2 className='text-white font-inter font-semibold text-[30px] leading-9 tracking-[-0.75%]'>
           Token Activity
         </h2>
       </div>
 
       {/* Dashboard Data */}
-      <div className='flex flex-col w-full h-28 mt-10'>
+      <div className='flex w-full mt-10'>
         <DashBoardDataArtist
           totalPrice={totalPrice}
           priceChange={priceChange}
@@ -77,10 +77,9 @@ export const TokenSection: FC<TokenSectionProps> = ({
       </div>
 
       {/* Buy/Sell buttons */}
-      <div className='flex gap-2 justify-end mt-10'>
+      <div className='flex w-full gap-3 md:justify-end lg:justify-end mt-10'>
         <Button
           variant='yes'
-          className='flex items-center gap-2'
           icon={<CurrencyDollarIcon size={16} weight='bold' />}
           onClick={onBuyToken}
           iconPosition='left'
@@ -90,7 +89,6 @@ export const TokenSection: FC<TokenSectionProps> = ({
 
         <Button
           variant='no'
-          className='flex items-center gap-2'
           icon={<CurrencyDollarIcon size={16} weight='bold' />}
           onClick={onSellToken}
           iconPosition='left'

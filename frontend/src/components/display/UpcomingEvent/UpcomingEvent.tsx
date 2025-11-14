@@ -15,7 +15,7 @@ import type { Artist } from "@/data/artists"
 export type EventStatus = "on-sale" | "sold-out" | "token-holders-only"
 
 const upcomingEventCVA = cva(
-  "h-[158px] p-6 bg-[#121B2B] border-2 rounded-lg flex flex-col justify-between transition-shadow duration-200",
+  "flex flex-col justify-between min-w-[344px] md:w-[358px] lg:w-[578px] p-4 md:p-6 gap-3.5 rounded-[10px] border-2 bg-[#121B2B] transition-shadow duration-200",
   {
     variants: {
       variant: {
@@ -57,42 +57,52 @@ export const UpcomingEvent = ({
       )}
     >
       {/* Top Section */}
-      <div className='flex flex-col gap-2'>
-        <div className='flex justify-between items-center'>
-          <h3 className='text-white font-semibold text-lg'>{event.title}</h3>
+      <div className='flex justify-between items-start'>
+        <h3 className='text-white font-semibold text-[14px] md:text-[18px] leading-tight'>
+          {event.title}
+        </h3>
 
-          <Badge variant={variantMap[event.status]}>
-            {event.status
-              .replace("-", " ")
-              .replace(/\b\w/g, (l) => l.toUpperCase())}
-          </Badge>
+        <Badge
+          variant={variantMap[event.status]}
+          className='text-[10px] md:text-xs px-2 py-0.5'
+        >
+          {event.status
+            .replace("-", " ")
+            .replace(/\b\w/g, (l) => l.toUpperCase())}
+        </Badge>
+      </div>
+
+      {/* Event Details */}
+      <div className='flex gap-4 items-center text-white text-[10px] md:text-[12px] font-medium'>
+        <div className='flex items-center gap-1 md:gap-2'>
+          <CalendarBlankIcon className='w-4 h-4 md:w-5 md:h-5' weight='bold' />
+          {event.date} at {event.time}
         </div>
 
-        <div className='flex gap-4 items-center text-white text-xs font-medium whitespace-nowrap'>
-          <div className='flex items-center gap-2'>
-            <CalendarBlankIcon className='w-4 h-4' weight='bold' />
-            {event.date} at {event.time}
-          </div>
-
-          <div className='flex items-center gap-2'>
-            <MapPinIcon className='w-4 h-4' weight='bold' />
-            {event.location}
-          </div>
+        <div className='flex items-center gap-1 md:gap-2'>
+          <MapPinIcon className='w-4 h-4 md:w-5 md:h-5' weight='bold' />
+          {event.location}
         </div>
       </div>
 
       {/* Bottom Buttons */}
-      <div className='flex items-center gap-3'>
+      <div className='flex gap-3 mt-2 md:mt-1'>
         <Button
           variant='continue'
           icon={<TicketIcon />}
           iconPosition='left'
           onClick={onClaim}
+          className='text-[12px] md:text-[14px] lg:text-[16px] px-3 md:px-4'
         >
           Claim Access
         </Button>
 
-        <Button variant='follow-share'>Add to Calendar</Button>
+        <Button
+          variant='follow-share'
+          className='text-[10px] md:text-[14px] lg:text-[16px] px-3 md:px-4'
+        >
+          Add to Calendar
+        </Button>
       </div>
     </div>
   )

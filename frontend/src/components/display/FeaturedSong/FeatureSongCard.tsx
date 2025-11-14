@@ -38,8 +38,8 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
   return (
     <div
       className={cn(
-        "artist-music-card flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 p-4 sm:p-5 rounded-[10px] border border-[#2D3953] shadow-[0_4px_6px_0_#00000017]",
-        "bg-[#121B2B] w-full max-w-[calc(50%-0.5rem)] sm:max-w-sm md:max-w-[280px] lg:max-w-[384px]",
+        "artist-music-card flex flex-col sm:flex-row items-center sm:items-start sm:gap-5 p-4 sm:p-5 rounded-[10px] border border-[#2D3953] shadow-[0_4px_6px_0_#00000017]",
+        "bg-[#121B2B] w-full sm:max-w-sm md:max-w-[350px] lg:max-w-[384px]",
         "transition-all duration-200",
         className
       )}
@@ -56,7 +56,7 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
       </div>
 
       {/* Info & Controls */}
-      <div className='flex flex-col justify-between flex-1 min-w-0 sm:text-left w-full gap-3 sm:gap-4'>
+      <div className='flex flex-col justify-between flex-1 min-w-0 sm:text-left w-full gap-3 md:gap-4'>
         {/* Top Row — title + duration inline on mobile */}
         <div className='flex flex-col sm:flex-col gap-1 min-w-0'>
           <div className='flex flex-col justify-center sm:justify-start gap-2'>
@@ -77,7 +77,7 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
         </div>
 
         {/* Play + Badge inline on mobile, stacked on tablet/desktop */}
-        <div className='flex w-36 h-6 justify-between sm:flex-col sm:items-start sm:w-auto sm:h-auto sm:gap-3'>
+        <div className='flex gap-1 sm:flex-col sm:items-start md:w-auto md:h-auto md:gap-4'>
           <Button
             variant='song-play-icon'
             onClick={onPlay}
@@ -100,7 +100,7 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
 
           <Badge
             variant='neutral'
-            className='w-fit px-1 py-1 text-[9px] md:px-2 md:py-1 md:text-[10px] lg:px-3 lg:py-1 lg:text-[11px] whitespace-nowrap shrink'
+            className='text-[8px] md:p-2 md:text-[10px] lg:p-3  whitespace-nowrap shrink'
           >
             {musicDrop.badge}
           </Badge>

@@ -14,6 +14,7 @@ interface NewLaunchCardProps {
   launchInDays: number
   price: number
   dynamicRightTopText: string
+  className?: string
 }
 
 export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
@@ -33,15 +34,19 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 
   return (
     <div
-      className='group relative flex flex-col w-full max-w-[384px] rounded-[10px] border-2 p-6 gap-4
-                 border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
-                 transition-colors duration-200 hover:border-[#71D6FB]'
+      className='group relative flex flex-col
+             min-w-full        /* mobile: full width */
+             md:min-w-[360px]  /* iPad: smaller width */
+             lg:min-w-[380px]  /* desktop: bigger width */
+             rounded-[10px] border-2 p-4 md:p-5 lg:p-6 gap-4
+             border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
+             transition-colors duration-200 hover:border-[#71D6FB]'
     >
       {/* Section 1: Avatar + Name + Genre Badge */}
       <div className='flex flex-row items-start gap-4'>
         <Avatar src={avatarUrl} variant='square-md' />
 
-        <div className='flex flex-col gap-2'>
+        <div className='flex flex-col gap-3'>
           <div className='flex items-center gap-2'>
             <CalendarBlankIcon
               size={16}
@@ -52,9 +57,12 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
               Launch in {launchInDays} days
             </span>
           </div>
-          <span className='font-inter font-semibold text-[20px] text-white truncate max-w-60'>
+          <p
+            className='text-white font-medium leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'
+            style={{ fontSize: "clamp(1.25rem, 2vw, 1.4rem)" }}
+          >
             {name}
-          </span>
+          </p>
 
           {/* Genre Badge (same as ArtistCard) */}
           <Badge variant='genre' className='w-max'>

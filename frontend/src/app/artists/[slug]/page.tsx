@@ -126,34 +126,42 @@ export default function ArtistPage() {
   }
 
   return (
-    <div className='bg-[#0A111F] min-h-screen w-full flex flex-col'>
+    <>
       {selectedSection === "music" && (
-        <section className='top-[149px] -ml-[50vw] -mr-[50vw] border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm py-5 px-4 mt-20'>
-          <div className='max-w-[1200px] mx-auto'>
-            <BadgesRow />
-          </div>
-        </section>
-      )}
+        <div className='relative w-screen'>
+          {/* Badges Section */}
+          <section className='relative mt-20 w-screen'>
+            {/* Full-width background & borders */}
+            <div className='absolute inset-0 w-screen border-t-2 border-b-2 border-[#121B2B] bg-[--color-black] backdrop-blur-sm pointer-events-none'></div>
 
-      <section className='relative w-full flex justify-center mt-20'>
+            {/* Scrollable content */}
+            <div className='relative z-10 max-w-[1200px] mx-auto overflow-x-auto py-5 px-4 md:px-12'>
+              <BadgesRow />
+            </div>
+          </section>
+        </div>
+      )}
+      <section className='w-full flex justify-center mt-20'>
         <FullArtistCard
           artist={artist}
           onBuyToken={() => handleBuyToken(artist.token?.name || "$MART")}
         />
       </section>
 
-      <section className='relative w-full flex justify-center mt-20'>
-        <SectionSelector
-          selected={selectedSection}
-          onSelect={(id: string) => setSelectedSection(id as SectionId)}
-        />
-      </section>
+      <div className='bg-[--color-black] min-h-screen w-full mx-auto flex flex-col'>
+        <section className='flex justify-center mt-20'>
+          <SectionSelector
+            selected={selectedSection}
+            onSelect={(id: string) => setSelectedSection(id as SectionId)}
+          />
+        </section>
 
-      <section className='relative w-full flex justify-center mt-20'>
-        <div className='flex flex-col w-full max-w-[1200px] px-4 mx-auto'>
-          {renderSectionContent()}
-        </div>
-      </section>
+        <section className='flex justify-center mt-20'>
+          <div className='flex flex-col w-full px-6 mx-auto'>
+            {renderSectionContent()}
+          </div>
+        </section>
+      </div>
 
       {eventModalData && (
         <div
@@ -175,6 +183,7 @@ export default function ArtistPage() {
           </div>
         </div>
       )}
+
       {/* BUY TOKEN MODAL */}
       {isBuyModalOpen && selectedTokenName && (
         <BuyTokenModal
@@ -186,6 +195,6 @@ export default function ArtistPage() {
           }}
         />
       )}
-    </div>
+    </>
   )
 }

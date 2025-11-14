@@ -107,7 +107,8 @@ export const Chart = ({ token }: ChartProps) => {
     const options: ApexCharts.ApexOptions = {
       chart: {
         type: "candlestick",
-        height: 500,
+        height: "100%",
+        width: "100%",
         toolbar: { show: false },
         zoom: { enabled: false },
         animations: { enabled: true, easing: "easeinout", speed: 800 }
@@ -151,9 +152,12 @@ export const Chart = ({ token }: ChartProps) => {
 
   return (
     <div
-      className='relative w-full max-w-[1200px] rounded-[10px] p-6 shadow-sm'
+      className='
+    relative w-full max-w-[1200px]
+    h-[600px]        
+    rounded-[10px] p-4 md:p-6 shadow-sm
+  '
       style={{
-        minHeight: "550px",
         background: "#121B2B",
         border: "2px solid #2D3953",
         boxShadow: "0px 4px 6px 0px #00000017"

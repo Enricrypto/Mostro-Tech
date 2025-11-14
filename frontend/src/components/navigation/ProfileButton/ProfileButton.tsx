@@ -69,7 +69,7 @@ export function ProfileButton() {
         else router.push("/profile")
       }}
     >
-      <div className='flex items-center gap-2 whitespace-nowrap'>
+      <div className='flex items-center whitespace-nowrap'>
         {getUserIcon()}
         <span>
           {isLoggedIn

@@ -13,26 +13,16 @@ export function MiniDataArtistCard({
 }: MiniDataArtistCardProps) {
   return (
     <div
-      className={`flex flex-col justify-center items-start gap-3 ${
-        className ?? ""
-      }`}
-      style={{
-        width: "clamp(12rem, 20vw, 14rem)", // scales between mobile and desktop
-        height: "clamp(5rem, 12vw, 6rem)",
-        padding: "clamp(1rem, 2vw, 1.5rem)",
-        background: "var(--color-primary)", // using theme color
-        borderRadius: "var(--radius-card)"
-      }}
+      className={`
+        flex flex-col justify-center items-start gap-3
+        p-6 rounded-xl bg-(--color-primary-light)
+        h-[120px] max-md:h-[88px] max-md:w-48 max-md:gap-3.5
+        ${className ?? ""}
+      `}
     >
       {/* Top Text */}
       <div className='flex items-center gap-2 w-full'>
-        <span
-          className='font-inter font-medium'
-          style={{
-            fontSize: "clamp(0.75rem, 1.5vw, 0.875rem)",
-            color: "var(--color-black)"
-          }}
-        >
+        <span className='font-inter font-medium text-base max-md:text-sm text-black'>
           {topText}
         </span>
       </div>
@@ -40,13 +30,8 @@ export function MiniDataArtistCard({
       {/* Bottom Text */}
       <div className='flex items-center gap-1 w-full'>
         <span
-          className='font-inter font-semibold'
-          style={{
-            fontSize: "clamp(1.5rem, 4vw, 2rem)",
-            lineHeight: "1.2",
-            letterSpacing: "-0.015em",
-            color: "var(--color-black)"
-          }}
+          className='font-inter font-semibold text-2xl max-md:text-lg text-black'
+          style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
         >
           {bottomText}
         </span>
