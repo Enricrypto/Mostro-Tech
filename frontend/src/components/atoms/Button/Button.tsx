@@ -79,7 +79,7 @@ export const buttonVisualVariants = {
     hover:bg-black hover:text-white
   `,
   "rounded-icon": `
-    w-4 h-4 rounded-full border border-[var(--color-skyblue)] text-white
+    sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full border border-[var(--color-skyblue)] text-white
     hover:bg-[var(--color-skyblue-opacity)]
   `,
   "connect-wallet": `
@@ -178,15 +178,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const content = (
       <>
-        {icon && iconPosition === "left" && (
-          <span className='icon shrink-0'>{icon}</span>
-        )}
+        {icon && iconPosition === "left" && <span>{icon}</span>}
         <span className='button-label truncate overflow-hidden whitespace-nowrap min-w-0'>
           {children} {/* text will truncate */}
         </span>
-        {icon && iconPosition === "right" && (
-          <span className='icon shrink-0'>{icon}</span>
-        )}
+        {icon && iconPosition === "right" && <span>{icon}</span>}
       </>
     )
 

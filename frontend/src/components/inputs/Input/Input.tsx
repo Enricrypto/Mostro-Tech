@@ -22,7 +22,7 @@ export function Input({
   }
 
   const getButtonVariant = () =>
-    state === "subscribe" ? "secondary" : "default"
+    state === "subscribe" ? "highlight" : undefined
 
   const isDisabled = state === "disabled"
 

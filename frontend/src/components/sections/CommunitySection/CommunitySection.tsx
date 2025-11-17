@@ -46,9 +46,9 @@ export const CommunitySection = ({ artist }: CommunitySectionProps) => {
   const rows = Math.ceil(fansToDisplay.length / avatarsPerRow)
 
   return (
-    <div className='w-full max-w-[1200px] flex flex-col md:flex-row gap-[39px] mb-20'>
+    <div className='w-full min-w-[1200px] flex flex-col md:flex-row gap-[39px] mb-20 justify-center'>
       {/* ============ TOP HOLDERS ============ */}
-      <div className='flex flex-col w-full gap-6'>
+      <div className='flex flex-col gap-6 md:w-auto'>
         <h2 className='text-white font-inter font-semibold text-[30px] leading-9'>
           Top Holders
         </h2>
@@ -80,12 +80,12 @@ export const CommunitySection = ({ artist }: CommunitySectionProps) => {
       </div>
 
       {/* ============ FANBASE ============ */}
-      <div className='flex flex-col w-full gap-6'>
+      <div className='flex flex-col gap-6 md:w-auto'>
         <h2 className='text-white font-inter font-semibold text-[30px] leading-9'>
           Fanbase
         </h2>
 
-        <div className='flex flex-col gap-6 p-3 md:p-4 rounded-[10px] bg-[#121B2B] border border-[#2D3953] shadow-md'>
+        <div className='flex flex-col gap-6 p-3 md:p-4 rounded-[10px] bg-[#121B2B] border border-[#2D3953] shadow-md mt-4'>
           {/* GRID */}
           <div
             className={`grid gap-4`}

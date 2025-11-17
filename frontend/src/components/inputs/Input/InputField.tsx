@@ -103,10 +103,10 @@ export function InputField({
           className={cn(
             "text-sm font-medium",
             themeVariant === "profile-setup"
-              ? "text-[var(--color-highlight)]"
+              ? "text-(--color-highlight)"
               : themeVariant === "form-dark"
               ? "text-white"
-              : "text-[var(--color-text-default,#1A1A1A)]"
+              : "text-(--color-text-default,#1A1A1A)"
           )}
         >
           {label}
