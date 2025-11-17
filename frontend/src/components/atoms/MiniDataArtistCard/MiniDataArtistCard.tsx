@@ -31,10 +31,7 @@ export function MiniDataArtistCard({
 
       {/* Bottom Text */}
       <div className='flex items-center gap-1 w-full'>
-        <span
-          className='font-inter font-semibold text-2xl max-md:text-lg text-black'
-          style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
-        >
+        <span className='font-inter font-semibold text-2xl max-md:text-lg text-black'>
           {bottomText}
         </span>
       </div>
