@@ -21,9 +21,9 @@ const inter = Inter({
   variable: "--font-inter"
 })
 
-// === Metadata ===
-// Note: Metadata export is not officially supported in client components yet.
-// This might not work as expected until Next.js fully supports it.
+// // === Metadata ===
+// // Note: Metadata export is not officially supported in client components yet.
+// // This might not work as expected until Next.js fully supports it.
 // export const metadata: Metadata = {
 //   title: "Mostro",
 //   description: "A Web3 platform for artists and fans",
@@ -43,10 +43,10 @@ export default function RootLayout({
 
   return (
     <html lang='en' className={`${poppins.variable} ${inter.variable}`}>
-      <body className='antialiased bg-[#0A111F] min-h-screen flex flex-col items-center'>
-        {/* <Providers> */}
-        {/* ===== GLOBAL NAVBAR ===== */}
-        {showNavbar && <Navbar />}
+      <body className='antialiased bg-[#0A111F] min-h-screen flex flex-col items-center mt-6'>
+        <Providers>
+          {/* ===== GLOBAL NAVBAR ===== */}
+          {showNavbar && <Navbar />}
 
           {/* ===== PAGE CONTENT ===== */}
           <main className='w-full flex flex-col items-center'>{children}</main>

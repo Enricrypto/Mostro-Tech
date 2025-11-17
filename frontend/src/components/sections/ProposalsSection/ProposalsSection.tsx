@@ -110,7 +110,7 @@ export function ProposalsSection({
             />
           )
         })}
-        <ProposalCard key='create-proposal' />
+        {/* <ProposalCard key='create-proposal' /> */}
       </div>
     </div>
   )

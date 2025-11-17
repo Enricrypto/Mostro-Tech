@@ -6,7 +6,7 @@ import { SongCard } from "@/components/display/SongCard"
 import { PerksCard } from "@/components/molecules/PerksCard"
 import { UpcomingEvent } from "@/components/display/UpcomingEvent"
 import { PlayerCard } from "@/components/display/PlayerCard"
-import { Button } from "@/components/atoms/Button"
+// import { Button } from "@/components/atoms/Button"
 import { CreateFanPerkDialog } from "@/components/molecules/CreateFanPerkDialog"
 import {
   mockPerksLuna,
@@ -208,9 +208,9 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
           <h2 className='font-semibold text-[30px] leading-9 text-white'>
             Fan Perks
           </h2>
-          <Button variant='continue' onClick={() => setCreatePerkOpen(true)}>
+          {/* <Button variant='continue' onClick={() => setCreatePerkOpen(true)}>
             Create New Fan Perk
-          </Button>
+          </Button> */}
         </div>
         <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 mt-10'>
           {perksForArtist.map((perk, i) => (

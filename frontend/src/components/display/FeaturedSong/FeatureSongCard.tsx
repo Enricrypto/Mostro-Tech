@@ -77,30 +77,44 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
         </div>
 
         {/* Play + Badge inline on mobile, stacked on tablet/desktop */}
-        <div className='flex gap-1 sm:flex-col sm:items-start md:w-auto md:h-auto md:gap-4'>
+        <div className='flex gap-1 items-center sm:flex-col sm:items-start md:gap-4'>
+          {/* Play Button */}
           <Button
             variant='song-play-icon'
             onClick={onPlay}
-            className='p-1 w-6 h-6 sm:w-auto sm:h-auto'
+            className='p-1 sm:p-2 md:p-2 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10'
           >
             {localPlaying ? (
               <PauseIcon
-                size={12}
+                size={
+                  window.innerWidth < 640
+                    ? 10
+                    : window.innerWidth < 1024
+                    ? 14
+                    : 18
+                }
                 weight='bold'
-                className='md:size-4 text-white'
+                className='text-white'
               />
             ) : (
               <PlayIcon
-                size={12}
+                size={
+                  window.innerWidth < 640
+                    ? 10
+                    : window.innerWidth < 1024
+                    ? 14
+                    : 18
+                }
                 weight='bold'
-                className='md:size-4 text-white'
+                className='text-white'
               />
             )}
           </Button>
 
+          {/* Badge */}
           <Badge
             variant='neutral'
-            className='text-[8px] md:p-2 md:text-[10px] lg:p-3  whitespace-nowrap shrink'
+            className='text-[7px] sm:text-[9px] md:text-[12px] px-1 sm:px-2 md:px-3 py-px sm:py-1 md:py-1 whitespace-nowrap shrink-0'
           >
             {musicDrop.badge}
           </Badge>
