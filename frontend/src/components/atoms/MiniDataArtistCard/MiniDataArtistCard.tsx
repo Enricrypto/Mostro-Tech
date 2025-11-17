@@ -14,9 +14,11 @@ export function MiniDataArtistCard({
   return (
     <div
       className={`
-        flex flex-col justify-center items-start gap-3
-        p-6 rounded-xl bg-(--color-primary-light)
-        h-[120px] max-md:h-[88px] max-md:w-48 max-md:gap-3.5
+       flex flex-col justify-center items-start gap-3
+    p-6 rounded-xl bg-(--color-primary-light)
+    min-w-44   
+    h-24    
+    md:w-[281px]
         ${className ?? ""}
       `}
     >

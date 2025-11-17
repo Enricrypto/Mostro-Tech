@@ -11,15 +11,15 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
-  DropdownMenuItem,
+  DropdownMenuItem
 } from "@/components/ui/dropdown-menu"
 import { ListIcon } from "@phosphor-icons/react"
-import { CreateTokenCard } from "@/components/molecules/CreateTokenCard"
+import { CreateTokenCard } from "@/components/molecules/CreateTokenCard" // Not implemented yet
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/all-artists", label: "Artists" },
-  { href: "/launches", label: "Launches" },
+  { href: "/launches", label: "Launches" }
 ]
 
 export function Navbar() {
@@ -36,12 +36,12 @@ export function Navbar() {
         )}
       >
         {/* Left section: Logo + Links */}
-        <div className="flex items-center gap-6">
+        <div className='flex items-center gap-6'>
           {/* Logo */}
-          <div className="shrink-0">
+          <div className='shrink-0'>
             <Image
-              src="/logo.png"
-              alt="Mostro Logo"
+              src='/logo.png'
+              alt='Mostro Logo'
               width={52}
               height={52}
               unoptimized
@@ -49,14 +49,14 @@ export function Navbar() {
           </div>
 
           {/* Desktop Navigation links */}
-          <div className="hidden md:flex md:items-center md:gap-2 lg:gap-5">
+          <div className='hidden md:flex md:items-center md:gap-2 lg:gap-5'>
             {navLinks.map((link) => (
               <Button
                 key={link.href}
-                variant="link"
-                className="
+                variant='link'
+                className='
         md:px-3 md:text-sm       
-        lg:px-4 lg:text-base"
+        lg:px-4 lg:text-base'
                 onClick={() => router.push(link.href)}
               >
                 {link.label}
@@ -66,36 +66,35 @@ export function Navbar() {
         </div>
 
         {/* Right section */}
-        <div className="flex items-center gap-3">
+        <div className='flex items-center gap-3'>
           {/* Desktop Search */}
-          <div className="md:block">
+          <div className='md:block'>
             <SearchBar
-              className="rounded-md border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]"
-              placeholder="Search..."
+              className='rounded-md border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]'
+              placeholder='Search...'
             />
           </div>
-       
 
           {/* Desktop Profile */}
-          <div className="md:block">
+          <div className='md:block'>
             <ProfileButton />
           </div>
 
           {/* Mobile: Hamburger Dropdown */}
-          <div className="md:hidden">
+          <div className='md:hidden'>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="continue" className="rounded-md">
-                  <ListIcon size={22} weight="bold" />
+                <Button variant='continue' className='rounded-md'>
+                  <ListIcon size={22} weight='bold' />
                 </Button>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent className="w-40 bg-[#121B2B] border-[#2D3953]">
+              <DropdownMenuContent className='w-40 bg-[#121B2B] border-[#2D3953]'>
                 {navLinks.map((link) => (
                   <DropdownMenuItem
                     key={link.href}
                     onClick={() => router.push(link.href)}
-                    className="cursor-pointer text-white"
+                    className='cursor-pointer text-white'
                   >
                     {link.label}
                   </DropdownMenuItem>
@@ -103,7 +102,7 @@ export function Navbar() {
 
                 <DropdownMenuItem
                   onClick={() => router.push("/profile")}
-                  className="cursor-pointer text-white"
+                  className='cursor-pointer text-white'
                 >
                   Profile
                 </DropdownMenuItem>
@@ -112,7 +111,6 @@ export function Navbar() {
           </div>
         </div>
       </nav>
-     
     </>
   )
 }

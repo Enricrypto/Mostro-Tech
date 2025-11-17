@@ -19,7 +19,7 @@ import { mockNewLaunchData } from "@/mocks/mockNewLaunchData"
 import { trendingTokens } from "@/mocks/mockTrendingTokens"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 import { formatTime } from "../../utils/formatTime"
-import { Feedback } from "@/components/navigation"
+import { Feedback } from "@/components/navigation/Feedback"
 
 // ===== Reusable Section Header =====
 const SectionHeader = ({ title }: { title: string }) => (
