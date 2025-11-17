@@ -79,10 +79,12 @@ export const BuyTokenModal = ({
         </div>
 
         {/* ArrowDown button row */}
-        <div className='flex justify-center mt-2'>
-          <Button variant='rounded-icon'>
-            <ArrowDownIcon size={14} weight='bold' />
-          </Button>
+        <div className='flex justify-center'>
+          <Button
+            variant='rounded-icon'
+            icon-size='small'
+            icon={<ArrowDownIcon size={10} weight='bold' />}
+          />
         </div>
 
         {/* RECEIVE SECTION */}
@@ -102,7 +104,7 @@ export const BuyTokenModal = ({
         </div>
 
         {/* FEES SECTION */}
-        <div className='w-[377px] h-20 bg-[#121B2B] border-2 border-[#2D3953] rounded-[10px] shadow-[0_4px_6px_0_#00000017] p-6 flex flex-col gap-2'>
+        <div className='w-[377px] h-20 bg-[#121B2B] border-2 border-[#2D3953] rounded-[10px] shadow-[0_4px_6px_0_#00000017] p-6 flex flex-col justify-center gap-2'>
           <div className='flex justify-between text-[12px] font-medium'>
             <span className='text-[#B3B3B3]'>Platform Fee (1.0%)</span>
             <span className='text-white'>${platformFee.toFixed(2)}</span>

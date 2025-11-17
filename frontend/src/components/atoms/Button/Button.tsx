@@ -79,7 +79,7 @@ export const buttonVisualVariants = {
     hover:bg-black hover:text-white
   `,
   "rounded-icon": `
-    w-4 h-4 rounded-full border border-[var(--color-skyblue)] text-white
+    sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-full border border-[var(--color-skyblue)] text-white
     hover:bg-[var(--color-skyblue-opacity)]
   `,
   "connect-wallet": `

@@ -48,9 +48,9 @@ export default function RootLayout({
           {/* ===== GLOBAL NAVBAR ===== */}
           {showNavbar && <Navbar />}
 
-          {/* ===== PAGE CONTENT ===== */}
-          <main className='w-full flex flex-col items-center'>{children}</main>
-        </Providers>
+        {/* ===== PAGE CONTENT ===== */}
+        <main className='w-full flex flex-col items-center'>{children}</main>
+        {/* </Providers> */}
       </body>
     </html>
   )
