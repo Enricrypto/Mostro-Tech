@@ -15,7 +15,8 @@ const genres = [
   "Classical",
   "Country",
   "Hip Hop",
-  "Folk"
+  "Folk",
+  "Metal",
 ]
 
 export const Step2 = () => {

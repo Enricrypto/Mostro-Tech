@@ -14,9 +14,11 @@ export function MiniDataArtistCard({
   return (
     <div
       className={`
-        flex flex-col justify-center items-start gap-3
-        p-6 rounded-xl bg-(--color-primary-light)
-        h-[120px] max-md:h-[88px] max-md:w-48 max-md:gap-3.5
+       flex flex-col justify-center items-start gap-3
+    p-6 rounded-xl bg-(--color-primary-light)
+    min-w-44   
+    h-24    
+    md:w-[281px]
         ${className ?? ""}
       `}
     >
@@ -29,10 +31,7 @@ export function MiniDataArtistCard({
 
       {/* Bottom Text */}
       <div className='flex items-center gap-1 w-full'>
-        <span
-          className='font-inter font-semibold text-2xl max-md:text-lg text-black'
-          style={{ lineHeight: "1.2", letterSpacing: "-0.015em" }}
-        >
+        <span className='font-inter font-semibold text-2xl max-md:text-lg text-black'>
           {bottomText}
         </span>
       </div>

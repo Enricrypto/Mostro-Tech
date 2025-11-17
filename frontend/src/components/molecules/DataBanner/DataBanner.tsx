@@ -19,34 +19,17 @@ export const DataBanner: FC<DataBannerProps> = ({
     <div
       className='
     w-full 
-    grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-4
-    mt-8 md:mt-12
+    grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-4
+    mt-8 md:justify-items-center
   '
-      style={{
-        rowGap: "clamp(1rem, 2vw, 2rem)",
-        columnGap: "clamp(1rem, 3vw, 2rem)"
-      }}
     >
+      <MiniDataArtistCard topText='Total Value' bottomText={`$${totalValue}`} />
       <MiniDataArtistCard
-        className='w-full'
-        topText='Total Value'
-        bottomText={`$${totalValue}`}
-      />
-      <MiniDataArtistCard
-        className='w-full'
         topText='Artists Supported'
         bottomText={totalArtists}
       />
-      <MiniDataArtistCard
-        className='w-full'
-        topText='Total Votes Cast'
-        bottomText={totalVotes}
-      />
-      <MiniDataArtistCard
-        className='w-full'
-        topText='Perks Unlocked'
-        bottomText={totalPerks}
-      />
+      <MiniDataArtistCard topText='Total Votes Cast' bottomText={totalVotes} />
+      <MiniDataArtistCard topText='Perks Unlocked' bottomText={totalPerks} />
     </div>
   )
 }

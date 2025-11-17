@@ -19,6 +19,7 @@ import { mockNewLaunchData } from "@/mocks/mockNewLaunchData"
 import { trendingTokens } from "@/mocks/mockTrendingTokens"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 import { formatTime } from "../../utils/formatTime"
+import { Feedback } from "@/components/navigation/Feedback"
 
 // ===== Reusable Section Header =====
 const SectionHeader = ({ title }: { title: string }) => (
@@ -141,6 +142,7 @@ export default function DashboardPage() {
 
   return (
     <>
+      <Feedback />
       {/* ===== FULL-WIDTH SECTIONS ===== */}
       <div className='relative w-screen'>
         {/* Badges Section */}
