@@ -46,7 +46,7 @@ export const CommunitySection = ({ artist }: CommunitySectionProps) => {
   const rows = Math.ceil(fansToDisplay.length / avatarsPerRow)
 
   return (
-    <div className='w-full min-w-[1200px] flex flex-col md:flex-row gap-[39px] mb-20 justify-center'>
+    <div className='w-full flex flex-col md:flex-row gap-[39px] mb-20 justify-center'>
       {/* ============ TOP HOLDERS ============ */}
       <div className='flex flex-col gap-6 md:w-auto'>
         <h2 className='text-white font-inter font-semibold text-[30px] leading-9'>

@@ -93,9 +93,10 @@ export const buttonVisualVariants = {
     hover:bg-gradient-to-r hover:from-[var(--color-skyblue)] hover:to-[var(--color-purple)] hover:text-white
   `,
   "song-play-icon": `
-    w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
-    rounded-full border border-[var(--color-skyblue)] hover:bg-blue-500/10
-  `,
+  w-10 h-10 md:w-12 md:h-12 
+  rounded-full border border-[var(--color-skyblue)] 
+  hover:bg-blue-500/10
+`,
   "song-unlock": `
     border border-[var(--color-skyblue)] bg-transparent text-white
     hover:bg-[var(--color-skyblue-opacity)] hover:text-black
