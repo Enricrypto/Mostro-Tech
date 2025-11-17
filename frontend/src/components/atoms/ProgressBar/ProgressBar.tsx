@@ -4,15 +4,22 @@ import * as ProgressPrimitive from "@radix-ui/react-progress"
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
+// ProgressBar container
 const progressBarCVA = cva(
-  "relative overflow-hidden rounded-[40px] w-[334px] h-[16px]",
+  `
+  relative w-full overflow-hidden rounded-[0.5rem]
+  h-[0.75rem] sm:h-[0.875rem] md:h-[1rem]
+  transition-all duration-300 ease-out
+  `,
   {
     variants: {
       variant: {
         blue: "bg-[var(--color-skyblue-opacity)]",
         red: "bg-[var(--color-red-opacity)]",
         green: "bg-[var(--color-green-opacity)]",
-        purple: "bg-[var(--color-purple-opacity)]"
+        purple: "bg-[var(--color-purple-opacity)]",
+        primary: "bg-white/20",
+        "setup-profile": "bg-white/20"
       }
     },
     defaultVariants: {
@@ -21,19 +28,29 @@ const progressBarCVA = cva(
   }
 )
 
-const progressBarIndicatorCVA = cva("h-full transition-all rounded-[40px]", {
-  variants: {
-    variant: {
-      blue: "bg-[var(--color-skyblue)]",
-      red: "bg-[var(--color-red)]",
-      green: "bg-[var(--color-green)]",
-      purple: "bg-[var(--color-purple)]"
+// ProgressBar indicator
+const progressBarIndicatorCVA = cva(
+  `
+  h-full transition-all duration-300 ease-out rounded-[0.5rem]
+  h-[0.75rem] sm:h-[0.875rem] md:h-[1rem]
+  transition-all duration-300 ease-out
+  `,
+  {
+    variants: {
+      variant: {
+        blue: "bg-[var(--color-skyblue)]",
+        red: "bg-[var(--color-red)]",
+        green: "bg-[var(--color-green)]",
+        purple: "bg-[var(--color-purple)]",
+        primary: "bg-[var(--color-primary)]",
+        "setup-profile": "bg-[var(--color-highlight)]"
+      }
+    },
+    defaultVariants: {
+      variant: "blue"
     }
-  },
-  defaultVariants: {
-    variant: "blue"
   }
-})
+)
 
 interface ProgressBarProps
   extends React.ComponentProps<typeof ProgressPrimitive.Root>,
@@ -43,7 +60,7 @@ interface ProgressBarProps
 
 export function ProgressBar({
   value,
-  variant = "blue",
+  variant,
   className,
   ...props
 }: ProgressBarProps) {
@@ -55,7 +72,9 @@ export function ProgressBar({
     >
       <ProgressPrimitive.Indicator
         className={progressBarIndicatorCVA({ variant })}
-        style={{ transform: `translateX(-${100 - value}%)` }}
+        style={{
+          width: `${Math.min(Math.max(value, 0), 100)}%`
+        }}
       />
     </ProgressPrimitive.Root>
   )

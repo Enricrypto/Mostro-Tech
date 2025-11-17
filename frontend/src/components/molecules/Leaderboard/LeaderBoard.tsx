@@ -23,7 +23,8 @@ export function LeaderBoard({
   return (
     <div
       className={cn(
-        "leaderboard flex items-center justify-between transition-shadow duration-300 ease-out",
+        "flex flex-row justify-between items-center w-[350px] md:w-[350] lg:w-[570] px-4 md:px-3 lg:px-8 py-4 md:py-3 lg:py-6 rounded-[10px] border border-(--color-muted) bg-(--color-card-bg)",
+        "w-full transition-all duration-300",
         className
       )}
       style={{
@@ -31,32 +32,30 @@ export function LeaderBoard({
         borderWidth: "1px",
         borderStyle: "solid",
         borderColor: "var(--color-muted)",
-        gap: "14px",
-        padding: "24px",
-        background: "var(--color-card-bg)" // you can adjust to #121B2B if needed
+        backgroundColor: "var(--color-card-bg)"
       }}
     >
       {/* LEFT SIDE: Rank + Avatar + Username */}
-      <div className='flex items-center gap-3.5'>
-        <span className='text-[18px] font-semibold leading-7 text-(--color-muted)'>
+      <div className='flex items-center gap-4 min-w-0 shrink'>
+        <span className='shrink-0 text-[12px] md:text-[14px] lg:text-[18px] font-semibold leading-7 text-(--color-muted)'>
           # {rank}
         </span>
         <Avatar
           variant='rounded-sm'
           src={avatarSrc}
-          className='w-10 h-10 rounded-[26px]'
+          className='shrink-0 w-9 h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-[26px]'
         />
-        <span className='text-[18px] font-semibold leading-7 text-white'>
+        <span className='text-[12px] md:text-[14px] lg:text-[18px] font-semibold leading-7 text-white truncate max-w-[60%]'>
           {username}
         </span>
       </div>
 
       {/* RIGHT SIDE: Score + Token Symbol */}
-      <div className='flex items-center gap-2'>
-        <span className='text-right text-[18px] font-semibold leading-7 text-(--color-skyblue)'>
+      <div className='flex items-center gap-2 justify-end shrink-0'>
+        <span className='text-[12px] md:text-[14px] lg:text-[18px] font-semibold leading-7 text-(--color-skyblue)'>
           {score}
         </span>
-        <span className='text-[12px] font-medium leading-5 text-(--color-muted)'>
+        <span className='text-[12px] md:text-[14px] lg:text-[18px] font-medium leading-5 text-(--color-muted)'>
           {tokenSymbol}
         </span>
       </div>

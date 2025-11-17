@@ -1,5 +1,3 @@
-// This component needs to be refactored
-
 "use client"
 
 import { useState } from "react"
@@ -31,22 +29,24 @@ export const SearchExpanded = ({
   return (
     <div
       className={cn(
-        "w-[var(--card-width)] h-[var(--card-height)] flex flex-col gap-[var(--space-lg)] rounded-[var(--radius-sm)] shadow-[var(--shadow-md)] bg-[var(--color-surface-default)] p-[var(--space-md)] font-body"
+        "w-full max-w-[480px] md:max-w-[600px] flex flex-col gap-4 rounded-md shadow-md bg-surface-default p-4 font-body border border-border-color"
       )}
-      style={{ border: "1px solid var(--border-color)" }}
     >
+      {/* Search Input */}
       <SearchBar value={inputValue} onChange={handleChange} />
 
-      <div className='flex gap-[var(--space-sm)]'>
+      {/* Pill Buttons */}
+      <div className='flex flex-wrap gap-2'>
         {buttons.map((label) => (
           <PillButton
             key={label}
             selected={selectedButton === label}
             onClick={() => setSelectedButton(label)}
             className={cn(
+              "transition-colors duration-200",
               selectedButton === label
-                ? "bg-[var(--color-button-bg-selected)] text-[var(--color-button-text-selected)]"
-                : "bg-[var(--color-button-bg-default)] text-[var(--color-button-text-default)] hover:bg-[var(--color-button-hover)]"
+                ? "bg-button-bg-selected text-button-text-selected"
+                : "bg-button-bg-default text-button-text-default hover:bg-button-hover"
             )}
           >
             {label}
@@ -54,12 +54,15 @@ export const SearchExpanded = ({
         ))}
       </div>
 
-      <div className='flex flex-col gap-[var(--space-xs)]'>
-        <MenuSectionTitle>Recent Searches</MenuSectionTitle>
-        {recentSearches.map((search) => (
-          <MenuItem key={search} label={search} />
-        ))}
-      </div>
+      {/* Recent Searches */}
+      {recentSearches.length > 0 && (
+        <div className='flex flex-col gap-1'>
+          <MenuSectionTitle>Recent Searches</MenuSectionTitle>
+          {recentSearches.map((search) => (
+            <MenuItem key={search} label={search} />
+          ))}
+        </div>
+      )}
     </div>
   )
 }

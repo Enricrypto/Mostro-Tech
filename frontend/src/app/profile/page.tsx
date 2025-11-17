@@ -118,17 +118,17 @@ export default function ProfilePage() {
   if (!ready || !user) return <LoadingSpinner text='Loading profile...' />
 
   return (
-    <div className='flex-1 mt-12 flex flex-col items-center w-full px-4'>
+    <div className='flex mt-12 max-w-[1200px] flex-col items-center w-full px-4'>
       {/* Profile Card */}
       <ProfileCardContainer />
 
       {/* Data Banner */}
-      <section className='min-w-[1200px] mt-12'>
+      <section className='w-full mt-12'>
         <DataBanner {...mockDataBanner} />
       </section>
 
       {/* Favorite Tracks */}
-      <section className='w-full max-w-[1200px] mt-20 mb-20'>
+      <section className='w-full mt-20 mb-20'>
         <SectionHeader title='Favorite Tracks' />
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
           {mockFavoriteSongs.map((song, index) => (
@@ -147,7 +147,7 @@ export default function ProfilePage() {
       </section>
 
       {/* Token Holdings */}
-      <section className='w-full max-w-[1200px] mt-12'>
+      <section className='w-full mt-12'>
         <SectionHeader title='Token Holdings' />
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10'>
           {mockTokenHoldings.map((holding) => (
@@ -157,9 +157,9 @@ export default function ProfilePage() {
       </section>
 
       {/* Unlocked Perks */}
-      <section className='w-full max-w-[1200px] mt-20'>
+      <section className='w-full mt-20'>
         <SectionHeader title='Unlocked Perks' />
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-10'>
           {mockPerksCombined.map((perk) => (
             <PerksCard
               key={perk.id || perk.title}
@@ -171,9 +171,9 @@ export default function ProfilePage() {
       </section>
 
       {/* Voting History */}
-      <section className='w-full max-w-[1200px] mt-20 mb-20'>
+      <section className='w-full mt-20 mb-20'>
         <SectionHeader title='Voting History' />
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-10'>
           {mockVotingHistory.map((vote) => (
             <VotingHistory key={vote.id} {...vote} />
           ))}

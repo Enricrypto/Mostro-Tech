@@ -14,27 +14,35 @@ export const DashBoardStatsCard: React.FC<DashBoardStatsCardProps> = ({
   icon
 }) => {
   return (
-    <div className='w-[384px] h-[112px] p-[24px] rounded-[10px] border border-[#2D3953] bg-[#121B2B] flex flex-col justify-between'>
+    <div
+      className='
+        w-[168px] h-[104px] p-[14px_10px]
+        rounded-[10px] border border-[#2D3953] bg-[#121B2B]
+        flex flex-col justify-between
+        md:w-[230px] md:h-[110px] md:p-[20px_16px]
+        lg:w-[384px] lg:h-28 lg:p-6
+      '
+    >
       {/* Top Part */}
-      <div className='w-full h-[20px] flex justify-between items-center'>
-        <span className='flex-1 h-[20px] text-[#B3B3B3] font-medium text-[12px] leading-[20px] truncate'>
+      <div className='w-full h-5 flex justify-between items-center'>
+        <span className='flex-1 h-5 text-[#B3B3B3] font-medium text-[10px] leading-5 md:text-[12px]'>
           {topText}
         </span>
         {/* Icon */}
-        <div className='w-[20px] h-[20px] flex items-center justify-center shrink-0'>
+        <div className='w-5 h-5 flex items-center justify-center shrink-0'>
           {icon}
         </div>
       </div>
 
       {/* Bottom Part */}
-      <div className='w-full h-[36px] flex items-center gap-[8px]'>
+      <div className='w-full h-9 flex items-center gap-2'>
         {/* Left text */}
-        <span className='flex-1 h-[36px] font-semibold text-[30px] leading-[36px] text-white truncate'>
+        <span className='flex-1 h-9 font-semibold text-[20px] leading-9 text-white md:text-[30px]'>
           {bottomLeftText}
         </span>
 
         {/* Right text next to it */}
-        <span className='flex-none h-[20px] font-medium text-[12px] leading-[20px] text-[#DCFD63] flex items-center truncate'>
+        <span className='flex-none h-5 font-medium text-[10px] leading-5 text-[#DCFD63] flex items-center md:text-[12px]'>
           {bottomRightText}
         </span>
       </div>

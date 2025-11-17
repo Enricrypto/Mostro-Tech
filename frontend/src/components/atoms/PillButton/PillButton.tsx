@@ -4,9 +4,16 @@ import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 import type { ComponentProps } from "react"
 
-// CVA for PillButton
+// CVA for PillButton with responsive sizes
 const pillButtonCVA = cva(
-  "inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full transition-all duration-200 ease-out font-body text-[14px] leading-[24px]",
+  `
+  inline-flex items-center justify-center gap-[0.5rem]
+  rounded-full font-body transition-all duration-200 ease-out
+  min-h-[2.5rem] sm:min-h-[2.75rem] md:min-h-[3rem]
+  px-[1.2rem] sm:px-[1.6rem] md:px-[2rem]
+  whitespace-nowrap
+  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
+  `,
   {
     variants: {
       themeVariant: {
@@ -17,16 +24,36 @@ const pillButtonCVA = cva(
           "border border-[var(--color-charcoal)] bg-[var(--color-night)] text-white",
         blue: "border border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)]",
         yellow:
-          "border border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black"
+          "border border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black",
+        "form-dark": "border-transparent bg-[var(--color-dark-bg-hover)] text-white",
+        "profile-setup": "border-transparent bg-black/20 text-[#DCFD63]"
       },
       selected: {
         true: "font-semibold opacity-90",
-        false: ""
+        false: "opacity-100"
+      },
+      size: {
+        sm: "text-[0.875rem] sm:text-[0.9rem] md:text-[1rem]",
+        md: "text-[1rem] sm:text-[1.05rem] md:text-[1.125rem]",
+        lg: "text-[1.125rem] sm:text-[1.25rem] md:text-[1.375rem]"
       }
     },
+    compoundVariants: [
+      {
+        themeVariant: "form-dark",
+        selected: true,
+        className: "bg-[var(--color-primary)] text-black"
+      },
+      {
+        themeVariant: "profile-setup",
+        selected: true,
+        className: "bg-[var(--color-highlight)] text-black"
+      }
+    ],
     defaultVariants: {
       themeVariant: "primary",
-      selected: false
+      selected: false,
+      size: "md"
     }
   }
 )
@@ -38,13 +65,14 @@ export const PillButton = ({
   className,
   themeVariant,
   selected,
+  size,
   children,
   ...props
 }: PillButtonProps) => {
   return (
     <button
       {...props}
-      className={cn(pillButtonCVA({ themeVariant, selected }), className)}
+      className={cn(pillButtonCVA({ themeVariant, selected, size }), className)}
     >
       {children}
     </button>

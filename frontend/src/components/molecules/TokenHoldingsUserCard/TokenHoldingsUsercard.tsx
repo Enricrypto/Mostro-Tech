@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react"
 import { Avatar } from "@/components/atoms/Avatar"
 import { Badge } from "@/components/utils/Badge"
 import {
@@ -28,68 +27,70 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
   amount,
   perks
 }) => {
-  // Convert performance string to number to determine badge variant & icon
   const numberValue = parseFloat(performance.replace(/[^0-9.-]+/g, ""))
   const badgeVariant = numberValue >= 0 ? "increase" : "decrease"
   const Icon = numberValue >= 0 ? ArrowUpIcon : ArrowDownIcon
 
   return (
     <div
-      className='flex flex-col justify-between border-2 rounded-[10px] p-6 gap-3.5 w-[384px] h-48 transition-shadow duration-200 hover:shadow-[0_0_16.9px_5px_#71D6FB80]'
-      style={{
-        background: "#121B2B",
-        boxShadow: "0px 4px 6px 0px #00000017",
-        borderColor: "#2D3953"
-      }}
+      className='
+  flex flex-col justify-between gap-4 w-full
+  sm:max-w-[360px] md:max-w-[384px] p-4 rounded-lg border
+  transition-shadow duration-200 hover:shadow-[0_0_16.9px_5px_#71D6FB80]
+  bg-[#121B2B] border-[#2D3953] h-auto
+'
     >
       {/* Top Section */}
-      <div className='flex justify-between items-start'>
-        {/* Left Side */}
-        <div className='flex gap-3'>
+      <div className='flex justify-between items-start flex-wrap gap-3'>
+        {/* Left */}
+        <div className='flex gap-3 flex-1 min-w-0'>
           <Avatar
             src={avatarSrc || "/default-avatar.png"}
             variant='square-community'
           />
-          <div className='flex flex-col'>
-            <span className='text-[20px] font-semibold leading-7 text-white'>
+          <div className='flex flex-col min-w-0'>
+            <span className='text-white font-semibold text-[20px] leading-7 truncate'>
               {artist}
             </span>
-            <span className='text-[12px] font-medium leading-5 text-[#B3B3B3]'>
+            <span className='text-[#B3B3B3] font-medium text-[12px] truncate'>
               {tokenCount} tokens
             </span>
           </div>
         </div>
-        {/* Right Side */}
-        {/* Badge with Icon */}
+        {/* Right */}
         <Badge
           variant={badgeVariant}
-          className='text-[12px] font-medium flex items-center gap-1'
+          className='flex items-center gap-1 text-[12px] font-medium whitespace-nowrap'
           icon={<Icon weight='bold' size={14} />}
         >
           {performance}
         </Badge>
       </div>
 
-      {/* Separation Line */}
+      {/* Divider */}
       <div className='border-t border-[#1F2A3D]' />
 
       {/* Bottom Section */}
-      <div className='flex justify-between items-center'>
-        {/* Left Part */}
-        <div className='flex flex-col items-center gap-1'>
-          <span className='text-[16px] font-bold text-white'>${amount}</span>
-          <span className='text-[12px] font-medium text-[#B3B3B3]'>
+      <div className='flex justify-between flex-wrap gap-4'>
+        {/* Current Value */}
+        <div className='flex flex-col items-center flex-1 min-w-[100px]'>
+          <span className='text-white font-bold text-[16px] truncate'>
+            ${amount}
+          </span>
+          <span className='text-[#B3B3B3] font-medium text-[12px]'>
             Current Value
           </span>
         </div>
 
-        {/* Right Part */}
-        <div className='flex flex-col items-center gap-1'>
+        {/* Perks */}
+        <div className='flex flex-col items-center flex-1 min-w-[100px]'>
           <div className='flex items-center gap-2'>
             <SketchLogoIcon className='w-5 h-5 text-[#4995E0]' />
-            <span className='text-[16px] font-bold text-white'>{perks}</span>
+            <span className='text-white font-bold text-[16px] truncate'>
+              {perks}
+            </span>
           </div>
-          <span className='text-[12px] font-medium text-[#B3B3B3]'>
+          <span className='text-[#B3B3B3] font-medium text-[12px]'>
             Perks Unlocked
           </span>
         </div>

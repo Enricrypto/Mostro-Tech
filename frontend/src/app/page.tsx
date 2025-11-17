@@ -11,7 +11,6 @@ import { LeaderBoard } from "@/components/molecules/Leaderboard"
 import { NewLaunchCard } from "@/components/molecules/NewLaunchCard"
 import { TrendingTokenCard } from "@/components/molecules/TrendingTokenCard"
 import { PlayerCard } from "@/components/display/PlayerCard"
-import { Footer } from "@/components/navigation/Footer"
 import { bannerPropsData } from "@/mocks/mockBannerProps"
 import { statsCardVariants } from "@/mocks/mockStatsData"
 import { mockArtistData } from "@/mocks/mockArtistData"
@@ -141,160 +140,229 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className='bg-[#0A111F] min-h-screen w-full flex flex-col'>
-      {/* ===== BADGES SECTION ===== */}
-      <section className='top-[149px] -ml-[50vw] -mr-[50vw] border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm py-5 px-4 mt-20'>
-        <div className='max-w-[1200px] mx-auto'>
-          <BadgesRow />
-        </div>
-      </section>
+    <>
+      {/* ===== FULL-WIDTH SECTIONS ===== */}
+      <div className='relative w-screen'>
+        {/* Badges Section */}
+        <section className='relative mt-20 w-screen'>
+          {/* Full-width background & borders */}
+          <div className='absolute inset-0 w-screen border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm pointer-events-none'></div>
 
-      {/* ===== ARTIST PROFILE BANNER ===== */}
-      <section className='relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] mt-20'>
-        <ArtistProfileBanner
-          {...currentBanner}
-          variant={currentBanner.variant}
-          onPlay={() =>
-            handlePlay({
-              ...currentBanner.latestSong,
-              avatarSrc: currentBanner.avatarSrc,
-              audioUrl: currentBanner.latestSong.audioUrl
-            })
-          }
-        />
+          {/* Scrollable content */}
+          <div className='relative z-10 max-w-[1200px] mx-auto overflow-x-auto py-5 px-4 md:px-12'>
+            <BadgesRow />
+          </div>
+        </section>
 
-        {/* Banner dots */}
-        <div className='absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4'>
-          {bannerPropsData.map((_, idx) => (
-            <div
-              key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${
-                currentIndex === idx ? "bg-white" : "bg-black/50"
-              }`}
-            />
+        {/* Artist Profile Banner */}
+        <section className='relative mt-20 w-screen'>
+          <ArtistProfileBanner
+            {...currentBanner}
+            variant={currentBanner.variant}
+            onPlay={() =>
+              handlePlay({
+                ...currentBanner.latestSong,
+                avatarSrc: currentBanner.avatarSrc,
+                audioUrl: currentBanner.latestSong.audioUrl
+              })
+            }
+          />
+
+          {/* Banner dots */}
+          <div className='absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4 z-10'>
+            {bannerPropsData.map((_, idx) => (
+              <div
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${
+                  currentIndex === idx ? "bg-white" : "bg-black/50"
+                }`}
+              />
+            ))}
+          </div>
+        </section>
+      </div>
+
+      {/* ===== MAIN PAGE CONTENT ===== */}
+      <div className='bg-[#0A111F] min-h-screen w-full max-w-[1200px] mx-auto flex flex-col'>
+        {/* ===== STATS CARDS ===== */}
+        <section
+          className='grid grid-cols-2 grid-rows-3 gap-6 mt-20 px-4 
+             md:grid-cols-3 md:grid-rows-2'
+        >
+          {statsCardVariants.map((card) => (
+            <DashBoardStatsCard key={card.topText} {...card} />
           ))}
-        </div>
-      </section>
+        </section>
 
-      {/* ===== STATS CARDS ===== */}
-      <section className='flex flex-wrap justify-center gap-6 mt-20 px-4'>
-        {statsCardVariants.map((card) => (
-          <DashBoardStatsCard key={card.topText} {...card} />
-        ))}
-      </section>
-
-      {/* ===== TOP ARTISTS ===== */}
-      <section className='flex flex-col gap-6 mt-20 px-4'>
-        <div className='w-full max-w-[1200px] mx-auto flex justify-between items-center'>
-          <div className='flex-1'>
+        {/* ===== TOP ARTISTS ===== */}
+        <section className='w-full mt-20 px-4'>
+          <div className='flex items-center justify-between'>
             <SectionHeader title='Top Artists' />
+            <div>
+              <Button
+                variant='follow-share'
+                icon={<ArrowUpRightIcon size={20} weight='bold' />}
+                iconPosition='right'
+                onClick={() => router.push("/all-artists")}
+              >
+                View All
+              </Button>
+            </div>
           </div>
 
-          <div>
+          <div
+            className='
+      grid grid-cols-1 gap-6 mt-10
+      place-items-center md:place-items-center
+      lg:grid-cols-3
+    '
+          >
+            {mockArtistData.map((artist) => (
+              <ArtistCard
+                key={artist.id || artist.artistName}
+                {...artist}
+                slug={artist.slug}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* ===== TOP HOLDERS ===== */}
+        <section className='w-full mt-20 px-4'>
+          <SectionHeader title='Top Holders' />
+
+          {/* Cards Grid */}
+          <div
+            className='
+      mt-10 grid grid-cols-1 gap-6
+      md:grid-cols-2
+    '
+          >
+            {/* Mobile: first 5 cards */}
+            {mockLeaderboardData.slice(0, 5).map((holder, idx) => (
+              <LeaderBoard
+                key={holder.rank}
+                {...holder}
+                className='md:hidden'
+              />
+            ))}
+
+            {/* iPad/Desktop: all cards */}
+            {mockLeaderboardData.map((holder, idx) => (
+              <LeaderBoard
+                key={holder.rank}
+                {...holder}
+                className='hidden md:block'
+              />
+            ))}
+          </div>
+
+          {/* Mobile-only Button */}
+          <div className='mt-8 block md:hidden'>
             <Button
               variant='follow-share'
               icon={<ArrowUpRightIcon size={20} weight='bold' />}
               iconPosition='right'
-              onClick={() => router.push("/all-artists")}
+              className='w-full'
+              onClick={() => router.push("/all-holders")}
             >
               View All
             </Button>
           </div>
-        </div>
+        </section>
 
-        <div className='max-w-[1200px] mx-auto flex flex-wrap gap-6 mt-10'>
-          {mockArtistData.map((artist) => (
-            <ArtistCard
-              key={artist.id || artist.artistName}
-              {...artist}
-              slug={artist.slug}
-            />
-          ))}
-        </div>
-      </section>
+        {/* ===== NEW LAUNCHES ===== */}
+        <section className='w-full mt-20 px-4'>
+          <div className='flex items-center justify-between'>
+            <SectionHeader title='New Launches' />
+            <div>
+              <Button
+                variant='follow-share'
+                icon={<ArrowUpRightIcon size={20} weight='bold' />}
+                iconPosition='right'
+                onClick={() => router.push("/launches")}
+              >
+                View All
+              </Button>
+            </div>
+          </div>
 
-      {/* ===== TOP HOLDERS ===== */}
-      <section className='flex flex-col gap-6 mt-20 px-4'>
-        <div className='max-w-[1200px] mx-auto'>
-          <SectionHeader title='Top Holders' />
-          <div className='mt-10 flex flex-wrap gap-6'>
-            {chunkArray(mockLeaderboardData, 5).map((chunk, idx) => (
-              <div key={idx} className='flex flex-col gap-6 flex-1'>
-                {chunk.map((holder) => (
-                  <LeaderBoard key={holder.rank} {...holder} />
-                ))}
+          <div
+            className='
+      grid grid-cols-1 gap-6 mt-10
+      md:grid-cols-2 md:grid-rows-2 md:place-items-center
+      lg:grid-cols-3 lg:grid-rows-1 lg:place-items-start
+    '
+          >
+            {/* Mobile: first 3 cards */}
+            {mockNewLaunchData.slice(0, 3).map((launch) => (
+              <div key={launch.id} className='md:hidden'>
+                <NewLaunchCard {...launch} />
+              </div>
+            ))}
+
+            {/* iPad: first 4 cards */}
+            {mockNewLaunchData.slice(0, 4).map((launch) => (
+              <div key={launch.id} className='hidden md:block lg:hidden'>
+                <NewLaunchCard {...launch} />
+              </div>
+            ))}
+
+            {/* Desktop: first 5 cards */}
+            {mockNewLaunchData.slice(0, 3).map((launch) => (
+              <div key={launch.id} className='hidden lg:block'>
+                <NewLaunchCard {...launch} />
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ===== NEW LAUNCHES ===== */}
-      <section className='flex flex-col gap-6 mt-20 px-4'>
-        <div className='w-full max-w-[1200px] mx-auto flex justify-between items-center'>
-          <div className='flex-1'>
-            <SectionHeader title='New Launches' />
-          </div>
-
-          <div>
-            <Button
-              variant='follow-share'
-              icon={<ArrowUpRightIcon size={20} weight='bold' />}
-              iconPosition='right'
-              onClick={() => router.push("/launches")}
-            >
-              View All
-            </Button>
-          </div>
-        </div>
-        <div className='max-w-[1200px] mx-auto flex flex-wrap gap-6 mt-10'>
-          {mockNewLaunchData.slice(0, 3).map((launch) => (
-            <NewLaunchCard key={launch.id || launch.name} {...launch} />
-          ))}
-        </div>
-      </section>
-
-      {/* ===== TRENDING TOKENS ===== */}
-      <section className='flex flex-col gap-6 mt-20 mb-30 px-4'>
-        <div className='max-w-[1200px] mx-auto'>
+        {/* ===== TRENDING TOKENS ===== */}
+        <section className='w-full mt-20 mb-20 px-4'>
           <SectionHeader title='Trending Tokens' />
-          {chunkArray(trendingTokens, 3).map((chunk, idx) => (
-            <div key={idx} className='flex flex-wrap gap-6 mt-10'>
-              {chunk.map((token) => (
-                <TrendingTokenCard
-                  key={token.id}
-                  avatarSrc={token.iconUrl}
-                  name={token.name}
-                  subtitle={token.tokenName}
-                  value={token.price}
-                  badgeText={token.change}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
 
-      {/* ===== PLAYER ===== */}
-      {currentSong && (
-        <div className='fixed bottom-0 left-0 w-full px-6 py-4 z-50 flex justify-center'>
-          <PlayerCard
-            songName={currentSong.title}
-            songDetails={currentSong.artist}
-            currentTime={formatTime(currentTime)}
-            totalTime={formatTime(duration)}
-            progress={progress}
-            avatarUrl={currentSong.avatarSrc ?? currentBanner.avatarSrc}
-            isPlaying={isPlaying}
-            onPlayPause={() => setIsPlaying((prev) => !prev)}
-            onNext={() => {}}
-            onPrev={() => {}}
-            onClose={handleClosePlayer}
-            onSeek={handleSeek}
-          />
-        </div>
-      )}
-    </div>
+          <div
+            className='
+      grid grid-cols-1 gap-6 mt-10
+      md:grid-cols-2
+      lg:grid-cols-3
+      place-items-center
+    '
+          >
+            {trendingTokens.map((token) => (
+              <TrendingTokenCard
+                key={token.id}
+                avatarSrc={token.iconUrl}
+                name={token.name}
+                subtitle={token.tokenName}
+                value={token.price}
+                badgeText={token.change}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* ===== PLAYER ===== */}
+        {currentSong && (
+          <div className='fixed bottom-0 left-0 w-full px-6 py-4 z-50 flex justify-center'>
+            <PlayerCard
+              songName={currentSong.title}
+              songDetails={currentSong.artist}
+              currentTime={formatTime(currentTime)}
+              totalTime={formatTime(duration)}
+              progress={progress}
+              avatarUrl={currentSong.avatarSrc ?? currentBanner.avatarSrc}
+              isPlaying={isPlaying}
+              onPlayPause={() => setIsPlaying((prev) => !prev)}
+              onNext={() => {}}
+              onPrev={() => {}}
+              onClose={handleClosePlayer}
+              onSeek={handleSeek}
+            />
+          </div>
+        )}
+      </div>
+    </>
   )
 }

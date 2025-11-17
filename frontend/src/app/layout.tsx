@@ -1,4 +1,7 @@
+"use client"
+
 import { Inter, Poppins } from "next/font/google"
+import { usePathname } from "next/navigation"
 import "@solana/wallet-adapter-react-ui/styles.css"
 import "./globals.css"
 import { Navbar } from "@/components/navigation/Navbar"
@@ -18,14 +21,16 @@ const inter = Inter({
   variable: "--font-inter"
 })
 
-// === Metadata ===
-export const metadata: Metadata = {
-  title: "Mostro",
-  description: "A Web3 platform for artists and fans",
-  icons: {
-    icon: "/logo.png"
-  }
-}
+// // === Metadata ===
+// // Note: Metadata export is not officially supported in client components yet.
+// // This might not work as expected until Next.js fully supports it.
+// export const metadata: Metadata = {
+//   title: "Mostro",
+//   description: "A Web3 platform for artists and fans",
+//   icons: {
+//     icon: "/logo.png"
+//   }
+// }
 
 // === Root Layout ===
 export default function RootLayout({
@@ -33,12 +38,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname()
+  const showNavbar = pathname !== "/profile-setup"
+
   return (
     <html lang='en' className={`${poppins.variable} ${inter.variable}`}>
-      <body className='antialiased bg-[#0A111F] min-h-screen flex flex-col items-center max-w-[1512px] w-full mx-auto pt-6'>
+      <body className='antialiased bg-[#0A111F] min-h-screen flex flex-col items-center mt-6'>
         <Providers>
           {/* ===== GLOBAL NAVBAR ===== */}
-          <Navbar />
+          {showNavbar && <Navbar />}
 
           {/* ===== PAGE CONTENT ===== */}
           <main className='w-full flex flex-col items-center'>{children}</main>

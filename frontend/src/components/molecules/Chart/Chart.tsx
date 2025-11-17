@@ -107,7 +107,8 @@ export const Chart = ({ token }: ChartProps) => {
     const options: ApexCharts.ApexOptions = {
       chart: {
         type: "candlestick",
-        height: 500,
+        height: 420,
+        width: "100%",
         toolbar: { show: false },
         zoom: { enabled: false },
         animations: { enabled: true, easing: "easeinout", speed: 800 }
@@ -151,9 +152,12 @@ export const Chart = ({ token }: ChartProps) => {
 
   return (
     <div
-      className='relative w-full max-w-[1200px] rounded-[10px] p-6 shadow-sm'
+      className='
+    relative w-full max-w-[1200px]
+    h-[500px]        
+    rounded-[10px] p-4 md:p-6 shadow-sm
+  '
       style={{
-        minHeight: "550px",
         background: "#121B2B",
         border: "2px solid #2D3953",
         boxShadow: "0px 4px 6px 0px #00000017"
@@ -165,32 +169,34 @@ export const Chart = ({ token }: ChartProps) => {
           <button
             key={tf}
             onClick={() => setSelectedTimeframe(tf)}
-            className={`px-4 py-1 rounded ${
-              selectedTimeframe === tf
-                ? "bg-[#6953da] text-white"
-                : "bg-[#2D3953] text-white"
-            }`}
+            className={`px-2 py-1 text-xs        /* mobile size */
+  md:px-4 md:py-1 md:text-sm
+  rounded ${
+    selectedTimeframe === tf
+      ? "bg-[#6953da] text-white"
+      : "bg-[#2D3953] text-white"
+  }`}
           >
             {tf}
           </button>
         ))}
       </div>
 
-      {/* Current price + badge */}
-      <div className='absolute top-4 right-6 flex items-center gap-4'>
+      {/* Badge + Price */}
+      <div className='flex justify-end items-center gap-2 md:absolute md:top-4 md:right-6'>
         <Badge
           variant={isUp ? "increase" : "decrease"}
-          className='flex items-center gap-1 text-sm font-bold'
+          className='flex items-center gap-1 text-xs md:text-sm font-bold'
         >
           {isUp ? (
-            <ArrowUpIcon size={16} weight='bold' />
+            <ArrowUpIcon size={12} className='md:size-[16]' weight='bold' />
           ) : (
-            <ArrowDownIcon size={16} weight='bold' />
+            <ArrowDownIcon size={12} className='md:size-[16]' weight='bold' />
           )}
           {priceChange.toFixed(2)}%
         </Badge>
 
-        <div className='text-white font-bold text-[30px]'>
+        <div className='text-white font-bold text-lg md:text-[30px]'>
           ${formattedCurrentPrice}
         </div>
       </div>

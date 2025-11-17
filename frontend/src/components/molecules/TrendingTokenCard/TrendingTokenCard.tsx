@@ -20,27 +20,24 @@ export const TrendingTokenCard: React.FC<TrendingTokenCardProps> = ({
   value,
   badgeText
 }) => {
-  // Convert badgeText to number to determine variant
-  const numberValue = parseFloat(badgeText.replace(/[^0-9.-]+/g, "")) // removes any symbols like %
+  const numberValue = parseFloat(badgeText.replace(/[^0-9.-]+/g, ""))
   const badgeVariant = numberValue >= 0 ? "increase" : "decrease"
-
-  // Determine icon based on badgeVariant
   const Icon = numberValue >= 0 ? ArrowUpIcon : ArrowDownIcon
 
   return (
-    <div className='w-[384px] h-[178px] rounded-[10px] border border-[#2D3953] p-6 bg-[#121B2B] shadow-[0_4px_6px_0_#00000017] flex flex-col justify-between'>
+    <div className='flex flex-col justify-between w-full max-w-sm sm:max-w-md md:max-w-[384px] p-5 sm:p-6 rounded-[10px] border bg-[#121B2B] border-[#2D3953] shadow-[0_4px_6px_0_#00000017]'>
       {/* Top Section */}
-      <div className='flex gap-3'>
+      <div className='flex gap-3 min-w-0'>
         <Avatar src={avatarSrc} variant='square-community' />
-        <div className='flex flex-col gap-0.5'>
-          <span
-            className='text-white font-semibold text-[20px] leading-7 whitespace-nowrap overflow-hidden text-ellipsis'
-            title={name}
+        <div className='flex flex-col gap-0.5 min-w-0'>
+          <p
+            className='text-white font-medium leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'
+            style={{ fontSize: "clamp(1.25rem, 2vw, 1.4rem)" }}
           >
             {name}
-          </span>
+          </p>
           <span
-            className='text-[#B3B3B3] font-medium text-[12px] leading-5 whitespace-nowrap overflow-hidden text-ellipsis'
+            className='text-[#B3B3B3] font-medium text-[12px] leading-5 truncate'
             title={subtitle}
           >
             $ {subtitle}
@@ -48,15 +45,12 @@ export const TrendingTokenCard: React.FC<TrendingTokenCardProps> = ({
         </div>
       </div>
 
-      {/* Separation Line */}
-      <div className='border-t border-[#D2D3D5]' />
+      {/* Divider */}
+      <div className='border-t border-[#D2D3D5] my-2 sm:my-3' />
 
       {/* Bottom Section */}
-      <div className='flex justify-between items-center pt-1'>
-        <span
-          className='font-bold text-[16px] leading-6 whitespace-nowrap overflow-hidden text-ellipsis text-white'
-          title={value}
-        >
+      <div className='flex justify-between items-center pt-1 min-w-0'>
+        <span className='text-white font-bold text-[15px] sm:text-[16px] leading-6 truncate'>
           $ {value}
         </span>
         <Badge

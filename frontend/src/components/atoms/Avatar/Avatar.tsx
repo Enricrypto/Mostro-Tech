@@ -5,22 +5,32 @@ import { cn } from "@/lib/utils"
 import { cva } from "class-variance-authority"
 
 const baseAvatar =
-  "relative inline-flex justify-center items-center overflow-hidden flex-shrink-0"
-const initialsStyles = "gap-2 bg-[var(--color-highlight)] text-black"
+  "relative inline-flex justify-center items-center overflow-hidden flex-shrink-0 font-body font-semibold text-black"
 
 export const avatarVariants = cva(baseAvatar, {
   variants: {
     variant: {
       "rounded-sm": "w-10 h-10 rounded-[26px]",
-      "square-sm": "w-10 h-10 rounded-[6px]",
-      "rounded-initials": `w-10 h-10 rounded-[26px] ${initialsStyles}`,
-      "square-lg": "w-[288px] h-[288px] rounded-[26px]",
-      "square-lg-initials": `w-[288px] h-[288px] rounded-[26px] pt-3 pb-3 ${initialsStyles}`,
-      "square-sm-lg": "w-[151px] h-[151px] rounded-[26px]",
-      "square-sm-lg-initials": `w-[151px] h-[151px] rounded-[26px] pt-2 pb-2 ${initialsStyles}`,
-      "square-community": "w-[76px] h-[76px] rounded-[15px]",
-      "square-community-initials": `w-[76px] h-[76px] rounded-[15px] pt-3 pb-3 ${initialsStyles}`,
+      "square-sm": "w-10 h-10 rounded-[6px] bg-[var(--color-highlight)]",
+      "square-sm-initials":
+        "w-10 h-10 rounded-[6px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
+      "rounded-initials":
+        "w-10 h-10 rounded-[26px] bg-[var(--color-highlight)] text-black",
+      "square-lg": "w-[18rem] h-[18rem] rounded-[26px]",
+      "square-lg-initials":
+        "w-[18rem] h-[18rem] rounded-[26px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
+      "square-md":
+        "w-[9.5rem] h-[9.5rem] rounded-[26px] bg-[var(--color-highlight)]",
+      "square-md-initials":
+        "w-[9.5rem] h-[9.5rem] rounded-[26px] pt-2 pb-2 bg-[var(--color-highlight)] text-black",
+      "square-community":
+        "w-[4.75rem] h-[4.75rem] rounded-[15px] bg-[var(--color-highlight)]",
+      "square-community-initials":
+        "w-[4.75rem] h-[4.75rem] rounded-[15px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
       circle: "w-10 h-10 rounded-full"
+    },
+    responsive: {
+      true: "sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12"
     }
   },
   defaultVariants: {
@@ -31,11 +41,12 @@ export const avatarVariants = cva(baseAvatar, {
 export type AvatarVariant =
   | "rounded-sm"
   | "square-sm"
+  | "square-sm-initials"
   | "rounded-initials"
   | "square-lg"
   | "square-lg-initials"
-  | "square-sm-lg"
-  | "square-sm-lg-initials"
+  | "square-md"
+  | "square-md-initials"
   | "square-community"
   | "square-community-initials"
   | "circle"
@@ -62,7 +73,9 @@ export const Avatar: React.FC<AvatarProps> = ({
       {src?.trim() ? (
         <Image src={src} alt={alt} fill className='object-cover' sizes='100%' />
       ) : (
-        <span className='text-black'>{displayInitial}</span>
+        <span className='text-[1rem] sm:text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]'>
+          {displayInitial}
+        </span>
       )}
     </div>
   )

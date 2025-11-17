@@ -1,14 +1,19 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import { Badge } from "@/components/utils/Badge"
 import { ProgressBar } from "@/components/atoms/ProgressBar"
 import { Button } from "@/components/atoms/Button"
-import { ArrowRightIcon, ClockClockwiseIcon } from "@phosphor-icons/react"
+import {
+  ArrowRightIcon,
+  ClockClockwiseIcon,
+  Plus
+} from "@phosphor-icons/react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { CreateProposalDialog } from "../CreateProposalDialog"
 
 const proposalCardCVA = cva(
-  "min-w-[462px] max-h-[188px] p-[24px] flex flex-col gap-[14px] rounded-[10px] bg-[var(--color-datacard-bg)] transition-all duration-300 ease-out",
+  "w-full min-w-[280px] p-[18px] flex flex-col gap-[18px] rounded-[10px] bg-[var(--color-datacard-bg)] transition-all duration-300 ease-out",
   {
     variants: {
       variant: {
@@ -17,20 +22,22 @@ const proposalCardCVA = cva(
         executed:
           "border-2 border-[var(--color-datacard-border)] shadow-[0_4px_6px_0px_#00000017] hover:border-[#71d6fb] hover:shadow-[0_0_16.9px_5px_#71d6fb80]",
         closed:
-          "border-2 border-[var(--color-datacard-border)] shadow-[0_4px_6px_0px_#00000017] hover:border-[#ff6b6b] hover:shadow-[0_0_16.9px_5px_#ff6b6b80]"
+          "border-2 border-[var(--color-datacard-border)] shadow-[0_4px_6px_0px_#00000017] hover:border-[#ff6b6b] hover:shadow-[0_0_16.9px_5px_#ff6b6b80]",
+        create:
+          "border-2 border-dashed border-[var(--color-datacard-border)] cursor-pointer hover:border-[#aee9ff] hover:shadow-[0_0_16.9px_5px_#71d6fb80] items-center justify-center text-center"
       }
     },
     defaultVariants: {
-      variant: "ongoing"
+      variant: "create"
     }
   }
 )
 
 export interface ProposalCardProps
   extends VariantProps<typeof proposalCardCVA> {
-  status: "ongoing" | "executed" | "closed"
-  title: string
-  requestedTokens: number | string
+  status?: "ongoing" | "executed" | "closed" | "create"
+  title?: string
+  requestedTokens?: number | string
   yesPercentage?: number
   noPercentage?: number
   badgeText?: string
@@ -38,7 +45,7 @@ export interface ProposalCardProps
 }
 
 export const ProposalCard: React.FC<ProposalCardProps> = ({
-  status,
+  status = "create",
   title,
   requestedTokens,
   yesPercentage,
@@ -46,31 +53,68 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
   badgeText,
   onViewProposal
 }) => {
+  const [isDialogOpen, setDialogOpen] = useState(false)
+
+  const handleCardClick = () => {
+    if (status === "create") {
+      setDialogOpen(true)
+    }
+  }
+
+  if (status === "create") {
+    return (
+      <>
+        <div
+          className={proposalCardCVA({ variant: status })}
+          onClick={handleCardClick}
+        >
+          <Button
+            variant='create-proposal-icon'
+            size='icon-sm'
+            className='mb-4'
+          >
+            <Plus size={24} />
+          </Button>
+          <p className='text-white font-inter font-semibold text-[18px] leading-7'>
+            Create New Proposal
+          </p>
+          <p className='text-gray-400 font-inter font-medium text-[12px] leading-5'>
+            Submit a new idea to the community
+          </p>
+        </div>
+        <CreateProposalDialog
+          isOpen={isDialogOpen}
+          onClose={() => setDialogOpen(false)}
+        />
+      </>
+    )
+  }
+
   return (
     <div className={proposalCardCVA({ variant: status })}>
       {/* Top Section */}
-      <div className='flex flex-col gap-2'>
-        <div className='flex justify-between items-center gap-2 flex-wrap'>
-          <p className='text-white font-inter font-semibold text-[18px] leading-7 truncate'>
-            {title}
-          </p>
-          {status === "ongoing" && badgeText && (
-            <Badge variant='increase' icon={<ClockClockwiseIcon size={14} />}>
-              {badgeText}
-            </Badge>
-          )}
-          {status === "executed" && <Badge variant='increase'>Executed</Badge>}
-          {status === "closed" && <Badge variant='decrease'>Closed</Badge>}
-        </div>
-        <p className='text-(--color-grey) font-inter font-medium text-[12px] leading-5'>
-          Requesting: ${requestedTokens} Tokens
+      <div className='flex justify-between items-center gap-2'>
+        <p className='text-white font-inter font-semibold text-[18px] leading-7 truncate max-w-[65%]'>
+          {title}
         </p>
+        {status === "ongoing" && badgeText && (
+          <Badge variant='increase' icon={<ClockClockwiseIcon size={14} />}>
+            {badgeText}
+          </Badge>
+        )}
+        {status === "executed" && <Badge variant='increase'>Executed</Badge>}
+        {status === "closed" && <Badge variant='decrease'>Closed</Badge>}
       </div>
+      <p className='text-(--color-grey) font-inter font-medium text-[12px] leading-5'>
+        Requesting: ${requestedTokens} Tokens
+      </p>
 
       {/* Conditional Content */}
       {status === "ongoing" && yesPercentage !== undefined && (
         <>
+          {/* Progress bar keeps same height */}
           <ProgressBar value={yesPercentage} variant='blue' />
+
           <div className='flex justify-between items-center gap-3 flex-nowrap'>
             <div className='flex flex-col justify-between'>
               <p className='text-white font-inter font-bold text-[12px] leading-5'>
@@ -86,6 +130,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
               icon={<ArrowRightIcon weight='bold' />}
               iconPosition='right'
               onClick={onViewProposal}
+              className='whitespace-nowrap'
             >
               View Proposal
             </Button>

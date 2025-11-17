@@ -32,7 +32,7 @@ export function ThemedForm<T extends FieldValues>({
       <form
         onSubmit={form.handleSubmit(onSubmit ?? (() => {}))}
         className={cn(
-          "flex flex-col font-body text-[var(--color-text-default)]",
+          "flex flex-col font-body text-(--color-text-default)",
           `gap-[${spacing}]`,
           className
         )}
