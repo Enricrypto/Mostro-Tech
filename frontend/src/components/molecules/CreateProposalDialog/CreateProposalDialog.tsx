@@ -36,7 +36,7 @@ export const CreateProposalDialog = ({
             themeVariant='form-dark'
           />
           <InputField
-            label='Funding Goal'
+            label='Funding Goal in $USDC'
             placeholder='e.g., $ 15,000'
             themeVariant='form-dark'
           />
@@ -56,11 +56,23 @@ export const CreateProposalDialog = ({
           </label>
           <textarea
             id='description'
-            placeholder='Explain your proposal in detail'
+            placeholder='Explain your project in detail.'
             className='w-full h-full rounded-[var(--radius-sm,6px)] px-[var(--space-sm,12px)] py-[var(--space-xs,8px)] font-body text-white placeholder:text-[var(--color-muted,#B3B3B3)] bg-[var(--color-dark-bg-hover)] border border-[var(--border-color,#CBD5E1)] focus:outline-none focus:ring-0'
             rows={8}
           ></textarea>
         </div>
+        <InputField
+          label='Quantity'
+          placeholder='e.g., 100'
+          themeVariant='form-dark'
+          message='Quantity required'
+        />
+        <InputField
+          label='Price in $USDC'
+          placeholder='e.g., 50'
+          themeVariant='form-dark'
+          message='Minimum number of tokens required'
+        />
       </div>
     </Dialog>
   )

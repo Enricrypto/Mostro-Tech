@@ -53,7 +53,13 @@ export const CreateFanPerkDialog = ({
           ></textarea>
         </div>
         <InputField
-          label='Token Threshold'
+          label='Quantity'
+          placeholder='e.g., 100'
+          themeVariant='form-dark'
+          message='Quantity required'
+        />
+        <InputField
+          label='Price in $USDC'
           placeholder='e.g., 50'
           themeVariant='form-dark'
           message='Minimum number of tokens required'
