@@ -186,12 +186,12 @@ export const FullArtistCard: React.FC<FullArtistCardProps> = ({
 
       {/* Share Modal */}
       {isShareOpen && (
-        <div
-          className='fixed inset-0 z-50 bg-black/50 flex items-center justify-center'
-          onClick={handleCloseModal}
-        >
-          <div onClick={(e) => e.stopPropagation()}>
-            <ShareArtistModal artistSlug={artist.slug} />
+        <div className='fixed inset-0 z-50 bg-black/50 flex items-center justify-center'>
+          <div>
+            <ShareArtistModal
+              artistSlug={artist.slug}
+              onClose={handleCloseModal}
+            />
           </div>
         </div>
       )}

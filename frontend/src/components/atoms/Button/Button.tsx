@@ -167,11 +167,13 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const content = (
       <>
         {icon && iconPosition === "left" && (
-          <span className='icon'>{icon}</span>
+          <span className='icon shrink-0'>{icon}</span>
         )}
-        <span className='button-label'>{children}</span>
+        <span className='button-label truncate overflow-hidden whitespace-nowrap min-w-0'>
+          {children} {/* text will truncate */}
+        </span>
         {icon && iconPosition === "right" && (
-          <span className='icon'>{icon}</span>
+          <span className='icon shrink-0'>{icon}</span>
         )}
       </>
     )

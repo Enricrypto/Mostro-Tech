@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { useLogin, usePrivy } from "@privy-io/react-auth"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/atoms/Button"
@@ -21,7 +20,7 @@ export function ProfileButton() {
 
   const isLoggedIn = Boolean(user && displayName)
   const disableLogin = !ready
-  const buttonSizeClasses = "w-[140px] md:w-[180] lg:w-[224px]"
+  const buttonSizeClasses = "w-[140px] md:w-[180px] lg:w-[224px]"
 
   const handleLogin = async () => {
     await login({
@@ -69,9 +68,11 @@ export function ProfileButton() {
         else router.push("/profile")
       }}
     >
-      <div className='flex items-center whitespace-nowrap'>
-        {getUserIcon()}
-        <span>
+      <div className='flex items-center min-w-0 w-full gap-1.5'>
+        <div className='flex shrink-0 items-center justify-center'>
+          {getUserIcon()}
+        </div>
+        <span className='truncate min-w-0 overflow-hidden whitespace-nowrap text-sm md:text-base'>
           {isLoggedIn
             ? displayName && displayName.length > 20
               ? `${displayName.slice(0, 6)}...${displayName.slice(-4)}`

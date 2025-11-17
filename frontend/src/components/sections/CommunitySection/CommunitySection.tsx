@@ -85,7 +85,7 @@ export const CommunitySection = ({ artist }: CommunitySectionProps) => {
           Fanbase
         </h2>
 
-        <div className='flex flex-col gap-6 p-6 rounded-[10px] bg-[#121B2B] border border-[#2D3953] shadow-md'>
+        <div className='flex flex-col gap-6 p-3 md:p-4 rounded-[10px] bg-[#121B2B] border border-[#2D3953] shadow-md'>
           {/* GRID */}
           <div
             className={`grid gap-4`}

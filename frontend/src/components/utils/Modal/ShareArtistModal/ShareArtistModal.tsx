@@ -6,15 +6,17 @@ import { artistsData } from "@/data/artists"
 
 interface ShareArtistModalProps {
   artistSlug: string
+  onClose: () => void
 }
 
-export const ShareArtistModal = ({ artistSlug }: ShareArtistModalProps) => {
+export const ShareArtistModal = ({
+  artistSlug,
+  onClose
+}: ShareArtistModalProps) => {
   const [copied, setCopied] = useState(false)
 
-  // Lookup artist from slug
   const artist = artistsData.find((a) => a.slug === artistSlug)
-
-  if (!artist) return null // optional: handle missing artist
+  if (!artist) return null
 
   const artistUrl = `https://musicverse.io/artist/${artist.slug}`
 
@@ -26,106 +28,38 @@ export const ShareArtistModal = ({ artistSlug }: ShareArtistModalProps) => {
 
   return (
     <div
-      style={{
-        width: 425,
-        height: 208,
-        top: 132,
-        left: 543,
-        padding: 24,
-        gap: 16,
-        borderRadius: 8,
-        border: "1px solid #2D3953",
-        background:
-          "linear-gradient(103.78deg, #352B6D 26.89%, #4995E0 98.11%)",
-        display: "flex",
-        flexDirection: "column",
-        position: "absolute"
-      }}
+      className='fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50'
+      onClick={onClose} // <-- Click outside closes modal
     >
-      {/* Header */}
-      <h2
-        style={{
-          fontFamily: "Inter",
-          fontWeight: 600,
-          fontSize: 18,
-          color: "#FFFFFF"
-        }}
-      >
-        Share Artist
-      </h2>
-
-      {/* Description */}
-      <p
-        style={{
-          width: 377,
-          fontFamily: "Inter",
-          fontWeight: 400,
-          fontSize: 16,
-          lineHeight: "20px",
-          color: "#FFFFFF"
-        }}
-      >
-        Spread the word about Luna Eclipse! Invite your friends to explore her
-        sound and join the $MLUNA community.
-      </p>
-
-      {/* URL + copy */}
       <div
-        style={{
-          width: 377,
-          height: 40,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          borderRadius: 6,
-          border: "1px solid #CBD5E1",
-          padding: "8px 12px",
-          cursor: "pointer",
-          position: "relative" // <-- needed for absolute tooltip
-        }}
-        onClick={handleCopy}
+        className='w-full max-w-md bg-linear-to-br from-[#352B6D] to-[#4995E0] rounded-lg border border-[#2D3953] p-6 flex flex-col gap-4'
+        onClick={(e) => e.stopPropagation()} // <-- Prevent close when clicking inside
       >
-        <span
-          style={{
-            width: 295,
-            height: 24,
-            fontFamily: "Inter",
-            fontWeight: 400,
-            fontSize: 16,
-            lineHeight: "24px",
-            color: "#FFFFFF",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap"
-          }}
-        >
-          {artistUrl}
-        </span>
-        <CopySimpleIcon size={16} color='#FFFFFF' weight='bold' />
+        {/* Header */}
+        <h2 className='text-white font-inter font-semibold text-lg'>
+          Share Artist
+        </h2>
 
-        {/* Copied tooltip */}
-        {copied && (
-          <span
-            style={{
-              position: "absolute",
-              top: "-28px",
-              right: 0,
-              background: "#1E293B",
-              color: "#FFFFFF",
-              fontSize: 14,
-              fontWeight: 500,
-              fontFamily: "Inter",
-              padding: "4px 8px",
-              borderRadius: 4,
-              opacity: 0.9,
-              whiteSpace: "nowrap",
-              pointerEvents: "none",
-              transition: "opacity 0.2s ease-in-out"
-            }}
-          >
-            Copied!
-          </span>
-        )}
+        {/* Description */}
+        <p className='text-white font-inter text-base leading-5'>
+          Spread the word about {artist.name}! Invite your friends to explore
+          their sound and join the community.
+        </p>
+
+        {/* URL + Copy */}
+        <button
+          onClick={handleCopy}
+          className='w-full h-10 border border-slate-300 rounded-md px-3 flex items-center justify-between relative'
+        >
+          <span className='text-white text-base truncate'>{artistUrl}</span>
+          <CopySimpleIcon size={16} color='#FFFFFF' />
+
+          {copied && (
+            <span className='absolute -top-7 right-0 bg-slate-800 text-white text-sm font-medium px-2 py-1 rounded opacity-90'>
+              Copied!
+            </span>
+          )}
+        </button>
       </div>
     </div>
   )

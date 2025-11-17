@@ -3,11 +3,9 @@
 import { MusicNoteIcon, PlayIcon, LockIcon } from "@phosphor-icons/react"
 import { Button } from "@/components/atoms/Button"
 import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
 
 const songCardCVA = cva(
-  "min-w-[344px] h-[104px] p-3 gap-3 flex items-center justify-between rounded-[10px] border bg-[#121B2B] transition-shadow duration-200 hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380] " +
-    "md:w-[348px] lg:w-[572px] md:p-4 lg:p-6",
+  "w-full max-w-[344px] md:max-w-[330px] lg:max-w-[572px] h-[104px] p-3 gap-3 flex items-center justify-between rounded-[10px] border bg-[#121B2B] transition-shadow duration-200 hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380] md:p-4 lg:p-6",
   {
     variants: {
       variant: {

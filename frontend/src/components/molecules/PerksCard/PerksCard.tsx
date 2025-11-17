@@ -60,7 +60,7 @@ export function PerksCard({
       </div>
 
       {/* Bottom Section - Badge */}
-      <Badge variant='neutral' className='text-[8.5px] md:w-max md:text-[12px]'>
+      <Badge variant='neutral' className='text-[8.5px] w-max md:text-[12px]'>
         {tokenAmount} tokens
       </Badge>
     </div>
