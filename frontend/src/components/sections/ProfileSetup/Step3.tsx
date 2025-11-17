@@ -55,6 +55,20 @@ export const Step3 = () => {
           value={profileData.socials.tiktok}
           onChange={(e) => handleSocialChange("tiktok", e.target.value)}
         />
+        <InputField
+          label='Facebook'
+          placeholder='@username'
+          themeVariant='profile-setup'
+          value={profileData.socials.facebook}
+          onChange={(e) => handleSocialChange("facebook", e.target.value)}
+        />
+        <InputField
+          label='X / Twitter'
+          placeholder='@username'
+          themeVariant='profile-setup'
+          value={profileData.socials.twitter}
+          onChange={(e) => handleSocialChange("twitter", e.target.value)}
+        />
       </div>
 
       <div className='grid grid-cols-2 gap-4 mt-4'>

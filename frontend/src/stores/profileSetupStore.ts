@@ -9,6 +9,8 @@ interface ProfileData {
     instagram: string;
     youtube: string;
     tiktok: string;
+    facebook: string;
+    twitter: string;
   };
   token: {
     name: string;
@@ -37,6 +39,8 @@ export const useProfileSetupStore = create<ProfileSetupState>((set) => ({
       instagram: '',
       youtube: '',
       tiktok: '',
+      facebook: '',
+      twitter: '',
     },
     token: {
       name: '',
