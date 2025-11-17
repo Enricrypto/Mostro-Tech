@@ -24,7 +24,9 @@ const pillButtonCVA = cva(
           "border border-[var(--color-charcoal)] bg-[var(--color-night)] text-white",
         blue: "border border-[var(--color-skyblue)] bg-[var(--color-skyblue-opacity)] text-[var(--color-yellow)]",
         yellow:
-          "border border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black"
+          "border border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black",
+        "form-dark": "border-transparent bg-[var(--color-dark-bg-hover)] text-white",
+        "profile-setup": "border-transparent bg-black/20 text-[#DCFD63]"
       },
       selected: {
         true: "font-semibold opacity-90",
@@ -36,6 +38,18 @@ const pillButtonCVA = cva(
         lg: "text-[1.125rem] sm:text-[1.25rem] md:text-[1.375rem]"
       }
     },
+    compoundVariants: [
+      {
+        themeVariant: "form-dark",
+        selected: true,
+        className: "bg-[var(--color-primary)] text-black"
+      },
+      {
+        themeVariant: "profile-setup",
+        selected: true,
+        className: "bg-[var(--color-highlight)] text-black"
+      }
+    ],
     defaultVariants: {
       themeVariant: "primary",
       selected: false,

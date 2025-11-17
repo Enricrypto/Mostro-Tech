@@ -1,11 +1,13 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { FeatureSongCard } from "@/components/display/FeaturedSong"
 import { SongCard } from "@/components/display/SongCard"
 import { PerksCard } from "@/components/molecules/PerksCard"
 import { UpcomingEvent } from "@/components/display/UpcomingEvent"
 import { PlayerCard } from "@/components/display/PlayerCard"
+import { Button } from "@/components/atoms/Button"
+import { CreateFanPerkDialog } from "@/components/molecules/CreateFanPerkDialog"
 import {
   mockPerksLuna,
   mockPerksAtlas,
@@ -24,6 +26,7 @@ interface MusicSectionProps {
 }
 
 export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
+  const [isCreatePerkOpen, setCreatePerkOpen] = useState(false)
   const {
     currentSong,
     isPlaying,
@@ -201,9 +204,14 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
 
       {/* Fan Perks */}
       <section className='relative w-full mt-10 flex flex-col'>
-        <h2 className='font-semibold text-[30px] leading-9 text-white'>
-          Fan Perks
-        </h2>
+        <div className='flex justify-between items-center'>
+          <h2 className='font-semibold text-[30px] leading-9 text-white'>
+            Fan Perks
+          </h2>
+          <Button variant='continue' onClick={() => setCreatePerkOpen(true)}>
+            Create New Fan Perk
+          </Button>
+        </div>
         <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 mt-10'>
           {perksForArtist.map((perk, i) => (
             <PerksCard
@@ -278,6 +286,10 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
           />
         </div>
       )}
+      <CreateFanPerkDialog
+        isOpen={isCreatePerkOpen}
+        onClose={() => setCreatePerkOpen(false)}
+      />
     </div>
   )
 }

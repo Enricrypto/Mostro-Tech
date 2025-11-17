@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 export type InputProps = ComponentProps<typeof BaseInput> & {
   name?: string
   label?: string
-  themeVariant?: "default" | "search"
+  themeVariant?: "default" | "search" | "form-dark" | "profile-setup"
   state?: "default" | "error" | "success" | "disabled"
   message?: string
 }
@@ -49,6 +49,35 @@ export function InputField({
       shadow-[var(--shadow-md)]
       focus:outline-none
       focus:ring-[var(--color-primary,#DCFD63)]
+    `,
+    "form-dark": `
+      h-[var(--input-height,48px)]
+      w-full
+      rounded-[var(--radius-sm,6px)]
+      px-[var(--space-sm,12px)]
+      py-[var(--space-xs,8px)]
+      font-body
+      text-white
+      placeholder:text-[var(--color-muted,#B3B3B3)]
+      bg-[var(--color-dark-bg-hover)]
+      border border-[var(--border-color,#CBD5E1)]
+      focus:outline-none
+      focus:ring-0
+    `,
+    "profile-setup": `
+      h-[var(--input-height,56px)]
+      w-full
+      rounded-lg
+      px-4
+      py-2
+      font-body
+      text-white
+      placeholder:text-gray-400
+      bg-black/20
+      border border-white/30
+      focus:outline-none
+      focus:ring-1
+      focus:ring-[var(--color-primary)]
     `
   }
 
@@ -71,7 +100,14 @@ export function InputField({
       {label && (
         <label
           htmlFor={name}
-          className='text-sm font-medium text-[var(--color-text-default,#1A1A1A)]'
+          className={cn(
+            "text-sm font-medium",
+            themeVariant === "profile-setup"
+              ? "text-[var(--color-highlight)]"
+              : themeVariant === "form-dark"
+              ? "text-white"
+              : "text-[var(--color-text-default,#1A1A1A)]"
+          )}
         >
           {label}
         </label>

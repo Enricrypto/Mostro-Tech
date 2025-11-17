@@ -17,7 +17,9 @@ import { ListIcon } from "@phosphor-icons/react"
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/all-artists", label: "Artists" },
-  { href: "/launches", label: "Launches" }
+  { href: "/launches", label: "Launches" },
+  { href: "/profile-setup", label: "Setup" },// remove line after testing
+
 ]
 
 export function Navbar() {

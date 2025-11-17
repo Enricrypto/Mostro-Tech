@@ -141,6 +141,18 @@ export const buttonVisualVariants = {
   "follow-share": `
     bg-[var(--color-dark-bg)] text-white border border-[var(--color-skyblue)]
     hover:bg-[var(--color-dark-bg-hover)]
+  `,
+  "create-proposal-icon": `
+    bg-transparent text-white border border-white rounded-md
+    hover:bg-white/10
+  `,
+  "primary-action": `
+    bg-[var(--color-highlight)] text-black font-bold
+    hover:opacity-90
+  `,
+  "secondary-action": `
+    bg-transparent text-white border border-white
+    hover:bg-white/10
   `
 }
 
