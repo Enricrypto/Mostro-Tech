@@ -46,7 +46,7 @@ export const ConnectButton = () => {
   const handleLogout = () => logout()
 
   return (
-    <div className='fixed top-4 right-4 z-50 flex flex-col sm:flex-row items-center gap-2 sm:gap-3'>
+    <div className='fixed z-50 flex flex-col sm:flex-row items-center gap-2 sm:gap-3'>
       {user && displayName ? (
         <>
           <span className={cn(userBadgeCVA())}>

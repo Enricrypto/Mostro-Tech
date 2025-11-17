@@ -23,7 +23,7 @@ export function LeaderBoard({
   return (
     <div
       className={cn(
-        "flex flex-row justify-between items-center min-w-[360px] md:w-[350] lg:w-[570] px-4 md:px-3 lg:px-8 py-4 md:py-3 lg:py-6 rounded-[10px] border border-(--color-muted) bg-(--color-card-bg)",
+        "flex flex-row justify-between items-center w-[350px] md:w-[350] lg:w-[570] px-4 md:px-3 lg:px-8 py-4 md:py-3 lg:py-6 rounded-[10px] border border-(--color-muted) bg-(--color-card-bg)",
         "w-full transition-all duration-300",
         className
       )}

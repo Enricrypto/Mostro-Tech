@@ -127,20 +127,16 @@ export default function ArtistPage() {
 
   return (
     <>
-      {selectedSection === "music" && (
-        <div className='relative w-screen'>
-          {/* Badges Section */}
-          <section className='relative mt-20 w-screen'>
-            {/* Full-width background & borders */}
-            <div className='absolute inset-0 w-screen border-t-2 border-b-2 border-[#121B2B] bg-[--color-black] backdrop-blur-sm pointer-events-none'></div>
+      {/* ==== BADGES + ARTIST CARD ALWAYS RENDERED ==== */}
+      <div className='relative w-full'>
+        <section className='relative mt-20 w-full'>
+          <div className='absolute inset-0 w-full border-t-2 border-b-2 border-[#121B2B] bg-[--color-black] backdrop-blur-sm pointer-events-none'></div>
+          <div className='relative z-10 max-w-[1200px] mx-auto py-5 px-4 md:px-12'>
+            <BadgesRow />
+          </div>
+        </section>
+      </div>
 
-            {/* Scrollable content */}
-            <div className='relative z-10 max-w-[1200px] mx-auto overflow-x-auto py-5 px-4 md:px-12'>
-              <BadgesRow />
-            </div>
-          </section>
-        </div>
-      )}
       <section className='w-full flex justify-center mt-20'>
         <FullArtistCard
           artist={artist}
@@ -148,7 +144,7 @@ export default function ArtistPage() {
         />
       </section>
 
-      <div className='bg-[--color-black] min-h-screen w-full mx-auto flex flex-col'>
+      <div className='bg-[--color-black] w-full mx-auto flex flex-col'>
         <section className='flex justify-center mt-20'>
           <SectionSelector
             selected={selectedSection}
@@ -164,24 +160,17 @@ export default function ArtistPage() {
       </div>
 
       {eventModalData && (
-        <div
-          className='fixed inset-0 z-50 bg-black/50 flex items-center justify-center'
-          onClick={handleCloseEventModal}
-        >
-          <div onClick={(e) => e.stopPropagation()} className='relative'>
-            <EventModal
-              {...eventModalData}
-              onCancel={handleCloseEventModal}
-              onBuyOrConfirm={
-                userHoldsTokens
-                  ? handleClaimAccess
-                  : () => handleBuyToken(artist.token?.name || "Artist Token")
-              }
-              variant={userHoldsTokens ? "claimAccess" : "noTokens"}
-              tokenName={artist.token?.name || "Artist Token"}
-            />
-          </div>
-        </div>
+        <EventModal
+          {...eventModalData}
+          onCancel={handleCloseEventModal}
+          onBuyOrConfirm={
+            userHoldsTokens
+              ? handleClaimAccess
+              : () => handleBuyToken(artist.token?.name || "Artist Token")
+          }
+          variant={userHoldsTokens ? "claimAccess" : "noTokens"}
+          tokenName={artist.token?.name || "Artist Token"}
+        />
       )}
 
       {/* BUY TOKEN MODAL */}
