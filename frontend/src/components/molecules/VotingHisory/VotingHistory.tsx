@@ -3,7 +3,7 @@
 import { ThumbsDownIcon, ThumbsUpIcon } from "@phosphor-icons/react"
 import { Badge } from "@/components/utils/Badge"
 
-interface VotingHistoryProps {
+export interface VotingHistoryProps {
   id: number
   title: string
   artist: string
