@@ -82,7 +82,6 @@ export const BuyTokenModal = ({
         <div className='flex justify-center'>
           <Button
             variant='rounded-icon'
-            icon-size='small'
             icon={<ArrowDownIcon size={10} weight='bold' />}
           />
         </div>

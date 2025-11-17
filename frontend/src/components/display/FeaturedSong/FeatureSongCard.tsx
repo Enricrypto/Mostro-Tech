@@ -38,7 +38,7 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
   return (
     <div
       className={cn(
-        "artist-music-card flex flex-col sm:flex-row items-center sm:items-start sm:gap-5 p-4 sm:p-5 rounded-[10px] border border-[#2D3953] shadow-[0_4px_6px_0_#00000017]",
+        "artist-music-card flex flex-col sm:flex-row items-center md:items-start md:gap-5 p-4 rounded-[10px] border border-[#2D3953] shadow-[0_4px_6px_0_#00000017]",
         "bg-[#121B2B] w-full sm:max-w-sm md:max-w-[350px] lg:max-w-[384px]",
         "transition-all duration-200",
         className
@@ -82,32 +82,12 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
           <Button
             variant='song-play-icon'
             onClick={onPlay}
-            className='p-1 sm:p-2 md:p-2 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10'
+            className='p-1 md:p-2 w-7 h-7 md:w-10 md:h-10'
           >
             {localPlaying ? (
-              <PauseIcon
-                size={
-                  window.innerWidth < 640
-                    ? 10
-                    : window.innerWidth < 1024
-                    ? 14
-                    : 18
-                }
-                weight='bold'
-                className='text-white'
-              />
+              <PauseIcon weight='bold' className='text-white' />
             ) : (
-              <PlayIcon
-                size={
-                  window.innerWidth < 640
-                    ? 10
-                    : window.innerWidth < 1024
-                    ? 14
-                    : 18
-                }
-                weight='bold'
-                className='text-white'
-              />
+              <PlayIcon weight='bold' className='text-white' />
             )}
           </Button>
 

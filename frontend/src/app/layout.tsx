@@ -44,9 +44,9 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${poppins.variable} ${inter.variable}`}>
       <body className='antialiased bg-[#0A111F] min-h-screen flex flex-col items-center mt-6'>
-        <Providers>
-          {/* ===== GLOBAL NAVBAR ===== */}
-          {showNavbar && <Navbar />}
+        {/* <Providers> */}
+        {/* ===== GLOBAL NAVBAR ===== */}
+        {showNavbar && <Navbar />}
 
         {/* ===== PAGE CONTENT ===== */}
         <main className='w-full flex flex-col items-center'>{children}</main>
