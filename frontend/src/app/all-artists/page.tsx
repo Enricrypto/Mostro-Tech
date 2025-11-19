@@ -33,7 +33,7 @@ export default function AllArtists() {
           <SectionHeader title='All Artists' />
 
           {/* Grid stays centered */}
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 mb-20'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 mb-20 place-items-center md:place-items-center'>
             {mockAllArtistsData.map((artist) => (
               <ArtistCard
                 key={artist.id}

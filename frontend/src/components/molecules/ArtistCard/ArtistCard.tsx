@@ -115,7 +115,7 @@ export function ArtistCard({
       </Tooltip>
 
       {/* Stats Section */}
-      <div className='flex gap-9 mt-4'>
+      <div className='flex justify-around md:justify-start gap-9 mt-4'>
         {[
           { label: "Holders", value: holders },
           { label: "Market Cap", value: `$${marketCap}` },

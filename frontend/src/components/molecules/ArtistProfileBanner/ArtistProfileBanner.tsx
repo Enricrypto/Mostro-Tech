@@ -112,7 +112,7 @@ export function ArtistProfileBanner({
           </div>
 
           {/* Stats */}
-          <div className='flex gap-6 flex-wrap'>
+          <div className='flex justify-around md:justify-start gap-6 flex-wrap'>
             {[
               { label: "Token Holders", value: tokenHolders },
               { label: "Market Cap", value: marketCap },
