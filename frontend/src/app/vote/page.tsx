@@ -12,6 +12,13 @@ import { mockFundingOverview } from "@/mocks/mockFundingOverview"
 import { mockVotingSection } from "@/mocks/mockVotingSection"
 import { ArrowUpRightIcon } from "@phosphor-icons/react"
 import { artistsData } from "@/data/artists"
+import { PerksCard } from "@/components/molecules/PerksCard"
+import {
+  mockPerksLuna,
+  mockPerksAtlas,
+  mockPerksLiz,
+  mockPerksCombined
+} from "@/mocks/mockPerks"
 
 export default function VotePage() {
   const router = useRouter()
@@ -58,6 +65,16 @@ export default function VotePage() {
     else router.push("/all-artists")
   }
 
+  const perksForArtist = artist
+    ? artist.name === "Luna Eclipse"
+      ? mockPerksLuna
+      : artist.name === "Atlas Monroe"
+      ? mockPerksAtlas
+      : artist.name === "Liz Cherry"
+      ? mockPerksLiz
+      : mockPerksCombined
+    : mockPerksCombined
+
   return (
     <div className='bg-[#0A111F] flex flex-col w-full items-center px-4'>
       {/* Back Button */}
@@ -86,6 +103,30 @@ export default function VotePage() {
           />
         </div>
       </div>
+
+      {/* Proposal Perks */}
+      <section className='relative w-full max-w-[1200px] mt-5 mb-20 flex flex-col'>
+        <div className='flex justify-between items-center'>
+          <h2 className='font-semibold text-[30px] leading-9 text-white'>
+            Proposal Perks
+          </h2>
+          {/* <Button variant='continue' onClick={() => setCreatePerkOpen(true)}>
+            Create New Fan Perk
+          </Button> */}
+        </div>
+        <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 mt-10'>
+          {perksForArtist.map((perk, i) => (
+            <PerksCard
+              key={i}
+              title={perk.title}
+              name={perk.name}
+              tokenAmount={perk.tokenAmount}
+              itemsLeft={127}
+              showItemsLeft={true}
+            />
+          ))}
+        </div>
+      </section>
 
       {/* Vote Confirmation Modal */}
       {voteType && (

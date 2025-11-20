@@ -206,7 +206,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
       <section className='relative w-full mt-10 flex flex-col'>
         <div className='flex justify-between items-center'>
           <h2 className='font-semibold text-[30px] leading-9 text-white'>
-            Fan Perks
+            Fan Perks 
           </h2>
           {/* <Button variant='continue' onClick={() => setCreatePerkOpen(true)}>
             Create New Fan Perk

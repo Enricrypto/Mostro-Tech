@@ -5,10 +5,7 @@ import { ArrowRight, ArrowLeft } from "lucide-react"
 
 export const FeedbackButton = ({ isExpanded }: { isExpanded: boolean }) => {
   return (
-    <motion.a
-      href='https://forms.gle/A3cfCsm4VUVxC52y7'
-      target='_blank'
-      rel='noopener noreferrer'
+    <motion.div
       className='
         flex items-center
         rounded-full shadow-lg
@@ -47,8 +44,8 @@ export const FeedbackButton = ({ isExpanded }: { isExpanded: boolean }) => {
         }}
         transition={{ duration: 0.3, delay: isExpanded ? 0.2 : 0 }}
       >
-        Leave a Feedback
+        Leave Feedback
       </motion.span>
-    </motion.a>
+    </motion.div>
   )
 }

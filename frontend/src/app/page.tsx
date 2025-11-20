@@ -189,7 +189,7 @@ export default function DashboardPage() {
       <div className='bg-[#0A111F] min-h-screen w-full max-w-[1200px] mx-auto flex flex-col'>
         {/* ===== STATS CARDS ===== */}
         <section
-          className='grid grid-cols-2 grid-rows-3 gap-6 mt-20 px-4 
+          className='grid grid-cols-2 grid-rows-3 gap-6 mt-20 px-4 place-items-center md:place-items-start
              md:grid-cols-3 md:grid-rows-2'
         >
           {statsCardVariants.map((card) => (

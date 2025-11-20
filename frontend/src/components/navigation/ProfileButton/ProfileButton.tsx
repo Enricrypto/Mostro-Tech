@@ -72,7 +72,7 @@ export function ProfileButton() {
         <div className='flex shrink-0 items-center justify-center'>
           {getUserIcon()}
         </div>
-        <span className='truncate min-w-0 overflow-hidden whitespace-nowrap text-sm md:text-base'>
+        <span className='truncate min-w-0 overflow-hidden whitespace-nowrap text-[clamp(0.75rem,2.5vw,0.875rem)] md:text-[clamp(0.875rem,2.5vw,1rem)]'>
           {isLoggedIn
             ? displayName && displayName.length > 20
               ? `${displayName.slice(0, 6)}...${displayName.slice(-4)}`

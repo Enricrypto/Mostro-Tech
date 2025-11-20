@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const perksCardCVA = cva(
-  "flex flex-col justify-between min-w-[154px] h-[134px] p-[18px] gap-[6px] rounded-[10px] border flex-shrink-0 bg-[var(--color-night)] transition-shadow duration-200 hover:border-[var(--color-purple)] hover:shadow-[0_0_16.9px_5px_var(--color-purple-opacity)]",
+  "flex flex-col justify-between p-[18px] gap-1.5 rounded-[10px] border flex-shrink-0 bg-[var(--color-night)] transition-shadow duration-200 hover:border-[var(--color-purple)] hover:shadow-[0_0_16.9px_5px_var(--color-purple-opacity)]",
   {
     variants: {
       variant: {
@@ -27,6 +27,8 @@ export interface PerksCardProps extends VariantProps<typeof perksCardCVA> {
   name: string
   tokenAmount: string | number
   className?: string
+  itemsLeft?: number
+  showItemsLeft?: boolean
 }
 
 export function PerksCard({
@@ -34,7 +36,9 @@ export function PerksCard({
   name,
   tokenAmount,
   variant,
-  className
+  className,
+  itemsLeft,
+  showItemsLeft
 }: PerksCardProps) {
   return (
     <div className={cn(perksCardCVA({ variant }), className)}>
@@ -60,9 +64,16 @@ export function PerksCard({
       </div>
 
       {/* Bottom Section - Badge */}
-      <Badge variant='neutral' className='text-[8.5px] w-max md:text-[12px]'>
-        {tokenAmount} tokens
-      </Badge>
+      <div className='flex items-center flex-wrap gap-2'>
+        <Badge variant='neutral' className='text-[8.5px] w-max md:text-[12px]'>
+          {tokenAmount} tokens
+        </Badge>
+        {showItemsLeft && (
+          <Badge variant='left' className='text-[8.5px] w-max md:text-[12px]'>
+            {itemsLeft} Left
+          </Badge>
+        )}
+      </div>
     </div>
   )
 }
