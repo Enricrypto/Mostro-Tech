@@ -177,7 +177,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const content = (
+    const content = children ? (
       <>
         {icon && iconPosition === "left" && (
           <span className='icon shrink-0'>{icon}</span>
@@ -189,7 +189,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           <span className='icon shrink-0'>{icon}</span>
         )}
       </>
-    )
+    ) : icon ? (
+      <span className='icon shrink-0'>{icon}</span>
+    ) : null
 
     return (
       <BaseButton

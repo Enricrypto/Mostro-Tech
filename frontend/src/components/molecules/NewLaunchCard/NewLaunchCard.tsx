@@ -34,11 +34,8 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 
   return (
     <div
-      className='group relative flex flex-col
-             min-w-full        /* mobile: full width */
-             md:min-w-[360px]  /* iPad: smaller width */
-             lg:min-w-[380px]  /* desktop: bigger width */
-             rounded-[10px] border-2 p-4 md:p-5 lg:p-6 gap-4
+      className='group relative flex flex-col w-full
+             rounded-[10px] border-2 p-4 md:p-5 lg:p-6 gap-3 md:gap-4
              border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
              transition-colors duration-200 hover:border-[#71D6FB]'
     >
@@ -53,7 +50,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
               weight='bold'
               className='text-highlight group-hover:text-white transition-colors duration-200'
             />
-            <span className='text-[12px] text-highlight group-hover:text-white transition-colors duration-200'>
+            <span className='text-xs text-highlight group-hover:text-white transition-colors duration-200'>
               Launch in {launchInDays} days
             </span>
           </div>
@@ -72,24 +69,24 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
       </div>
 
       {/* Section 2: Divider */}
-      <div className='border-t border-[#D2D3D5] my-4' />
+      <div className='border-t border-[#D2D3D5] my-2 md:my-4' />
 
       {/* Section 3: Price & Total Supply */}
       <div className='flex flex-row justify-between items-start sm:items-center gap-4 sm:gap-0'>
         <div className='flex flex-col'>
-          <span className='text-white text-[18px] font-poppins font-normal leading-5'>
+          <span className='text-lg text-white font-poppins font-normal leading-5'>
             ${price}
           </span>
-          <span className='text-[#B3B3B3] text-[12px] font-medium leading-4 whitespace-nowrap'>
+          <span className='text-xs text-[#B3B3B3] font-medium leading-4 whitespace-nowrap'>
             Initial Price
           </span>
         </div>
 
         <div className='flex flex-col'>
-          <span className='text-white text-[18px] font-poppins font-normal leading-5'>
+          <span className='text-lg text-white font-poppins font-normal leading-5'>
             {dynamicRightTopText}
           </span>
-          <span className='text-[#B3B3B3] text-[12px] font-medium leading-4 whitespace-nowrap'>
+          <span className='text-xs text-[#B3B3B3] font-medium leading-4 whitespace-nowrap'>
             Total Supply
           </span>
         </div>

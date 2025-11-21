@@ -28,7 +28,7 @@ export const CreateFanPerkDialog = ({
         </>
       }
     >
-      <div className='flex flex-col gap-6'>
+      <div className='flex flex-col gap-4 sm:gap-6'>
         <p className='text-gray-400'>
           Define a new reward for your supporters. Perks unlock when fans hold a
           certain number of your tokens.

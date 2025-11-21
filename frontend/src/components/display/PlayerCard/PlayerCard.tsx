@@ -87,29 +87,26 @@ export const PlayerCard: FC<PlayerCardProps> = ({
             variant='text-white-transparent'
             className='w-10 h-10 flex items-center justify-center rounded-[26px] text-black'
             onClick={onPrev}
-          >
-            <SkipBackIcon size={20} weight='bold' />
-          </Button>
+            icon={<SkipBackIcon size={20} weight='bold' />}
+          />
 
           <Button
             size='icon-sm'
             className='rounded-[26px] flex items-center justify-center bg-[#6654D3] text-white p-0 w-10 h-10'
             onClick={onPlayPause}
-          >
-            {isPlaying ? (
+            icon={isPlaying ? (
               <PauseIcon size={24} weight='bold' />
             ) : (
               <PlayIcon size={24} weight='bold' />
             )}
-          </Button>
+          />
 
           <Button
             variant='text-white-transparent'
             className='w-10 h-10 flex items-center justify-center rounded-[26px] text-black'
             onClick={onNext}
-          >
-            <SkipForwardIcon size={24} weight='bold' />
-          </Button>
+            icon={<SkipForwardIcon size={24} weight='bold' />}
+          />
         </div>
       </div>
 
@@ -138,29 +135,26 @@ export const PlayerCard: FC<PlayerCardProps> = ({
               variant='text-white-transparent'
               className='w-10 h-10 flex items-center justify-center rounded-[26px] text-black'
               onClick={onPrev}
-            >
-              <SkipBackIcon size={20} weight='bold' />
-            </Button>
+              icon={<SkipBackIcon size={20} weight='bold' />}
+            />
 
             <Button
               size='icon-sm'
               className='rounded-[26px] flex items-center justify-center bg-[#6654D3] text-white p-0 w-10 h-10'
               onClick={onPlayPause}
-            >
-              {isPlaying ? (
+              icon={isPlaying ? (
                 <PauseIcon size={24} weight='bold' />
               ) : (
                 <PlayIcon size={24} weight='bold' />
               )}
-            </Button>
+            />
 
             <Button
               variant='text-white-transparent'
               className='w-10 h-10 flex items-center justify-center rounded-[26px] text-black'
               onClick={onNext}
-            >
-              <SkipForwardIcon size={24} weight='bold' />
-            </Button>
+              icon={<SkipForwardIcon size={24} weight='bold' />}
+            />
           </div>
         </div>
 

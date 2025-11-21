@@ -21,17 +21,6 @@ const inter = Inter({
   variable: "--font-inter"
 })
 
-// // === Metadata ===
-// // Note: Metadata export is not officially supported in client components yet.
-// // This might not work as expected until Next.js fully supports it.
-// export const metadata: Metadata = {
-//   title: "Mostro",
-//   description: "A Web3 platform for artists and fans",
-//   icons: {
-//     icon: "/logo.png"
-//   }
-// }
-
 // === Root Layout ===
 export default function RootLayout({
   children

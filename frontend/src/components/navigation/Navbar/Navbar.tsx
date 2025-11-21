@@ -1,3 +1,4 @@
+// Updated Navbar with fullscreen mobile menu and close button
 "use client"
 
 import Image from "next/image"
@@ -7,14 +8,7 @@ import { SearchBar } from "@/components/inputs/SearchBar"
 import { Button } from "@/components/atoms/Button/Button"
 import { ProfileButton } from "@/components/navigation/ProfileButton"
 import { cn } from "@/lib/utils"
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem
-} from "@/components/ui/dropdown-menu"
-import { ListIcon } from "@phosphor-icons/react"
-import { CreateTokenCard } from "@/components/molecules/CreateTokenCard" // Not implemented yet
+import { ListIcon, X } from "@phosphor-icons/react"
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -24,9 +18,50 @@ const navLinks = [
 
 export function Navbar() {
   const router = useRouter()
+  const [open, setOpen] = useState(false)
 
   return (
     <>
+      {/* Fullscreen Mobile Menu */}
+      {open && (
+        <div className="fixed inset-0 z-50 bg-[#121B2B] flex flex-col items-center justify-center gap-6">
+          {/* Mobile Menu Items with Close Button above first item */}
+          <div className="flex flex-col items-center gap-6">
+            <Button
+              className="mb-4 text-black"
+              variant="continue"
+              onClick={() => setOpen(false)}
+            >
+              <X size={32} />
+            </Button>
+
+            {navLinks.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => {
+                  router.push(link.href)
+                  setOpen(false)
+                }}
+                className="text-white text-2xl"
+              >
+                {link.label}
+              </button>
+            ))}
+
+            <button
+              onClick={() => {
+                router.push("/profile")
+                setOpen(false)
+              }}
+              className="text-white text-2xl"
+            >
+              Profile
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Navbar */}
       <nav
         className={cn(
           "flex items-center justify-between",
@@ -35,28 +70,24 @@ export function Navbar() {
           "border-(--color-navbar-border) bg-[#121B2B] backdrop-blur-sm"
         )}
       >
-        {/* Left section: Logo + Links */}
-        <div className='flex items-center gap-6'>
-          {/* Logo */}
-          <div className='shrink-0'>
+        {/* Left */}
+        <div className="flex items-center gap-6">
+          <div className="shrink-0">
             <Image
-              src='/logo.png'
-              alt='Mostro Logo'
+              src="/logo.png"
+              alt="Mostro Logo"
               width={52}
               height={52}
               unoptimized
             />
           </div>
 
-          {/* Desktop Navigation links */}
-          <div className='hidden md:flex md:items-center md:gap-2 lg:gap-5'>
+          <div className="hidden md:flex md:items-center md:gap-2 lg:gap-5">
             {navLinks.map((link) => (
               <Button
                 key={link.href}
-                variant='link'
-                className='
-        md:px-3 md:text-sm       
-        lg:px-4 lg:text-base'
+                variant="link"
+                className="md:px-3 md:text-sm lg:px-4 lg:text-base"
                 onClick={() => router.push(link.href)}
               >
                 {link.label}
@@ -65,49 +96,24 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Right section */}
-        <div className='flex items-center gap-3'>
-          {/* Desktop Search */}
-          <div className='md:block'>
+        {/* Right */}
+        <div className="flex items-center gap-3">
+          <div className="md:block">
             <SearchBar
-              className='rounded-md border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]'
-              placeholder='Search...'
+              className="rounded-md border-2 border-[#2D3953] shadow-[0px_4px_6px_0px_#00000017]"
+              placeholder="Search..."
             />
           </div>
 
-          {/* Desktop Profile */}
-          <div className='md:block'>
+          <div className="md:block">
             <ProfileButton />
           </div>
 
-          {/* Mobile: Hamburger Dropdown */}
-          <div className='md:hidden'>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant='continue' className='rounded-md'>
-                  <ListIcon size={22} weight='bold' />
-                </Button>
-              </DropdownMenuTrigger>
-
-              <DropdownMenuContent className='w-40 bg-[#121B2B] border-[#2D3953]'>
-                {navLinks.map((link) => (
-                  <DropdownMenuItem
-                    key={link.href}
-                    onClick={() => router.push(link.href)}
-                    className='cursor-pointer text-white'
-                  >
-                    {link.label}
-                  </DropdownMenuItem>
-                ))}
-
-                <DropdownMenuItem
-                  onClick={() => router.push("/profile")}
-                  className='cursor-pointer text-white'
-                >
-                  Profile
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <Button variant="continue" className="rounded-md" onClick={() => setOpen(true)}>
+              <ListIcon size={22} weight="bold" />
+            </Button>
           </div>
         </div>
       </nav>
