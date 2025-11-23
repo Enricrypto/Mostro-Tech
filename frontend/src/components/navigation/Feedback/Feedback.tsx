@@ -78,7 +78,7 @@ export const Feedback = () => {
       initial={{ opacity: 0, x: 100 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
-      className='fixed top-1/2 right-4 -translate-y-1/2 z-50'
+      className='fixed top-1/2 right-2 sm:right-4 -translate-y-1/2 z-50'
       onHoverStart={handleHoverStart}
       onHoverEnd={handleHoverEnd}
       onClick={handleClick}

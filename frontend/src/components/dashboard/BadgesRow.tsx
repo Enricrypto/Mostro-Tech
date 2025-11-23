@@ -10,11 +10,11 @@ export function BadgesRow() {
   return (
     <div
       className='
-        flex gap-3 overflow-x-auto py-2
+        flex gap-2 sm:gap-3 py-1 sm:py-2 overflow-x-auto
         scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900
       '
     >
-      <div className='flex gap-3 min-w-max'>
+      <div className='flex gap-2 sm:gap-3 min-w-max'>
         {badges.map((badge: BadgeType) => {
           const isSelected = badge.id === selectedBadge
           return (

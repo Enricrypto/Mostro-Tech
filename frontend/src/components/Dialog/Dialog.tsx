@@ -23,20 +23,20 @@ export const Dialog: React.FC<DialogProps> = ({
 
   return (
     <div className='fixed inset-0 z-50 flex items-center justify-center bg-blue-950/30 backdrop-blur-lg'>
-      <div className='bg-[var(--color-datacard-bg)] rounded-lg shadow-lg p-8 w-full max-w-3xl relative'>
-        <div className='flex justify-between items-center mb-6'>
-          <h2 className='text-2xl font-bold text-white'>{title}</h2>
-          <Button
+      <div className='bg-[var(--color-datacard-bg)] rounded-lg shadow-lg p-4 sm:p-6 md:p-8 w-full max-w-[90vw] sm:max-w-lg md:max-w-3xl relative'>
+        <div className='flex justify-between items-center mb-4 sm:mb-6'>
+          <h2 className='text-xl sm:text-2xl font-bold text-white'>{title}</h2>
+            <Button
             variant='text-white-transparent'
             size='icon-sm'
             onClick={onClose}
-            className='absolute top-4 right-4'
+            className='absolute top-2 right-2 sm:top-4 sm:right-4'
           >
             <X size={24} />
           </Button>
         </div>
         <div>{children}</div>
-        <div className='flex justify-end gap-4 mt-8'>{actions}</div>
+        <div className='flex justify-end gap-2 sm:gap-4 mt-4 sm:mt-8'>{actions}</div>
       </div>
     </div>
   )
