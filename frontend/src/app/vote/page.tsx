@@ -76,9 +76,9 @@ export default function VotePage() {
     : mockPerksCombined
 
   return (
-    <div className='bg-[#0A111F] flex flex-col w-full items-center px-4'>
+    <div className='bg-[#0A111F] flex flex-col w-full items-center px-4 sm:px-6 lg:px-8'>
       {/* Back Button */}
-      <div className='flex justify-start w-full mt-10 max-w-[1200px]'>
+      <div className='flex justify-start w-full mt-[clamp(2rem,5vw,2.5rem)] max-w-[1200px] mx-auto'>
         <Button
           variant='text-white-transparent'
           className='flex items-center gap-2'
@@ -91,7 +91,7 @@ export default function VotePage() {
       </div>
 
       {/* Main Content */}
-      <div className='flex flex-col lg:flex-row w-full max-w-[1200px] gap-6 mt-10 mb-20'>
+      <div className='flex flex-col lg:flex-row w-full max-w-[1200px] mx-auto gap-6 mt-[clamp(2rem,5vw,2.5rem)] mb-[clamp(3rem,7vw,5rem)]'>
         <div className='flex-1'>
           <FundingOverviewSection {...mockFundingOverview} />
         </div>
@@ -105,23 +105,23 @@ export default function VotePage() {
       </div>
 
       {/* Proposal Perks */}
-      <section className='relative w-full max-w-[1200px] mt-5 mb-20 flex flex-col'>
+      <section className='relative w-full max-w-[1200px] mx-auto mt-[clamp(1.25rem,4vw,1.25rem)] mb-[clamp(3rem,7vw,5rem)] flex flex-col'>
         <div className='flex justify-between items-center'>
-          <h2 className='font-semibold text-[30px] leading-9 text-white'>
+          <h2 className='font-semibold text-2xl md:text-3xl leading-9 text-white'>
             Proposal Perks
           </h2>
           {/* <Button variant='continue' onClick={() => setCreatePerkOpen(true)}>
             Create New Fan Perk
           </Button> */}
         </div>
-        <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 mt-10'>
+        <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 mt-[clamp(2rem,5vw,2.5rem)]'>
           {perksForArtist.map((perk, i) => (
             <PerksCard
               key={i}
               title={perk.title}
               name={perk.name}
               tokenAmount={perk.tokenAmount}
-              itemsLeft={127}
+              itemsLeft={perk.itemsLeft} // Use dynamic itemsLeft from mock data
               showItemsLeft={true}
             />
           ))}

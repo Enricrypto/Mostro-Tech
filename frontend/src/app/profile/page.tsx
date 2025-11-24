@@ -22,7 +22,7 @@ import { PlayerCard } from "@/components/display/PlayerCard"
 import { formatTime } from "../../../utils/formatTime"
 
 const SectionHeader = ({ title }: { title: string }) => (
-  <h2 className='text-white font-semibold text-[30px] leading-9 tracking-[-0.75%]'>
+  <h2 className='text-white font-semibold text-2xl md:text-3xl leading-9 tracking-[-0.75%]'>
     {title}
   </h2>
 )
@@ -118,19 +118,18 @@ export default function ProfilePage() {
   if (!ready || !user) return <LoadingSpinner text='Loading profile...' />
 
   return (
-    <div className='flex mt-12 max-w-[1200px] flex-col items-center w-full px-4'>
+    <div className='flex mt-12 max-w-[1200px] mx-auto flex-col items-center w-full px-4 sm:px-6 lg:px-8'>
       {/* Profile Card */}
       <ProfileCardContainer />
 
-      {/* Data Banner */}
-      <section className='w-full mt-12'>
+      <section className='w-full mt-[clamp(2rem,5vw,3rem)]'>
         <DataBanner {...mockDataBanner} />
       </section>
 
       {/* Favorite Tracks */}
-      <section className='w-full mt-20 mb-20'>
+      <section className='w-full mt-[clamp(3rem,7vw,5rem)] mb-[clamp(3rem,7vw,5rem)]'>
         <SectionHeader title='Favorite Tracks' />
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-[clamp(1rem,3vw,1.5rem)]'>
           {mockFavoriteSongs.map((song, index) => (
             <SongCard
               key={index}
@@ -147,9 +146,9 @@ export default function ProfilePage() {
       </section>
 
       {/* Token Holdings */}
-      <section className='w-full mt-12'>
+      <section className='w-full mt-[clamp(2rem,5vw,3rem)]'>
         <SectionHeader title='Token Holdings' />
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-[clamp(1.5rem,4vw,2.5rem)]'>
           {mockTokenHoldings.map((holding) => (
             <TokenHoldingsUserCard key={holding.id} {...holding} />
           ))}
@@ -157,9 +156,9 @@ export default function ProfilePage() {
       </section>
 
       {/* Unlocked Perks */}
-      <section className='w-full mt-20'>
+      <section className='w-full mt-[clamp(3rem,7vw,5rem)]'>
         <SectionHeader title='Unlocked Perks' />
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-[clamp(1.5rem,4vw,2.5rem)]'>
           {mockPerksCombined.map((perk) => (
             <PerksCard
               key={perk.id || perk.title}
@@ -171,9 +170,9 @@ export default function ProfilePage() {
       </section>
 
       {/* Voting History */}
-      <section className='w-full mt-20 mb-20'>
+      <section className='w-full mt-[clamp(3rem,7vw,5rem)] mb-[clamp(3rem,7vw,5rem)]'>
         <SectionHeader title='Voting History' />
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-[clamp(1.5rem,4vw,2.5rem)]'>
           {mockVotingHistory.map((vote) => (
             <VotingHistory key={vote.id} {...vote} />
           ))}

@@ -6,7 +6,7 @@ import { mockAllArtistsData } from "@/mocks/mockAllArtistsData"
 
 export default function AllArtists() {
   const SectionHeader = ({ title }: { title: string }) => (
-    <h2 className='text-white font-semibold text-[30px] leading-9 tracking-[-0.75%]'>
+    <h2 className='text-white font-semibold text-2xl md:text-3xl tracking-[-0.75%]'>
       {title}
     </h2>
   )
@@ -16,24 +16,24 @@ export default function AllArtists() {
       {/* ===== FULL-WIDTH SECTIONS ===== */}
       <div className='relative w-screen'>
         {/* Badges Section */}
-        <section className='relative mt-20 w-screen'>
+        <section className='relative mt-12 w-screen md:mt-20'>
           {/* Full-width background & borders */}
           <div className='absolute inset-0 w-screen border-t-2 border-b-2 border-[#121B2B] bg-[--color-black] backdrop-blur-sm pointer-events-none'></div>
 
           {/* Scrollable content */}
-          <div className='relative z-10 max-w-[1200px] mx-auto overflow-x-auto py-5 px-4 md:px-12'>
+          <div className='relative z-10 mx-auto max-w-[1200px] overflow-x-auto px-4 sm:px-6 md:px-12'>
             <BadgesRow />
           </div>
         </section>
       </div>
 
-      <div className='bg-[--color-black] min-h-screen w-full max-w-[1200px] mx-auto flex flex-col'>
+      <div className='mx-auto flex min-h-screen w-full max-w-[1200px] flex-col bg-[--color-black] px-4 sm:px-6 lg:px-8'>
         {/* ===== ARTISTS GRID ===== */}
-        <section className='w-full mt-20 px-4'>
+        <section className='mt-12 w-full md:mt-20'>
           <SectionHeader title='All Artists' />
 
           {/* Grid stays centered */}
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 mb-20 place-items-center md:place-items-center'>
+          <div className='mb-12 mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 md:place-items-center md:mb-20 place-items-center'>
             {mockAllArtistsData.map((artist) => (
               <ArtistCard
                 key={artist.id}

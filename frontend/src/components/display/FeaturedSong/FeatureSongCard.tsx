@@ -15,11 +15,13 @@ export interface FeatureSongCardProps {
     audioUrl: string
     image: string
     badge: string
+    itemsLeft?: number // Added
   }
   currentSongName?: string
   isPlaying?: boolean
   onPlay: () => void
   className?: string
+  showItemsLeft?: boolean // Added
 }
 
 export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
@@ -27,7 +29,8 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
   currentSongName,
   isPlaying = false,
   onPlay,
-  className
+  className,
+  showItemsLeft // Added this line
 }) => {
   const [localPlaying, setLocalPlaying] = useState(false)
 
@@ -77,7 +80,7 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
         </div>
 
         {/* Play + Badge inline on mobile, stacked on tablet/desktop */}
-        <div className='flex gap-1 items-center sm:flex-col sm:items-start md:gap-4'>
+        <div className='flex gap-1 items-center flex-wrap sm:flex-col sm:items-start md:gap-4'>
           {/* Play Button */}
           <Button
             variant='song-play-icon'
@@ -98,6 +101,11 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
           >
             {musicDrop.badge}
           </Badge>
+          {showItemsLeft && musicDrop.itemsLeft !== undefined && (
+            <Badge variant='left' className='text-[7px] sm:text-[9px] md:text-[12px] px-1 sm:px-2 md:px-3 py-px sm:py-1 md:py-1 whitespace-nowrap shrink-0'>
+              {musicDrop.itemsLeft} Left
+            </Badge>
+          )}
         </div>
       </div>
     </div>

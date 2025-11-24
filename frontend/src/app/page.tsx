@@ -23,7 +23,7 @@ import { Feedback } from "@/components/navigation/Feedback"
 
 // ===== Reusable Section Header =====
 const SectionHeader = ({ title }: { title: string }) => (
-  <h2 className='font-inter font-semibold text-[30px] leading-9 text-white tracking-tight text-left'>
+  <h2 className='font-inter font-semibold text-2xl md:text-3xl text-white tracking-tight text-left'>
     {title}
   </h2>
 )
@@ -146,18 +146,18 @@ export default function DashboardPage() {
       {/* ===== FULL-WIDTH SECTIONS ===== */}
       <div className='relative w-screen'>
         {/* Badges Section */}
-        <section className='relative mt-20 w-screen'>
+        <section className='relative mt-12 w-screen md:mt-20'>
           {/* Full-width background & borders */}
           <div className='absolute inset-0 w-screen border-t-2 border-b-2 border-[#121B2B] bg-[#0A111FE5] backdrop-blur-sm pointer-events-none'></div>
 
           {/* Scrollable content */}
-          <div className='relative z-10 max-w-[1200px] mx-auto overflow-x-auto py-5 px-4 md:px-12'>
+          <div className='relative z-10 mx-auto max-w-[1200px] overflow-x-auto px-4 py-5 sm:px-6 md:px-12'>
             <BadgesRow />
           </div>
         </section>
 
         {/* Artist Profile Banner */}
-        <section className='relative mt-20 w-screen'>
+        <section className='relative mt-12 w-screen md:mt-20'>
           <ArtistProfileBanner
             {...currentBanner}
             variant={currentBanner.variant}
@@ -171,12 +171,12 @@ export default function DashboardPage() {
           />
 
           {/* Banner dots */}
-          <div className='absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4 z-10'>
+          <div className='absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 md:gap-4'>
             {bannerPropsData.map((_, idx) => (
               <div
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${
+                className={`h-3 w-3 cursor-pointer rounded-full transition-all duration-300 md:h-4 md:w-4 ${
                   currentIndex === idx ? "bg-white" : "bg-black/50"
                 }`}
               />
@@ -186,11 +186,11 @@ export default function DashboardPage() {
       </div>
 
       {/* ===== MAIN PAGE CONTENT ===== */}
-      <div className='bg-[#0A111F] min-h-screen w-full max-w-[1200px] mx-auto flex flex-col'>
+      <div className='mx-auto flex min-h-screen w-full max-w-[1200px] flex-col bg-[#0A111F] px-4 sm:px-6 lg:px-8'>
         {/* ===== STATS CARDS ===== */}
         <section
-          className='grid grid-cols-2 grid-rows-3 gap-6 mt-20 px-4 place-items-center md:place-items-start
-             md:grid-cols-3 md:grid-rows-2'
+          className='mt-12 grid grid-cols-2 grid-rows-3 place-items-center gap-6 
+             md:mt-20 md:grid-cols-3 md:grid-rows-2 md:place-items-start'
         >
           {statsCardVariants.map((card) => (
             <DashBoardStatsCard key={card.topText} {...card} />
@@ -198,7 +198,7 @@ export default function DashboardPage() {
         </section>
 
         {/* ===== TOP ARTISTS ===== */}
-        <section className='w-full mt-20 px-4'>
+        <section className='mt-12 w-full md:mt-20'>
           <div className='flex items-center justify-between'>
             <SectionHeader title='Top Artists' />
             <div>
@@ -215,8 +215,8 @@ export default function DashboardPage() {
 
           <div
             className='
-      grid grid-cols-1 gap-6 mt-10
-      place-items-center md:place-items-center
+      mt-10 grid grid-cols-1 place-items-center gap-6
+      sm:grid-cols-2
       lg:grid-cols-3
     '
           >
@@ -231,7 +231,7 @@ export default function DashboardPage() {
         </section>
 
         {/* ===== TOP HOLDERS ===== */}
-        <section className='w-full mt-20 px-4'>
+        <section className='mt-12 w-full md:mt-20'>
           <SectionHeader title='Top Holders' />
 
           {/* Cards Grid */}
@@ -275,7 +275,7 @@ export default function DashboardPage() {
         </section>
 
         {/* ===== NEW LAUNCHES ===== */}
-        <section className='w-full mt-20 px-4'>
+        <section className='mt-12 w-full md:mt-20'>
           <div className='flex items-center justify-between'>
             <SectionHeader title='New Launches' />
             <div>
@@ -292,7 +292,7 @@ export default function DashboardPage() {
 
           <div
             className='
-      grid grid-cols-1 gap-6 mt-10
+      mt-10 grid grid-cols-1 gap-6
       md:grid-cols-2 md:grid-rows-2 md:place-items-center
       lg:grid-cols-3 lg:grid-rows-1 lg:place-items-start
     '
@@ -321,15 +321,14 @@ export default function DashboardPage() {
         </section>
 
         {/* ===== TRENDING TOKENS ===== */}
-        <section className='w-full mt-20 mb-20 px-4'>
+        <section className='mb-12 mt-12 w-full md:mb-20 md:mt-20'>
           <SectionHeader title='Trending Tokens' />
 
           <div
             className='
-      grid grid-cols-1 gap-6 mt-10
-      md:grid-cols-2
+      mt-10 grid grid-cols-1 place-items-center
+      gap-6 md:grid-cols-2
       lg:grid-cols-3
-      place-items-center
     '
           >
             {trendingTokens.map((token) => (
@@ -347,7 +346,7 @@ export default function DashboardPage() {
 
         {/* ===== PLAYER ===== */}
         {currentSong && (
-          <div className='fixed bottom-0 left-0 w-full px-6 py-4 z-50 flex justify-center'>
+          <div className='fixed bottom-0 left-0 z-50 flex w-full justify-center px-4 py-4 md:px-6'>
             <PlayerCard
               songName={currentSong.title}
               songDetails={currentSong.artist}

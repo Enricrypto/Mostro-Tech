@@ -34,13 +34,17 @@ interface UpcomingEventProps {
   event: NonNullable<Artist["musicEvents"]>[number]
   onClaim?: () => void
   className?: string
+  itemsLeft?: number // Added
+  showItemsLeft?: boolean // Added
 }
 
 export const UpcomingEvent = ({
   artist,
   event,
   onClaim,
-  className
+  className,
+  itemsLeft, // Added this line
+  showItemsLeft // Added this line
 }: UpcomingEventProps) => {
   const variantMap: Record<EventStatus, "increase" | "closed" | "neutral"> = {
     "on-sale": "increase",
@@ -57,19 +61,26 @@ export const UpcomingEvent = ({
       )}
     >
       {/* Top Section */}
-      <div className='flex justify-between items-start'>
+      <div className='flex justify-between items-start w-full'>
         <h3 className='text-white font-semibold text-[14px] md:text-[18px] leading-tight'>
           {event.title}
         </h3>
 
-        <Badge
-          variant={variantMap[event.status]}
-          className='text-[10px] md:text-xs px-2 py-0.5'
-        >
-          {event.status
-            .replace("-", " ")
-            .replace(/\b\w/g, (l) => l.toUpperCase())}
-        </Badge>
+        <div className='flex flex-col gap-1 items-end'>
+          <Badge
+            variant={variantMap[event.status]}
+            className='text-[10px] md:text-xs px-2 py-0.5'
+          >
+            {event.status
+              .replace("-", " ")
+              .replace(/\b\w/g, (l) => l.toUpperCase())}
+          </Badge>
+          {showItemsLeft && itemsLeft !== undefined && itemsLeft > 0 && (
+            <Badge variant='left' className='text-[10px] md:text-xs px-2 py-0.5'>
+              {itemsLeft} Left
+            </Badge>
+          )}
+        </div>
       </div>
 
       {/* Event Details */}
