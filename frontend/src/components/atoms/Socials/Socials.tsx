@@ -26,9 +26,9 @@ const socialButtonCVA = cva(
       },
       size: {
         default:
-          "w-[2.75rem] h-[2rem] sm:w-[2.5rem] sm:h-[1.875rem] md:w-[2.75rem] md:h-[2rem]",
+          "w-[2.5rem] h-[1.875rem] sm:w-[2.75rem] sm:h-[2rem]",
         compact:
-          "w-[2.25rem] h-[1.75rem] sm:w-[2rem] sm:h-[1.5rem] md:w-[2.25rem] md:h-[1.75rem]"
+          "w-[2rem] h-[1.5rem] sm:w-[2.25rem] sm:h-[1.75rem]"
       }
     },
     defaultVariants: {
@@ -82,7 +82,7 @@ export const Socials: React.FC<SocialsProps> = ({
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center justify-center gap-2 sm:gap-1 md:gap-2",
+        "flex flex-wrap items-center justify-center gap-1 sm:gap-2",
         className
       )}
     >
@@ -94,7 +94,7 @@ export const Socials: React.FC<SocialsProps> = ({
             onClick={() => onClick?.(social)}
             className={cn(socialButtonCVA({ themeVariant, size }))}
           >
-            <Icon size={20} color='currentColor' />
+            <Icon className='w-4 h-4 sm:w-5 sm:h-5' color='currentColor' />
           </button>
         )
       })}

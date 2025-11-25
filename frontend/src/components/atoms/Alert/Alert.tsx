@@ -44,23 +44,15 @@ export function Alert({
     confirmIcon: "confirm"
   } as const
 
-  const iconSizeMap = {
-    sm: 20,
-    md: 24,
-    lg: 28
-  }
-
   const icon =
     variant === "alertIcon" ? (
       <WarningCircleIcon
-        className='text-(--color-alert-red)'
-        size={iconSizeMap.md}
+        className='text-(--color-alert-red) w-6 h-6 sm:w-7 sm:h-7'
         weight='regular'
       />
     ) : variant === "confirmIcon" ? (
       <CheckCircleIcon
-        className='text-(--color-alert-green)'
-        size={iconSizeMap.md}
+        className='text-(--color-alert-green) w-6 h-6 sm:w-7 sm:h-7'
         weight='regular'
       />
     ) : null
@@ -94,7 +86,7 @@ export function Alert({
           </div>
         </AlertDialogHeader>
 
-        <AlertDialogFooter className='flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4'>
+        <AlertDialogFooter className='flex flex-col sm:flex-row gap-2 sm:-gap-3 mt-4'>
           <AlertDialogCancel className='text-sm sm:text-base md:text-lg'>
             {cancelText}
           </AlertDialogCancel>

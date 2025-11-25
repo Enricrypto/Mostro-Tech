@@ -54,7 +54,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center w-full h-[400px] gap-4",
+        "flex flex-col items-center justify-center w-full h-64 sm:h-80 md:h-[400px] gap-4",
         className
       )}
     >

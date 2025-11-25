@@ -5,7 +5,7 @@ import { Button } from "@/components/atoms/Button"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const songCardCVA = cva(
-  "w-full w-[344px] md:w-[330px] lg:w-[572px] p-3 gap-3 flex items-center justify-between rounded-[10px] border bg-[#121B2B] transition-shadow duration-200 hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380] md:p-4 lg:p-6",
+  "w-full p-3 gap-3 flex items-center justify-between rounded-lg border bg-[#121B2B] transition-shadow duration-200 hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380] md:p-4 lg:p-6",
   {
     variants: {
       variant: {
@@ -49,7 +49,7 @@ export function SongCard({
         <h3 className='text-white font-semibold text-[12px] md:text-[14px] lg:text-[16px] leading-5'>
           {songName}
         </h3>
-        <p className='text-(--color-grey) text-[10px] leading-[18px]'>
+        <p className='text-(--color-grey) text-[10px] md:text-xs leading-[18px]'>
           {subtitle}
         </p>
       </div>
@@ -63,6 +63,7 @@ export function SongCard({
           }
           iconPosition='left'
           onClick={onPlay}
+          isPlaying={isPlaying}
           className='px-2 text-[11px] md:px-3 md:text-[14px] lg:px-6 lg:text-[18px]'
         >
           Play

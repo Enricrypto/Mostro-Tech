@@ -196,6 +196,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
                 currentSongName={currentSong?.songName}
                 isPlaying={isPlaying}
                 onPlay={() => handlePlaySong(song, "musicDrops")}
+                showItemsLeft={true} // Display items left badge
               />
             )
           })}
@@ -218,6 +219,8 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
               key={i}
               title={perk.title}
               name={perk.name}
+              showItemsLeft={true}
+              itemsLeft={perk.itemsLeft}
               tokenAmount={perk.tokenAmount}
             />
           ))}
@@ -258,6 +261,8 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
                 onClaim={() =>
                   onClaimAccess(event.title, event.date, event.location)
                 }
+                itemsLeft={event.itemsLeft} // Pass itemsLeft
+                showItemsLeft={true} // Display items left badge
               />
             ))}
           </div>

@@ -38,6 +38,7 @@ export interface Artist {
     time: string
     location: string
     status: EventStatus
+    itemsLeft?: number // Added for units left
   }[]
   proposals?: ProposalData[]
   featuredTracks?: {
@@ -55,6 +56,7 @@ export interface Artist {
     audioUrl: string
     image: string
     badge: string
+    itemsLeft?: number // Added for units left
   }[]
 }
 
@@ -243,14 +245,16 @@ export const artistsData: Artist[] = [
         date: "2025-11-15",
         time: "20:00",
         location: "Berghain",
-        status: "on-sale"
+        status: "on-sale",
+        itemsLeft: 100
       },
       {
         title: "Amsterdam Festival",
         date: "2025-12-05",
         time: "18:00",
         location: "Paradiso",
-        status: "sold-out"
+        status: "sold-out",
+        itemsLeft: 3
       }
     ],
     proposals: mockProposals,
@@ -260,42 +264,48 @@ export const artistsData: Artist[] = [
         duration: "1:00",
         audioUrl: "/luna-eclipse/songs/weekend-glow.mp3",
         image: "/luna-eclipse/images/weekend-glow.png",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 150
       },
       {
         title: "Black Cat",
         duration: "1:00",
         audioUrl: "/luna-eclipse/songs/black-cat.mp3",
         image: "/luna-eclipse/images/black-cat.png",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 80
       },
       {
         title: "Neon Bounce",
         duration: "1:00",
         audioUrl: "/luna-eclipse/songs/neon-bounce.mp3",
         image: "/luna-eclipse/images/neon-bounce.png",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 250
       },
       {
         title: "Take Back The Night",
         duration: "3:44",
         audioUrl: "/luna-eclipse/songs/take-back-the-night.mp3",
         image: "/luna-eclipse/images/take-back-the-night.png",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 120
       },
       {
         title: "Deeper Kind",
         duration: "2:35",
         audioUrl: "/luna-eclipse/songs/deeper-kind.mp3",
         image: "/luna-eclipse/images/deeper-kind.png",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 30
       },
       {
         title: "Free to Believe",
         duration: "4:36",
         audioUrl: "/luna-eclipse/songs/free-to-believe.mp3",
         image: "/luna-eclipse/images/free-to-believe.png",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 5
       }
     ],
     featuredTracks: [
@@ -439,14 +449,16 @@ export const artistsData: Artist[] = [
         date: "2026-02-05",
         time: "22:00",
         location: "Womb",
-        status: "on-sale"
+        status: "on-sale",
+        itemsLeft: 250
       },
       {
         title: "New York Rooftop Concert",
         date: "2026-03-12",
         time: "20:30",
         location: "Brooklyn Mirage",
-        status: "sold-out"
+        status: "sold-out",
+        itemsLeft: 0
       }
     ],
     proposals: mockProposals,
@@ -456,42 +468,48 @@ export const artistsData: Artist[] = [
         duration: "2:27",
         audioUrl: "/atlas-monroe/songs/can't-love-her-right.mp3",
         image: "/atlas-monroe/images/can't-love-her-right.jpeg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 200
       },
       {
         title: "Hard To Hold",
         duration: "1:00",
         audioUrl: "/atlas-monroe/songs/hard-to-hold.mp3",
         image: "/atlas-monroe/images/hard-to-hold.jpg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 90
       },
       {
         title: "All About You",
         duration: "1:00",
         audioUrl: "/atlas-monroe/songs/all-about-you.mp3",
         image: "/atlas-monroe/images/all-about-you.jpeg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 300
       },
       {
         title: "Broken Promises",
         duration: "4:21",
         audioUrl: "/atlas-monroe/songs/broken-promises.mp3",
         image: "/atlas-monroe/images/broken-promises.jpeg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 180
       },
       {
         title: "Across the Universe",
         duration: "1:00",
         audioUrl: "/atlas-monroe/songs/across-the-universe.mp3",
         image: "/atlas-monroe/images/across-the-universe.jpeg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 40
       },
       {
         title: "Daisy After Dark",
         duration: "3:15",
         audioUrl: "/atlas-monroe/songs/daisy-after-dark.mp3",
         image: "/atlas-monroe/images/daisy-after-dark.jpeg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 10
       }
     ],
     featuredTracks: [
@@ -635,14 +653,16 @@ export const artistsData: Artist[] = [
         date: "2025-12-20",
         time: "21:30",
         location: "Le Trianon",
-        status: "on-sale"
+        status: "on-sale",
+        itemsLeft: 75
       },
       {
         title: "London Underground Show",
         date: "2026-01-10",
         time: "19:00",
         location: "O2 Academy Islington",
-        status: "on-sale"
+        status: "on-sale",
+        itemsLeft: 20
       }
     ],
     proposals: mockProposals,
@@ -652,42 +672,48 @@ export const artistsData: Artist[] = [
         duration: "2:12",
         audioUrl: "/liz-cherry/songs/burning-up.mp3",
         image: "/liz-cherry/images/burning-up.jpg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 250
       },
       {
         title: "Better Be Best",
         duration: "2:05",
         audioUrl: "/liz-cherry/songs/better-be-best.mp3",
         image: "/liz-cherry/images/better-be-best.jpeg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 110
       },
       {
         title: "Bottom Dollar",
         duration: "2:05",
         audioUrl: "/liz-cherry/songs/bottom-dollar.mp3",
         image: "/liz-cherry/images/bottom-dollar.jpg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 300
       },
       {
         title: "Party All Night Long",
         duration: "1:00",
         audioUrl: "/liz-cherry/songs/party-all-night-long.mp3",
         image: "/liz-cherry/images/party-all-night-long.jpeg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 190
       },
       {
         title: "What's The Plan",
         duration: "1:00",
         audioUrl: "/liz-cherry/songs/what's-the-plan.mp3",
         image: "/liz-cherry/images/what's-the-plan.jpeg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 60
       },
       {
         title: "Crown On My Head",
         duration: "3:26",
         audioUrl: "/liz-cherry/songs/crown-on-my-head.mp3",
         image: "/liz-cherry/images/crown-on-my-head.jpeg",
-        badge: "$5 USDC = 500 Tokens"
+        badge: "$5 USDC = 500 Tokens",
+        itemsLeft: 15
       }
     ],
     featuredTracks: [

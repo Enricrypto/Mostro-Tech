@@ -16,17 +16,18 @@ export const avatarVariants = cva(baseAvatar, {
         "w-10 h-10 rounded-[6px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
       "rounded-initials":
         "w-10 h-10 rounded-[26px] bg-[var(--color-highlight)] text-black",
-      "square-lg": "w-[18rem] h-[18rem] rounded-[26px]",
+      "square-lg":
+        "w-[clamp(12rem,30vw,18rem)] h-[clamp(12rem,30vw,18rem)] rounded-[26px]",
       "square-lg-initials":
-        "w-[18rem] h-[18rem] rounded-[26px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
+        "w-[clamp(12rem,30vw,18rem)] h-[clamp(12rem,30vw,18rem)] rounded-[26px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
       "square-md":
-        "w-[9.5rem] h-[9.5rem] rounded-[26px] bg-[var(--color-highlight)]",
+        "w-[clamp(6rem,20vw,9.5rem)] h-[clamp(6rem,20vw,9.5rem)] rounded-[26px] bg-[var(--color-highlight)]",
       "square-md-initials":
-        "w-[9.5rem] h-[9.5rem] rounded-[26px] pt-2 pb-2 bg-[var(--color-highlight)] text-black",
+        "w-[clamp(6rem,20vw,9.5rem)] h-[clamp(6rem,20vw,9.5rem)] rounded-[26px] pt-2 pb-2 bg-[var(--color-highlight)] text-black",
       "square-community":
-        "w-[4.75rem] h-[4.75rem] rounded-[15px] bg-[var(--color-highlight)]",
+        "w-[clamp(3rem,10vw,4.75rem)] h-[clamp(3rem,10vw,4.75rem)] rounded-[15px] bg-[var(--color-highlight)]",
       "square-community-initials":
-        "w-[4.75rem] h-[4.75rem] rounded-[15px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
+        "w-[clamp(3rem,10vw,4.75rem)] h-[clamp(3rem,10vw,4.75rem)] rounded-[15px] pt-3 pb-3 bg-[var(--color-highlight)] text-black",
       circle: "w-10 h-10 rounded-full"
     },
     responsive: {
@@ -73,7 +74,7 @@ export const Avatar: React.FC<AvatarProps> = ({
       {src?.trim() ? (
         <Image src={src} alt={alt} fill className='object-cover' sizes='100%' />
       ) : (
-        <span className='text-[1rem] sm:text-[0.875rem] md:text-[1rem] lg:text-[1.125rem]'>
+        <span className='text-sm sm:text-base md:text-lg'>
           {displayInitial}
         </span>
       )}

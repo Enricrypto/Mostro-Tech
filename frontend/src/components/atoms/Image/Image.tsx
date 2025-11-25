@@ -8,25 +8,9 @@ export type ImageProps = {
   alt?: string
 }
 
-// Available PNG images in public folder
-const AVAILABLE_PNG_IMAGES = [
-  "artists/luna-eclipse.png",
-  "logo.png",
-  "miracle.png"
-] as const
-
-// Constants for fixed styling
-const IMAGE_STYLES = {
-  width: 336,
-  height: 150,
-  borderRadius: 6,
-  angle: 0,
-  opacity: 1
-} as const
-
 /**
- * Image component with fixed dimensions and styling
- * Supports all PNG files available in the public folder
+ * A responsive image component.
+ * Supports all PNG files available in the public folder.
  */
 export function Image({
   className,
@@ -36,20 +20,14 @@ export function Image({
   // Ensure the src includes the leading slash for public folder
   const imageSrc = src.startsWith("/") ? src : `/${src}`
 
-  const imageStyle = {
-    width: `${IMAGE_STYLES.width}px`,
-    height: `${IMAGE_STYLES.height}px`,
-    borderRadius: `${IMAGE_STYLES.borderRadius}px`,
-    transform: `rotate(${IMAGE_STYLES.angle}deg)`,
-    opacity: IMAGE_STYLES.opacity
-  }
-
   return (
     <img
       src={imageSrc}
       alt={alt}
-      style={imageStyle}
-      className={cn("object-cover", className)}
+      className={cn(
+        "object-cover w-full h-auto rounded-md max-w-[336px]",
+        className
+      )}
     />
   )
 }

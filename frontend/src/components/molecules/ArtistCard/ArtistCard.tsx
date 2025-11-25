@@ -55,7 +55,7 @@ export function ArtistCard({
       className={cn(
         `
         w-full max-w-[24rem] sm:max-w-md md:max-w-lg
-        rounded-[0.625rem] border-2 border-(--color-dark-blue)
+        rounded-xl border-2 border-(--color-dark-blue)
        bg-(--color-dark-bg) shadow-[0px_4px_6px_0px_#00000017]
         p-4 sm:p-5 md:p-6
         flex flex-col gap-4
@@ -74,18 +74,12 @@ export function ArtistCard({
 
         {/* Right column: Artist Name + Token + Badge */}
         <div className='flex flex-col justify-start gap-3 sm:gap-4'>
-          <p
-            className='text-white font-medium leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'
-            style={{ fontSize: "clamp(1.25rem, 2vw, 1.4rem)" }}
-          >
+          <p className='font-medium leading-7 tracking-[-0.5%] text-white text-[clamp(1.25rem,2vw,1.4rem)] whitespace-nowrap overflow-hidden'>
             {artistName}
           </p>
 
           <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
-            <p
-              className='text-white leading-5'
-              style={{ fontSize: "clamp(0.9rem, 1.5vw, 1rem)" }}
-            >
+            <p className='leading-5 text-white text-[clamp(0.9rem,1.5vw,1rem)]'>
               ${tokenName}
             </p>
             <Badge
@@ -106,10 +100,7 @@ export function ArtistCard({
         side='top'
         align='center'
       >
-        <p
-          className='text-(--color-grey) font-medium w-full line-clamp-2 mt-2'
-          style={{ fontSize: "0.75rem", lineHeight: "1.25rem" }}
-        >
+        <p className='text-(--color-grey) font-medium w-full line-clamp-2 mt-2 text-xs leading-5'>
           {description || "No description provided."}
         </p>
       </Tooltip>
@@ -122,16 +113,10 @@ export function ArtistCard({
           { label: "Total Supply", value: totalSupply }
         ].map(({ label, value }) => (
           <div key={label} className='flex flex-col items-start gap-1'>
-            <p
-              className='text-white font-poppins leading-5'
-              style={{ fontSize: "1.125rem" }}
-            >
+            <p className='font-poppins text-lg leading-5 text-white'>
               {value}
             </p>
-            <p
-              className='text-(--color-grey) font-inter leading-4 whitespace-nowrap'
-              style={{ fontSize: "0.75rem" }}
-            >
+            <p className='font-inter text-xs leading-4 text-(--color-grey) whitespace-nowrap'>
               {label}
             </p>
           </div>
