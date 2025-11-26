@@ -35,7 +35,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
   return (
     <div
       className='group relative flex flex-col w-full
-             rounded-[10px] border-2 p-4 md:p-5 lg:p-6 gap-3 md:gap-4
+             rounded-[10px] border-2 p-4 md:p-5 lg:p-4 gap-3 md:gap-4
              border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
              transition-colors duration-200 hover:border-[#71D6FB]'
     >
@@ -43,7 +43,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
       <div className='flex flex-row items-start gap-4'>
         <Avatar src={avatarUrl} variant='square-md' />
 
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-3 min-w-0'>
           <div className='flex items-center gap-2'>
             <CalendarBlankIcon
               size={16}
@@ -56,13 +56,13 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
           </div>
           <p
             className='text-white font-medium leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'
-            style={{ fontSize: "clamp(1.25rem, 2vw, 1.4rem)" }}
+            style={{ fontSize: "clamp(1rem, 1.5vw, 1.25rem)" }}
           >
             {name}
           </p>
 
           {/* Genre Badge (same as ArtistCard) */}
-          <Badge variant='genre' className='w-max'>
+          <Badge variant='genre' className='truncate'>
             {badgeText}
           </Badge>
         </div>

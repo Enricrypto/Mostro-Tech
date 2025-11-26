@@ -79,8 +79,8 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
           </div>
         </div>
 
-        {/* Play + Badge inline on mobile, stacked on tablet/desktop */}
-        <div className='flex gap-1 items-center flex-wrap sm:flex-col sm:items-start md:gap-4'>
+        {/* Play + Badge */}
+        <div className='flex items-center gap-3'>
           {/* Play Button */}
           <Button
             variant='song-play-icon'
@@ -94,18 +94,38 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
             )}
           </Button>
 
-          {/* Badge */}
-          <Badge
-            variant='neutral'
-            className='text-[7px] sm:text-[9px] md:text-[12px] px-1 sm:px-2 md:px-3 py-px sm:py-1 md:py-1 whitespace-nowrap shrink-0'
-          >
-            {musicDrop.badge}
-          </Badge>
-          {showItemsLeft && musicDrop.itemsLeft !== undefined && (
-            <Badge variant='left' className='text-[7px] sm:text-[9px] md:text-[12px] px-1 sm:px-2 md:px-3 py-px sm:py-1 md:py-1 whitespace-nowrap shrink-0'>
-              {musicDrop.itemsLeft} Left
+          {/* Badges Container - using a grid to make badges match width */}
+          <div className='grid grid-cols-1 items-stretch gap-1 w-fit'>
+
+            <Badge
+              variant="neutral"
+              className="
+    whitespace-nowrap
+    overflow-hidden text-ellipsis
+
+    /* Mobile (iPhone XR & similar) */
+    max-w-[90px]
+    text-[0.45rem] px-1 py-0.5
+
+    /* Tablets (iPad 820px+) */
+    md:max-w-[120px]
+    md:text-[0.5rem] md:px-1.5 md:py-0.5
+
+    /* Desktop (1024px+) */
+    lg:max-w-[150px]
+    lg:text-[0.55rem] lg:px-2 lg:py-1
+  "
+            >
+
+              {musicDrop.badge}
             </Badge>
-          )}
+            {showItemsLeft && (
+              <Badge variant='left' className='text-[8.5px] w-max md:text-[12px]'>
+                {musicDrop.itemsLeft} Left
+              </Badge>
+            )}
+
+          </div>
         </div>
       </div>
     </div>
