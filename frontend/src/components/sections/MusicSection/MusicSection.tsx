@@ -88,7 +88,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
     audio.currentTime = 0
 
     const handleCanPlay = () => {
-      if (isPlaying) audio.play().catch(() => {})
+      if (isPlaying) audio.play().catch(() => { })
     }
 
     const handleEnded = () => nextSong()
@@ -124,7 +124,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
   // Sync play/pause
   useEffect(() => {
     if (!audioRef.current) return
-    if (isPlaying) audioRef.current.play().catch(() => {})
+    if (isPlaying) audioRef.current.play().catch(() => { })
     else audioRef.current.pause()
   }, [isPlaying])
 
@@ -142,10 +142,10 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
     artist.name === "Luna Eclipse"
       ? mockPerksLuna
       : artist.name === "Atlas Monroe"
-      ? mockPerksAtlas
-      : artist.name === "Liz Cherry"
-      ? mockPerksLiz
-      : mockPerksCombined
+        ? mockPerksAtlas
+        : artist.name === "Liz Cherry"
+          ? mockPerksLiz
+          : mockPerksCombined
 
   return (
     <div className='flex flex-col items-center gap-20 w-full max-w-[1200px] mx-auto'>
@@ -174,7 +174,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
           </div>
 
           {/* Move span below on mobile, inline on md+ */}
-          <span className='mt-4 md:mt-0 md:ml-2 text-(--color-grey)'>
+          <span className='mt-4 md:mt-0 md:ml-2 text-[var(--color-grey)]'>
             Includes Surprise Perk
           </span>
         </div>
@@ -228,42 +228,46 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
       </section>
 
       {/* Featured Tracks + Upcoming Events */}
-      <section className='w-full mt-20 mb-20 flex flex-col md:flex-row gap-12'>
-        <div className='flex flex-col flex-1'>
-          <h2 className='font-semibold text-[30px] leading-9 text-white'>
+      <section className='w-full mt-20 mb-20 flex flex-col md:flex-row gap-8 justify-between items-start max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8'>
+        {/* Featured Tracks Section */}
+        <div className='w-full lg:flex-1 flex flex-col min-w-0'>
+          <h2 className='font-semibold text-2xl sm:text-[28px] lg:text-[30px] leading-7 sm:leading-8 lg:leading-9 text-white mb-6 sm:mb-8 lg:mb-10'>
             Featured Tracks
           </h2>
-          <div className='grid grid-cols-1 gap-6 mt-10'>
+          <div className='grid grid-cols-1 gap-4 sm:gap-5 lg:gap-6 w-full'>
             {artist.featuredTracks?.map((track, index) => (
-              <SongCard
-                key={index}
-                songName={track.songName}
-                subtitle={track.subtitle}
-                variant={track.variant}
-                unlockAmount={track.unlockAmount}
-                unlockToken={track.unlockToken}
-                onPlay={() => handlePlaySong(track, "featuredTracks")}
-              />
+              <div key={index} className='w-full'>
+                <SongCard
+                  songName={track.songName}
+                  subtitle={track.subtitle}
+                  variant={track.variant}
+                  unlockAmount={track.unlockAmount}
+                  unlockToken={track.unlockToken}
+                  onPlay={() => handlePlaySong(track, "featuredTracks")}
+                />
+              </div>
             ))}
           </div>
         </div>
 
-        <div className='flex-1 flex flex-col'>
-          <h2 className='font-semibold text-[30px] leading-9 text-white'>
+        {/* Upcoming Events Section */}
+        <div className='w-full lg:flex-1 flex flex-col mt-8 lg:mt-0 min-w-0'>
+          <h2 className='font-semibold text-2xl sm:text-[28px] lg:text-[30px] leading-7 sm:leading-8 lg:leading-9 text-white mb-6 sm:mb-8 lg:mb-10'>
             Upcoming Events
           </h2>
-          <div className='flex flex-col gap-6 mt-10'>
+          <div className='flex flex-col gap-4 sm:gap-5 lg:gap-6 w-full'>
             {artist.musicEvents?.map((event, index) => (
-              <UpcomingEvent
-                key={index}
-                artist={artist}
-                event={event}
-                onClaim={() =>
-                  onClaimAccess(event.title, event.date, event.location)
-                }
-                itemsLeft={event.itemsLeft} // Pass itemsLeft
-                showItemsLeft={true} // Display items left badge
-              />
+              <div key={index} className='w-full lg:scale-95 lg:origin-top'>
+                <UpcomingEvent
+                  artist={artist}
+                  event={event}
+                  onClaim={() =>
+                    onClaimAccess(event.title, event.date, event.location)
+                  }
+                  itemsLeft={event.itemsLeft}
+                  showItemsLeft={true}
+                />
+              </div>
             ))}
           </div>
         </div>

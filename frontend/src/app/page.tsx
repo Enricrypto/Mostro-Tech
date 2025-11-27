@@ -96,7 +96,7 @@ export default function DashboardPage() {
       audio.currentTime = 0
 
       audio.src = currentSong.audioUrl
-      audio.play().catch(() => {})
+      audio.play().catch(() => { })
     } else {
       audio.pause()
       audio.src = ""
@@ -127,7 +127,7 @@ export default function DashboardPage() {
   // ===== Sync play/pause =====
   useEffect(() => {
     if (!audioRef.current) return
-    if (isPlaying) audioRef.current.play().catch(() => {})
+    if (isPlaying) audioRef.current.play().catch(() => { })
     else audioRef.current.pause()
   }, [isPlaying])
 
@@ -176,9 +176,8 @@ export default function DashboardPage() {
               <div
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`h-3 w-3 cursor-pointer rounded-full transition-all duration-300 md:h-4 md:w-4 ${
-                  currentIndex === idx ? "bg-white" : "bg-black/50"
-                }`}
+                className={`h-3 w-3 cursor-pointer rounded-full transition-all duration-300 md:h-4 md:w-4 ${currentIndex === idx ? "bg-white" : "bg-black/50"
+                  }`}
               />
             ))}
           </div>
@@ -214,17 +213,20 @@ export default function DashboardPage() {
           </div>
 
           <div
-            className='
-      mt-10 grid grid-cols-1 place-items-center gap-6
-      sm:grid-cols-2
-      lg:grid-cols-3
-    '
+           className='
+  mt-10 grid grid-cols-1 place-items-center gap-6
+  sm:grid-cols-2
+  lg:grid-cols-2
+  xl:grid-cols-3
+  2xl:grid-cols-4
+'
           >
             {mockArtistData.map((artist) => (
               <ArtistCard
                 key={artist.id || artist.artistName}
                 {...artist}
                 slug={artist.slug}
+                showGraduatedBadge={true}
               />
             ))}
           </div>
@@ -356,8 +358,8 @@ export default function DashboardPage() {
               avatarUrl={currentSong.avatarSrc ?? currentBanner.avatarSrc}
               isPlaying={isPlaying}
               onPlayPause={() => setIsPlaying((prev) => !prev)}
-              onNext={() => {}}
-              onPrev={() => {}}
+              onNext={() => { }}
+              onPrev={() => { }}
               onClose={handleClosePlayer}
               onSeek={handleSeek}
             />

@@ -15,7 +15,7 @@ import type { Artist } from "@/data/artists"
 export type EventStatus = "on-sale" | "sold-out" | "token-holders-only"
 
 const upcomingEventCVA = cva(
-  "flex flex-col justify-between min-w-[344px] md:w-[358px] lg:w-[578px] p-4 md:p-6 gap-3.5 rounded-[10px] border-2 bg-[#121B2B] transition-shadow duration-200",
+  "flex flex-col justify-between w-full max-w-[344px] md:max-w-[358px] lg:max-w-[512px] h-full p-4 md:p-6 gap-3.5 rounded-[10px] border-2 bg-[#121B2B] transition-shadow duration-200",
   {
     variants: {
       variant: {

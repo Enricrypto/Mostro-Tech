@@ -25,6 +25,7 @@ interface ArtistCardProps {
   marketCap: string | number
   totalSupply: string | number
   genre: string
+  showGraduatedBadge?: boolean
 }
 
 export function ArtistCard({
@@ -38,7 +39,8 @@ export function ArtistCard({
   holders,
   marketCap,
   totalSupply,
-  genre
+  genre,
+  showGraduatedBadge = false
 }: ArtistCardProps) {
   const router = useRouter()
 
@@ -55,12 +57,12 @@ export function ArtistCard({
       className={cn(
         `
         w-full max-w-[24rem] sm:max-w-md md:max-w-lg
-        rounded-xl border-2 border-(--color-dark-blue)
-       bg-(--color-dark-bg) shadow-[0px_4px_6px_0px_#00000017]
+        rounded-xl border-2 border-[var(--color-dark-blue)]
+       bg-[var(--color-dark-bg)] shadow-[0px_4px_6px_0px_#00000017]
         p-4 sm:p-5 md:p-6
         flex flex-col gap-4
         transition-all duration-300 ease-out
-        hover:scale-[1.02] hover:border-(--color-highlight)
+        hover:scale-[1.02] hover:border-[var(--color-highlight)]
         `
       )}
     >
@@ -89,7 +91,16 @@ export function ArtistCard({
             >
               {badgeText}
             </Badge>
+            
           </div>
+          {showGraduatedBadge && (
+              <Badge
+                variant="neutral"
+                className="text-[8.5px] w-max md:text-[12px]"
+              >
+                Graduated
+              </Badge>
+            )}
         </div>
       </div>
 
@@ -100,7 +111,7 @@ export function ArtistCard({
         side='top'
         align='center'
       >
-        <p className='text-(--color-grey) font-medium w-full line-clamp-2 mt-2 text-xs leading-5'>
+        <p className='text-[var(--color-grey)] font-medium w-full line-clamp-2 mt-2 text-xs leading-5'>
           {description || "No description provided."}
         </p>
       </Tooltip>
@@ -116,7 +127,7 @@ export function ArtistCard({
             <p className='font-poppins text-lg leading-5 text-white'>
               {value}
             </p>
-            <p className='font-inter text-xs leading-4 text-(--color-grey) whitespace-nowrap'>
+            <p className='font-inter text-xs leading-4 text-[var(--color-grey)] whitespace-nowrap'>
               {label}
             </p>
           </div>
