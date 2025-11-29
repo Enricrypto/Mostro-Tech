@@ -88,10 +88,10 @@ export const buttonVisualVariants = {
     hover:bg-gradient-to-r hover:from-[var(--color-skyblue)] hover:to-[var(--color-purple)]
   `,
   "song-play": `
-    h-9 px-4 text-sm sm:h-10 sm:px-4 sm:text-base md:h-12 md:px-6 md:text-base
+    h-8 px-2 sm:h-9 sm:px-3 text-xs sm:text-sm md:h-10 md:px-4 md:text-base rounded-[4px]
     bg-[var(--color-skyblue)] text-black font-medium 
     hover:bg-gradient-to-r hover:from-[var(--color-skyblue)] hover:to-[var(--color-purple)] hover:text-white
-    min-w-[80px] sm:min-w-[90px] md:min-w-[100px]
+    min-w-[70px] sm:min-w-[80px] md:min-w-[90px]
   `,
   "song-play-icon": `
     w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 
@@ -102,7 +102,7 @@ export const buttonVisualVariants = {
     h-9 px-3 text-sm sm:h-10 sm:px-4 sm:text-base md:h-12 md:px-6 md:text-base
     border border-[var(--color-skyblue)] bg-transparent text-white
     hover:bg-[var(--color-skyblue-opacity)] hover:text-black
-    min-w-[80px] sm:min-w-[90px] md:min-w-[100px]
+    min-w-[80px] sm:min-w-[90px] md:min-w-[100px] rounded-[4px]
   `,
   "buy-token": `
     py-2 px-4 sm:py-3 sm:px-5 md:py-4 md:px-6
@@ -177,6 +177,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = "right",
       children,
       className,
+      isPlaying,
       ...props
     },
     ref

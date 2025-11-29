@@ -41,8 +41,8 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
   return (
     <div
       className={cn(
-        "artist-music-card flex flex-col sm:flex-row items-center md:items-start md:gap-5 p-4 rounded-[10px] border border-[#2D3953] shadow-[0_4px_6px_0_#00000017]",
-        "bg-[#121B2B] w-full sm:max-w-sm md:max-w-[350px] lg:max-w-[384px]",
+        "artist-music-card flex flex-col sm:flex-row items-start sm:items-center md:items-start md:gap-5 p-4 rounded-[10px] border border-[#2D3953] shadow-[0_4px_6px_0_#00000017]",
+        "bg-[#121B2B] w-full min-w-0",
         "transition-all duration-200",
         className
       )}
@@ -95,32 +95,14 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
           </Button>
 
           {/* Badges Container - using a grid to make badges match width */}
-          <div className='grid grid-cols-1 items-stretch gap-1 w-fit'>
+          <div className='grid grid-cols-1 items-stretch gap-1 w-full sm:w-fit'>
 
-            <Badge
-              variant="neutral"
-              className="
-    whitespace-nowrap
-    overflow-hidden text-ellipsis
-
-    /* Mobile (iPhone XR & similar) */
-    max-w-[90px]
-    text-[0.45rem] px-1 py-0.5
-
-    /* Tablets (iPad 820px+) */
-    md:max-w-[120px]
-    md:text-[0.5rem] md:px-1.5 md:py-0.5
-
-    /* Desktop (1024px+) */
-    lg:max-w-[150px]
-    lg:text-[0.55rem] lg:px-2 lg:py-1
-  "
-            >
+            <Badge variant="neutral">
 
               {musicDrop.badge}
             </Badge>
             {showItemsLeft && (
-              <Badge variant='left' className='text-[8.5px] w-max md:text-[12px]'>
+              <Badge variant='left'>
                 {musicDrop.itemsLeft} Left
               </Badge>
             )}

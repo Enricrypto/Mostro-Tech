@@ -71,36 +71,54 @@ export function ArtistCard({
         {/* Left column: Avatar + Genre */}
         <div className='flex flex-col items-start gap-3 sm:gap-4'>
           <Avatar variant='square-md' src={avatarSrc} alt={artistName} />
-          <Badge variant='genre'>{genre}</Badge>
+          <Badge variant='genre' className='w-fit text-[clamp(0.7rem,1vw,0.725rem)] px-[clamp(0.25rem,0.5vw,0.3rem)]'>
+            {genre}
+          </Badge>
         </div>
 
         {/* Right column: Artist Name + Token + Badge */}
         <div className='flex flex-col justify-start gap-3 sm:gap-4'>
-          <p className='font-medium leading-7 tracking-[-0.5%] text-white text-[clamp(1.25rem,2vw,1.4rem)] whitespace-nowrap overflow-hidden'>
+          <p className='font-medium leading-7 tracking-[-0.5%] text-white text-[clamp(1.1rem,1.8vw,1.35rem)] overflow-hidden text-ellipsis break-word'>
             {artistName}
           </p>
 
-          <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
-            <p className='leading-5 text-white text-[clamp(0.9rem,1.5vw,1rem)]'>
-              ${tokenName}
-            </p>
-            <Badge
-              variant={badgeVariant}
-              icon={<Icon weight='bold' size={14} className='text-current' />}
-              className='text-[clamp(0.7rem,1vw,0.875rem)] px-[clamp(0.25rem,0.5vw,0.5rem)]'
-            >
-              {badgeText}
-            </Badge>
-            
-          </div>
-          {showGraduatedBadge && (
-              <Badge
-                variant="neutral"
-                className="text-[8.5px] w-max md:text-[12px]"
+          {showGraduatedBadge ? (
+            // If showGraduatedBadge is true, put Graduated badge first, then badgeVariant badge
+            <>
+              <p className='leading-5 text-white text-[clamp(0.9rem,1.5vw,1rem)]'>
+                ${tokenName}
+              </p>
+              <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
+                <Badge // Graduated Badge
+                  variant="neutral"
+                  className='w-fit text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
+                >
+                  Graduated
+                </Badge>
+                <Badge // badgeVariant Badge
+                  variant={badgeVariant}
+                  icon={<Icon weight='bold' size={14} className='text-current' />}
+                  className='text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
+                >
+                  {badgeText}
+                </Badge>
+              </div>
+            </>
+          ) : (
+            // If showGraduatedBadge is false, keep original layout for badgeVariant badge
+            <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
+              <p className='leading-5 text-white text-[clamp(0.9rem,1.5vw,1rem)]'>
+                ${tokenName}
+              </p>
+              <Badge // badgeVariant Badge
+                variant={badgeVariant}
+                icon={<Icon weight='bold' size={14} className='text-current' />}
+                className='text-[clamp(0.7rem,1vw,0.725rem)] px-[clamp(0.25rem,0.5vw,0.3rem)]'
               >
-                Graduated
+                {badgeText}
               </Badge>
-            )}
+            </div>
+          )}
         </div>
       </div>
 
