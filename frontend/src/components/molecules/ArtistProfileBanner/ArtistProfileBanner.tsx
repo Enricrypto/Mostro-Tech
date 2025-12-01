@@ -76,7 +76,7 @@ export function ArtistProfileBanner({
             {/* Lower-left badge */}
             <Badge
               variant='genre'
-              className='hidden lg:flex absolute top-50 -left-40 -rotate-12
+              className='hidden xl:flex absolute top-50 -left-40 -rotate-12
                  w-[131px] h-[39px] gap-2 border border-(--color-accent)
                  rounded-[28px] bg-white text-black
                  text-[clamp(0.7rem,1vw,0.875rem)]
@@ -88,7 +88,7 @@ export function ArtistProfileBanner({
             {/* Upper-right badge */}
             <Badge
               variant='genre'
-              className='hidden lg:flex absolute top-10 left-78 rotate-12 
+              className='hidden xl:flex absolute top-10 left-78 rotate-12 
                  w-[131px] h-[39px] gap-2 border border-(--color-accent)
                  rounded-[28px] bg-white text-black
                  text-[clamp(0.7rem,1vw,0.875rem)]

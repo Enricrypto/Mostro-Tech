@@ -41,7 +41,7 @@ export const DashBoardStatsCard: React.FC<DashBoardStatsCardProps> = ({
         </span>
 
         {/* Right text next to it */}
-        <span className='flex h-5 flex-none items-center text-[10px] font-medium leading-5 text-[#DCFD63] md:text-xs'>
+        <span className='flex h-5 flex-none items-center text-[8px] font-medium leading-5 text-[#DCFD63] md:text-xs'>
           {bottomRightText}
         </span>
       </div>

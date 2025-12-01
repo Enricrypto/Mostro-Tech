@@ -153,7 +153,7 @@ export default function ArtistPage() {
         </section>
 
         <section className='flex justify-center mt-20'>
-          <div className='flex flex-col w-full px-6 mx-auto'>
+          <div className='flex flex-col w-full max-w-[1200px] mx-auto px-4 md:px-12'>
             {renderSectionContent()}
           </div>
         </section>

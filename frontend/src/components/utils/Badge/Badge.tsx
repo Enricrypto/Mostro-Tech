@@ -16,14 +16,14 @@ const badgeVariants = cva(
         decrease:
           "inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[13px] cursor-default",
         neutral:
-          "inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white text-[13px] cursor-default",
+          "inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white whitespace-nowrap overflow-hidden truncate text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] max-w-[220px] md:max-w-[320px] lg:max-w-[420px] cursor-default",
         icon: "inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[13px] cursor-default",
         iconClosed:
           "inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[13px] cursor-default",
         genre:
-          "inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-skyblue-opacity)] border-[var(--color-skyblue)] text-[var(--color-skyblue)] text-[13px] cursor-pointer hover:bg-[var(--color-skyblue)] hover:text-[var(--color-dark-bg)] active:scale-95",
+          "inline-flex items-center justify-center px-3 py-[3px] gap-2 rounded-[10px] border bg-[var(--color-skyblue-opacity)] border-[var(--color-skyblue)] text-[var(--color-skyblue)] text-sm min-w-[4.5rem] cursor-pointer hover:bg-[var(--color-skyblue)] hover:text-[var(--color-dark-bg)] active:scale-95",
         left:
-          "inline-flex items-center justify-center w-fit px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[13px] cursor-default",
+          "inline-flex items-center justify-center w-fit px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] whitespace-nowrap overflow-hidden truncate text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] max-w-[120px] md:max-w-[160px] lg:max-w-[240px] cursor-default",
 
         // LARGE PILLS - keep height but remove fixed min-width for flexibility
         profileLabel:

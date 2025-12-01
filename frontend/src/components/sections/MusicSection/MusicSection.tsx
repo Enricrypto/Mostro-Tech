@@ -179,7 +179,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
           </span>
         </div>
 
-        <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10'>
+        <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-10 items-stretch'>
           {artist.musicDrops?.map((drop, index) => {
             const song: SongData = {
               songName: drop.title,
@@ -228,7 +228,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
       </section>
 
       {/* Featured Tracks + Upcoming Events */}
-      <section className='w-full mt-20 mb-20 flex flex-col md:flex-row gap-8 justify-between items-start max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8'>
+      <section className='w-full mt-20 mb-20 flex flex-col md:flex-row gap-8 justify-between items-start'>
         {/* Featured Tracks Section */}
         <div className='w-full lg:flex-1 flex flex-col min-w-0'>
           <h2 className='font-semibold text-2xl sm:text-[28px] lg:text-[30px] leading-7 sm:leading-8 lg:leading-9 text-white mb-6 sm:mb-8 lg:mb-10'>

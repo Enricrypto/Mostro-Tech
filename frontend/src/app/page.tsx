@@ -213,12 +213,11 @@ export default function DashboardPage() {
           </div>
 
           <div
-           className='
-  mt-10 grid grid-cols-1 place-items-center gap-6
-  sm:grid-cols-2
-  lg:grid-cols-2
-  xl:grid-cols-3
-  2xl:grid-cols-4
+            className='
+   mt-10 grid grid-cols-1 place-items-center gap-8
+    sm:grid-cols-2
+    lg:grid-cols-2
+    xl:grid-cols-3
 '
           >
             {mockArtistData.map((artist) => (
@@ -248,6 +247,7 @@ export default function DashboardPage() {
               <LeaderBoard
                 key={holder.rank}
                 {...holder}
+                showScore={false}
                 className='md:hidden'
               />
             ))}
@@ -257,6 +257,7 @@ export default function DashboardPage() {
               <LeaderBoard
                 key={holder.rank}
                 {...holder}
+                showScore={false}
                 className='hidden md:block'
               />
             ))}
@@ -292,32 +293,9 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div
-            className='
-      mt-10 grid grid-cols-1 gap-6
-      md:grid-cols-2 md:grid-rows-2 md:place-items-center
-      lg:grid-cols-3 lg:grid-rows-1 lg:place-items-start
-    '
-          >
-            {/* Mobile: first 3 cards */}
+          <div className='mt-10 grid grid-cols-1 place-items-center gap-4 md:grid-cols-2 lg:grid-cols-3'>
             {mockNewLaunchData.slice(0, 3).map((launch) => (
-              <div key={launch.id} className='md:hidden'>
-                <NewLaunchCard {...launch} />
-              </div>
-            ))}
-
-            {/* iPad: first 4 cards */}
-            {mockNewLaunchData.slice(0, 4).map((launch) => (
-              <div key={launch.id} className='hidden md:block lg:hidden'>
-                <NewLaunchCard {...launch} />
-              </div>
-            ))}
-
-            {/* Desktop: first 5 cards */}
-            {mockNewLaunchData.slice(0, 3).map((launch) => (
-              <div key={launch.id} className='hidden lg:block'>
-                <NewLaunchCard {...launch} />
-              </div>
+              <NewLaunchCard key={launch.id} {...launch} />
             ))}
           </div>
         </section>

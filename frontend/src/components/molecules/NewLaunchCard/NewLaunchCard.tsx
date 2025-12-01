@@ -62,7 +62,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
           </p>
 
           {/* Genre Badge (same as ArtistCard) */}
-          <Badge variant='genre' className='truncate'>
+          <Badge variant='genre' className='truncate max-w-full lg:text-[0.65rem]'>
             {badgeText}
           </Badge>
         </div>
