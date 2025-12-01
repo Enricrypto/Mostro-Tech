@@ -129,7 +129,7 @@ export default function ProfilePage() {
       {/* Favorite Tracks */}
       <section className='w-full mt-[clamp(3rem,7vw,5rem)] mb-[clamp(3rem,7vw,5rem)]'>
         <SectionHeader title='Favorite Tracks' />
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-[clamp(1rem,3vw,1.5rem)]'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-[clamp(1rem,3vw,1.5rem)]'>
           {mockFavoriteSongs.map((song, index) => (
             <SongCard
               key={index}

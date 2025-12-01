@@ -6,7 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 // Improved responsive design with iPad support (820x1180)
 const songCardCVA = cva(
-  "w-full min-h-[80px] p-3 gap-3 flex items-center justify-between rounded-lg border bg-[#121B2B] transition-shadow duration-200 hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380] sm:p-4",
+  "w-full min-h-[98px] py-3 px-3 gap-3 flex items-center justify-between rounded-lg border bg-[#121B2B] transition-shadow duration-200 hover:border-[#6654d3] hover:shadow-[0_0_16.9px_5px_#6654D380] sm:p-4 md:py-4 md:px-6",
   {
     variants: {
       variant: {
@@ -41,20 +41,20 @@ export function SongCard({
   return (
     <div className={songCardCVA({ variant })}>
       {/* Left Icon */}
-      <div className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-[var(--color-highlight)] flex items-center justify-center">
+      <div className="flex-shrink-0 w-11.5 h-11.5 sm:w-11.5 sm:h-11.5 md:w-11.5 md:h-11.5 md:relative top-[-8px] rounded-full bg-[var(--color-highlight)] flex items-center justify-center">
         <MusicNoteIcon
-          size="clamp(16px, 4vw, 20px)"
+          size="clamp(12px, 4vw, 20px)"
           color="var(--color-black)"
           weight="regular"
         />
       </div>
 
       {/* Text Content - FULL on iPad, no truncation */}
-      <div className="flex flex-1 flex-col gap-1 min-w-0 overflow-hidden">
-        <h3 className="text-white font-semibold text-[clamp(0.9rem,2vw,1.1rem)] leading-5 whitespace-normal break-words md:whitespace-nowrap md:truncate">
+      <div className="flex flex-1 flex-col gap-3.5 min-w-0 overflow-hidden">
+        <h3 className="text-white font-semibold text-[clamp(0.9rem,2vw,1.1rem)] leading-5 whitespace-normal break-words md:whitespace-nowrap md:truncate md:text-[18px]">
           {songName}
         </h3>
-        <p className="text-[var(--color-grey)] text-[clamp(0.75rem,1.2vw,0.95rem)] leading-[1.2] whitespace-normal break-words md:whitespace-nowrap md:truncate">
+        <p className="text-[var(--color-grey)] text-[clamp(0.75rem,1.2vw,0.95rem)] leading-[1.2] whitespace-normal break-words md:whitespace-nowrap md:truncate md:text-[12px]">
           {subtitle}
         </p>
       </div>
@@ -68,7 +68,7 @@ export function SongCard({
             iconPosition="left"
             onClick={onPlay}
             isPlaying={isPlaying}
-            className="whitespace-nowrap"
+            className="whitespace-nowrap py-5 px-3.4 sm:py-9 sm:relative sm:top-[-9px] md:py-1 md:px-2.5 md:relative md:top-[-4px]"
           >
             Play
           </Button>

@@ -61,26 +61,24 @@ export const UpcomingEvent = ({
       )}
     >
       {/* Top Section */}
-      <div className='flex justify-between items-start w-full'>
-        <h3 className='text-white font-semibold text-[14px] md:text-[18px] leading-tight'>
+      <div className='flex items-center gap-x-1 w-full'>
+        <h3 className='text-white font-semibold text-[14px] md:text-[18px] leading-tight flex-grow'>
           {event.title}
         </h3>
 
-        <div className='flex flex-col gap-1 items-end'>
-          <Badge
-            variant={variantMap[event.status]}
-            className='text-[10px] md:text-xs px-2 py-0.5'
-          >
-            {event.status
-              .replace("-", " ")
-              .replace(/\b\w/g, (l) => l.toUpperCase())}
+        <Badge
+          variant={variantMap[event.status]}
+          className='text-[10px] md:text-xs px-2 py-0.5'
+        >
+          {event.status
+            .replace("-", " ")
+            .replace(/\b\w/g, (l) => l.toUpperCase())}
+        </Badge>
+        {showItemsLeft && itemsLeft !== undefined && itemsLeft > 0 && (
+          <Badge variant='left' className='ml-2'>
+            {itemsLeft} Left
           </Badge>
-          {showItemsLeft && itemsLeft !== undefined && itemsLeft > 0 && (
-            <Badge variant='left'>
-              {itemsLeft} Left
-            </Badge>
-          )}
-        </div>
+        )}
       </div>
 
       {/* Event Details */}
