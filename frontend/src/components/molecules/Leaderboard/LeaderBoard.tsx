@@ -38,7 +38,7 @@ export function LeaderBoard({
       }}
     >
       {/* LEFT SIDE: Rank + Avatar + Username */}
-      <div className='flex items-center gap-4'>
+      <div className='flex items-center gap-4 min-w-0 flex-1'>
         <span className='shrink-0 text-[12px] md:text-[14px] lg:text-[18px] font-semibold leading-7 text-(--color-muted)'>
           # {rank}
         </span>
@@ -47,7 +47,7 @@ export function LeaderBoard({
           src={avatarSrc}
           className='shrink-0 w-9 h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-[26px]'
         />
-        <span className='text-[12px] md:text-[14px] lg:text-[18px] font-semibold leading-7 text-white truncate'>
+        <span className='text-[12px] md:text-[13px] lg:text-[16px] font-semibold leading-7 text-white truncate min-w-30'>
           {username}
         </span>
       </div>

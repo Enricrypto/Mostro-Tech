@@ -96,7 +96,7 @@ export default function DashboardPage() {
       audio.currentTime = 0
 
       audio.src = currentSong.audioUrl
-      audio.play().catch(() => { })
+      audio.play().catch(() => {})
     } else {
       audio.pause()
       audio.src = ""
@@ -127,7 +127,7 @@ export default function DashboardPage() {
   // ===== Sync play/pause =====
   useEffect(() => {
     if (!audioRef.current) return
-    if (isPlaying) audioRef.current.play().catch(() => { })
+    if (isPlaying) audioRef.current.play().catch(() => {})
     else audioRef.current.pause()
   }, [isPlaying])
 
@@ -176,7 +176,7 @@ export default function DashboardPage() {
               <div
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${
+                className={`h-3 w-3 cursor-pointer rounded-full transition-all duration-300 md:h-4 md:w-4 ${
                   currentIndex === idx ? "bg-white" : "bg-black/50"
                 }`}
               />
@@ -214,12 +214,7 @@ export default function DashboardPage() {
           </div>
 
           <div
-            className='
-   mt-10 grid grid-cols-1 place-items-center gap-8
-    sm:grid-cols-2
-    lg:grid-cols-2
-    xl:grid-cols-3
-'
+            className='mt-10 grid grid-cols-1 place-items-center gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'
           >
             {mockArtistData.map((artist) => (
               <ArtistCard
@@ -296,12 +291,12 @@ export default function DashboardPage() {
 
           <div
             className='
-      grid grid-cols-1 gap-6 mt-10
-      md:grid-cols-2 md:grid-rows-2 md:place-items-center
-      lg:grid-cols-3 lg:grid-rows-1 lg:place-items-start
-    '
+   mt-10 grid grid-cols-1 place-items-center gap-8
+    sm:grid-cols-2
+    lg:grid-cols-2
+    xl:grid-cols-3
+'
           >
-            {/* Mobile: first 3 cards */}
             {mockNewLaunchData.slice(0, 3).map((launch) => (
               <NewLaunchCard key={launch.id} {...launch} />
             ))}
@@ -313,12 +308,7 @@ export default function DashboardPage() {
           <SectionHeader title='Trending Tokens' />
 
           <div
-            className='
-      grid grid-cols-1 gap-6 mt-10
-      md:grid-cols-2
-      lg:grid-cols-3
-      place-items-center
-    '
+            className='mt-10 grid grid-cols-1 place-items-center gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'
           >
             {trendingTokens.map((token) => (
               <TrendingTokenCard
@@ -345,8 +335,8 @@ export default function DashboardPage() {
               avatarUrl={currentSong.avatarSrc ?? currentBanner.avatarSrc}
               isPlaying={isPlaying}
               onPlayPause={() => setIsPlaying((prev) => !prev)}
-              onNext={() => { }}
-              onPrev={() => { }}
+              onNext={() => {}}
+              onPrev={() => {}}
               onClose={handleClosePlayer}
               onSeek={handleSeek}
             />
