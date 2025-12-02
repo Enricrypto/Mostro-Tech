@@ -12,20 +12,12 @@ const badgeVariants = cva(
         closed:
           "inline-flex items-center justify-center px-2 py-[2px] gap-1.5 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[9px] cursor-default truncate whitespace-nowrap",
         increase:
-<<<<<<<<< Temporary merge branch 1
-          "inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[13px] cursor-default",
+          "inline-flex items-center justify-center px-2 py-[2px] gap-1.5 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[9px] cursor-default whitespace-nowrap overflow-hidden truncate",
         decrease:
-          "inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[13px] cursor-default",
+          "inline-flex items-center justify-center px-2 py-[2px] gap-1 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[9px] cursor-default whitespace-nowrap overflow-hidden truncate",
         neutral:
-          "inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white whitespace-nowrap overflow-hidden truncate text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] max-w-[220px] md:max-w-[320px] lg:max-w-[420px] cursor-default",
-=========
-          "inline-flex items-center justify-center px-2 py-[2px] gap-1 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[13px] cursor-default whitespace-nowrap overflow-hidden truncate max-w-[100px]",
-        decrease:
-          "inline-flex items-center justify-center px-2 py-[2px] gap-1 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[13px] cursor-default whitespace-nowrap overflow-hidden truncate max-w-[100px]",
-        neutral:
-          "inline-flex items-center justify-center w-fit px-2 py-[2px] gap-2 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] cursor-default whitespace-nowrap overflow-hidden truncate max-w-[120px] md:max-w-[160px] lg:max-w-[240px]",
->>>>>>>>> Temporary merge branch 2
-        icon: "inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[13px] cursor-default",
+          "inline-flex items-center justify-center w-fit px-2.5 py-[2px] gap-1.5 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white text-[9px] cursor-default whitespace-nowrap overflow-hidden text-ellipsis max-w-full",
+        icon: "inline-flex items-center justify-center px-2 py-[2px] gap-1.5 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[9px] cursor-default",
         iconClosed:
           "inline-flex items-center justify-center px-2 py-[2px] gap-1.5 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[9px] cursor-default",
         genre:
