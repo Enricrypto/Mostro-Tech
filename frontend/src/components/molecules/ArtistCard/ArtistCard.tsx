@@ -80,21 +80,47 @@ export function ArtistCard({
             {artistName}
           </p>
 
-          <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
-            <p
-              className='text-white leading-5'
-              style={{ fontSize: "clamp(0.9rem, 1.5vw, 1rem)" }}
-            >
-              ${tokenName}
-            </p>
-            <Badge
-              variant={badgeVariant}
-              icon={<Icon weight='bold' size={14} className='text-current' />}
-              className='text-[clamp(0.7rem,1vw,0.875rem)] px-[clamp(0.25rem,0.5vw,0.5rem)]'
-            >
-              {badgeText}
-            </Badge>
-          </div>
+          {showGraduatedBadge ? (
+            // If showGraduatedBadge is true, put Graduated badge first, then badgeVariant badge
+            <>
+              <p className='leading-5 text-white text-[clamp(0.9rem,1.5vw,1rem)]'>
+                ${tokenName}
+              </p>
+<<<<<<<<< Temporary merge branch 1
+              <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
+=========
+              <div className='flex items-center gap-1.5 sm:gap-1.5 min-w-0'>
+>>>>>>>>> Temporary merge branch 2
+                <Badge // Graduated Badge
+                  variant="neutral"
+                  className='w-fit text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
+                >
+                  Graduated
+                </Badge>
+                <Badge // badgeVariant Badge
+                  variant={badgeVariant}
+                  icon={<Icon weight='bold' size={14} className='text-current' />}
+                  className='text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
+                >
+                  {badgeText}
+                </Badge>
+              </div>
+            </>
+          ) : (
+            // If showGraduatedBadge is false, keep original layout for badgeVariant badge
+            <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
+              <p className='leading-5 text-white text-[clamp(0.9rem,1.5vw,1rem)]'>
+                ${tokenName}
+              </p>
+              <Badge // badgeVariant Badge
+                variant={badgeVariant}
+                icon={<Icon weight='bold' size={14} className='text-current' />}
+                className='text-[clamp(0.7rem,1vw,0.725rem)] px-[clamp(0.25rem,0.5vw,0.3rem)]'
+              >
+                {badgeText}
+              </Badge>
+            </div>
+          )}
         </div>
       </div>
 

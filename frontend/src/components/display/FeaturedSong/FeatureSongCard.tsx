@@ -94,9 +94,15 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
             )}
           </Button>
 
-          {/* Badges Container - constrained to prevent overflow */}
-          <div className='flex flex-col gap-2 min-w-0 flex-1'>
-            <Badge variant="neutral" className='md:text-[8px]'>
+          {/* Badges Container - using a grid to make badges match width */}
+<<<<<<<<< Temporary merge branch 1
+          <div className='grid grid-cols-1 items-stretch gap-1 w-full sm:w-fit'>
+=========
+          <div className='grid grid-cols-1 items-stretch gap-3 w-full sm:w-fit'>
+>>>>>>>>> Temporary merge branch 2
+
+            <Badge variant="neutral">
+
               {musicDrop.badge}
             </Badge>
             {showItemsLeft && (
