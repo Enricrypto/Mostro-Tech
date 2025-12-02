@@ -57,12 +57,12 @@ export function ArtistCard({
       className={cn(
         `
         w-full max-w-[24rem] sm:max-w-md md:max-w-lg
-        rounded-xl border-2 border-[var(--color-dark-blue)]
-       bg-[var(--color-dark-bg)] shadow-[0px_4px_6px_0px_#00000017]
+        rounded-xl border-2 border-(--color-dark-blue)
+       bg-(--color-dark-bg) shadow-[0px_4px_6px_0px_#00000017]
         p-4 sm:p-5 md:p-6
         flex flex-col gap-4
         transition-all duration-300 ease-out
-        hover:scale-[1.02] hover:border-[var(--color-highlight)]
+        hover:scale-[1.02] hover:border-(--color-highlight)
         `
       )}
     >
@@ -71,7 +71,10 @@ export function ArtistCard({
         {/* Left column: Avatar + Genre */}
         <div className='flex flex-col items-start gap-3 sm:gap-4'>
           <Avatar variant='square-md' src={avatarSrc} alt={artistName} />
-          <Badge variant='genre' className='w-fit text-[clamp(0.7rem,1vw,0.725rem)] px-[clamp(0.25rem,0.5vw,0.3rem)]'>
+          <Badge
+            variant='genre'
+            className='w-fit text-[clamp(0.7rem,1vw,0.725rem)] px-[clamp(0.25rem,0.5vw,0.3rem)]'
+          >
             {genre}
           </Badge>
         </div>
@@ -90,14 +93,16 @@ export function ArtistCard({
               </p>
               <div className='flex items-center gap-1.5 sm:gap-1.5 min-w-0'>
                 <Badge // Graduated Badge
-                  variant="neutral"
+                  variant='neutral'
                   className='w-fit text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
                 >
                   Graduated
                 </Badge>
                 <Badge // badgeVariant Badge
                   variant={badgeVariant}
-                  icon={<Icon weight='bold' size={14} className='text-current' />}
+                  icon={
+                    <Icon weight='bold' size={14} className='text-current' />
+                  }
                   className='text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
                 >
                   {badgeText}
@@ -129,7 +134,7 @@ export function ArtistCard({
         side='top'
         align='center'
       >
-        <p className='text-[var(--color-grey)] font-medium w-full line-clamp-2 mt-2 text-xs leading-5'>
+        <p className='text-(--color-grey) font-medium w-full line-clamp-2 mt-2 text-xs leading-5'>
           {description || "No description provided."}
         </p>
       </Tooltip>
@@ -142,10 +147,8 @@ export function ArtistCard({
           { label: "Total Supply", value: totalSupply }
         ].map(({ label, value }) => (
           <div key={label} className='flex flex-col items-start gap-1'>
-            <p className='font-poppins text-lg leading-5 text-white'>
-              {value}
-            </p>
-            <p className='font-inter text-xs leading-4 text-[var(--color-grey)] whitespace-nowrap'>
+            <p className='font-poppins text-lg leading-5 text-white'>{value}</p>
+            <p className='font-inter text-xs leading-4 text-(--color-grey) whitespace-nowrap'>
               {label}
             </p>
           </div>

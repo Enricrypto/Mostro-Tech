@@ -38,11 +38,11 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
       className={cn(
         `
         w-full max-w-[24rem] sm:max-w-md md:max-w-lg
-        rounded-xl border-2 border-[var(--color-dark-blue)]
-       bg-[var(--color-dark-bg)] shadow-[0px_4px_6px_0px_#00000017]
+        rounded-xl border-2 border-(--color-dark-blue)
+       bg-(--color-dark-bg) shadow-[0px_4px_6px_0px_#00000017]
         p-4 sm:p-5 md:p-6
         flex flex-col gap-4
-        transition-colors duration-200 hover:border-[var(--color-highlight)]
+        transition-colors duration-200 hover:border-(--color-highlight)
         `
       )}
     >
@@ -69,7 +69,10 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
           </p>
 
           {/* Genre Badge (same as ArtistCard) */}
-          <Badge variant='genre' className='w-fit text-[clamp(0.7rem,1vw,0.725rem)] px-[clamp(0.25rem,0.5vw,0.3rem)] whitespace-nowrap'>
+          <Badge
+            variant='genre'
+            className='w-fit text-[clamp(0.7rem,1vw,0.725rem)] px-[clamp(0.25rem,0.5vw,0.3rem)] whitespace-nowrap'
+          >
             {badgeText}
           </Badge>
         </div>
@@ -101,7 +104,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 
       {/* Section 4: Bottom Button */}
       <Button
-        variant='song-unlock'
+        variant='follow-share'
         icon={<ArrowUpRightIcon />}
         iconPosition='right'
         onClick={() => handleButtonClick(slug)}
