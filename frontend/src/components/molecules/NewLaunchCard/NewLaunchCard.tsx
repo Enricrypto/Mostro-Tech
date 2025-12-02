@@ -5,6 +5,7 @@ import { Avatar } from "@/components/atoms/Avatar"
 import { Badge } from "@/components/utils/Badge"
 import { Button } from "@/components/atoms/Button"
 import { CalendarBlankIcon, ArrowUpRightIcon } from "@phosphor-icons/react"
+import { cn } from "@/lib/utils"
 
 interface NewLaunchCardProps {
   slug: string
@@ -34,10 +35,16 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 
   return (
     <div
-      className='group relative flex flex-col w-full
-             rounded-[10px] border-2 p-4 md:p-5 lg:p-4 gap-3 md:gap-4
-             border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
-             transition-colors duration-200 hover:border-[#71D6FB]'
+      className={cn(
+        `
+        w-full max-w-[24rem] sm:max-w-md md:max-w-lg
+        rounded-xl border-2 border-[var(--color-dark-blue)]
+       bg-[var(--color-dark-bg)] shadow-[0px_4px_6px_0px_#00000017]
+        p-4 sm:p-5 md:p-6
+        flex flex-col gap-4
+        transition-colors duration-200 hover:border-[var(--color-highlight)]
+        `
+      )}
     >
       {/* Section 1: Avatar + Name + Genre Badge */}
       <div className='flex flex-row items-start gap-4'>
@@ -62,7 +69,7 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
           </p>
 
           {/* Genre Badge (same as ArtistCard) */}
-          <Badge variant='genre' className='truncate max-w-full lg:text-[0.65rem]'>
+          <Badge variant='genre' className='w-fit text-[clamp(0.7rem,1vw,0.725rem)] px-[clamp(0.25rem,0.5vw,0.3rem)] whitespace-nowrap'>
             {badgeText}
           </Badge>
         </div>

@@ -95,7 +95,7 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
           </Button>
 
           {/* Badges Container - using a grid to make badges match width */}
-          <div className='grid grid-cols-1 items-stretch gap-1 w-full sm:w-fit'>
+          <div className='grid grid-cols-1 items-stretch gap-3 w-full sm:w-fit'>
 
             <Badge variant="neutral">
 
