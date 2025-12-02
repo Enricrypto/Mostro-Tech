@@ -176,8 +176,9 @@ export default function DashboardPage() {
               <div
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`h-3 w-3 cursor-pointer rounded-full transition-all duration-300 md:h-4 md:w-4 ${currentIndex === idx ? "bg-white" : "bg-black/50"
-                  }`}
+                className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${
+                  currentIndex === idx ? "bg-white" : "bg-black/50"
+                }`}
               />
             ))}
           </div>
@@ -293,7 +294,14 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className='mt-10 grid grid-cols-1 place-items-center gap-4 md:grid-cols-2 lg:grid-cols-3'>
+          <div
+            className='
+      grid grid-cols-1 gap-6 mt-10
+      md:grid-cols-2 md:grid-rows-2 md:place-items-center
+      lg:grid-cols-3 lg:grid-rows-1 lg:place-items-start
+    '
+          >
+            {/* Mobile: first 3 cards */}
             {mockNewLaunchData.slice(0, 3).map((launch) => (
               <NewLaunchCard key={launch.id} {...launch} />
             ))}
@@ -306,9 +314,10 @@ export default function DashboardPage() {
 
           <div
             className='
-      mt-10 grid grid-cols-1 place-items-center
-      gap-6 md:grid-cols-2
+      grid grid-cols-1 gap-6 mt-10
+      md:grid-cols-2
       lg:grid-cols-3
+      place-items-center
     '
           >
             {trendingTokens.map((token) => (
