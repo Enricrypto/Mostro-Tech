@@ -35,7 +35,12 @@ export default function NewLaunchesPage() {
           </div>
 
           {/* Grid */}
-          <section className='mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+          <section         className='
+   mt-10 grid grid-cols-1 justify-center items-stretch gap-y-2 gap-x-2
+    sm:grid-cols-2 sm:gap-x-3 sm:gap-y-3
+    lg:grid-cols-2 lg:gap-x-4 lg:gap-y-4
+    xl:grid-cols-3
+'>
             {mockNewLaunchData.map((launch) => (
               <NewLaunchCard key={launch.id || launch.name} {...launch} />
             ))}

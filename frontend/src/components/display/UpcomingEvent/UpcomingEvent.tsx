@@ -4,6 +4,8 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/utils/Badge"
 import { Button } from "@/components/atoms/Button"
+import { Tooltip } from "@/components/atoms/Tooltip"
+
 import {
   CalendarBlankIcon,
   MapPinIcon,
@@ -61,13 +63,17 @@ export const UpcomingEvent = ({
       )}
     >
       {/* Top Section */}
-      <div className='flex items-center gap-x-1 w-full'>
-        <h3 className='text-white font-semibold text-[14px] md:text-[18px] leading-tight flex-grow'>
+      <div className='flex items-center gap-x-3 w-full'>
+              <Tooltip variant='blue' content={event.title} side='top'>
+        
+        <h3 className='text-white font-semibold text-[14px] md:text-[18px] leading-tight flex-growmd:whitespace-nowrap md:truncate gap-8'>
           {event.title}
         </h3>
+            </Tooltip>
 
         <Badge
           variant={variantMap[event.status]}
+          className='whitespace-nowrap gap-x-3 '
         >
           {event.status
             .replace("-", " ")

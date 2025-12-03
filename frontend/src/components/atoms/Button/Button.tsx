@@ -102,7 +102,7 @@ export const buttonVisualVariants = {
     h-9 px-3 text-sm sm:h-10 sm:px-4 sm:text-base md:h-12 md:px-6 md:text-base
     border border-[var(--color-skyblue)] bg-transparent text-white
     hover:bg-[var(--color-skyblue-opacity)] hover:text-black
-    min-w-[80px] sm:min-w-[90px] md:min-w-[100px] rounded-[4px]
+    min-w-[80px] sm:min-w-[90px] md:min-w-[70px] rounded-[4px]
   `,
   "buy-token": `
     py-2 px-4 sm:py-3 sm:px-5 md:py-4 md:px-6
