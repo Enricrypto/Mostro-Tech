@@ -95,7 +95,7 @@ export const CommunitySection = ({ artist }: CommunitySectionProps) => {
               <Avatar
                 key={index}
                 variant={fan.initials ? "square-sm" : "square-sm-initials"}
-                className='md:w-18 md:h-18'
+                className='md:w-14 md:h-14 sm:w-15 sm:h-15'
                 src={fan.src}
                 initials={fan.initials}
               />

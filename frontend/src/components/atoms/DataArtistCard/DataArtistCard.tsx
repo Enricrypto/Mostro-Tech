@@ -44,7 +44,7 @@ export function DataArtistCard({
           </span>
 
           {bottomRightText && (
-            <span className='text-(--color-highlight) font-medium text-[clamp(0.75rem,1.5vw,0.875rem)] leading-5'>
+            <span className='text-(--color-highlight) font-medium text-[clamp(0.75rem,1.5vw,0.875rem)] whitespace-nowrap leading-5'>
               {bottomRightText}
             </span>
           )}

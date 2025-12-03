@@ -80,12 +80,12 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
         </div>
 
         {/* Play + Badge */}
-        <div className='flex items-center gap-3'>
+        <div className='flex items-center gap-3 min-w-0'>
           {/* Play Button */}
           <Button
             variant='song-play-icon'
             onClick={onPlay}
-            className='p-1 md:p-2 w-7 h-7 md:w-10 md:h-10'
+            className='p-1 md:p-2 w-7 h-7 md:w-10 md:h-10 shrink-0'
           >
             {localPlaying ? (
               <PauseIcon weight='bold' className='text-white' />
@@ -94,11 +94,9 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
             )}
           </Button>
 
-          {/* Badges Container - using a grid to make badges match width */}
-          <div className='grid grid-cols-1 items-stretch gap-3 w-full sm:w-fit'>
-
-            <Badge variant="neutral">
-
+          {/* Badges Container - constrained to prevent overflow */}
+          <div className='flex flex-col gap-2 min-w-0 flex-1'>
+            <Badge variant="neutral" className='md:text-[8px]'>
               {musicDrop.badge}
             </Badge>
             {showItemsLeft && (
@@ -106,10 +104,10 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
                 {musicDrop.itemsLeft} Left
               </Badge>
             )}
-
           </div>
         </div>
       </div>
     </div>
   )
 }
+

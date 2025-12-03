@@ -64,12 +64,12 @@ export function PerksCard({
       </div>
 
       {/* Bottom Section - Badge */}
-      <div className='flex items-center flex-wrap gap-2'>
-        <Badge variant='neutral'>
+      <div className='flex items-center flex-wrap gap-2 min-w-0'>
+        <Badge variant='neutral' className='max-w-full'>
           {tokenAmount} tokens
         </Badge>
         {showItemsLeft && (
-          <Badge variant='left'>
+          <Badge variant='left' className='max-w-full'>
             {itemsLeft} Left
           </Badge>
         )}

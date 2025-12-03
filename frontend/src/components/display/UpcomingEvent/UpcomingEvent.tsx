@@ -68,14 +68,13 @@ export const UpcomingEvent = ({
 
         <Badge
           variant={variantMap[event.status]}
-          className='text-[10px] md:text-xs px-2 py-0.5'
         >
           {event.status
             .replace("-", " ")
             .replace(/\b\w/g, (l) => l.toUpperCase())}
         </Badge>
         {showItemsLeft && itemsLeft !== undefined && itemsLeft > 0 && (
-          <Badge variant='left' className='ml-2'>
+          <Badge variant='left'>
             {itemsLeft} Left
           </Badge>
         )}
@@ -83,7 +82,7 @@ export const UpcomingEvent = ({
 
       {/* Event Details */}
       <div className='flex gap-4 items-center text-white text-[10px] md:text-[12px] font-medium'>
-        <div className='flex items-center gap-1 md:gap-2'>
+        <div className='flex items-center gap-2 md:gap-2'>
           <CalendarBlankIcon className='w-4 h-4 md:w-5 md:h-5' weight='bold' />
           {event.date} at {event.time}
         </div>
@@ -101,14 +100,14 @@ export const UpcomingEvent = ({
           icon={<TicketIcon />}
           iconPosition='left'
           onClick={onClaim}
-          className='text-[12px] md:text-[14px] lg:text-[16px] px-3 md:px-4'
+          className='text-[12px] md:text-[12px] lg:text-[14px] px-3 md:px-4'
         >
           Claim Access
         </Button>
 
         <Button
           variant='follow-share'
-          className='text-[10px] md:text-[14px] lg:text-[16px] px-3 md:px-4'
+          className='text-[10px] md:text-[12px] lg:text-[14px] px-3 md:px-4'
         >
           Add to Calendar
         </Button>
