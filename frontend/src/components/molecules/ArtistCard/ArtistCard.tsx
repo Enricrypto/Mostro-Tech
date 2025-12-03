@@ -72,7 +72,11 @@ export function ArtistCard({
         w-full
         rounded-[0.625rem] border-2 border-[var(--color-dark-blue)]
        bg-[var(--color-dark-bg)] shadow-[0px_4px_6px_0px_#00000017]
-        p-4 sm:p-5 md:p-6
+         p-3                      /* base mobile */
+             sm:px-3 sm:py-4         /* small screens */
+             md:px-5 md:py-4         /* medium screens */
+             lg:px-2 lg:py-4         /* large: smaller width only */
+             xl:px-2 xl:py-3         /* extra large */
         flex flex-col gap-4
         transition-all duration-300 ease-out
         hover:scale-[1.02] hover:border-[var(--color-highlight)]
