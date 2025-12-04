@@ -88,18 +88,21 @@ export const buttonVisualVariants = {
     hover:bg-gradient-to-r hover:from-[var(--color-skyblue)] hover:to-[var(--color-purple)]
   `,
   "song-play": `
-    py-2 px-4 sm:py-3 sm:px-5 md:py-4 md:px-6
-    bg-[var(--color-skyblue)] text-black
+    h-8 px-2 sm:h-9 sm:px-3 text-xs sm:text-sm md:h-10 md:px-4 md:text-base rounded-[4px]
+    bg-[var(--color-skyblue)] text-black font-medium 
     hover:bg-gradient-to-r hover:from-[var(--color-skyblue)] hover:to-[var(--color-purple)] hover:text-white
+    min-w-[70px] sm:min-w-[80px] md:min-w-[90px]
   `,
   "song-play-icon": `
-  w-10 h-10 md:w-12 md:h-12 
-  rounded-full border border-[var(--color-skyblue)] 
-  hover:bg-blue-500/10
-`,
+    w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 
+    rounded-full border border-[var(--color-skyblue)] 
+    hover:bg-blue-500/10
+  `,
   "song-unlock": `
+    h-9 px-3 text-sm sm:h-10 sm:px-4 sm:text-base md:h-12 md:px-6 md:text-base
     border border-[var(--color-skyblue)] bg-transparent text-white
     hover:bg-[var(--color-skyblue-opacity)] hover:text-black
+    min-w-[80px] sm:min-w-[90px] md:min-w-[70px] rounded-[4px]
   `,
   "buy-token": `
     py-2 px-4 sm:py-3 sm:px-5 md:py-4 md:px-6
@@ -162,6 +165,7 @@ export type ButtonProps = BaseButtonProps & {
   variant?: keyof typeof buttonVisualVariants
   icon?: React.ReactNode
   iconPosition?: "left" | "right"
+  isPlaying?: boolean
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -173,23 +177,26 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = "right",
       children,
       className,
+      isPlaying,
       ...props
     },
     ref
   ) => {
-    const content = (
+    const content = children ? (
       <>
         {icon && iconPosition === "left" && (
           <span className='icon shrink-0'>{icon}</span>
         )}
         <span className='button-label truncate overflow-hidden whitespace-nowrap min-w-0'>
-          {children} {/* text will truncate */}
+          {children}
         </span>
         {icon && iconPosition === "right" && (
           <span className='icon shrink-0'>{icon}</span>
         )}
       </>
-    )
+    ) : icon ? (
+      <span className='icon shrink-0'>{icon}</span>
+    ) : null
 
     return (
       <BaseButton

@@ -4,32 +4,33 @@ import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center font-body text-sm leading-6 transition-all duration-200 ease-out",
+  "h-[20px] text-[12px] inline-flex items-center justify-center font-body leading-5 transition-all duration-200 ease-out",
   {
     variants: {
       variant: {
-        // SMALL PILLS - auto-size
+        // SMALL PILLS - consistent smaller sizing across all screens for better fit
         closed:
-          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[13px] cursor-default",
+          "inline-flex items-center justify-center px-2 py-[2px] gap-1.5 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default truncate whitespace-nowrap",
         increase:
-          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[13px] cursor-default",
+          "inline-flex items-center justify-center px-2 py-[2px] gap-1.5 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] cursor-default whitespace-nowrap overflow-hidden truncate",
         decrease:
-          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[13px] cursor-default",
+          "inline-flex items-center justify-center px-2 py-[2px] gap-1 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default whitespace-nowrap overflow-hidden truncate",
         neutral:
-          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white text-[13px] cursor-default",
-        icon: "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] text-[13px] cursor-default",
+          "inline-flex items-center justify-center w-fit px-2.5 py-[2px] gap-1.5 rounded-[10px] border bg-[rgba(210,210,213,0.3)] border-[var(--color-muted)] text-white cursor-default whitespace-nowrap overflow-hidden text-ellipsis max-w-full",
+        icon: "inline-flex items-center justify-center px-2 py-[2px] gap-1.5 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] cursor-default",
         iconClosed:
-          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] text-[13px] cursor-default",
+          "inline-flex items-center justify-center px-2 py-[2px] gap-1.5 rounded-[10px] border bg-[var(--color-red-opacity)] border-[var(--color-red)] text-[var(--color-red)] cursor-default",
         genre:
-          "min-w-[80px] inline-flex items-center justify-center px-2 py-[2px] gap-2 rounded-[10px] border bg-[var(--color-skyblue-opacity)] border-[var(--color-skyblue)] text-[var(--color-skyblue)] text-[13px] cursor-pointer hover:bg-[var(--color-skyblue)] hover:text-[var(--color-dark-bg)] active:scale-95",
+          "inline-flex items-center justify-center px-3 py-[3px] gap-2 rounded-[10px] border bg-[var(--color-skyblue-opacity)] border-[var(--color-skyblue)] text-[var(--color-skyblue)] min-w-[4.5rem] cursor-pointer hover:bg-[var(--color-skyblue)] hover:text-[var(--color-dark-bg)] active:scale-95",
+        left: "text-[11px] inline-flex items-center justify-center w-fit px-2 py-[2px] gap-1.5 rounded-[10px] border bg-[var(--color-highlight-opacity)] border-[var(--color-highlight)] text-[var(--color-highlight)] whitespace-nowrap overflow-hidden truncate cursor-default",
 
         // LARGE PILLS - keep height but remove fixed min-width for flexibility
         profileLabel:
-          "min-w-[80px] inline-flex items-center justify-center px-4 py-[2px] gap-2 rounded-[28px] bg-gradient-to-r from-[var(--color-skyblue)] to-[var(--color-highlight)] text-[var(--color-black)]",
+          "inline-flex items-center justify-center px-4 py-[2px] gap-2 rounded-[28px] bg-gradient-to-r from-[var(--color-skyblue)] to-[var(--color-highlight)] text-[var(--color-black)]",
         selected:
-          "min-w-[80px] inline-flex items-center justify-center px-4 py-2 rounded-[26px] bg-[var(--color-purple)] text-white",
+          "h-[32px] inline-flex items-center justify-center px-4 py-2 rounded-[26px] bg-[var(--color-purple)] text-white",
         unselected:
-          "min-w-[80px] inline-flex items-center justify-center px-4 py-2 rounded-[26px] bg-[var(--color-dark-blue)] text-white"
+          "h-[32px] inline-flex items-center justify-center px-4 py-2 rounded-[26px] bg-[var(--color-dark-blue)] text-white"
       }
     },
     defaultVariants: {

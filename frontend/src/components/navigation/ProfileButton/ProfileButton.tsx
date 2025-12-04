@@ -7,7 +7,7 @@ import { Avatar } from "@/components/atoms/Avatar"
 import * as jdenticon from "jdenticon"
 import { cn } from "@/lib/utils"
 
-export function ProfileButton() {
+export function ProfileButton({ disabled }: { disabled?: boolean }) { // Accept disabled prop
   const { user, ready } = usePrivy()
   const { login } = useLogin()
   const router = useRouter()
@@ -60,7 +60,7 @@ export function ProfileButton() {
 
   return (
     <Button
-      disabled={disableLogin}
+      disabled={disableLogin || disabled} // Apply disabled prop here
       variant='connect-wallet'
       className={cn(buttonSizeClasses, "flex justify-center items-center")}
       onClick={() => {
@@ -72,7 +72,7 @@ export function ProfileButton() {
         <div className='flex shrink-0 items-center justify-center'>
           {getUserIcon()}
         </div>
-        <span className='truncate min-w-0 overflow-hidden whitespace-nowrap text-sm md:text-base'>
+        <span className='truncate min-w-0 overflow-hidden whitespace-nowrap text-[clamp(0.75rem,2.5vw,0.875rem)] md:text-[clamp(0.875rem,2.5vw,1rem)]'>
           {isLoggedIn
             ? displayName && displayName.length > 20
               ? `${displayName.slice(0, 6)}...${displayName.slice(-4)}`

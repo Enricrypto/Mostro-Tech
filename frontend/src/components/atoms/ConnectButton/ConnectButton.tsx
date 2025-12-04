@@ -5,27 +5,6 @@ import { Button } from "@/components/atoms/Button"
 import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 
-const userBadgeCVA = cva(
-  "rounded font-body font-medium text-white flex items-center justify-center",
-  {
-    variants: {
-      size: {
-        sm: "text-xs px-2 py-1",
-        md: "text-sm px-3 py-1.5",
-        lg: "text-base px-4 py-2"
-      },
-      theme: {
-        accentDark: "bg-[var(--color-accent-dark)]",
-        primary: "bg-[var(--color-primary)]"
-      }
-    },
-    defaultVariants: {
-      size: "md",
-      theme: "accentDark"
-    }
-  }
-)
-
 export const ConnectButton = () => {
   const { login } = useLogin()
   const { user, logout } = usePrivy()
@@ -49,7 +28,13 @@ export const ConnectButton = () => {
     <div className='fixed z-50 flex flex-col sm:flex-row items-center gap-2 sm:gap-3'>
       {user && displayName ? (
         <>
-          <span className={cn(userBadgeCVA())}>
+          <span
+            className={cn(
+              "rounded font-body font-medium text-white flex items-center justify-center",
+              "text-xs px-2 py-1 sm:text-sm sm:px-3 sm:py-1.5",
+              "bg-[var(--color-accent-dark)]"
+            )}
+          >
             {displayName.length > 20
               ? `${displayName.slice(0, 6)}...${displayName.slice(-4)}`
               : displayName}

@@ -4,6 +4,8 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/utils/Badge"
 import { Button } from "@/components/atoms/Button"
+import { Tooltip } from "@/components/atoms/Tooltip"
+
 import {
   CalendarBlankIcon,
   MapPinIcon,
@@ -15,7 +17,7 @@ import type { Artist } from "@/data/artists"
 export type EventStatus = "on-sale" | "sold-out" | "token-holders-only"
 
 const upcomingEventCVA = cva(
-  "flex flex-col justify-between min-w-[344px] md:w-[358px] lg:w-[578px] p-4 md:p-6 gap-3.5 rounded-[10px] border-2 bg-[#121B2B] transition-shadow duration-200",
+  "flex flex-col justify-between w-full h-full p-4 md:p-6 gap-3.5 rounded-[10px] border-2 bg-[#121B2B] transition-shadow duration-200",
   {
     variants: {
       variant: {
@@ -34,13 +36,17 @@ interface UpcomingEventProps {
   event: NonNullable<Artist["musicEvents"]>[number]
   onClaim?: () => void
   className?: string
+  itemsLeft?: number // Added
+  showItemsLeft?: boolean // Added
 }
 
 export const UpcomingEvent = ({
   artist,
   event,
   onClaim,
-  className
+  className,
+  itemsLeft, // Added this line
+  showItemsLeft // Added this line
 }: UpcomingEventProps) => {
   const variantMap: Record<EventStatus, "increase" | "closed" | "neutral"> = {
     "on-sale": "increase",
@@ -57,24 +63,39 @@ export const UpcomingEvent = ({
       )}
     >
       {/* Top Section */}
-      <div className='flex justify-between items-start'>
-        <h3 className='text-white font-semibold text-[14px] md:text-[18px] leading-tight'>
-          {event.title}
-        </h3>
+      <div className='flex items-center justify-between w-full gap-x-3'>
+        {/* Title on the left */}
+        <Tooltip variant='blue' content={event.title} side='top'>
+          <h3 className='text-white font-semibold text-[14px] md:text-[18px] leading-tight flex-grow md:whitespace-nowrap md:truncate'>
+            {event.title}
+          </h3>
+        </Tooltip>
 
-        <Badge
-          variant={variantMap[event.status]}
-          className='text-[10px] md:text-xs px-2 py-0.5'
-        >
-          {event.status
-            .replace("-", " ")
-            .replace(/\b\w/g, (l) => l.toUpperCase())}
-        </Badge>
+        {/* Badges on the right */}
+        <div className='flex items-center gap-x-3'>
+          <Badge
+            variant={variantMap[event.status]}
+            className='max-w-full text-[9px] md:text-[10px] lg:text-[12px] whitespace-nowrap'
+          >
+            {event.status
+              .replace("-", " ")
+              .replace(/\b\w/g, (l) => l.toUpperCase())}
+          </Badge>
+
+          {showItemsLeft && itemsLeft !== undefined && itemsLeft > 0 && (
+            <Badge
+              variant='left'
+              className='max-w-full text-[9px] md:text-[10px] lg:text-[12px]'
+            >
+              {itemsLeft} Left
+            </Badge>
+          )}
+        </div>
       </div>
 
       {/* Event Details */}
       <div className='flex gap-4 items-center text-white text-[10px] md:text-[12px] font-medium'>
-        <div className='flex items-center gap-1 md:gap-2'>
+        <div className='flex items-center gap-2 md:gap-2'>
           <CalendarBlankIcon className='w-4 h-4 md:w-5 md:h-5' weight='bold' />
           {event.date} at {event.time}
         </div>
@@ -92,14 +113,14 @@ export const UpcomingEvent = ({
           icon={<TicketIcon />}
           iconPosition='left'
           onClick={onClaim}
-          className='text-[12px] md:text-[14px] lg:text-[16px] px-3 md:px-4'
+          className='text-[12px] md:text-[12px] lg:text-[14px] px-3 md:px-4'
         >
           Claim Access
         </Button>
 
         <Button
           variant='follow-share'
-          className='text-[10px] md:text-[14px] lg:text-[16px] px-3 md:px-4'
+          className='text-[10px] md:text-[12px] lg:text-[14px] px-3 md:px-4'
         >
           Add to Calendar
         </Button>

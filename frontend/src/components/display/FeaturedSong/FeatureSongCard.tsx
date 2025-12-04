@@ -15,11 +15,13 @@ export interface FeatureSongCardProps {
     audioUrl: string
     image: string
     badge: string
+    itemsLeft?: number // Added
   }
   currentSongName?: string
   isPlaying?: boolean
   onPlay: () => void
   className?: string
+  showItemsLeft?: boolean
 }
 
 export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
@@ -27,7 +29,8 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
   currentSongName,
   isPlaying = false,
   onPlay,
-  className
+  className,
+  showItemsLeft
 }) => {
   const [localPlaying, setLocalPlaying] = useState(false)
 
@@ -38,8 +41,8 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
   return (
     <div
       className={cn(
-        "artist-music-card flex flex-col sm:flex-row items-center md:items-start md:gap-5 p-4 rounded-[10px] border border-[#2D3953] shadow-[0_4px_6px_0_#00000017]",
-        "bg-[#121B2B] w-full sm:max-w-sm md:max-w-[350px] lg:max-w-[384px]",
+        "artist-music-card flex flex-col sm:flex-row items-start sm:items-center md:items-start md:gap-5 p-4 rounded-[10px] border border-[#2D3953] shadow-[0_4px_6px_0_#00000017]",
+        "bg-[#121B2B] w-full min-w-0",
         "transition-all duration-200",
         className
       )}
@@ -76,13 +79,13 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
           </div>
         </div>
 
-        {/* Play + Badge inline on mobile, stacked on tablet/desktop */}
-        <div className='flex gap-1 items-center sm:flex-col sm:items-start md:gap-4'>
+        {/* Play + Badge */}
+        <div className='flex items-center gap-3 min-w-0'>
           {/* Play Button */}
           <Button
             variant='song-play-icon'
             onClick={onPlay}
-            className='p-1 md:p-2 w-7 h-7 md:w-10 md:h-10'
+            className='p-1 md:p-2 w-7 h-7 md:w-10 md:h-10 shrink-0'
           >
             {localPlaying ? (
               <PauseIcon weight='bold' className='text-white' />
@@ -91,13 +94,23 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
             )}
           </Button>
 
-          {/* Badge */}
-          <Badge
-            variant='neutral'
-            className='text-[7px] sm:text-[9px] md:text-[12px] px-1 sm:px-2 md:px-3 py-px sm:py-1 md:py-1 whitespace-nowrap shrink-0'
-          >
-            {musicDrop.badge}
-          </Badge>
+          {/* Badges Container - constrained to prevent overflow */}
+          <div className='flex flex-col gap-2 min-w-0 flex-1'>
+            <Badge
+              variant='neutral'
+              className='text-[7px] md:text-[8px] lg:text-[10px]'
+            >
+              {musicDrop.badge}
+            </Badge>
+            {showItemsLeft && (
+              <Badge
+                variant='left'
+                className='text-[9px] md:text-[10px] lg:text-[12px]'
+              >
+                {musicDrop.itemsLeft} Left
+              </Badge>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
 
 const spinnerCVA = cva(
-  "rounded-full animate-spin border-t-transparent border-solid",
+  "rounded-full animate-spin border-solid border-t-transparent border-b-[currentColor] border-l-[currentColor] border-r-[currentColor]",
   {
     variants: {
       size: {
@@ -14,10 +14,10 @@ const spinnerCVA = cva(
         lg: "w-20 h-20 border-4 sm:w-24 sm:h-24 md:w-28 md:h-28"
       },
       color: {
-        purple: "border-[var(--color-purple)]",
-        blue: "border-[var(--color-skyblue)]",
-        red: "border-[var(--color-red)]",
-        green: "border-[var(--color-green)]"
+        purple: "text-purple-500",
+        blue: "text-sky-500",
+        red: "text-red-500",
+        green: "text-green-500"
       }
     },
     defaultVariants: {
@@ -43,29 +43,36 @@ const textCVA = cva("font-inter font-medium opacity-80", {
 export interface LoadingSpinnerProps extends VariantProps<typeof spinnerCVA> {
   text?: string
   className?: string
+  showText?: boolean // New prop
+  fullScreen?: boolean // New prop to control full screen overlay
 }
 
 export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   text = "Loading...",
   size = "md",
   color = "purple",
-  className
+  className,
+  showText = true, // Default to true
+  fullScreen = false // Default to false
 }) => {
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center w-full h-[400px] gap-4",
+        "flex flex-col items-center justify-center gap-4",
+        fullScreen
+          ? "fixed inset-0 bg-black/50 backdrop-blur-md z-50"
+          : "w-full h-64 sm:h-80 md:h-[400px]", // Full screen overlay with semi-transparent black background and blur
         className
       )}
     >
       {/* Spinner */}
       <div
         className={cn(spinnerCVA({ size, color }))}
-        style={{ boxShadow: "0 0 10px var(--color-purple-50)" }}
+        style={{ boxShadow: "0 0 10px var(--color-skyblue)" }}
       />
 
       {/* Loading Text */}
-      <span className={textCVA({ size })}>{text}</span>
+      {showText && <span className={textCVA({ size })}>{text}</span>}
     </div>
   )
 }

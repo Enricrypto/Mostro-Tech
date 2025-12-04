@@ -25,7 +25,11 @@ export const TrendingTokenCard: React.FC<TrendingTokenCardProps> = ({
   const Icon = numberValue >= 0 ? ArrowUpIcon : ArrowDownIcon
 
   return (
-    <div className='flex flex-col justify-between w-full max-w-sm sm:max-w-md md:max-w-[384px] p-5 sm:p-6 rounded-[10px] border bg-[#121B2B] border-[#2D3953] shadow-[0_4px_6px_0_#00000017]'>
+    <div
+      className='flex flex-col justify-between w-full
+             p-4   
+             rounded-[10px] border bg-[#121B2B] border-[#2D3953] shadow-[0_4px_6px_0_#00000017]'
+    >
       {/* Top Section */}
       <div className='flex gap-3 min-w-0'>
         <Avatar src={avatarSrc} variant='square-community' />

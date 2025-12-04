@@ -44,20 +44,20 @@ export function VotingHistory({
     >
       {/* Top row: title + vote badge */}
       <div className='flex justify-between items-center w-full min-w-0'>
-        <span className='flex-1 font-inter font-semibold text-white text-lg leading-6 truncate'>
+        <span className='flex-grow font-inter font-semibold text-white text-base md:text-lg leading-6 truncate min-w-0 overflow-hidden'>
           {title}
         </span>
-        <Badge variant={voteVariant} icon={voteIcon}>
+        <Badge variant={voteVariant} icon={voteIcon} className="flex-shrink-0 ml-2">
           {isYes ? "Yes" : "No"}
         </Badge>
       </div>
 
       {/* Middle row: artist + status badge */}
       <div className='flex justify-between items-center w-full min-w-0'>
-        <span className='flex-1 font-inter font-medium text-sm text-[#B3B3B3] truncate'>
+        <span className='flex-grow font-inter font-medium text-xs md:text-sm text-[#B3B3B3] truncate min-w-0 overflow-hidden'>
           {artist}
         </span>
-        <Badge variant='neutral'>{status}</Badge>
+        <Badge variant='neutral' className="flex-shrink-0 ml-2">{status}</Badge>
       </div>
 
       {/* Bottom row: date */}

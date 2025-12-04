@@ -36,8 +36,8 @@ export const CommunitySection = ({ artist }: CommunitySectionProps) => {
   // -------------------------------
   // FANBASE GRID LOGIC
   // -------------------------------
-  const avatarsPerRow = isMobile ? 6 : isTablet ? 3 : 6
-  const visibleRows = isMobile ? 2 : 3
+  const avatarsPerRow = isTablet ? 4 : 5
+  const visibleRows = 2
 
   const fansToDisplay = expanded
     ? fanbase
@@ -48,7 +48,7 @@ export const CommunitySection = ({ artist }: CommunitySectionProps) => {
   return (
     <div className='w-full flex flex-col md:flex-row gap-[39px] mb-20 justify-center'>
       {/* ============ TOP HOLDERS ============ */}
-      <div className='flex flex-col gap-6 md:w-auto'>
+      <div className='flex flex-col gap-6 md:w-1/2'>
         <h2 className='text-white font-inter font-semibold text-[30px] leading-9'>
           Top Holders
         </h2>
@@ -80,7 +80,7 @@ export const CommunitySection = ({ artist }: CommunitySectionProps) => {
       </div>
 
       {/* ============ FANBASE ============ */}
-      <div className='flex flex-col gap-6 md:w-auto'>
+      <div className='flex flex-col gap-6 md:w-1/2'>
         <h2 className='text-white font-inter font-semibold text-[30px] leading-9'>
           Fanbase
         </h2>
@@ -95,7 +95,7 @@ export const CommunitySection = ({ artist }: CommunitySectionProps) => {
               <Avatar
                 key={index}
                 variant={fan.initials ? "square-sm" : "square-sm-initials"}
-                className='md:w-18 md:h-18'
+                className='md:w-14 md:h-14 sm:w-15 sm:h-15'
                 src={fan.src}
                 initials={fan.initials}
               />

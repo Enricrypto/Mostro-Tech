@@ -50,19 +50,19 @@ export function ArtistCard({
   // Determine icon & color based on the artist popularity or numberValue
   const Icon = numberValue > 0 ? ArrowUpIcon : ArrowDownIcon
 
+  const graduatedArtists = ["luna-eclipse", "atlas-monroe", "liz-cherry"]
+
   return (
     <div
-      className={cn(
-        `
-        w-full max-w-[24rem] sm:max-w-md md:max-w-lg
-        rounded-[0.625rem] border-2 border-(--color-dark-blue)
-       bg-(--color-dark-bg) shadow-[0px_4px_6px_0px_#00000017]
-        p-4 sm:p-5 md:p-6
-        flex flex-col gap-4
-        transition-all duration-300 ease-out
-        hover:scale-[1.02] hover:border-(--color-highlight)
-        `
-      )}
+      className={cn(`
+      w-full max-w-[24rem] sm:max-w-md md:max-w-lg
+      rounded-[0.625rem] border-2 border-[var(--color-dark-blue)]
+      bg-[var(--color-dark-bg)] shadow-[0px_4px_6px_0px_#00000017]
+      p-4 sm:p-5 md:p-6
+      flex flex-col gap-4
+      transition-all duration-300 ease-out
+      hover:scale-[1.02] hover:border-[var(--color-highlight)]
+    `)}
     >
       {/* Top Section: Avatar + Genre Badge + Artist Info */}
       <div className='flex gap-4'>
@@ -72,8 +72,9 @@ export function ArtistCard({
           <Badge variant='genre'>{genre}</Badge>
         </div>
 
-        {/* Right column: Artist Name + Token + Badge */}
+        {/* Right column: Artist Name + Token + Badges */}
         <div className='flex flex-col justify-start gap-3 sm:gap-4'>
+          {/* Artist Name */}
           <p
             className='text-white font-medium leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'
             style={{ fontSize: "clamp(1.25rem, 2vw, 1.4rem)" }}
@@ -81,6 +82,7 @@ export function ArtistCard({
             {artistName}
           </p>
 
+          {/* Token Name */}
           <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
             <p
               className='text-white leading-5'
@@ -88,14 +90,20 @@ export function ArtistCard({
             >
               ${tokenName}
             </p>
-            <Badge
-              variant={badgeVariant}
-              icon={<Icon weight='bold' size={14} className='text-current' />}
-              className='text-[clamp(0.7rem,1vw,0.875rem)] px-[clamp(0.25rem,0.5vw,0.5rem)]'
-            >
-              {badgeText}
-            </Badge>
+
+            {/* Badge for non-graduated artists */}
+            {!graduatedArtists.includes(slug) && (
+              <Badge variant={badgeVariant}>{badgeText}</Badge>
+            )}
           </div>
+
+          {/* Badges for graduated artists */}
+          {graduatedArtists.includes(slug) && (
+            <div className='flex gap-2 mt-1'>
+              <Badge variant='neutral'>Graduated</Badge>
+              <Badge variant={badgeVariant}>{badgeText}</Badge>
+            </div>
+          )}
         </div>
       </div>
 
@@ -107,7 +115,7 @@ export function ArtistCard({
         align='center'
       >
         <p
-          className='text-(--color-grey) font-medium w-full line-clamp-2 mt-2'
+          className='text-[var(--color-grey)] font-medium w-full line-clamp-2 mt-2'
           style={{ fontSize: "0.75rem", lineHeight: "1.25rem" }}
         >
           {description || "No description provided."}
@@ -129,7 +137,7 @@ export function ArtistCard({
               {value}
             </p>
             <p
-              className='text-(--color-grey) font-inter leading-4 whitespace-nowrap'
+              className='text-[var(--color-grey)] font-inter leading-4 whitespace-nowrap'
               style={{ fontSize: "0.75rem" }}
             >
               {label}

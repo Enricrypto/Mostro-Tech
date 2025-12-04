@@ -36,7 +36,7 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
       className='
   flex flex-col justify-between gap-4 w-full
   sm:max-w-[360px] md:max-w-[384px] p-4 rounded-lg border
-  transition-shadow duration-200 hover:shadow-[0_0_16.9px_5px_#71D6FB80]
+  transition-shadow duration-200  hover:shadow-[0_0_16.9px_5px_#6654D380]
   bg-[#121B2B] border-[#2D3953] h-auto
 '
     >
@@ -68,12 +68,12 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
       </div>
 
       {/* Divider */}
-      <div className='border-t border-[#1F2A3D]' />
+      <div className='border-t border-[#D2D3D5]' />
 
       {/* Bottom Section */}
       <div className='flex justify-between flex-wrap gap-4'>
         {/* Current Value */}
-        <div className='flex flex-col items-center flex-1 min-w-[100px]'>
+        <div className='flex flex-col items-start flex-1 min-w-[100px]'>
           <span className='text-white font-bold text-[16px] truncate'>
             ${amount}
           </span>
@@ -83,7 +83,7 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
         </div>
 
         {/* Perks */}
-        <div className='flex flex-col items-center flex-1 min-w-[100px]'>
+        <div className='flex flex-col items-start min-w-[100px]'>
           <div className='flex items-center gap-2'>
             <SketchLogoIcon className='w-5 h-5 text-[#4995E0]' />
             <span className='text-white font-bold text-[16px] truncate'>
@@ -94,6 +94,8 @@ export const TokenHoldingsUserCard: React.FC<TokenHoldingsUserCardProps> = ({
             Perks Unlocked
           </span>
         </div>
+
+
       </div>
     </div>
   )
