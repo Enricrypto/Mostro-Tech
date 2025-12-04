@@ -112,6 +112,37 @@ export function ArtistCard({
               {badgeText}
             </Badge>
           </div>
+              <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
+                <Badge // Graduated Badge
+                  variant="neutral"
+                  className='w-fit text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
+                >
+                  Graduated
+                </Badge>
+                <Badge // badgeVariant Badge
+                  variant={badgeVariant}
+                  icon={<Icon weight='bold' size={14} className='text-current' />}
+                  className='text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
+                >
+                  {badgeText}
+                </Badge>
+              </div>
+            </>
+          ) : (
+            // If showGraduatedBadge is false, keep original layout for badgeVariant badge
+            <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
+              <p className='leading-5 text-white text-[clamp(0.9rem,1.5vw,1rem)]'>
+                ${tokenName}
+              </p>
+              <Badge // badgeVariant Badge
+                variant={badgeVariant}
+                icon={<Icon weight='bold' size={14} className='text-current' />}
+                className='text-[clamp(0.7rem,1vw,0.725rem)] px-[clamp(0.25rem,0.5vw,0.3rem)]'
+              >
+                {badgeText}
+              </Badge>
+            </div>
+          )}
         </div>
       </div>
 
