@@ -228,9 +228,9 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
       </section>
 
       {/* Featured Tracks + Upcoming Events */}
-      <section className='w-full mt-20 mb-20 flex flex-col md:flex-row gap-8 justify-between items-start'>
+      <section className='w-full mt-20 mb-20 flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-between items-start'>
         {/* Featured Tracks Section */}
-        <div className='w-full lg:w-1/2 flex flex-col min-w-0'>
+        <div className='w-full sm:w-1/2 flex flex-col min-w-0'>
           <h2 className='font-semibold text-2xl sm:text-[28px] lg:text-[30px] leading-7 sm:leading-8 lg:leading-9 text-white mb-6 sm:mb-8 lg:mb-10'>
             Featured Tracks
           </h2>
@@ -251,7 +251,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
         </div>
 
         {/* Upcoming Events Section */}
-        <div className='w-full lg:w-1/2 flex flex-col mt-8 lg:mt-0 min-w-0'>
+        <div className='w-full sm:w-1/2 flex flex-col sm:mt-0 min-w-0'>
           <h2 className='font-semibold text-2xl sm:text-[28px] lg:text-[30px] leading-7 sm:leading-8 lg:leading-9 text-white mb-6 sm:mb-8 lg:mb-10'>
             Upcoming Events
           </h2>

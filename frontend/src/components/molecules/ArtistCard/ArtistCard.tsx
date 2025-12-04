@@ -11,7 +11,8 @@ import {
   ArrowUpRightIcon
 } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
-import React from "react"
+import React, { useState } from "react" // Import useState
+import { LoadingSpinner } from "@/components/atoms/LoadingSpinner/LoadingSpinner" // Import LoadingSpinner
 
 interface ArtistCardProps {
   id: number
@@ -43,6 +44,7 @@ export function ArtistCard({
   showGraduatedBadge = false
 }: ArtistCardProps) {
   const router = useRouter()
+  const [isNavigating, setIsNavigating] = useState(false); // New state for loading
 
   // Extract numeric value from badge text
   const numberValue = parseFloat(badgeText.replace(/[^0-9.-]+/g, ""))
@@ -52,14 +54,29 @@ export function ArtistCard({
   // Determine icon & color based on the artist popularity or numberValue
   const Icon = numberValue > 0 ? ArrowUpIcon : ArrowDownIcon
 
+  const handleViewArtistClick = () => {
+    setIsNavigating(true);
+    // Next.js router.push doesn't return a Promise for client-side navigations,
+    // so the loading state will naturally clear on the new page load.
+    router.push(`/artists/${slug}`);
+  };
+
   return (
-    <div
-      className={cn(
-        `
-        w-full max-w-[24rem] sm:max-w-md md:max-w-lg
-        rounded-[0.625rem] border-2 border-(--color-dark-blue)
-       bg-(--color-dark-bg) shadow-[0px_4px_6px_0px_#00000017]
-        p-4 sm:p-5 md:p-6
+    <>
+      {isNavigating && (
+        <LoadingSpinner fullScreen={true} showText={false} color="blue" size="lg" />
+      )}
+      <div
+        className={cn(
+          `
+        w-full
+        rounded-[0.625rem] border-2 border-[var(--color-dark-blue)]
+       bg-[var(--color-dark-bg)] shadow-[0px_4px_6px_0px_#00000017]
+         p-3                      /* base mobile */
+             sm:px-3 sm:py-4         /* small screens */
+             md:px-5 md:py-4         /* medium screens */
+             lg:px-2 lg:py-4         /* large: smaller width only */
+             xl:px-2 xl:py-3         /* extra large */
         flex flex-col gap-4
         transition-all duration-300 ease-out
         hover:scale-[1.02] hover:border-[var(--color-highlight)]
@@ -80,17 +97,22 @@ export function ArtistCard({
             {artistName}
           </p>
 
-          {showGraduatedBadge ? (
-            // If showGraduatedBadge is true, put Graduated badge first, then badgeVariant badge
-            <>
-              <p className='leading-5 text-white text-[clamp(0.9rem,1.5vw,1rem)]'>
-                ${tokenName}
-              </p>
-<<<<<<<<< Temporary merge branch 1
+          <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
+            <p
+              className='text-white leading-5'
+              style={{ fontSize: "clamp(0.9rem, 1.5vw, 1rem)" }}
+            >
+              ${tokenName}
+            </p>
+            <Badge
+              variant={badgeVariant}
+              icon={<Icon weight='bold' size={14} className='text-current' />}
+              className='text-[clamp(0.7rem,1vw,0.875rem)] px-[clamp(0.25rem,0.5vw,0.5rem)]'
+            >
+              {badgeText}
+            </Badge>
+          </div>
               <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
-=========
-              <div className='flex items-center gap-1.5 sm:gap-1.5 min-w-0'>
->>>>>>>>> Temporary merge branch 2
                 <Badge // Graduated Badge
                   variant="neutral"
                   className='w-fit text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
@@ -132,7 +154,7 @@ export function ArtistCard({
         align='center'
       >
         <p
-          className='text-(--color-grey) font-medium w-full line-clamp-2 mt-2'
+          className='text-[var(--color-grey)] font-medium w-full line-clamp-2 mt-2'
           style={{ fontSize: "0.75rem", lineHeight: "1.25rem" }}
         >
           {description || "No description provided."}
@@ -154,7 +176,7 @@ export function ArtistCard({
               {value}
             </p>
             <p
-              className='text-(--color-grey) font-inter leading-4 whitespace-nowrap'
+              className='text-[var(--color-grey)] font-inter leading-4 whitespace-nowrap'
               style={{ fontSize: "0.75rem" }}
             >
               {label}
@@ -168,10 +190,13 @@ export function ArtistCard({
         variant='follow-share'
         icon={<ArrowUpRightIcon weight='fill' size={16} />}
         className='w-full h-10 mt-4 px-4 py-2 gap-2.5'
-        onClick={() => router.push(`/artists/${slug}`)}
+        onClick={handleViewArtistClick} // Use new handler
+        disabled={isNavigating} // Disable button when navigating
       >
         View Artist
       </Button>
     </div>
+    </>
   )
 }
+

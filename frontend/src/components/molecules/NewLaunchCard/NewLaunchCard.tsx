@@ -35,11 +35,15 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 
   return (
     <div
-      className='group relative flex flex-col
-             min-w-full        /* mobile: full width */
-             md:min-w-[360px]  /* iPad: smaller width */
-             lg:min-w-[380px]  /* desktop: bigger width */
-             rounded-[10px] border-2 p-4 md:p-5 lg:p-6 gap-4
+       className='group relative flex flex-col
+             min-w-full
+             rounded-[10px] border-2 
+             p-3                      /* base mobile */
+             sm:px-3 sm:py-4         /* small screens */
+             md:px-5 md:py-4         /* medium screens */
+             lg:px-2 lg:py-4         /* large: smaller width only */
+             xl:px-2 xl:py-3         /* extra large */
+             gap-4
              border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
              transition-colors duration-200 hover:border-[#71D6FB]'
     >

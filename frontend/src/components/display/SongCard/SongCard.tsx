@@ -2,6 +2,8 @@
 
 import { MusicNoteIcon, PlayIcon, LockIcon } from "@phosphor-icons/react"
 import { Button } from "@/components/atoms/Button"
+import { Tooltip } from "@/components/atoms/Tooltip"
+
 import { cva, type VariantProps } from "class-variance-authority"
 
 // Improved responsive design with iPad support (820x1180)
@@ -51,9 +53,12 @@ export function SongCard({
 
       {/* Text Content - FULL on iPad, no truncation */}
       <div className="flex flex-1 flex-col gap-3.5 min-w-0 overflow-hidden">
+              <Tooltip variant='blue' content={songName} side='top'>
+
         <h3 className="text-white font-semibold text-[clamp(0.9rem,2vw,1.1rem)] leading-5 whitespace-normal break-words md:whitespace-nowrap md:truncate md:text-[18px]">
           {songName}
         </h3>
+            </Tooltip>
         <p className="text-[var(--color-grey)] text-[clamp(0.75rem,1.2vw,0.95rem)] leading-[1.2] whitespace-normal break-words md:whitespace-nowrap md:truncate md:text-[12px]">
           {subtitle}
         </p>
@@ -68,16 +73,33 @@ export function SongCard({
             iconPosition="left"
             onClick={onPlay}
             isPlaying={isPlaying}
-            className="whitespace-nowrap py-5 px-3.4 sm:py-9 sm:relative sm:top-[-9px] md:py-1 md:px-2.5 md:relative md:top-[-4px]"
+            className="whitespace-nowrap px-1.5 py-0.5 text-[8px] sm:px-2 sm:py-1 sm:text-[9px] md:px-2.5 md:py-1.5 md:text-[10px]"
           >
             Play
           </Button>
         ) : (
           <Button
             variant="song-unlock"
-            icon={<LockIcon size={16} color="var(--color-white)" weight="regular" />}
+            icon={<LockIcon size={12} color="var(--color-white)" weight="regular" />}
             iconPosition="left"
-            className="min-w-[80px] sm:min-w-[95px] md:min-w-[105px] text-[10px] sm:text-xs md:text-xs px-2 sm:px-2 md:px-2.5 py-1.5 whitespace-nowrap"
+className="
+  whitespace-nowrap max-w-fit flex-shrink-0
+
+  /* Base - very small */
+  px-2.5 py-1.5 text-[9px]
+
+  /* sm */
+  sm:px-1.5 sm:py-0.5 sm:text-[8px]
+
+  /* iPad Mini (md = 768px) → much smaller */
+  md:px-1.5 md:py-0.5 md:text-[7.6px]
+
+  /* lg - still compact */
+  lg:px-2 lg:py-1 lg:text-[9px]
+
+  /* xl - normal size */
+  xl:px-4 xl:py-2 xl:text-[11px]
+"
           >
             Unlock {unlockAmount} {unlockToken}
           </Button>

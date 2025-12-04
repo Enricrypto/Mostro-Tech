@@ -43,29 +43,34 @@ const textCVA = cva("font-inter font-medium opacity-80", {
 export interface LoadingSpinnerProps extends VariantProps<typeof spinnerCVA> {
   text?: string
   className?: string
+  showText?: boolean // New prop
+  fullScreen?: boolean // New prop to control full screen overlay
 }
 
 export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   text = "Loading...",
   size = "md",
   color = "purple",
-  className
+  className,
+  showText = true, // Default to true
+  fullScreen = false // Default to false
 }) => {
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center w-full h-64 sm:h-80 md:h-[400px] gap-4",
+        "flex flex-col items-center justify-center gap-4",
+        fullScreen ? "fixed inset-0 bg-black/50 backdrop-blur-md z-50" : "w-full h-64 sm:h-80 md:h-[400px]", // Full screen overlay with semi-transparent black background and blur
         className
       )}
     >
       {/* Spinner */}
       <div
         className={cn(spinnerCVA({ size, color }))}
-        style={{ boxShadow: "0 0 10px var(--color-purple-50)" }}
+        style={{ boxShadow: "0 0 10px var(--color-skyblue)" }}
       />
 
       {/* Loading Text */}
-      <span className={textCVA({ size })}>{text}</span>
+      {showText && <span className={textCVA({ size })}>{text}</span>}
     </div>
   )
 }
