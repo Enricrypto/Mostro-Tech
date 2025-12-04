@@ -212,9 +212,13 @@ export default function DashboardPage() {
             </div>
           </div>
 
+<<<<<<< HEAD
           <div
             className='mt-10 grid grid-cols-1 justify-center items-stretch gap-y-2 gap-x-2 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-3 lg:grid-cols-2 xl:grid-cols-3 lg:gap-x-4 lg:gap-y-4'
           >
+=======
+          <div className='mt-10 grid grid-cols-1 place-items-center gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'>
+>>>>>>> ec13ef4 (fix: refactoring)
             {mockArtistData.map((artist) => (
               <ArtistCard
                 key={artist.id || artist.artistName}
@@ -306,9 +310,13 @@ export default function DashboardPage() {
         <section className='mb-12 mt-12 w-full md:mb-20 md:mt-20'>
           <SectionHeader title='Trending Tokens' />
 
+<<<<<<< HEAD
           <div
             className='mt-10 grid grid-cols-1 justify-center items-stretch gap-y-2 gap-x-2 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-3 lg:grid-cols-2 xl:grid-cols-3 lg:gap-x-4 lg:gap-y-4'
           >
+=======
+          <div className='mt-10 grid grid-cols-1 place-items-center gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'>
+>>>>>>> ec13ef4 (fix: refactoring)
             {trendingTokens.map((token) => (
               <TrendingTokenCard
                 key={token.id}
