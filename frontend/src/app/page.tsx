@@ -28,15 +28,6 @@ const SectionHeader = ({ title }: { title: string }) => (
   </h2>
 )
 
-// ===== Utility to chunk array =====
-const chunkArray = <T,>(arr: T[], size: number): T[][] => {
-  const chunks: T[][] = []
-  for (let i = 0; i < arr.length; i += size) {
-    chunks.push(arr.slice(i, i + size))
-  }
-  return chunks
-}
-
 export default function DashboardPage() {
   const router = useRouter()
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -189,8 +180,9 @@ export default function DashboardPage() {
       <div className='mx-auto flex min-h-screen w-full max-w-[1200px] flex-col bg-[#0A111F] px-4 sm:px-6 lg:px-8'>
         {/* ===== STATS CARDS ===== */}
         <section
-                              className='mt-12 grid grid-cols-2 grid-rows-3 justify-center items-stretch gap-y-2 gap-x-2
-                                 md:mt-20 md:grid-cols-3 md:grid-rows-2 sm:gap-x-3 sm:gap-y-3 lg:gap-x-4 lg:gap-y-4'        >
+          className='mt-12 grid grid-cols-2 grid-rows-3 justify-center items-stretch gap-y-2 gap-x-2
+                                 md:mt-20 md:grid-cols-3 md:grid-rows-2 sm:gap-x-3 sm:gap-y-3 lg:gap-x-4 lg:gap-y-4'
+        >
           {statsCardVariants.map((card) => (
             <DashBoardStatsCard key={card.topText} {...card} />
           ))}
@@ -212,19 +204,12 @@ export default function DashboardPage() {
             </div>
           </div>
 
-<<<<<<< HEAD
-          <div
-            className='mt-10 grid grid-cols-1 justify-center items-stretch gap-y-2 gap-x-2 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-3 lg:grid-cols-2 xl:grid-cols-3 lg:gap-x-4 lg:gap-y-4'
-          >
-=======
-          <div className='mt-10 grid grid-cols-1 place-items-center gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'>
->>>>>>> ec13ef4 (fix: refactoring)
+          <div className='mt-10 grid grid-cols-1 justify-center items-stretch gap-y-2 gap-x-2 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-3 lg:grid-cols-2 xl:grid-cols-3 lg:gap-x-4 lg:gap-y-4'>
             {mockArtistData.map((artist) => (
               <ArtistCard
                 key={artist.id || artist.artistName}
                 {...artist}
                 slug={artist.slug}
-                showGraduatedBadge={true}
               />
             ))}
           </div>
@@ -310,13 +295,7 @@ export default function DashboardPage() {
         <section className='mb-12 mt-12 w-full md:mb-20 md:mt-20'>
           <SectionHeader title='Trending Tokens' />
 
-<<<<<<< HEAD
-          <div
-            className='mt-10 grid grid-cols-1 justify-center items-stretch gap-y-2 gap-x-2 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-3 lg:grid-cols-2 xl:grid-cols-3 lg:gap-x-4 lg:gap-y-4'
-          >
-=======
-          <div className='mt-10 grid grid-cols-1 place-items-center gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3'>
->>>>>>> ec13ef4 (fix: refactoring)
+          <div className='mt-10 grid grid-cols-1 justify-center items-stretch gap-y-2 gap-x-2 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-3 lg:grid-cols-2 xl:grid-cols-3 lg:gap-x-4 lg:gap-y-4'>
             {trendingTokens.map((token) => (
               <TrendingTokenCard
                 key={token.id}

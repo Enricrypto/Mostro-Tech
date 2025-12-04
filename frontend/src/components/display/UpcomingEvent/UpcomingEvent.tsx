@@ -63,27 +63,34 @@ export const UpcomingEvent = ({
       )}
     >
       {/* Top Section */}
-      <div className='flex items-center gap-x-3 w-full'>
-              <Tooltip variant='blue' content={event.title} side='top'>
-        
-        <h3 className='text-white font-semibold text-[14px] md:text-[18px] leading-tight flex-growmd:whitespace-nowrap md:truncate gap-8'>
-          {event.title}
-        </h3>
-            </Tooltip>
+      <div className='flex items-center justify-between w-full gap-x-3'>
+        {/* Title on the left */}
+        <Tooltip variant='blue' content={event.title} side='top'>
+          <h3 className='text-white font-semibold text-[14px] md:text-[18px] leading-tight flex-grow md:whitespace-nowrap md:truncate'>
+            {event.title}
+          </h3>
+        </Tooltip>
 
-        <Badge
-          variant={variantMap[event.status]}
-          className='whitespace-nowrap gap-x-3 '
-        >
-          {event.status
-            .replace("-", " ")
-            .replace(/\b\w/g, (l) => l.toUpperCase())}
-        </Badge>
-        {showItemsLeft && itemsLeft !== undefined && itemsLeft > 0 && (
-          <Badge variant='left'>
-            {itemsLeft} Left
+        {/* Badges on the right */}
+        <div className='flex items-center gap-x-3'>
+          <Badge
+            variant={variantMap[event.status]}
+            className='max-w-full text-[9px] md:text-[10px] lg:text-[12px] whitespace-nowrap'
+          >
+            {event.status
+              .replace("-", " ")
+              .replace(/\b\w/g, (l) => l.toUpperCase())}
           </Badge>
-        )}
+
+          {showItemsLeft && itemsLeft !== undefined && itemsLeft > 0 && (
+            <Badge
+              variant='left'
+              className='max-w-full text-[9px] md:text-[10px] lg:text-[12px]'
+            >
+              {itemsLeft} Left
+            </Badge>
+          )}
+        </div>
       </div>
 
       {/* Event Details */}

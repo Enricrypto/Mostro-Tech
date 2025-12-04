@@ -43,47 +43,54 @@ export function SongCard({
   return (
     <div className={songCardCVA({ variant })}>
       {/* Left Icon */}
-      <div className="flex-shrink-0 w-11.5 h-11.5 sm:w-11.5 sm:h-11.5 md:w-11.5 md:h-11.5 md:relative top-[-8px] rounded-full bg-[var(--color-highlight)] flex items-center justify-center">
+      <div className='shrink-0 w-11.5 h-11.5 sm:w-11.5 sm:h-11.5 md:w-11.5 md:h-11.5 md:relative -top-2 rounded-full bg-(--color-highlight) flex items-center justify-center'>
         <MusicNoteIcon
-          size="clamp(12px, 4vw, 20px)"
-          color="var(--color-black)"
-          weight="regular"
+          size='clamp(12px, 4vw, 20px)'
+          color='var(--color-black)'
+          weight='regular'
         />
       </div>
 
       {/* Text Content - FULL on iPad, no truncation */}
-      <div className="flex flex-1 flex-col gap-3.5 min-w-0 overflow-hidden">
-              <Tooltip variant='blue' content={songName} side='top'>
-
-        <h3 className="text-white font-semibold text-[clamp(0.9rem,2vw,1.1rem)] leading-5 whitespace-normal break-words md:whitespace-nowrap md:truncate md:text-[18px]">
-          {songName}
-        </h3>
-            </Tooltip>
-        <p className="text-[var(--color-grey)] text-[clamp(0.75rem,1.2vw,0.95rem)] leading-[1.2] whitespace-normal break-words md:whitespace-nowrap md:truncate md:text-[12px]">
+      <div className='flex flex-1 flex-col gap-3.5 min-w-0 overflow-hidden'>
+        <Tooltip variant='blue' content={songName} side='top'>
+          <h3 className='text-white font-semibold text-[clamp(0.9rem,2vw,1.1rem)] leading-5 whitespace-normal wrap-break-word md:whitespace-nowrap md:truncate md:text-[18px]'>
+            {songName}
+          </h3>
+        </Tooltip>
+        <p className='text-(--color-grey) text-[clamp(0.75rem,1.2vw,0.95rem)] leading-[1.2] whitespace-normal wrap-break-word md:whitespace-nowrap md:truncate md:text-[12px]'>
           {subtitle}
         </p>
       </div>
 
       {/* Button - fully responsive, no truncation */}
-      <div className="flex-shrink-0">
+      <div className='shrink-0'>
         {variant === "song-play" ? (
           <Button
-            variant="song-play"
-            icon={<PlayIcon size="clamp(14px, 3vw, 18px)" color="var(--color-black)" weight="regular" />}
-            iconPosition="left"
+            variant='song-play'
+            icon={
+              <PlayIcon
+                size='clamp(14px, 3vw, 18px)'
+                color='var(--color-black)'
+                weight='regular'
+              />
+            }
+            iconPosition='left'
             onClick={onPlay}
             isPlaying={isPlaying}
-            className="whitespace-nowrap px-1.5 py-0.5 text-[8px] sm:px-2 sm:py-1 sm:text-[9px] md:px-2.5 md:py-1.5 md:text-[10px]"
+            className='whitespace-nowrap px-1.5 py-0.5 text-[8px] sm:px-2 sm:py-1 sm:text-[9px] md:px-2.5 md:py-1.5 md:text-[10px]'
           >
             Play
           </Button>
         ) : (
           <Button
-            variant="song-unlock"
-            icon={<LockIcon size={12} color="var(--color-white)" weight="regular" />}
-            iconPosition="left"
-className="
-  whitespace-nowrap max-w-fit flex-shrink-0
+            variant='song-unlock'
+            icon={
+              <LockIcon size={12} color='var(--color-white)' weight='regular' />
+            }
+            iconPosition='left'
+            className='
+  whitespace-nowrap max-w-fit shrink-0
 
   /* Base - very small */
   px-2.5 py-1.5 text-[9px]
@@ -99,7 +106,7 @@ className="
 
   /* xl - normal size */
   xl:px-4 xl:py-2 xl:text-[11px]
-"
+'
           >
             Unlock {unlockAmount} {unlockToken}
           </Button>

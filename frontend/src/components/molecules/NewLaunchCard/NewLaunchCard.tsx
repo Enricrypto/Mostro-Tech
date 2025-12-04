@@ -35,17 +35,17 @@ export const NewLaunchCard: React.FC<NewLaunchCardProps> = ({
 
   return (
     <div
-       className='group relative flex flex-col
-             min-w-full
-             rounded-[10px] border-2 
-             p-3                      /* base mobile */
-             sm:px-3 sm:py-4         /* small screens */
-             md:px-5 md:py-4         /* medium screens */
-             lg:px-2 lg:py-4         /* large: smaller width only */
-             xl:px-2 xl:py-3         /* extra large */
-             gap-4
-             border-[#2D3953] bg-[#121B2B] shadow-[0_4px_6px_0_#00000017]
-             transition-colors duration-200 hover:border-[#71D6FB]'
+      className={cn(
+        `
+           w-full max-w-[24rem] sm:max-w-md md:max-w-lg
+           rounded-[0.625rem] border-2 border-(--color-dark-blue)
+          bg-(--color-dark-bg) shadow-[0px_4px_6px_0px_#00000017]
+           p-4 sm:p-5 md:p-6
+           flex flex-col gap-4
+           transition-all duration-300 ease-out
+           hover:scale-[1.02] hover:border-(--color-highlight)
+           `
+      )}
     >
       {/* Section 1: Avatar + Name + Genre Badge */}
       <div className='flex flex-row items-start gap-4'>

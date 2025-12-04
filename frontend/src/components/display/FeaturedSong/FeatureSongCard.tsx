@@ -21,7 +21,7 @@ export interface FeatureSongCardProps {
   isPlaying?: boolean
   onPlay: () => void
   className?: string
-  showItemsLeft?: boolean // Added
+  showItemsLeft?: boolean
 }
 
 export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
@@ -30,7 +30,7 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
   isPlaying = false,
   onPlay,
   className,
-  showItemsLeft // Added this line
+  showItemsLeft
 }) => {
   const [localPlaying, setLocalPlaying] = useState(false)
 
@@ -96,11 +96,17 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
 
           {/* Badges Container - constrained to prevent overflow */}
           <div className='flex flex-col gap-2 min-w-0 flex-1'>
-            <Badge variant="neutral" className='md:text-[8px]'>
+            <Badge
+              variant='neutral'
+              className='text-[7px] md:text-[8px] lg:text-[10px]'
+            >
               {musicDrop.badge}
             </Badge>
             {showItemsLeft && (
-              <Badge variant='left'>
+              <Badge
+                variant='left'
+                className='text-[9px] md:text-[10px] lg:text-[12px]'
+              >
                 {musicDrop.itemsLeft} Left
               </Badge>
             )}
@@ -110,4 +116,3 @@ export const FeatureSongCard: React.FC<FeatureSongCardProps> = ({
     </div>
   )
 }
-

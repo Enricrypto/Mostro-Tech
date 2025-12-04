@@ -88,7 +88,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
     audio.currentTime = 0
 
     const handleCanPlay = () => {
-      if (isPlaying) audio.play().catch(() => { })
+      if (isPlaying) audio.play().catch(() => {})
     }
 
     const handleEnded = () => nextSong()
@@ -124,7 +124,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
   // Sync play/pause
   useEffect(() => {
     if (!audioRef.current) return
-    if (isPlaying) audioRef.current.play().catch(() => { })
+    if (isPlaying) audioRef.current.play().catch(() => {})
     else audioRef.current.pause()
   }, [isPlaying])
 
@@ -142,10 +142,10 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
     artist.name === "Luna Eclipse"
       ? mockPerksLuna
       : artist.name === "Atlas Monroe"
-        ? mockPerksAtlas
-        : artist.name === "Liz Cherry"
-          ? mockPerksLiz
-          : mockPerksCombined
+      ? mockPerksAtlas
+      : artist.name === "Liz Cherry"
+      ? mockPerksLiz
+      : mockPerksCombined
 
   return (
     <div className='flex flex-col items-center gap-20 w-full max-w-[1200px] mx-auto'>
@@ -174,7 +174,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
           </div>
 
           {/* Move span below on mobile, inline on md+ */}
-          <span className='mt-4 md:mt-0 md:ml-2 text-[var(--color-grey)]'>
+          <span className='mt-4 md:mt-0 md:ml-2 text-(--color-grey)'>
             Includes Surprise Perk
           </span>
         </div>
@@ -207,7 +207,7 @@ export const MusicSection = ({ artist, onClaimAccess }: MusicSectionProps) => {
       <section className='relative w-full mt-10 flex flex-col'>
         <div className='flex justify-between items-center'>
           <h2 className='font-semibold text-[30px] leading-9 text-white'>
-            Fan Perks 
+            Fan Perks
           </h2>
           {/* <Button variant='continue' onClick={() => setCreatePerkOpen(true)}>
             Create New Fan Perk

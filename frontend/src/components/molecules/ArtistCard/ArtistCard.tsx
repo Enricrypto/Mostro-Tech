@@ -11,8 +11,7 @@ import {
   ArrowUpRightIcon
 } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
-import React, { useState } from "react" // Import useState
-import { LoadingSpinner } from "@/components/atoms/LoadingSpinner/LoadingSpinner" // Import LoadingSpinner
+import React from "react"
 
 interface ArtistCardProps {
   id: number
@@ -26,7 +25,6 @@ interface ArtistCardProps {
   marketCap: string | number
   totalSupply: string | number
   genre: string
-  showGraduatedBadge?: boolean
 }
 
 export function ArtistCard({
@@ -40,11 +38,9 @@ export function ArtistCard({
   holders,
   marketCap,
   totalSupply,
-  genre,
-  showGraduatedBadge = false
+  genre
 }: ArtistCardProps) {
   const router = useRouter()
-  const [isNavigating, setIsNavigating] = useState(false); // New state for loading
 
   // Extract numeric value from badge text
   const numberValue = parseFloat(badgeText.replace(/[^0-9.-]+/g, ""))
@@ -54,34 +50,19 @@ export function ArtistCard({
   // Determine icon & color based on the artist popularity or numberValue
   const Icon = numberValue > 0 ? ArrowUpIcon : ArrowDownIcon
 
-  const handleViewArtistClick = () => {
-    setIsNavigating(true);
-    // Next.js router.push doesn't return a Promise for client-side navigations,
-    // so the loading state will naturally clear on the new page load.
-    router.push(`/artists/${slug}`);
-  };
+  const graduatedArtists = ["luna-eclipse", "atlas-monroe", "liz-cherry"]
 
   return (
-    <>
-      {isNavigating && (
-        <LoadingSpinner fullScreen={true} showText={false} color="blue" size="lg" />
-      )}
-      <div
-        className={cn(
-          `
-        w-full
-        rounded-[0.625rem] border-2 border-[var(--color-dark-blue)]
-       bg-[var(--color-dark-bg)] shadow-[0px_4px_6px_0px_#00000017]
-         p-3                      /* base mobile */
-             sm:px-3 sm:py-4         /* small screens */
-             md:px-5 md:py-4         /* medium screens */
-             lg:px-2 lg:py-4         /* large: smaller width only */
-             xl:px-2 xl:py-3         /* extra large */
-        flex flex-col gap-4
-        transition-all duration-300 ease-out
-        hover:scale-[1.02] hover:border-[var(--color-highlight)]
-        `
-      )}
+    <div
+      className={cn(`
+      w-full max-w-[24rem] sm:max-w-md md:max-w-lg
+      rounded-[0.625rem] border-2 border-[var(--color-dark-blue)]
+      bg-[var(--color-dark-bg)] shadow-[0px_4px_6px_0px_#00000017]
+      p-4 sm:p-5 md:p-6
+      flex flex-col gap-4
+      transition-all duration-300 ease-out
+      hover:scale-[1.02] hover:border-[var(--color-highlight)]
+    `)}
     >
       {/* Top Section: Avatar + Genre Badge + Artist Info */}
       <div className='flex gap-4'>
@@ -91,12 +72,17 @@ export function ArtistCard({
           <Badge variant='genre'>{genre}</Badge>
         </div>
 
-        {/* Right column: Artist Name + Token + Badge */}
+        {/* Right column: Artist Name + Token + Badges */}
         <div className='flex flex-col justify-start gap-3 sm:gap-4'>
-          <p className='font-medium leading-7 tracking-[-0.5%] text-white text-[clamp(1.1rem,1.8vw,1.35rem)] overflow-hidden text-ellipsis break-word'>
+          {/* Artist Name */}
+          <p
+            className='text-white font-medium leading-7 tracking-[-0.5%] whitespace-nowrap overflow-hidden'
+            style={{ fontSize: "clamp(1.25rem, 2vw, 1.4rem)" }}
+          >
             {artistName}
           </p>
 
+          {/* Token Name */}
           <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
             <p
               className='text-white leading-5'
@@ -104,43 +90,18 @@ export function ArtistCard({
             >
               ${tokenName}
             </p>
-            <Badge
-              variant={badgeVariant}
-              icon={<Icon weight='bold' size={14} className='text-current' />}
-              className='text-[clamp(0.7rem,1vw,0.875rem)] px-[clamp(0.25rem,0.5vw,0.5rem)]'
-            >
-              {badgeText}
-            </Badge>
+
+            {/* Badge for non-graduated artists */}
+            {!graduatedArtists.includes(slug) && (
+              <Badge variant={badgeVariant}>{badgeText}</Badge>
+            )}
           </div>
-              <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
-                <Badge // Graduated Badge
-                  variant="neutral"
-                  className='w-fit text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
-                >
-                  Graduated
-                </Badge>
-                <Badge // badgeVariant Badge
-                  variant={badgeVariant}
-                  icon={<Icon weight='bold' size={14} className='text-current' />}
-                  className='text-[clamp(0.7rem,1vw,0.7rem)] px-[clamp(0.25rem,0.5vw,0.23rem)]'
-                >
-                  {badgeText}
-                </Badge>
-              </div>
-            </>
-          ) : (
-            // If showGraduatedBadge is false, keep original layout for badgeVariant badge
-            <div className='flex items-center gap-3.5 sm:gap-4 min-w-0'>
-              <p className='leading-5 text-white text-[clamp(0.9rem,1.5vw,1rem)]'>
-                ${tokenName}
-              </p>
-              <Badge // badgeVariant Badge
-                variant={badgeVariant}
-                icon={<Icon weight='bold' size={14} className='text-current' />}
-                className='text-[clamp(0.7rem,1vw,0.725rem)] px-[clamp(0.25rem,0.5vw,0.3rem)]'
-              >
-                {badgeText}
-              </Badge>
+
+          {/* Badges for graduated artists */}
+          {graduatedArtists.includes(slug) && (
+            <div className='flex gap-2 mt-1'>
+              <Badge variant='neutral'>Graduated</Badge>
+              <Badge variant={badgeVariant}>{badgeText}</Badge>
             </div>
           )}
         </div>
@@ -162,7 +123,7 @@ export function ArtistCard({
       </Tooltip>
 
       {/* Stats Section */}
-      <div className='flex justify-around md:justify-start gap-9 mt-4'>
+      <div className='flex gap-9 mt-4'>
         {[
           { label: "Holders", value: holders },
           { label: "Market Cap", value: `$${marketCap}` },
@@ -190,13 +151,10 @@ export function ArtistCard({
         variant='follow-share'
         icon={<ArrowUpRightIcon weight='fill' size={16} />}
         className='w-full h-10 mt-4 px-4 py-2 gap-2.5'
-        onClick={handleViewArtistClick} // Use new handler
-        disabled={isNavigating} // Disable button when navigating
+        onClick={() => router.push(`/artists/${slug}`)}
       >
         View Artist
       </Button>
     </div>
-    </>
   )
 }
-
