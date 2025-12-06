@@ -34,7 +34,7 @@ export const Step2 = () => {
 
       <div>
         <label className='text-white mb-2 block'>Primary Genre*</label>
-        <div className='grid grid-cols-2 gap-2'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2'>
           {genres.map((genre) => (
             <PillButton
               key={genre}
@@ -61,7 +61,7 @@ export const Step2 = () => {
         />
       </div>
 
-      <div className='grid grid-cols-2 gap-4 mt-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4'>
         <Button
           variant='secondary-action'
           size='lg'

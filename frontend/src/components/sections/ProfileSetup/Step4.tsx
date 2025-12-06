@@ -49,10 +49,10 @@ export const Step4 = () => {
         />
       </div>
 
-      <div className='grid grid-cols-2 gap-4 mt-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4'>
         <Button
           variant='secondary-action'
-          size='lg'
+          size='default'
           onClick={prevStep}
           icon={<ArrowLeft />}
           iconPosition='left'
@@ -61,7 +61,7 @@ export const Step4 = () => {
         </Button>
         <Button
           variant='primary-action'
-          size='lg'
+          size='default'
           onClick={nextStep}
           disabled={
             !profileData.token.name ||

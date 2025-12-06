@@ -15,7 +15,7 @@ export const Step1 = () => {
       </div>
       <h2 className='text-2xl font-bold text-white'>Let's get started</h2>
       <p className='text-gray-300'>Tell us about yourself</p>
-      <div className='w-full max-w-md mt-6 text-left'>
+      <div className='w-full max-w-sm sm:max-w-md md:max-w-lg mt-6 text-left'>
         <InputField
           label='Artist Name*'
           placeholder='Your stage name'
@@ -27,7 +27,7 @@ export const Step1 = () => {
       <Button
         variant='primary-action'
         size='lg'
-        className='w-full max-w-md mt-4'
+        className='w-full max-w-sm sm:max-w-md md:max-w-lg mt-4'
         onClick={nextStep}
         disabled={!profileData.artistName}
         icon={<ArrowRight />}

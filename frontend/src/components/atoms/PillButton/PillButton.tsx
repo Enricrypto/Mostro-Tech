@@ -7,7 +7,7 @@ import type { ComponentProps } from "react"
 // CVA for PillButton with responsive sizes
 const pillButtonCVA = cva(
   `
-  inline-flex items-center justify-center gap-[0.5rem]
+  flex items-center justify-center gap-[0.5rem]
   rounded-full font-body transition-all duration-200 ease-out
   min-h-[2.5rem] sm:min-h-[2.75rem] md:min-h-[3rem]
   px-[1.2rem] sm:px-[1.6rem] md:px-[2rem]
@@ -26,7 +26,7 @@ const pillButtonCVA = cva(
         yellow:
           "border border-[var(--color-charcoal)] bg-[var(--color-booger-buster)] text-black",
         "form-dark": "border-transparent bg-[var(--color-dark-bg-hover)] text-white",
-        "profile-setup": "border-transparent bg-black/20 text-[#DCFD63]"
+        "profile-setup": "border-transparent bg-[#2D3953] text-[#DCFD63]"
       },
       selected: {
         true: "font-semibold opacity-90",

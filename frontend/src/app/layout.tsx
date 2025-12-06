@@ -32,7 +32,7 @@ export default function RootLayout({
 
   return (
     <html lang='en' className={`${poppins.variable} ${inter.variable}`}>
-      <body className='antialiased bg-[#0A111F] min-h-screen flex flex-col items-center mt-6'>
+      <body className={`antialiased ${pathname === "/profile-setup" ? "bg-[#6654D3]" : "bg-[#0A111F]"} min-h-screen flex flex-col items-center ${showNavbar ? 'mt-6' : ''}`}>
         <Providers>
           {/* ===== GLOBAL NAVBAR ===== */}
           {showNavbar && <Navbar />}
