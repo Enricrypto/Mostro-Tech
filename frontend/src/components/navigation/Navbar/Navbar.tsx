@@ -14,7 +14,8 @@ import { LoadingSpinner } from "@/components/atoms/LoadingSpinner/LoadingSpinner
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/all-artists", label: "Artists" },
-  { href: "/launches", label: "Launches" }
+  { href: "/launches", label: "Launches" },
+
 ]
 
 export function Navbar() {

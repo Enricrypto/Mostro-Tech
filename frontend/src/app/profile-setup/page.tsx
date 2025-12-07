@@ -24,7 +24,7 @@ export default function ProfileSetupPage() {
 
   return (
     <div className='min-h-screen w-full bg-[#6654D3] flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 transition-all duration-500'>
-      <div className='w-full max-w-4xl mx-auto'>
+      <div className='w-full max-w-lg mx-auto'>
         <div className='flex justify-center mb-8'>
           <Image src='/logo.png' alt='Logo' width={60} height={60} />
         </div>

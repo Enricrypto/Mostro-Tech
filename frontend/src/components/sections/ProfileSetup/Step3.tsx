@@ -71,7 +71,7 @@ export const Step3 = () => {
         />
       </div>
 
-      <div className='grid grid-cols-2 gap-4 mt-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4'>
         <Button
           variant='secondary-action'
           size='lg'
