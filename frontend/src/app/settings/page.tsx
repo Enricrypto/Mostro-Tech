@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { MenuItem } from "@/components/atoms/MenuItem"
 import { ProfileSettings } from "@/components/sections/ProfileSettings"
 import { PerkSettings } from "@/components/sections/PerkSettings"
@@ -34,40 +35,58 @@ export default function SettingsPage() {
         {/* Left Side: Navigation Tabs */}
         <div className="flex-shrink-0 w-full md:w-64 lg:w-72">
           <div className="flex flex-col gap-2">
-            <MenuItem
-              variant="settings-tab"
-              label="Profile Settings"
-              selected={activeTab === "profile"}
-              onClick={() => setActiveTab("profile")}
-              icon={<UserCircleIcon size={20} />} // Example icon
-            />
-            <MenuItem
-              variant="settings-tab"
-              label="Create a Perk"
-              selected={activeTab === "perk"}
-              onClick={() => setActiveTab("perk")}
-              icon={<HandshakeIcon size={20} />} // Example icon
-            />
-            <MenuItem
-              variant="settings-tab"
-              label="Create a Proposal"
-              selected={activeTab === "proposal"}
-              onClick={() => setActiveTab("proposal")}
-              icon={<LightbulbFilamentIcon size={20} />} // Example icon
-            />
-            <MenuItem
-              variant="settings-tab"
-              label="Token"
-              selected={activeTab === "token"}
-              onClick={() => setActiveTab("token")}
-              icon={<Coins size={20} />}
-            />
+            <motion.div whileTap={{ scale: 0.95 }}>
+              <MenuItem
+                variant="settings-tab"
+                label="Profile Settings"
+                selected={activeTab === "profile"}
+                onClick={() => setActiveTab("profile")}
+                icon={<UserCircleIcon size={20} />} // Example icon
+              />
+            </motion.div>
+            <motion.div whileTap={{ scale: 0.95 }}>
+              <MenuItem
+                variant="settings-tab"
+                label="Create a Perk"
+                selected={activeTab === "perk"}
+                onClick={() => setActiveTab("perk")}
+                icon={<HandshakeIcon size={20} />} // Example icon
+              />
+            </motion.div>
+            <motion.div whileTap={{ scale: 0.95 }}>
+              <MenuItem
+                variant="settings-tab"
+                label="Create a Proposal"
+                selected={activeTab === "proposal"}
+                onClick={() => setActiveTab("proposal")}
+                icon={<LightbulbFilamentIcon size={20} />} // Example icon
+              />
+            </motion.div>
+            <motion.div whileTap={{ scale: 0.95 }}>
+              <MenuItem
+                variant="settings-tab"
+                label="Token"
+                selected={activeTab === "token"}
+                onClick={() => setActiveTab("token")}
+                icon={<Coins size={20} />}
+              />
+            </motion.div>
           </div>
         </div>
 
         {/* Right Side: Content based on active tab */}
         <div className="flex-grow mx-auto">
-          {renderContent()}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              {renderContent()}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </div>
